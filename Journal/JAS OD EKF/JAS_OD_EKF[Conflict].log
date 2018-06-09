@@ -1,0 +1,704 @@
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.10.8)  10 FEB 2015 19:45
+entering extended mode
+**C:/Users/evankaufman/Google*Drive/FDCL/Evan/Publications/JAS*OD*EKF/JAS_OD_EK
+F.tex
+
+("C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/JAS OD EKF/JAS_OD_EK
+F.tex"
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2009-06-19, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, lao, latin, lat
+vian, lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerm
+an, ngerman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese, 
+romanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swis
+sgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, u
+senglishmax, welsh, loaded.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\fix-cm.sty"
+Package: fix-cm 2006/09/13 v1.1m fixes to LaTeX
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ts1enc.def"
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+))
+("C:\Users\evankaufman\Google Drive\FDCL\Evan\Publications\JAS OD EKF\svjour3.c
+ls"
+Document Class: svjour3 2007/05/08 v3.2 
+LaTeX document class for Springer journals
+Class Springer-SVJour3 Info: extra/valid Springer sub-package (-> *.clo) 
+(Springer-SVJour3)           not found in option list of \documentclass
+(Springer-SVJour3)           - autoactivating "global" style.
+
+("C:\Users\evankaufman\Google Drive\FDCL\Evan\Publications\JAS OD EKF\svglov3.c
+lo"
+File: svglov3.clo 2009/12/18 v3.2 style option for standardised journals
+
+SVJour Class option: svglov3.clo for standardised journals
+)
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 147.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 148.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 149.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 150.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 151.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 152.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 153.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 154.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 155.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 156.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 157.
+\logodepth=\dimen102
+\headerboxheight=\dimen103
+\betweenumberspace=\dimen104
+\aftertext=\dimen105
+\headlineindent=\dimen106
+\c@inst=\count79
+\c@auth=\count80
+\instindent=\dimen107
+\authrun=\box26
+\authorrunning=\toks14
+\titrun=\box27
+\titlerunning=\toks15
+\combirun=\box28
+\c@lastpage=\count81
+\rubricwidth=\dimen108
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\spthmsep=\dimen109
+\c@theorem=\count87
+\c@case=\count88
+\c@conjecture=\count89
+\c@corollary=\count90
+\c@definition=\count91
+\c@example=\count92
+\c@exercise=\count93
+\c@lemma=\count94
+\c@note=\count95
+\c@problem=\count96
+\c@property=\count97
+\c@proposition=\count98
+\c@question=\count99
+\c@solution=\count100
+\c@remark=\count101
+\c@figure=\count102
+\c@table=\count103
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\figcapgap=\dimen110
+\tabcapgap=\dimen111
+\figgap=\dimen112
+\bibindent=\dimen113
+\@tempcntc=\count104
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count105
+))
+\Gin@req@height=\dimen114
+\Gin@req@width=\dimen115
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\bm.sty"
+Package: bm 2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup4
+\symboldletters=\mathgroup5
+\symboldsymbols=\mathgroup6
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 138.
+LaTeX Info: Redefining \bm on input line 204.
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2009/06/22 v3.00
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\@emptytoks=\toks17
+\symAMSa=\mathgroup7
+\symAMSb=\mathgroup8
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsmath.sty"
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks18
+\ex@=\dimen116
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+LaTeX Info: Redefining \boldsymbol on input line 54.
+\pmbraise@=\dimen117
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count106
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count107
+\leftroot@=\count108
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count109
+\DOTSCASE@=\count110
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box29
+\strutbox@=\box30
+\big@size=\dimen118
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+
+
+Package amsmath Warning: Unable to redefine math accent \vec.
+
+\macc@depth=\count111
+\c@MaxMatrixCols=\count112
+\dotsspace@=\muskip10
+\c@parentequation=\count113
+\dspbrk@lvl=\count114
+\tag@help=\toks19
+\row@=\count115
+\column@=\count116
+\maxfields@=\count117
+\andhelp@=\toks20
+\eqnshift@=\dimen119
+\alignsep@=\dimen120
+\tagshift@=\dimen121
+\tagwidth@=\dimen122
+\totwidth@=\dimen123
+\lineht@=\dimen124
+\@envbody=\toks21
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\times.sty"
+Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\subfigure\subfigure.
+sty
+Package: subfigure 2002/07/30 v2.1.4 subfigure package
+\subfigtopskip=\skip46
+\subfigcapskip=\skip47
+\subfigcaptopadj=\dimen125
+\subfigbottomskip=\skip48
+\subfigcapmargin=\dimen126
+\subfiglabelskip=\skip49
+\c@subfigure=\count118
+\c@lofdepth=\count119
+\c@subtable=\count120
+\c@lotdepth=\count121
+
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\subfigure\subfigure.
+cfg)
+\subfig@top=\skip50
+\subfig@bottom=\skip51
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\tabularx.sty"
+Package: tabularx 1999/01/07 v2.07 `tabularx' package (DPC)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\array.sty"
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen127
+\extrarowheight=\dimen128
+\NC@list=\toks23
+\extratabsurround=\skip52
+\backup@length=\skip53
+)
+\TX@col@width=\dimen129
+\TX@old@table=\dimen130
+\TX@old@col=\dimen131
+\TX@target=\dimen132
+\TX@delta=\dimen133
+\TX@cols=\count122
+\TX@ftn=\toks24
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\booktabs\booktabs.st
+y
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen134
+\lightrulewidth=\dimen135
+\cmidrulewidth=\dimen136
+\belowrulesep=\dimen137
+\belowbottomsep=\dimen138
+\aboverulesep=\dimen139
+\abovetopsep=\dimen140
+\cmidrulesep=\dimen141
+\cmidrulekern=\dimen142
+\defaultaddspace=\dimen143
+\@cmidla=\count123
+\@cmidlb=\count124
+\@aboverulesep=\dimen144
+\@belowrulesep=\dimen145
+\@thisruleclass=\count125
+\@lastruleclass=\count126
+\@thisrulewidth=\dimen146
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\colortbl\colortbl.st
+y
+Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\color.sty"
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+)
+\everycr=\toks25
+\minrowclearance=\skip54
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
+\bigstrutjot=\dimen147
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\threeparttable\three
+parttable.sty
+Package: threeparttable 2003/06/13  v 3.0
+\@tempboxb=\box31
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
+Package: hyperref 2012/05/13 v6.82q Hypertext links for LaTeX
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
+Package: hobsub-hyperref 2012/04/25 v1.12 Bundle oberdiek, subset hyperref (HO)
+
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
+Package: hobsub-generic 2012/04/25 v1.12 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/04/25 v1.12 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+)
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2011/06/24 v1.1 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+)
+\@linkdim=\dimen148
+\Hy@linkcounter=\count127
+\Hy@pagecounter=\count128
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
+File: pd1enc.def 2012/05/13 v6.82q Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count129
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 3941.
+Package hyperref Info: Hyper figures OFF on input line 4062.
+Package hyperref Info: Link nesting OFF on input line 4067.
+Package hyperref Info: Hyper index ON on input line 4070.
+Package hyperref Info: Plain pages OFF on input line 4077.
+Package hyperref Info: Backreferencing OFF on input line 4082.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4300.
+\c@Hy@tempcnt=\count130
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
+\Urlmuskip=\muskip11
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4653.
+\Fld@menulength=\count131
+\Field@Width=\dimen149
+\Fld@charsize=\dimen150
+Package hyperref Info: Hyper figures OFF on input line 5773.
+Package hyperref Info: Link nesting OFF on input line 5778.
+Package hyperref Info: Hyper index ON on input line 5781.
+Package hyperref Info: backreferencing OFF on input line 5788.
+Package hyperref Info: Link coloring ON on input line 5791.
+Package hyperref Info: Link coloring with OCG OFF on input line 5798.
+Package hyperref Info: PDF/A mode OFF on input line 5803.
+LaTeX Info: Redefining \ref on input line 5843.
+LaTeX Info: Redefining \pageref on input line 5847.
+\Hy@abspage=\count132
+\c@Item=\count133
+\c@Hfootnote=\count134
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
+File: hpdftex.def 2012/05/13 v6.82q Hyperref driver for pdfTeX
+\Fld@listcount=\count135
+\c@bookmark@seq@number=\count136
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip55
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\cite\overcite.sty
+Package: overcite 1999/04/23  v 3.8
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\footnpag\footnpag.st
+y
+Package: footnpag 1995/11/10 v2.6 numbering footnotes per page
+\old_foot_file=\read1
+\foot_file=\write3
+\foot_name_no=\count137
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\afterpage.sty"
+Package: afterpage 1995/10/27 v1.08 After-Page Package (DPC)
+\AP@output=\toks26
+\AP@partial=\box32
+\AP@footins=\box33
+)
+\c@prop=\count138
+
+("C:\Users\evankaufman\Google Drive\FDCL\Evan\Publications\JAS OD EKF\JAS_OD_EK
+F.aux"
+
+LaTeX Warning: Label `fig:i30' multiply defined.
+
+)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 130.
+LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 130.
+LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 130.
+LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 130.
+LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 130.
+LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 130.
+LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 130.
+LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 130.
+LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 130.
+
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+Unknown journal: specify \journalname{<name of your journal>} in preambel
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count139
+\scratchdimen=\dimen151
+\scratchbox=\box34
+\nofMPsegments=\count140
+\nofMParguments=\count141
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count142
+\MPscratchDim=\dimen152
+\MPnumerator=\count143
+\makeMPintoPDFobject=\count144
+\everyMPtoPDFconversion=\toks28
+)
+\AtBeginShipoutBox=\box35
+Package hyperref Info: Link coloring ON on input line 130.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
+Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count145
+)
+LaTeX Info: Redefining \ref on input line 130.
+LaTeX Info: Redefining \pageref on input line 130.
+LaTeX Info: Redefining \nameref on input line 130.
+
+("C:\Users\evankaufman\Google Drive\FDCL\Evan\Publications\JAS OD EKF\JAS_OD_EK
+F.out")
+("C:\Users\evankaufman\Google Drive\FDCL\Evan\Publications\JAS OD EKF\JAS_OD_EK
+F.out")
+\@outlinefile=\write4
+
+SVJour3 warning: Missing \journalname
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 172.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <13> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 172.
+LaTeX Font Info:    Try loading font information for U+msa on input line 172.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 172.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+) [1{C:/Users/evankaufman/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [
+2] [3] [4]
+[5]
+Overfull \hbox (1.18716pt too wide) in paragraph at lines 367--367
+[] 
+ []
+
+
+Underfull \vbox (badness 4739) has occurred while \output is active []
+
+ [6]
+[7] [8] [9] [10] [11] [12]
+Overfull \hbox (5.43872pt too wide) in paragraph at lines 650--651
+\OT1/ptm/m/n/10 mea-sure-ment noise are $\OML/cmm/m/it/10 Q[] \OT1/cmr/m/n/10 =
+ [][10[]\OML/cmm/m/it/10 I[]; \OT1/cmr/m/n/10 10[]\OML/cmm/m/it/10 I[]\OT1/cmr/
+m/n/10 ]$\OT1/ptm/m/n/10 , and $\OML/cmm/m/it/10 R[] \OT1/cmr/m/n/10 = 1\OML/cm
+m/m/it/10 :\OT1/cmr/m/n/10 306[]\OML/cmm/m/it/10 I[] [][]$\OT1/ptm/m/n/10 .
+ []
+
+[13]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 682.
+
+Underfull \hbox (badness 10000) in alignment at lines 704--704
+[][][][][][][][] 
+ []
+
+[14] <./Figs/PE_i_0_e.pdf, id=252, 524.96124pt x 417.56pt>
+File: ./Figs/PE_i_0_e.pdf Graphic file (type pdf)
+
+<use ./Figs/PE_i_0_e.pdf>
+Package pdftex.def Info: ./Figs/PE_i_0_e.pdf used on input line 719.
+(pdftex.def)             Requested size: 101.40103pt x 80.6561pt.
+
+<./Figs/PE_i_0_xx_norm.pdf, id=253, 538.01pt x 417.56pt>
+File: ./Figs/PE_i_0_xx_norm.pdf Graphic file (type pdf)
+
+<use ./Figs/PE_i_0_xx_norm.pdf>
+Package pdftex.def Info: ./Figs/PE_i_0_xx_norm.pdf used on input line 719.
+(pdftex.def)             Requested size: 101.40103pt x 78.6937pt.
+
+<./Figs/PE_i_30_e.pdf, id=254, 516.93124pt x 417.56pt>
+File: ./Figs/PE_i_30_e.pdf Graphic file (type pdf)
+
+<use ./Figs/PE_i_30_e.pdf>
+Package pdftex.def Info: ./Figs/PE_i_30_e.pdf used on input line 729.
+(pdftex.def)             Requested size: 101.40103pt x 81.9049pt.
+
+<./Figs/PE_i_30_xx_norm.pdf, id=255, 538.01pt x 417.56pt>
+File: ./Figs/PE_i_30_xx_norm.pdf Graphic file (type pdf)
+
+<use ./Figs/PE_i_30_xx_norm.pdf>
+Package pdftex.def Info: ./Figs/PE_i_30_xx_norm.pdf used on input line 729.
+(pdftex.def)             Requested size: 101.40103pt x 78.6937pt.
+
+<./Figs/PE_i_30_e_J2.pdf, id=256, 492.84125pt x 392.46625pt>
+File: ./Figs/PE_i_30_e_J2.pdf Graphic file (type pdf)
+
+<use ./Figs/PE_i_30_e_J2.pdf>
+Package pdftex.def Info: ./Figs/PE_i_30_e_J2.pdf used on input line 739.
+(pdftex.def)             Requested size: 101.40103pt x 80.74953pt.
+
+<./Figs/PE_i_30_xx_norm_J2.pdf, id=257, 504.88625pt x 392.46625pt>
+File: ./Figs/PE_i_30_xx_norm_J2.pdf Graphic file (type pdf)
+
+<use ./Figs/PE_i_30_xx_norm_J2.pdf>
+Package pdftex.def Info: ./Figs/PE_i_30_xx_norm_J2.pdf used on input line 739.
+(pdftex.def)             Requested size: 101.40103pt x 78.82121pt.
+
+<./Figs/PE_i_50_e.pdf, id=258, 516.93124pt x 417.56pt>
+File: ./Figs/PE_i_50_e.pdf Graphic file (type pdf)
+
+<use ./Figs/PE_i_50_e.pdf>
+Package pdftex.def Info: ./Figs/PE_i_50_e.pdf used on input line 749.
+(pdftex.def)             Requested size: 101.40103pt x 81.9049pt.
+
+<./Figs/PE_i_50_xx_norm.pdf, id=259, 538.01pt x 417.56pt>
+File: ./Figs/PE_i_50_xx_norm.pdf Graphic file (type pdf)
+
+<use ./Figs/PE_i_50_xx_norm.pdf>
+Package pdftex.def Info: ./Figs/PE_i_50_xx_norm.pdf used on input line 749.
+(pdftex.def)             Requested size: 101.40103pt x 78.6937pt.
+ [15 <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/JAS OD EKF/Figs/
+PE_i_0_e.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/JAS OD 
+EKF/Figs/PE_i_0_xx_norm.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publi
+cations/JAS OD EKF/Figs/PE_i_30_e.pdf> <C:/Users/evankaufman/Google Drive/FDCL/
+Evan/Publications/JAS OD EKF/Figs/PE_i_30_xx_norm.pdf> <C:/Users/evankaufman/Go
+ogle Drive/FDCL/Evan/Publications/JAS OD EKF/Figs/PE_i_30_e_J2.pdf> <C:/Users/e
+vankaufman/Google Drive/FDCL/Evan/Publications/JAS OD EKF/Figs/PE_i_30_xx_norm_
+J2.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/JAS OD EKF/Fi
+gs/PE_i_50_e.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/JAS
+ OD EKF/Figs/PE_i_50_xx_norm.pdf>]
+("C:\Users\evankaufman\Google Drive\FDCL\Evan\Publications\JAS OD EKF\JAS_OD_EK
+F.bbl" [16
+
+
+] <./Figs/EKF_PE_r0_20_e.pdf, id=401, 524.96124pt x 417.56pt>
+File: ./Figs/EKF_PE_r0_20_e.pdf Graphic file (type pdf)
+
+<use ./Figs/EKF_PE_r0_20_e.pdf>
+Package pdftex.def Info: ./Figs/EKF_PE_r0_20_e.pdf used on input line 14.
+(pdftex.def)             Requested size: 152.09897pt x 120.98097pt.
+
+<./Figs/EKF_PE_r0_20_xx_norm.pdf, id=402, 527.9725pt x 417.56pt>
+File: ./Figs/EKF_PE_r0_20_xx_norm.pdf Graphic file (type pdf)
+
+<use ./Figs/EKF_PE_r0_20_xx_norm.pdf>
+Package pdftex.def Info: ./Figs/EKF_PE_r0_20_xx_norm.pdf used on input line 14.
+
+(pdftex.def)             Requested size: 152.09897pt x 120.28648pt.
+
+<./Figs/EKF_PE_r0_50_e.pdf, id=403, 524.96124pt x 417.56pt>
+File: ./Figs/EKF_PE_r0_50_e.pdf Graphic file (type pdf)
+
+<use ./Figs/EKF_PE_r0_50_e.pdf>
+Package pdftex.def Info: ./Figs/EKF_PE_r0_50_e.pdf used on input line 14.
+(pdftex.def)             Requested size: 152.09897pt x 120.98097pt.
+
+<./Figs/EKF_PE_r0_50_xx_norm.pdf, id=404, 527.9725pt x 417.56pt>
+File: ./Figs/EKF_PE_r0_50_xx_norm.pdf Graphic file (type pdf)
+
+<use ./Figs/EKF_PE_r0_50_xx_norm.pdf>
+Package pdftex.def Info: ./Figs/EKF_PE_r0_50_xx_norm.pdf used on input line 14.
+
+(pdftex.def)             Requested size: 152.09897pt x 120.28648pt.
+
+<./Figs/EKF_PE_r0_100_e.pdf, id=405, 524.96124pt x 417.56pt>
+File: ./Figs/EKF_PE_r0_100_e.pdf Graphic file (type pdf)
+
+<use ./Figs/EKF_PE_r0_100_e.pdf>
+Package pdftex.def Info: ./Figs/EKF_PE_r0_100_e.pdf used on input line 14.
+(pdftex.def)             Requested size: 152.09897pt x 120.98097pt.
+
+<./Figs/EKF_PE_r0_100_xx_norm.pdf, id=406, 527.9725pt x 417.56pt>
+File: ./Figs/EKF_PE_r0_100_xx_norm.pdf Graphic file (type pdf)
+
+<use ./Figs/EKF_PE_r0_100_xx_norm.pdf>
+Package pdftex.def Info: ./Figs/EKF_PE_r0_100_xx_norm.pdf used on input line 14
+.
+(pdftex.def)             Requested size: 152.09897pt x 120.28648pt.
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1411.
+ [17
+
+] [18 <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/JAS OD EKF/Figs
+/EKF_PE_r0_20_e.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/
+JAS OD EKF/Figs/EKF_PE_r0_20_xx_norm.pdf> <C:/Users/evankaufman/Google Drive/FD
+CL/Evan/Publications/JAS OD EKF/Figs/EKF_PE_r0_50_e.pdf> <C:/Users/evankaufman/
+Google Drive/FDCL/Evan/Publications/JAS OD EKF/Figs/EKF_PE_r0_50_xx_norm.pdf> <
+C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/JAS OD EKF/Figs/EKF_PE
+_r0_100_e.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/JAS OD
+ EKF/Figs/EKF_PE_r0_100_xx_norm.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1411.
+
+("C:\Users\evankaufman\Google Drive\FDCL\Evan\Publications\JAS OD EKF\JAS_OD_EK
+F.aux")
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1411.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1411.
+
+Package rerunfilecheck Info: File `JAS_OD_EKF.out' has not changed.
+(rerunfilecheck)             Checksum: AA280B2D65A6E0687DD1C9655A3A4BF2;366.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1411.
+ ) 
+Here is how much of TeX's memory you used:
+ 7317 strings out of 494045
+ 107132 string characters out of 3145951
+ 204416 words of memory out of 3000000
+ 10372 multiletter control sequences out of 15000+200000
+ 25960 words of font info for 66 fonts, out of 3000000 for 9000
+ 715 hyphenation exceptions out of 8191
+ 34i,20n,31p,1818b,463s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
+m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><C:/Program
+ Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Program File
+s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files 
+(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files (x
+86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files (x86)
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files (x86)/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files (x86)/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files (x86)/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmsy5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmsy6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfo
+nts/cm/cmsy7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/sy
+mbols/msam10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts
+/symbols/msbm10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/ut
+mb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C
+:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on JAS_OD_EKF.pdf (18 pages, 1742167 bytes).
+PDF statistics:
+ 611 PDF objects out of 1000 (max. 8388607)
+ 107 named destinations out of 1000 (max. 500000)
+ 119 words of extra memory for PDF output out of 10000 (max. 10000000)
+

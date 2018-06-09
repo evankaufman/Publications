@@ -1,0 +1,261 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,text={6.5in,8.6in},centering]{geometry}
+\usepackage{amssymb,amsmath,times,url}
+\usepackage{xr,color}
+\usepackage{hyperref}
+
+
+\externaldocument[]{JIRS16_rev1}
+
+\newcommand{\norm}[1]{\ensuremath{\left\| #1 \right\|}}
+\newcommand{\bracket}[1]{\ensuremath{\left[ #1 \right]}}
+\newcommand{\braces}[1]{\ensuremath{\left\{ #1 \right\}}}
+\newcommand{\parenth}[1]{\ensuremath{\left( #1 \right)}}
+\newcommand{\pair}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\met}[1]{\ensuremath{\langle\langle #1 \rangle\rangle}}
+\newcommand{\refeqn}[1]{(\ref{eqn:#1})}
+\newcommand{\reffig}[1]{Fig. \ref{fig:#1}}
+\newcommand{\tr}[1]{\mathrm{tr}\ensuremath{\negthickspace\bracket{#1}}}
+\newcommand{\trs}[1]{\mathrm{tr}\ensuremath{[#1]}}
+\newcommand{\deriv}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+\newcommand{\SO}{\ensuremath{\mathsf{SO(3)}}}
+\newcommand{\T}{\ensuremath{\mathsf{T}}}
+\renewcommand{\L}{\ensuremath{\mathsf{L}}}
+\newcommand{\so}{\ensuremath{\mathfrak{so}(3)}}
+\newcommand{\SE}{\ensuremath{\mathsf{SE(3)}}}
+\newcommand{\se}{\ensuremath{\mathfrak{se}(3)}}
+\renewcommand{\Re}{\ensuremath{\mathbb{R}}}
+\newcommand{\aSE}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&1\end{bmatrix}}}
+\newcommand{\ase}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&0\end{bmatrix}}}
+\newcommand{\D}{\ensuremath{\mathbf{D}}}
+\newcommand{\Sph}{\ensuremath{\mathsf{S}}}
+\renewcommand{\S}{\Sph}
+\newcommand{\J}{\ensuremath{\mathbf{J}}}
+\newcommand{\Ad}{\ensuremath{\mathrm{Ad}}}
+\newcommand{\intp}{\ensuremath{\mathbf{i}}}
+\newcommand{\extd}{\ensuremath{\mathbf{d}}}
+\newcommand{\hor}{\ensuremath{\mathrm{hor}}}
+\newcommand{\ver}{\ensuremath{\mathrm{ver}}}
+\newcommand{\dyn}{\ensuremath{\mathrm{dyn}}}
+\newcommand{\geo}{\ensuremath{\mathrm{geo}}}
+\newcommand{\Q}{\ensuremath{\mathsf{Q}}}
+\newcommand{\G}{\ensuremath{\mathsf{G}}}
+\newcommand{\g}{\ensuremath{\mathfrak{g}}}
+\newcommand{\Hess}{\ensuremath{\mathrm{Hess}}}
+\newcommand{\refprop}[1]{Proposition \ref{prop:#1}}
+
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+\newcommand{\RI}{\text{\RNum{1}}}
+\newcommand{\RII}{\text{\RNum{2}}}
+\newcommand{\RIII}{\text{\RNum{3}}}
+
+\newenvironment{correction}{\begin{list}{}{\setlength{\leftmargin}{1cm}\setlength{\rightmargin}{1cm}}\vspace{\parsep}\item[]``}{''\end{list}}
+
+
+\newcommand{\EditTL}[1]{{\color{red}\protect #1}}
+
+
+\begin{document}
+
+%\pagestyle{empty}
+
+\section*{Response to the Reviewers' Comments for JINT-D-16-00659}
+
+The authors would like to thank the reviewers for their thoughtful comments, which are aimed toward improving the quality of the paper and the clarity of the results. In accordance with the comments and suggestions, the paper has been revised as follows. 
+
+\subsection*{Reviewer 1}
+
+\setlength{\leftmargini}{0pt}
+\begin{itemize}\setlength{\itemsep}{2\parsep}
+
+\item {\itshape Reviewer \#1: The paper presents `probabilistic occupancy grid mapping and motion planning approaches such that a robot may build autonomously a map and explore a target area  in real time'. The sensor characteristics are explored probabilistically and the approaches are presented and summarized using algorithms. An Analysis of  computational efficient  is also presented together with numerical and experimental results. The news are described by authors and the experimental results help the readers to understanding the contributions.
+
+However, I have some questions for the authors;}
+\end{itemize}
+
+%\renewcommand{\labelenumi}{\theenumi}
+%\renewcommand{\theenumi}{(\roman{enumi})}%
+
+\begin{enumerate}
+\item {\itshape Reviewer \#1: Figure 1 and the explanation in subsection ``Computationally Efficient Approach'' is not so clear for readers. The authors work with bi-dimensional space and present in figure an example in one-dimensional space. Also, the explanation in subsection is not clear and the second paragraph of the subsection is concluded with ``we present the following computational algorithm to compute the inverse sensor model'', but only the ``Proposition 1'' is seen in sequence.}
+
+The proposed algorithm to compute the exact inverse sensor model is applied to any of one, two, or three-dimensional depth measurements and mappings. The authors decided to use one-dimensional example in Figure 1, only to illustrate the proposed approach based on cell occlusion more explicitly through simpler cases. 
+
+To clarify these, a few sentences are added to explain how the 1D concept is extended to 2D maps. Additionally, several other minor changes are added for clarity. Also, the last statement refers to Section \ref{sec:SA} for a summary of the proposed computational algorithm. 
+
+\begin{correction}
+%
+We propose a computational algorithm to evaluate \refeqn{InvSenModWithProbDens} efficiently. 
+Since the cells outside of the sensor field of view (FOV) are not affected, we focus on a reduced map $r_l$ in the FOV of the $l$-th ray. This reduced map is chosen such that each cell of $r_l$ corresponds to a grid cell of map $m$ that the $l$-th ray intersects, ordered by increasing distance, which is easily determined from geometry. Let $\mathbf{r}_{l,k}$ be the binary random variable representing the occupancy of the $k$-th cell of the $l$-th ray. The number of cells in the reduced map is denoted by $n_{r,l}\leq n_m$.
+
+Next, let $\mathbf{r}_{l,k+}$ correspond to the event that the $k$-th cell of the $l$-th ray is occupied, cells with lower index (closer cells) are free, and cells with greater index (farther cells) may or may not be occupied, i.e., event $\mathbf{r}_{l,k+}$ occurs when \\$r\in\braces{r\in\{0,1\}^{{n_{r,l}}}\,|\mathbf{r}_{l,1}=0,\mathbf{r}_{l,2}=0,\ldots,\mathbf{r}_{l,k-1}=0,\mathbf{r}_{l,k}=1}$. In other words, the $k$-th cell $\mathbf{r}_{l,k}$ is the closest occupied cell to current pose $X_t$ along the $l$-th ray. For example, see Figure \ref{fig:show_rkplus} that illustrates the event of $\mathbf{r}_{l,k+}$ when $l=1$ and $k=4$ for an one-dimensional cell array. This concept of grouping map outcomes can be easily extended to 2D using ray casting, where a 1D ray is spanning 2D space. The cells considered for the measurement ray are determined with the geometric intersection between the ray and map cell edges.
+Then, the forward sensor model is identical for all maps defined by $\mathbf{r}_{l,k+}$, regardless of the occupancy of the cells beyond the $k$-th cell, and the corresponding forward sensor model $p(z_{t,l}|\mathbf{r}_{l,k+},X_{t})$ depends on the distance from $X_t$ to the $k$-th cell. Based on this, we present the mathematical expressions for the exact inverse sensor model, as summarized by \refeqn{RayISMAnswer} in Proposition 1. Later in Section \ref{sec:SA}, these are also rearranged as a computational algorithm. 
+\end{correction}
+
+%The algorithm was written sequentially with LaTeX, but placed awkwardly in the PDF, which is now resolved.
+
+\item {\itshape Reviewer \#1: In page 13, the authors present two algorithms as table. Well, algorithms can not be table and seemly the authors are using latex. So, the authors must use the  algorithm2e package to present all algorithms into the paper and also to citing them suitably.}
+
+Both algorithms are rewritten using the suggested \texttt{algorithm2e} package and they are referenced properly in the revised manuscript. 
+
+\item {\itshape Reviewer \#1: About the computational analysis, the authors talk in introduction of the paper that the approaches are to be used in real time. However, discussion about real time questions are not done into paper. For example: what information about each cell are stored in the memory in real time? For the experiment, what the computational load of the algorithms were? what time slice (tick) was? how much memories were used in the examples presented in figures 8 and 10? Well, I think that the discussion about real time could be improved.}\\
+
+The following discussion on real-time implementation and memory is added to Section 7 of the experimental results.
+
+%\EditTL{It is common to specify the processor and the programming language when presenting computation time. We may also add a remark that those were suitable for our experiments.}
+
+
+\begin{correction}The resulting map and exploration commands are generated in real time. The grid cells are stored as double-float variables in a vector, where the vector index is mapped to a location on the occupancy grid. Thus, the memory requirements are proportional to the number of grid cells, which is roughly the mapping area divided by the area of a grid cell. Since cell locations need not be saved, memory requirements are reduced. On a Lenovo T540p laptop with an Intel Core i7-4900MQ processor (quad-core, 2.8GHz per core) and 16GB of RAM, the mean time for updating the occupancy grid is $0.0115$ seconds, and the mean time to determine an exploration strategy is $0.6820$ seconds. Time requirements for mapping and exploration are easily modified by changing grid cell resolution or the number of exploration pose candidates, respectively. In short, there is a tradeoff between computational speed and accuracy of mapping or exploration.\end{correction}
+
+\end{enumerate}
+
+
+
+
+%\vspace*{0.1\textwidth}
+
+\clearpage\newpage
+
+
+\subsection*{Reviewer 2}
+
+\setlength{\leftmargini}{0pt}
+\begin{itemize}\setlength{\itemsep}{2\parsep}
+
+\item {\itshape Reviewer \#2: This paper serves to improve the accuracy occupancy grid mapping and the policy governing robotic motion during autonomous exploration.This paper provides an exact solution to this complicated probability problem using cell occlusion in the forward sensor model, which yields a substantially simpler inverse sensor model, which avoids a potentially harmful Markov assumption that commonly appears in the log-odd ratio formulations. There are some minor comments:}
+\end{itemize}
+
+
+\begin{enumerate}\setlength{\itemsep}{2\parsep}
+
+\item {\itshape Reviewer \#2: ``The robot motion is governed by the information gain-maximizing policy described in this paper.'' What is the advantage to maximize the information gain? In the field of motion control, the big control gain is unwanted when designing an algorithm.}
+
+
+The objective of exploration pursued in this paper is to build an accurate probabilistic map in an optimal fashion. As described in \refeqn{ShannonsEntropyDef}, the entropy of a probabilistic map has been used as a measure of uncertainties. Therefore, the decrease of the entropy due to measurements is regarded as the information gain to obtain a more accurate map. By planning the motion of robots to maximize the information gain, we can construct the complete map in an optimal fashion. 
+
+The proposed optimal motion planning scheme to generate the desired path and the pose of the robot should be distinguished from the motion control problem that is applied in the inner loop to physically direct the robot toward the desired path. 
+
+In other words, the information gain is separate from control gain. This paper serves to determine where the robot should go (optimal pose) based on its available information of a probabilistic map, not the tracking control inputs along a trajectory to the optimal pose, or which type of controller to use. To clarify this point, the following is added to the last paragraph of Section 2.2.
+\begin{correction}It is considered that once a collision-free trajectory toward $X_c^*$ is obtained, the robot moves along the trajectory controlled by a motion control system in the inner loop. Once the robot has translated to $X_c^*$, the above process is repeated.\end{correction}
+
+\item {\itshape Reviewer \#2: Does the methods proposed in this paper can be applied in controlling mobile robots with visual servoing? for example
+
+[1] Chen H, Wang C, Liang Z, et al. Robust practical stabilization of nonholonomic mobile robots based on visual servoing feedback with inputs saturation[J]. Asian Journal of Control, 2014, 16(3): 692-702.
+
+[2] Chen H, Ding S, Chen X, et al. Global finite-time stabilization for nonholonomic mobile robots based on visual servoing[J]. International Journal of Advanced Robotic Systems, 2014, 11(11): 180.
+
+[3] Chen H, Zhang J, Chen B, et al. Global practical stabilization for non-holonomic mobile robots with uncalibrated visual parameters by using a switching controller[J]. IMA Journal of Mathematical Control and Information, 2013: dns044.}
+
+%In the context of this paper, maximizing information gain is based on how expected measurement ray depths determine some action. 
+
+As discussed above, the proposed algorithm generates the collision-free paths to construct a probabilistic map in an optimal fashion. Therefore, it can be integrated with any control algorithm, including methods based on visual servoing. To clarify these, the last part of Section 5 has been revised as follows. 
+
+%In this sense, a geometric interpretation of visual servoing relates to the proposed research, i.e., an image does not directly control the robot degrees of freedom. However, the main difference is that this paper provides a desired robot trajectory, whereas visual servoing focusses heavily on robotic control.
+%So, if the proposed research in this paper were combined with control, the research could be classified under visual servoing with a primary focus on map information.
+%The authors chose not to include a particular controller in this paper to maintain generality to the resulting method. The following sentence is added to the motion planning description of Section 5.1.
+
+\begin{correction}Then, a controller on the robot tracks this trajectory until the robot falls within acceptable thresholds of the final optimal pose. Any control scheme for the motion of the robot can be integrated with the proposed exploration algorithm. Once the robot completes this motion, the entire process is repeated.\end{correction}
+
+\end{enumerate}
+
+
+
+
+%\vspace*{0.1\textwidth}
+
+
+
+\clearpage\newpage
+\subsection*{Reviewer 3}
+
+\begin{itemize}\setlength{\itemsep}{2\parsep}
+
+\item {\itshape Reviewer \#3: Equation (5), determination of beta, collision threshold, should be clarified through numeric/experimental section as well...}
+
+The collision threshold $\beta$ corresponds to the probability of collision that may occur when the robot follows the desired trajectory. As $\beta$ decreases, the chances for collision decreases, but at the time, the planned trajectory may become longer and complicated while keeping a distance from potential obstacles. 
+
+%Setting the particular value of $\beta$ depend
+
+
+%is an important parameter selected to avoid collisions. 
+%It is sensitive to grid cell size, since cell resolution determines the number of grid cells falling inside the possible collision region $\mathcal{C}_X$. One practical implication of (5) is that cells with greater occupancy probabilities inside $\mathcal{C}_X$ tend to fall near the perimeter of the region as the robot moves because internal cells are typically well-known to be free assuming the robot covered open space beforehand. This point, and 
+The following description about collision probability is added to Section 6 (numerical exploration example), and the same properties are held for Section 7 (experiment).
+\begin{correction}For added safety, cells falling within $0.6$m of the robot are considered inside the possible collision zone $\mathcal{C}_X$, from \refeqn{CollisionInequalityConstraint}, where $\beta=0.1$ is selected.\end{correction}
+
+
+\item {\itshape Reviewer \#3: Just before equation (7) forward sensor model p(...) should be explained more.}
+
+The following is added to the ``Bayesian Framework'' paragraph of Section 3.2.
+
+\begin{correction}The occupancy probability $P(m|z_{t,l},X_{1:t},Z_{1:t-1})$ is based on the forward sensor model $p(z_{t,l}|m,X_{1:t},Z_{1:t-1})$ that describe the distribution of the measurements for the given robot pose and the map. This specifies the stochastic characteristics of the sensor, such as the mean squared error, and it is assumed as a known distribution, specific to a particular depth sensor. One could certainly obtain a stochastic model by fitting a probability density to a controlled set of measurements.
+\end{correction}
+
+\item {\itshape Reviewer \#3: Likewise, in the Proposition 1, ``$p(z_{t,l}|\mathbf{r}_{l,(n_r+1)+},X_t)$ represents the forward sensor model of a maximum sensor reading'' should be explained more rigorously through the Appendix 1 as well.}
+
+The statement in Proposition 1 is revised as follows.
+
+\begin{correction}$p(z_{t,l}|\mathbf{r}_{l,(n_r+1)+},X_t)$ represents the probability density of the measurement when all of cells in the field of view of the $l$-th ray is not occupied.\end{correction}
+
+Referring to the maximum reading, the following explanation is added after (34).
+
+\begin{correction}For this special case, probability density can be easily represented with a uniform distribution over a short distance. The properties of this distribution depend on the depth sensor fidelity, because a maximum reading may indicate that all cells within the sensor range are empty, but it might also represent a failed reading.\end{correction}
+
+\item {\itshape Reviewer \#3: Uncertainty on position and attitude, cell size adjustment can be discussed at the beginning.}
+
+Accounting for localization is very important, particularly in conjunction with mapping and autonomous exploration, though this is beyond the paper scope. The following is added to the Section 1 (introduction).
+
+\begin{correction}Accounting for the stochastic properties of position and attitude is important to the field of robotics, and accounting for localization in conjunction with mapping and exploration are considered as a future step to this paper.\end{correction}
+
+A brief explanation of grid cell size is added to the first paragraph of Section 2.1.
+
+\begin{correction}The location and size of each grid cell is assumed known, where a smaller cell size (greater grid resolution) better represents a space, but increases computation and memory. \end{correction}
+
+Further discussion on cell resolution is addressed two comments below.
+
+\item {\itshape Reviewer \#3: Section 5, motion planning should cite the following paper: (grid-based, Dijkstra)}
+
+N. Gasilov, M. Dogan, V. Arici, `Two-stage shortest path algorithm for solving optimal obstacle avoidance problem', IETE Journal of Research, 57(3), 278-285, 2011, doi:10.4103/0377-2063.83650.
+
+The reference is added.
+
+%\EditTL{Do we need a brief comparison with this?}
+
+
+\item {\itshape Reviewer \#3: Choosing the optimal parameters for each case, e.g. ray numbers, resolution in Table 1, can be explained more to understand the proposed algorithm.}
+
+The following is added in reference to Table 1 in Section 6.1.
+
+\begin{correction}Among these parameters, cell resolution and the number of rays have the greatest impact on computation. In general, the finer the grid, the greater the memory and computational requirements are because the computational order of (10) grows linearly with the number of grid cells inside the sensor range limits. Since the inverse sensor models are combined sequentially as shown in (13), the number of rays considered are proportional to the computation order as well.\end{correction}
+
+\item {\itshape Reviewer \#3: Convergence rate of algorithm, or speed of robot while achieving its goal, should be discussed, e.g. possible extensions or improvements to overcome some unnecessary repetitions and back-and-forth small step size bottlenecks.}
+
+Thanks for the comments. This is an important point, especially as it relates to future goals of the research. The following is added as the last paragraph of Section 7 (experiment).
+
+\begin{correction}Both the numerical and experimental results demonstrated successful exploration strategies, though the algorithm can be improved. In particular, the robot sometimes revisits spaces that it has explored before, most frequently when the robot did not take measurements toward a particular direction. A few methods to improve this issue are treated as future work. One options is adding cost functions (e.g. distance based, number of past measurements inside an area) to prevent the robot from leaving an area before it is well-known. A second option is partitioning the space into sections, where the robot moves toward sections with large numbers of pose candidates with high expected information gains. Another option is reevaluating the future pose optimization while the robot is translating between poses because the occupancy grid map is changing, and so is expected information gain. The efficacy of these proposed changes will be evaluated, particularly as they relate to more useful systems, such as 3D map generation and multi-robot exploration.\end{correction}
+
+
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

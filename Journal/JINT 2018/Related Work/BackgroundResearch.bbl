@@ -1,0 +1,47 @@
+\begin{thebibliography}{1}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{PorRoc11}
+D.~Portugal, R.~Rocha, A survey on multi-robot patrolling algorithms, DoCEIS:
+  Technological Innovation for Sustainability. 349 (2011) 139--146.
+
+\bibitem{KraFenCieDonDuc14}
+T.~Krajn{\'\i}k, J.~P. Fentanes, G.~Cielniak, C.~Dondrup, T.~Duckett, Spectral
+  analysis for long-term robotic mapping, in: International Conference on
+  Robotics and Automation (ICRA), IEEE, Hong Kong, China, 2014, pp. 3706--3711.
+
+\bibitem{KraFenHanDuc16}
+T.~Krajn{\'\i}k, J.~P. Fentanes, M.~Hanheide, T.~Duckett, Persistent
+  localization and life-long mapping in changing environments using the
+  frequency map enhancement, in: International Conference on Intelligent Robots
+  and Systems (IROS), IEEE/RSJ, Daejeon, Korea, 2016, pp. 4558--4563.
+
+\bibitem{KolCar08}
+A.~Kolling, S.~Carpin, Extracting surveillance graphs from robot maps, in:
+  nternational Conference on Intelligent Robots and Systems (IROS), IEEE/RSJ,
+  Nice, France, 2008, pp. 2323--2328.
+
+\bibitem{PorRoc10}
+D.~Portugal, R.~Rocha, Msp algorithm multi-robot patrolling based on territory
+  allocation using balanced graph partitioning, in: Symposium on Applied
+  Computing (SAC 2010), Sierre, Switzerland, 2010, pp. 1271--1276.
+
+\bibitem{PipChrWei13}
+C.~Pippin, H.~Christensen, L.~Weiss, Performance based task assignment in
+  multi-robot patrolling, in: Proceedings of the 28th Annual ACM Symposium on
+  Applied Computing, 2013, pp. 70--76.
+
+\bibitem{ZhaXia11}
+Y.~Zhang, Y.~Xiao, A patrolling scheme in wireless sensor and robot networks,
+  in: The Third International Workshop on Wireless Sensor, Actuator and Robot
+  Networks, IEEE, 2011, pp. 513--518.
+
+\bibitem{YanZha16}
+C.~Yan, T.~Zhang, Multi-robot patrol: A distributed algorithm based on expected
+  idleness, International Journal of Advanced Robotic Systems (2016) 1--12.
+
+\end{thebibliography}

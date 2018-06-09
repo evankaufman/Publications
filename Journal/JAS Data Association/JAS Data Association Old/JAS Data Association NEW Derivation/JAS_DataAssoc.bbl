@@ -1,0 +1,131 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{DOI~\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{DOI~\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem{Bar1990}
+Bar-Shalom, Y.: Multitarget-Multisensor Tracking.
+\newblock Artech House, Inc., Norwood, MA (1990)
+
+\bibitem{JPDAF1}
+Bar-Shalom, Y., Daum, F., Huang, J.: The probabilistic data association filter.
+\newblock IEEE Control Systems Magazine pp. 82--100 (2009)
+
+\bibitem{TrackDataAssoc}
+Bar-Shalom, Y., Fortmann, T.E.: Tracking and Data Association.
+\newblock Elsevier, Inc, San Diego, CA (1988)
+
+\bibitem{MHT1}
+Blackman, S.S.: Multiple hypothesis tracking for multiple target tracking.
+\newblock IEEE Aerospace and Electronic Systems Magazine \textbf{19}(1) (2004)
+
+\bibitem{Coal_d}
+Bloem, E.A., Blom, H.A.: Joint probabilistic data association methods avoiding
+  track coalescence.
+\newblock In: Proceedings of the IEEE Conference on Decision and Control (1995)
+
+\bibitem{Coal_e}
+Blom, H.A., Bloem, E.A.: Combining {IMM} and {JPDA} for tracking multiple
+  maneuvering targets in clutter.
+\newblock Tech. rep., National Aerospace Laboratory NLR (2002)
+
+\bibitem{Coal1}
+Blom, H.A.P., Bloem, E.: Probabilistic data association avoiding track
+  coalescence.
+\newblock IEEE Transactions on Automatic Control \textbf{45}(17), 247--259
+  (2000)
+
+\bibitem{Coal_c}
+Chen, S., Xu, Y.: A new joint probabilistic data association algorithm avoiding
+  track coalescence.
+\newblock International Journal of Intelligent Systems and Applications
+  \textbf{2}, 45--51 (2011)
+
+\bibitem{Fitzgerald}
+Fitzgerald, R.J.: Development of practical {PDA} logic for multitarget tracking
+  by microprocessor.
+\newblock Tech. rep., Raytheon Company, Missile Systems Division (1986)
+
+\bibitem{OptEst1}
+Gelb, A.: Applied Optimal Estimation.
+\newblock The Analytic Sciences Corporation, Cambridge, Massachusetts and
+  London, England (1974)
+
+\bibitem{HabThaThaMalKir13}
+Habtemariam, B., Tharmarasa, R., Thayaparan, T., Mallick, M., Kirubarajan, T.:
+  A multiple-detection joint probabilistic data association filter.
+\newblock IEEE Journal of Selected Topics in Signal Processing \textbf{7}(3),
+  461--471 (2013)
+
+\bibitem{KauLovLee14}
+Kaufman, E., Lovell, T.A., Lee, T.: Optimal joint probabilistic data
+  association filter avoiding coalescence in close proximity.
+\newblock In: Proceedings of the IEEE European Control Conference (2014)
+
+\bibitem{KauLovLeeAASDA15}
+Kaufman, E., Lovell, T.A., Lee, T.: Minimum uncertainty jpda filter and
+  coalescence avoidance performance evaluations.
+\newblock In: Proceedings of the AAS-AIAA Spaceflight Mechanics Meeting (2015)
+
+\bibitem{KurAriAriEfe10}
+Kural, F., Arikan, F., Arikan, O., Efe, M.: Performance evaluation of track
+  association and maintenance for a mfpar with doppler velocity measurements.
+\newblock Progress In Electromagnetics Research \textbf{108}, 249–--275
+  (2010)
+
+\bibitem{NN2}
+Li, X.R., Bar-Shalom, Y.: Tracking in clutter with nearest neighbor filters:
+  Analysis and performance.
+\newblock IEEE Transactions on Aerospace and Electronic Systems \textbf{32}(3),
+  995--1010 (1996)
+
+\bibitem{PHD1}
+Lin, L., Bar-Shalom, Y., Kirubarajan, T.: Track labeling and {PHD} filter for
+  multitarget tracking.
+\newblock IEEE Transactions on Aerospace and Electronic Systems \textbf{42}(3),
+  778--794 (2006)
+
+\bibitem{Mat55}
+Matusita, K.: Decision rules, based on the distance, for problems of fit, two
+  samples, and estimation.
+\newblock The Annals of Mathematical Statistics \textbf{26}(4), 631--640 (1955)
+
+\bibitem{Coal_k}
+Minami, M., Shimizu, K.: Estimation of similarity measure for multivariate
+  normal distributions.
+\newblock Environmental and Ecological Statistics \textbf{45}(6), 229--248
+  (1999)
+
+\bibitem{PHD2}
+Sidenbladh, H.: Development of practical {PDA} logic for multitarget tracking
+  by microprocessor.
+\newblock In: Proceedings of the American Control Conference (1986)
+
+\bibitem{SveUlmDan10}
+Svensson, D., Ulmke, M., Danielson, L.: Joint probabilistic data association
+  filter for partially unresolved target groups.
+\newblock In: 13th Conference on Information Fusion (FUSION) (2010)
+
+\bibitem{Bhatt97}
+Thacker, N.A., Aherne, F.J., Rockett, P.I.: The bhattacharyya metric as an
+  absolute similarity measure for frequency coded data.
+\newblock Kybernetika \textbf{34}(4), 363--368 (1997)
+
+\bibitem{Val01}
+Vallado, D.A.: Fundamentals of Astrodynamics and Applications.
+\newblock Microcosm Press and Kluwer Academic Publishers, El Segundo, CA (2001)
+
+\bibitem{VerSauSco04}
+Vergez, P., Sauter, L., Dahlke, S.: An improved kalman filter for satellite
+  orbit predictions.
+\newblock The Journal of the Astronautical Sciences \textbf{52}, 7 (2004)
+
+\bibitem{WeiJinYou05}
+Wei, X., Jing-Wei, Z., You, H.: Multisensor multitarget tracking methods based
+  on particle filter.
+\newblock In: Proceedings of Autonomous Decentralized Systems (2010)
+
+\end{thebibliography}

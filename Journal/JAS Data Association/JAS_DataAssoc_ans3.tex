@@ -1,0 +1,652 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,text={6.5in,8.6in},centering]{geometry}
+\usepackage{amssymb,amsmath,times,url}
+\usepackage{xr,color}
+\usepackage{hyperref}
+\usepackage{amssymb,amsmath,times,subfigure,tabularx,booktabs,colortbl,multirow,threeparttable}
+
+
+
+\externaldocument[]{JAS_OD_EKF_rev1}
+
+\newcommand{\norm}[1]{\ensuremath{\left\| #1 \right\|}}
+\newcommand{\bracket}[1]{\ensuremath{\left[ #1 \right]}}
+\newcommand{\braces}[1]{\ensuremath{\left\{ #1 \right\}}}
+\newcommand{\parenth}[1]{\ensuremath{\left( #1 \right)}}
+\newcommand{\pair}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\met}[1]{\ensuremath{\langle\langle #1 \rangle\rangle}}
+\newcommand{\refeqn}[1]{(\ref{eqn:#1})}
+\newcommand{\reffig}[1]{Fig. \ref{fig:#1}}
+\newcommand{\tr}[1]{\mathrm{tr}\ensuremath{\negthickspace\bracket{#1}}}
+\newcommand{\trs}[1]{\mathrm{tr}\ensuremath{[#1]}}
+\newcommand{\deriv}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+\newcommand{\SO}{\ensuremath{\mathsf{SO(3)}}}
+\newcommand{\T}{\ensuremath{\mathsf{T}}}
+\renewcommand{\L}{\ensuremath{\mathsf{L}}}
+\newcommand{\so}{\ensuremath{\mathfrak{so}(3)}}
+\newcommand{\SE}{\ensuremath{\mathsf{SE(3)}}}
+\newcommand{\se}{\ensuremath{\mathfrak{se}(3)}}
+\renewcommand{\Re}{\ensuremath{\mathbb{R}}}
+\newcommand{\aSE}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&1\end{bmatrix}}}
+\newcommand{\ase}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&0\end{bmatrix}}}
+\newcommand{\D}{\ensuremath{\mathbf{D}}}
+\newcommand{\Sph}{\ensuremath{\mathsf{S}}}
+\renewcommand{\S}{\Sph}
+\newcommand{\J}{\ensuremath{\mathbf{J}}}
+\newcommand{\Ad}{\ensuremath{\mathrm{Ad}}}
+\newcommand{\intp}{\ensuremath{\mathbf{i}}}
+\newcommand{\extd}{\ensuremath{\mathbf{d}}}
+\newcommand{\hor}{\ensuremath{\mathrm{hor}}}
+\newcommand{\ver}{\ensuremath{\mathrm{ver}}}
+\newcommand{\dyn}{\ensuremath{\mathrm{dyn}}}
+\newcommand{\geo}{\ensuremath{\mathrm{geo}}}
+\newcommand{\Q}{\ensuremath{\mathsf{Q}}}
+\newcommand{\G}{\ensuremath{\mathsf{G}}}
+\newcommand{\g}{\ensuremath{\mathfrak{g}}}
+\newcommand{\Hess}{\ensuremath{\mathrm{Hess}}}
+\newcommand{\refprop}[1]{Proposition \ref{prop:#1}}
+
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+\newcommand{\RI}{\text{\RNum{1}}}
+\newcommand{\RII}{\text{\RNum{2}}}
+\newcommand{\RIII}{\text{\RNum{3}}}
+
+\newenvironment{correction}{\begin{list}{}{\setlength{\leftmargin}{1cm}\setlength{\rightmargin}{1cm}}\vspace{\parsep}\item[]``}{''\end{list}}
+
+
+\begin{document}
+
+%\pagestyle{empty}
+
+\section*{Response to the Reviewers' Comments for JASS-D-15-00036}
+
+The authors would like to thank the reviewers for their thoughtful comments, which are aimed toward improving the quality of the paper and the clarity of the results. In accordance with the comments and suggestions, the paper has been revised as follows.
+%Since some numbers of equations, tables, and figures have been changed during revisions, these numbers from reviewer comments and responses are updated to reflect the current numbers in the revised paper.
+
+%The authors would like to thank the Reviewer 4 for the thoughtful comments, which are aimed toward improving the clarity of the proposed data association and filtering. This response aims to answer the questions, and paper is revised to clarify those points.
+
+%In accordance with the comments and suggestions, the paper has been revised as follows.
+%Since some numbers of equations, tables, and figures have been changed during revisions, these numbers from reviewer comments and responses are updated to reflect the current numbers in the revised paper.
+\begin{itemize}
+
+\subsection*{Reviewer 4}
+\item {\itshape This paper presents two novel variants to the classical JPDAF and shows good performances of the algorithms in detailed numerical simulation. It is on this basis that I recommend that the paper be accepted for publication after minor revision.}
+
+The authors appreciate the comments and decision.
+
+\item {\itshape Major Issue:
+A numerical example is attached which shows that the M-JPDAF may yield a larger mean square error than the JPDAF. Unless the authors provide more evidence or analysis, the argument that the M-JPDAF minimizes the posterior mean square error does not hold, in my opinion. I therefore suggest that all such statements be removed.
+
+The choice of Kalman gain has more to do with the PDAF than with the JPDAF, so my comment below will focus on the PDAF aspect of the algorithms.
+
+For an arbitrary Kalman gain, I tend to believe that the corresponding posterior mean square error is NOT given by (13). I think this is the root of the problem.
+
+The posterior mean square error, by definition, depends on the posterior density, but the posterior density is not shown in this paper. The posterior density depends on the posterior mean and covariance and the Kalman gain of the PDAF is the Kalman gain that gives the posterior mean and covariance. See the derivation in Reference [3]. The state estimate of the M-JPDAF is not the posterior mean but is said to minimize the posterior mean square error. This contradicts to the well-known fact that the minimum mean square error estimate is given by the conditional expectation or the posterior mean.}
+
+%The numerical example is correct (except for a minor scaling issue when calculating association probabilities that was easily fixed), and it shows an interesting case. The mean square error should be minimized with the M-JPDAF, and the Monte-Carlo results in the manuscript serve to support that claim, but the code included with the review shows a case where this is not always true.
+%
+%The posterior state covariance matrix is given with (13), which comes directly from [3] and is referenced by numerous publications. The derivation of (13) is based on the law of total expectation, which is assumed correct and beyond the paper scope. Minimizing the trace of the posterior state covariance matrix is equivalent to minimizing the mean-square error. In the Monte-Carlo code provided in the response letter, the posterior state covariance (16) (no trace necessary with a scalar) is smaller for the M-JPDAF than for the JPDAF for \emph{all} $1\times10^6$ cases. Since there might be an issue with (13) for the PDAF case provided in the review, the statement regarding the minimum mean square error in reference to the M-JPDAF has been edited as follows.
+
+According to the reviewer's comments, the statement claiming minimization of the posterior mean square error has been revised as follows.
+
+\begin{correction}
+In short, the main contributions of this paper are (i) deriving the optimal JPDAF that minimizes the trace of the posterior state covariance matrix give in the literature, ...
+\end{correction}
+
+
+
+\item {\itshape Minor Issue:
+On page 9, 12, and 13, some vectors and matrices as well as a scalar index are in boldface, but vectors and matrices are not in boldface elsewhere.}
+
+The boldface was removed from the cost function and RMS errors, but the distance vectors remain in boldface to distinguish their meaning from a scalar distance or full state.
+%The boldface was chosen to distinguish these variables from others that were previously used during the paper to avoid confusion.
+
+\end{itemize}
+%
+%\setlength{\leftmargini}{0pt}
+%\begin{itemize}\setlength{\itemsep}{2\parsep}
+%
+%\subsection*{Associate Editor Comments for the Author}
+%
+%
+%\item {\itshape Please provide sufficient detail of the version of the JPDAF considered in this paper, list the assumptions about the detection probability, false measurements, measurement resolution (i.e., can one measurement originate from two objects?), and object size (i.e., can two or more measurements originate from one object?) under which that the M-JPDAF and C-JPDAF are derived, and explain why neither a missed detection model nor a false measurement model is needed for determining the association probability in equation (11).}
+%
+%Several changes are made to address these issues. The last paragraph of Section 2 is updated as follows:
+%\begin{correction}
+%We consider the problem of estimating object states, when the number of objects for tracking is assumed known, but the measurement origins are unknown. More explicitly, a measurement may be originated from a single object or it corresponds to spurious readings from clutter. Therefore, multiple measurements may originate from a single object, or an object may be missed entirely.
+%However, we assume that a single measurement does not originate from more than one object.
+%%We assume accurate measurement resolution, such that at maximum one measurement may originate from a single object, where this measurement is independent of other objects detected by the same sensor.
+%%Suppose that these measurements are not associated with a specific object, and they possibly include spurious measurements or missed detections, where the probability of detecting objects is assumed known. 
+%Data association and filtering serves to estimate the state of the systems when there exist uncertainties in the system processes, measurements, and measurement origins. In this paper, the popular joint probabilistic data association filtering is improved in two distinct ways in the subsequent sections.
+%\end{correction}
+%The version of the JDPAF is specified at the beginning of Section 3:
+%\begin{correction}
+%In this section, we derive the M-JPDAF with a similar framework to that of the JPDAF, based off of the version from [3], [2] for the update structure, and the association probabilities from [1].
+%\end{correction}
+%The missed detection and false measurement models are accounted for with variable $B$, where determining its value is beyond the scope of this paper, so the reader is referred to [1]. This part is revised as follows in Section 3.2:
+%\begin{correction}
+%...where $B=0$ corresponds to rare extraneous measurements and missed detections. When these are prevalent, a fixed value of $B$ in (11) was found from simulations to provide a close approximation of $\beta_{ij}$ in various applications [1].
+%\end{correction}
+%A value of $B=0$ is chosen in the numerical simulations due to the low probabilities of missed detections and false measurements, specified in Section 5.
+%
+%\item {\itshape The statement that the JPDAF is interior to the M-JPDAF needs further analysis. Equation (13) should be re-derived. When $K_i$ is not the optimal gain from the Kalman filter, the covariance or mean square matrix of the estimate given by equation (12) may take a different form than equation (13). For targets described by linear Gaussian systems, if the prior pdf of the state of target $i$ is Gaussian, the posterior pdf of the state of target $i$ is a Gaussian mixture. In the JPDAF, the Gaussian mixture is approximated by a Gaussian pdf, but the two pdfs have the same mean and covariance. Thus, the JPDAF estimate given by equation (12), with $K_i$ the optimal gain from the Kalman filter, is the posterior mean and therefore also the minimum mean square error estimator. Why the posterior mean is worse than the C-JPDAF estimate should be explained.}
+%
+%
+%The derivation of the entire expression of (13) would take a lot of spaces, and several derivations would be just repetitive. So, instead of re-deriving the entire expression from scratch, the part of the expressions that are independent of the Kalman gain is referred to a reference, namely [3, Eq. D-32 and D-33], and it is briefly discussed how they are derived in ths manuscript. And, the term $P^c_i$ depending on the Kalman gain is explicilty re-derived at (15), which corresponds to one of the contributions of this paper. The authors believe that any reader who is interested in redeveloping the presented results is able to do so with the revised manuscript. 
+%
+%%
+%%
+%%
+%%
+%%First, (13) is better cited, with a short summary of how the term is derived (re-deriving this term would take large amounts of space and would not be original). The only place in the derivation of (13) enforcing that the gain be Kalman is with the $P^c_i$ term. This explanation is now added shortly before equation (15), including what (15) would be if the gain were the Kalman gain.
+%
+%%Second, the JPDAF employs the Kalman gain, which is optimal for single-target tracking, or multi-target tracking with hard decisions. This corresponds to measurements being associated with objects, assuming this association is correct. However, the soft decisions employed by the JPDAF yield a different covariance matrix, so minimizing the mean square error requires a different gain, derived in Section 3. We made several revisions to Section 3 based on earlier comments, so this point should be more clear.
+%
+%Second, in a single-target tracking scenario, the Kalman gain is optimal in the sense that it minimizes the trace of the posterior covariance matrix $P^+_i$, which is equivalent to minimizing the mean square error of the target estimate. However, this paper shows that the Kalman gain is NOT optimal when there are uncertainties in the measurement origins. More explicitly, the Kalman gain does not minimize the posterior covariance $P^+_i$ that incorporates association uncertainties, given in (16). The proposed gain (20) is obtained by the optimality condition (19) to minimize the posterior covariance with association uncertainties,  and it is distinct from the Kalman gain. Therefore, the proposed M-JPDAF, based off the proposed gain, yields a smaller mean square error, compared with the conventional JPDAF. This is also verified by several numerical examples in Section 5.
+%
+%Third, the C-JPDAF improves the mean estimate in many cases because the coalescence-avoiding portion prevents track swapping or cross tagging in many cases. The JPDAF and M-JPDAF may coalesce estimates to be unidentifiable, such that when the objects split, the associations might be consistently incorrect, causing large RMS errors. Simulations (including new Monte Carlo results) demonstrate the large estimation errors caused by track swapping for JPDAF and M-JPDAF, and how it is prevented for C-JPDAF.
+%
+%
+%
+%%%%%%%%%%%%%%%%
+%
+%
+%\subsection*{Reviewer 1}
+%
+%\item {\itshape Reviewer \#1: This is an excellently written paper. The literature review seems to be complete and the mathematical derivation correct. Results of the paper are backed by numerical examples demonstrating the viability of the solution.}\\
+%
+%The authors appreciate the comments.
+%
+%\end{itemize}
+%
+%\subsection*{Reviewer 2}
+%
+%\setlength{\leftmargini}{0pt}
+%\begin{itemize}\setlength{\itemsep}{2\parsep}
+%
+%\item {\itshape Reviewer \#2: As a minor editorial comment, avoid the use of ``extensively`` in the abstract and when referring to the simulations.  A handful of simulations cannot really be considered extensive in the context of space object tracking.}
+%
+%The word ``extensively'' is replaced with ``in various cases''.
+%
+%
+%\item {\itshape Introduction, Second Paragraph:
+%Regarding the sentence ``A hard decision is when estimates are fully associated with measurements according to some metric between the estimates and the measurements.''  Unless all cases truly involve the use of a metric and all of the properties of a metric are satisfied, this sentence needs to be revised.  Additionally, the use of ``estimates'' is somewhat confusing here.  It is not clear if this refers to estimated states or estimated measurements.  While the latter may be obviously true to a knowledgeable reader, it should still be made more clear.}
+%
+%The sentence has been updated as follows:
+%\begin{correction}
+%When the association between an object of interest and a measurement is assumed correct and certain, this is referred to as a hard decision.
+%\end{correction}
+%
+%%\begin{correction}
+%%
+%%\end{correction}
+%
+%\item {\itshape Introduction, Second Paragraph:
+%The nearest neighbor filter does not necessarily use the Mahalanobis distance.  It could easily use a Euclidean distance.  However, as the sentence ``For example, a common...`` reads, the NNF requires the use of the Mahalanobis distance.}
+%
+%
+%It now reads:
+%\begin{correction}
+%For example, a common heuristic approach is known as the nearest neighbor filter (NNF), which uses a distance (e.g. Euclidean, Mahalanobis) between each measurement and the predicted measurements of each potential object to determine likely associations.
+%\end{correction}
+%
+%%% UNC COMMENT %%
+%
+%\item {\itshape Introduction, Fourth Paragraph:
+%It is stated that ``Kalman filters are considered optimal in the sense that the estimator gain is selected to minimize the posterior uncertainties." This is misleading. The Kalman gain is selected so as to minimize the posterior mean square error.  This is then related to the trace of the posterior covariance matrix.
+%\\
+%Section 3:
+%In the introductory paragraph, it is stated that ``uncertainties are minimized" and ``JPDAF fails to minimize these uncertainties".  The uncertainties are not minimized.  The posterior mean square error is minimized.  All instances of this throughout the paper must be fixed.
+%\\
+%Section 3.2:
+%Prior to Eq. (9) it is stated that the $i$-th covariance matrix represents the uncertainty.  No, it represents the covariance, not the uncertainty.  Also, given the appearance of $z_j$ in Eq. (8), it may help to be even more explicit that Eq. (9) is effectively taking $\text{E}[e_{ij}e_{ij}]^{T}$.
+%\\
+%Section 3.2:
+%Preceding Eq. (18), it is stated that the cost function is chosen to be an ``uncertainty cost function" ``as with the Kalman filter".  This is incorrect.  The Kalman filter cost function is a mean square error cost function.
+%\\
+%Section 3.2, Second to Last Paragraph:
+%Once more, the cost function is a mean square error cost function.  An ``uncertainty" cost function is not an adequate description in this case, nor is it really appropriate.
+%\\
+%Also following Eq. (12), there is another case of referring to minimization of the ``posterior uncertainty".  Once again, this is not an accurate statement.
+%}
+%
+%While it is correct that Kalman filters minimize the posterior mean square error (minimizing the length of the estimation error vector), the trace of the posterior covariance matrix is widely accepted as a measure of estimate uncertainty. This is because the trace of a covariance matrix represents a measure of the volume of the corresponding Gaussian ellipsoid. In this sense, an uncertainty measure is minimized, and therefore, they are equivalent statements. To clarify these, two excerpts referenced in the comments are revised as follows:
+%
+%
+%%the diagonal elements of the covariance matrix are composed of state vector variances, so their summation is a measure of state vector uncertainty. I
+%\begin{correction}
+%More explicitly, Kalman filters are considered optimal in the sense that the estimator gain is selected to minimize the mean square error of the estimated state, or equivalently a measure of posterior uncertainty represented by the trace of the covariance.
+%\end{correction}
+%
+%\begin{correction}
+%In this section, we derive the M-JPDAF with a similar framework to that of the JPDAF, based off of the version from [3], [2] for the update structure, and the association probabilities from [1].
+%Differences between the JPDAF and M-JPDAF occur in the measurement update where the gain is derived, which changes the posterior covariance equation.
+%As a result of the changes described in this section, the M-JPDAF serves to update state estimates from measurements in a soft decision approach that minimizes the sum of the posterior state vector variances. This a measure of state uncertainty and minimizing this measure is equivalent to minimizing the length of the estimation error vector; the conventional JPDAF fails to minimize this measure.
+%\end{correction}
+%
+%To the other point, we included $\text{E}[e_{ij}e_{ij}]^{T}$ as an intermediate step inside Eq. (9).
+%
+%
+%\item {\itshape Introduction, Sixth Paragraph:
+%What is meant in the first sentence when it is stated that ``objects are in close-proximity such that neighboring objects share measurements"?  This sentence needs to be reworded.  If a graphic would aid in explaining this, please develop and use one.  Alternatively, it should be restated to read as something along the lines of multiple objects state estimates are consistent with one measurement.  In any event, this statement is unclear.}
+%
+%This sentence is clarified as follows:
+%
+%\begin{correction}
+%The second part of this paper deals with a common pitfall of soft decision data association techniques, known as coalescence. When objects are in close-proximity, a single measurement may be consistent with more than one object, forcing a soft decision. When these objects are estimated by the same measurements, their updated states tend to converge toward each other.\end{correction}
+%
+%\item {\itshape Introduction, Seventh Paragraph:
+%What is meant by ``measurements with a much different interpretation than just the object states"?  The entire last part of this paragraph is much too overstated, but this part absolutely makes no sense.  Unless it is justified what this means, remove it.}
+%
+%
+%The purpose of this paragraph is to introduce the second contribution of this paper (the C-JPDAF), and differentiate the contributions of this paper from prior work. The last sentence is simplified as follows:
+%
+%\begin{correction}
+%Therefore, we generalize the C-JPDAF algorithm in this paper to handle any number of objects and measurements, missed detections, and measurements originating from extraneous clutter.\end{correction}
+%
+%\item {\itshape Section 2:
+%After Eq. (3), $\mathcal N[\mu,P]$ should really have $\sigma$ as a covariance matrix since that is what appears in Eq. (3) and Eq. (4).}
+%
+%This is correct. The sentence is updated as follows:
+%
+%\begin{correction}
+%...where $\mathcal N[\mu,P]$ denotes the Gaussian distribution with mean $\mu$ and covariance matrix $P$.
+%\end{correction}
+%
+%\item {\itshape Section 2:
+%The paragraph following Eq. (4) seems to be tied to nothing.  Revise to include more information, to have it be more thoroughly developed, or move it to a place where it belongs better.}
+%
+%The paragraph is rewritten to flow better with prior paragraphs and prepare for later sections as follows:
+%
+%\begin{correction}
+%We consider the problem of estimating object states, when the number of objects for tracking is assumed known, but the measurement origins are unknown.
+%We assume accurate measurement resolution, such that at maximum one measurement may originate from a single object, where this measurement is independent of other objects detected by the same sensor.
+%Suppose that these measurements are not associated with a specific object, and they possibly include spurious measurements or missed detections, where the probability of detecting objects is assumed known. Data association and filtering serves to estimate the state of the systems when there exist uncertainties in the system processes, the measurements, and the measurement origins. In this paper, the popular joint probabilistic data association filtering is improved in two distinct ways in the subsequent sections.
+%\end{correction}
+%
+%%\item {\itshape Section 3:
+%%In the introductory paragraph, it is stated that ``uncertainties are minimized" and ``JPDAF fails to minimize these uncertainties".  The uncertainties are not minimized.  The posterior mean square error is minimized.  All instances of this throughout the paper must be fixed.}
+%%
+%%See the comment about this issue above. The last sentence of this paragraph is rewritten as two sentences:
+%
+%%\begin{correction}
+%%As a result of the changes described in this section, the M-JPDAF serves to update state estimates from measurements in a soft decision approach that minimizes the sum of the posterior state vector variances. This a measure of state uncertainty and minimizing this measure is equivalent to minimizing the length of the estimation error vector; the conventional JPDAF fails to minimize this measure.
+%%\end{correction}
+%
+%\item {\itshape Section 3.1:
+%Please revise the first sentence that reads ``During the flow update...". The a priori estimated state is not found with Eq. (1).  It is found through the expected value of Eq. (1).  This is a very important distinction that needs to be made, and it is not clear at all why the governing equation for the estimated state has been omitted from the paper.}
+%
+%This part is updated as follows:
+%\begin{correction}
+%The flow update serves to predict the how a system evolves between measurements. The system state obtains its $k$-th a priori state estimate $\hat x_{i_k}^-\in\Re^n$ from the posterior $(k-1)$-th state estimate $\hat x_{i_{k-1}}^+\in\Re^n$ with the expected value of (1),
+%\begin{align*}
+%\label{eqn:xestapriori}
+%\hat x_{i_{k}}^- & = F_{i_{k-1}} \hat x_{i_{k-1}}^+,
+%\end{align*}
+%where $\mathrm{E}[w_{i_{k}}]=0$.
+%\end{correction}
+%
+%%\item {\itshape Section 3.2:
+%%Prior to Eq. (9) is is stated that the $i$-th covariance matrix represents the uncertainty.  No, it represents the covariance, not the uncertainty.  Also, given the appearance of $z_j$ in Eq. (8), it may help to be even more explicit that Eq. (9) is effectively taking $\text{E}[e_{ij}e_{ij}]^{T}$.}
+%%
+%%The covariance matrix is how we represent uncertainty of a multidimensional variable, much like a variance represents the uncertainty of a scalar. The authors agree on this point.
+%
+%\item {\itshape Section 3.2:
+%Prior to Eq. (10), it is stated that $G_{ij}$ is a simplified scaled Mahalanobis distance.  What makes it simplified?  It is also more than just scaled, as well.  It is scaled, transformed, then scaled again.  After Eq. (10), it is stated that ``a close approximation of the probability".  Explain the restrictions under which is a close approximation.  This should be an easy explanation.
+%}
+%
+%The authors made an error here: it is a scaled density function, not a Mahalanobis distance, and the error is fixed:
+%
+%\begin{correction}
+%Let $G_{ij}\in\Re$ be a scaled density function used repeatedly between the $i$-th measurement estimate and the $j$-th measurement, defined as...
+%\end{correction}
+%
+%To the second point, the following is included immediately after Eq. (10):
+%
+%\begin{correction}
+%...where $B=0$ corresponds to rare extraneous measurements and missed detections. When these are prevalent, a fixed value of $B$ in (11) was found from simulations to provide a close approximation of $\beta_{ij}$ in various applications [1].
+%\end{correction}
+%
+%\item {\itshape Section 3.2:
+%Following Eq. (12), it is stated that JPDAF choses $K_i$ as the traditional Kalman gain, ``based on an incorrect assumption that the Kalman gain yields an optimal estimator for the JPDAF".  Cite the sources where it is explicitly selected for this reason, or do not state that it is chosen based on the preceding assumption.}
+%
+%Numerous sources apply the JPDAF without considering its optimality, though these sources do not explicitly state this sub-optimality. The sentences are revised as follows:
+%
+%\begin{correction}
+%The conventional JPDAF chooses $K_i=P^-_iH_i^TS_i^{-1}$ as the gain from the Kalman filter [3].
+%In this paper, we show that the Kalman gain does not actually minimize the posterior uncertainty in probabilistic data association filtering, and we derive the new \textit{optimal} gain $K_i$.
+%\end{correction}
+%
+%%We removed this. However, no source would explicitly state that they choose a sub-optimal gain matrix, but those sources apply their version of soft decision data association with Kalman filters or extended Kalman filters without considering how the data association and filtering affect each other.
+%
+%\item {\itshape Section 3.2:
+%How is Eq. (3.2) found?  Please provide details.  Traditionally, the covariance should following from analysis of the posterior error.  Under what conditions does Eq. (12) hold?  What are the uncorrelated assumptions going into this equation?}
+%
+%There is no Eq. (3.2). If you are referring to Eq. (12)-(15), these come from [3], where Eq. (15) is written generally (for any $K_i$, not just the Kalman gain) according to the form found in [11] as it is referenced. The only conditions when Eq. (13) holds is when at least one measurement may detect the $i$-th estimate, as well as assumptions stated earlier in the paper. We are confused by the ``uncorrelated assumptions'' part of this comment. Several comments are added throughout Eq. (12)-(15) with regard to the derivation of posterior covariance and sub-optimality of the Kalman gain in general.
+%
+%%\item {\itshape Section 3.2:
+%%Also following Eq. (12), there is another case of referring to minimization of the ``posterior uncertainty".  Once again, this is not an accurate statement.}
+%%
+%%Please see the above responses to your comments and earlier revisions.
+%
+%\item {\itshape Section 3.2:
+%Why, after Eq. (15) is the Joseph form referred to?  This comes out of nowhere and does not make any connection to any of the work.  Please revise to make this more clear.
+%\\
+%Section 3.2:
+%After the proof of Proposition 1, it would be beneficial to discuss any other comparisons to the usual Kalman filter; in particular, does Eq. (16) hold for any linear gain?  This would be the analog to the Joseph form of the covariance update, but it would advantageous to give more details for the interested reader.
+%}
+%
+%The expression following Eq. (15) is commonly referred to as the \textit{Joseph form} and it is valid for any value of $K_i$ that is not necessarily the Kalman gain. This part is revised as:
+%%The term ``Joseph Form'' is commonly used for this general form. More on this structure can be found in the [11] provided there, and instead of the statement in parenthesis, we have:
+%
+%\begin{correction}
+%...which is commonly referred to as the Joseph form, valid for any gain matrix $K_i$ [11].
+%\end{correction}
+%
+%%\item {\itshape Section 3.2:
+%%Preceding Eq. (18), it is stated that the cost function is chosen to be an ``uncertainty cost function" ``as with the Kalman filter".  This is incorrect.  The Kalman filter cost function is a mean square error cost function.}
+%%
+%%Once again, please see the above responses.
+%
+%Additionally, the following sentence is added after Eq. (17):
+%
+%\begin{correction}
+%Because (16) is based on the Joseph form, this equation yields $P^+_i$ for arbitrary gain $K_i$.
+%\end{correction}
+%
+%%\item {\itshape Section 3.2, Second to Last Paragraph:
+%%Once more, the cost function is a mean square error cost function.  An ``uncertainty" cost function is not an adequate description in this case, nor is it really appropriate.}
+%%
+%%Once again, please see the above responses.
+%
+%\item {\itshape Section 4.1, First Paragraph:
+%Matusita's measure is introduced, and reference is given to the fact that it is computed for Gaussian distributions, but the introduction here reads a bit weakly.  It would be better if a few more details regarding Matusita's measure were presented so that the reader has a firm understanding.  Additionally, why is this measure selected?  Is it possible to consider other measures?  What are the ramifications of one measure over another?}
+%
+%The beginning of the paragraph is revised as follows to reflect the comments:
+%
+%\begin{correction}
+%We choose Matusita's measure because it provides a degree of similarity among multivariate Gaussian distributions [18], [19]. 
+%This measure is advantageous because of its straightforward computation and differentiable structure unlike the Bhattacharyya measure [22].
+%%The similarity between multiple multivariate Gaussian distributions can be represented by the overlapping regions of their probability density functions. Since there exists no analytic solution for this overlap, we choose Matusita's measure because it provides a scalar approximation of the overlap of multivariate Gaussian distributions [18], [19]. Furthermore, this measure is easy to compute and is easily differentiable unlike the Bhattacharyya measure [22]. More explicitly...
+%\end{correction}
+%
+%\item {\itshape Section 4.1, Prior to Eq. (24):
+%It is stated that $a > 0 \in \Re$, but this could be more simply stated as $a \in \Re^{+}$.}
+%
+%This detail is updated accordingly.
+%
+%\item {\itshape Section 4.2, After Eq. (24):
+%It should be stated that all unique pairs are considered instead of all possible pairs since Eq. (23) explicitly excludes all of the pairings where both inputs are the same.}
+%
+%The paper is updated with ``unique'' pairs.
+%
+%\item {\itshape Section 4.2:
+%If the paper is to be published in color, the captions to Figs. 1 and 2 are acceptable; however, it would be easy enough not to publish in color.  In this case, the captions to the aforementioned figures should be updated to avoid the use of descriptions based on color.}
+%
+%Since the concept of a similarity measure among mutivariate Gaussians is explained further (see above response), Fig. 1 is removed. The other figure is edited for publishing without color.
+%
+%\item {\itshape Section 5:
+%Please review the first paragraph.  There are several poorly worded phrases here that should be revised, e.g. ``We consider satellite the low earth orbit".
+%\\
+%ALL of the theoretical development considered linear systems, but the application is to nonlinear systems.  This is a completely illogical disconnect.  At least some mention of the fact that the linear theory is being applied to a nonlinear system, as well as a discussion regarding the possible detrimental outcomes, should be given.  This is a rather major issue that must be corrected.  There is certainly nothing inconsistent here, when one considers the application of the EKF; however, the EKF is still developed using first-order expansions, whereas no such expansions are considered in the body of this work.}
+%
+%Both of the above comments are addressed with major changes to the first paragraph of Section 5:
+%
+%\begin{correction}
+%We consider satellites in the low earth orbit (LEO) and in the geosynchronous orbit (GEO) to compare the performances of the conventional JPDAF, the M-JPDAF, and the C-JPDAF.
+%Although the theoretical contributions are developed for linear systems, the satellites are subject to the nonlinear dynamics of the two-body problem. This motivates that the data association and tracking algorithms be extended to nonlinear systems in the same manner that the extended Kalman filter generalizes the Kalman filter for nonlinear systems. Using first-order expansions, linear theory of data association and filtering is applied to nonlinear systems.
+%\end{correction}
+%
+%\item {\itshape Section 5:
+%Table 1 and all of the subsequent references to the parameters in Table 1 are very hard to follow from the reader's perspective.  This makes it hard to understand exactly the configuration of each of the subsequent simulations without constantly referring back to the table.  Even then, it is not very clear.  Please revise this so that a reader may more logically follow the setup.}
+%
+%This table has been removed, and a small table is added for each scenario. These tables cover which parameters are perturbed and the magnitude of the perturbation, and the tables are located at the scenario description.
+%
+%\item {\itshape Section 5, Preceding Eq. (38):
+%It is stated that $z_j \in \Re^4$, but it is clearly not always the case.  This needs to be revised.}
+%
+%The introduction of $z_j$ is revised with ``$z_j\in\Re^4$ in LEO and $z_j\in\Re^2$ in GEO''.
+%
+%\item {\itshape Section 5, Paragraph Preceding Table 2:
+%The discussion about coalescence that is given in this paragraph only serves to confuse the reader.  It would be advisable to push off all of this discussion to the later sections where coalescence is actually dealt with.  As it is currently, the insights that are to be gained from the simulation results are somewhat lost.  The same goes for the caption of Fig. 2.}
+%
+%That clause on coalescence is removed and only, ``In some cases, the JPDAF suffers from track swapping, which is when measurements are consistently associated incorrectly'' is added, where a new subsection with Monte Carlo results covers this in further detail. The Figure 2 title is revised slightly as well to avoid coalescence discussion until later.
+%
+%\item {\itshape Section 5.2, Scenario A.2:
+%In the first paragraph of this discussion, reference is given to ``The second set of cases".  This is confusing since this is the third set of cases.  Please revise. It is stated that ``Unlike the last cases, the III cases consider small initial covariance matrices".  However, case II considered the exact same initial covariance matrix.  Is the initial covariance on Case II incorrect?  If not, this needs to be revised to reflect the actual differences between II and III.}
+%
+%These errors were a result of reordering the results section, such that now the LEO cases are first and the GEO cases are second. Further detail on initial covariances are included for clarification.
+%
+%\item {\itshape Section 5.2, Scenario A.2:
+%What are the units of rad given in Table 6?  It appears that they may be Earth radii, but it is very unclear.}
+%
+%The units are radians. We changed the metric from ``RMS Radial Err.'' to ``RMS Ang. Err.'' in Tables 6 and 8, where RMS errors are defined in Eq. (39) along with units.
+%
+%\item {\itshape Section 5.2, Scenario B.2:
+%In the paragraph preceding Table 8, it is stated that the ``computation cost of the C-JPDAF is roughly 30 times that of either other algorithm".  What are the implications for tracking the catalog of 20,000+ objects?  It seems that the cost may become overwhelming; however, if one takes into account the fact that coalescing objects are perhaps rare, the increase in computational complexity may be somewhat mitigated.  As it stands, the reader has the inclination to believe that the C-JPDAF algorithm will not be applicable to the full space object tracking problem, but this should be clarified in some way so that the method is not immediately ruled out.}
+%
+%This point is clarified at the end of the paragraph:
+%
+%\begin{correction}
+%In applications with a large number of objects to track, the C-JPDAF need not be applied on most objects; only those close neighbors where the similarity among the estimates yield coalescence with the JPDAF or the M-JPDAF. This way, a data association scheme with an analytic solution, such as the JPDAF or the M-JPDAF, could be applied to the remaining estimates to mitigate the large computational requirements of the C-JPDAF.
+%\end{correction}
+%
+%\item {\itshape Appendix A and B:
+%Some notational liberties are taken here.  A careful explanation of these should be made so that the reader can thoroughly follow the developments that are presented.  As it is now, it is bit harder to follow than is necessary.}
+%
+%%A little information on the indexing of variables is included. 
+%Additional information on the indexing of variables has been added to Appendix A.
+%Otherwise, the notation is consistent with the paper.
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+%\subsection*{Reviewer 3}
+%
+%\subsubsection*{High Level Comments}
+%
+%\item {\itshape Reviewer \#3: The first derivation on M-JPDAF looks good except for eqn (13).  I do not see where this equation comes from.  I am not convinced it is wrong, but this must be better developed or better cited.}
+%
+%This comes from [3], which is better cited now with a short summary of how the equation is derived:
+%
+%\begin{correction}
+%Next we consider when $\beta_{0,i}\neq1$, i.e., $0\leq\beta_{0,i}<1$. The resulting posterior state covariance $P^+_{i}\in\Re^{n\times n}$ is derived in [3, Eq. D-32 and D-33], where this term is defined as $\text{E}[(x_i-\hat x_i^+)(x_i-\hat x_i^+)^T]$ and the resulting solution is derived from the law of total expectation considering each innovation individually. Then, $P^+_{i}$ is simplified to...
+%\end{correction}
+%
+%\item {\itshape Eqn (23) is very close to the actual probability that two PDFs represent the same object.  This paper would be much stronger if the cost function in eqn (31-33) was tied in actual concrete probabilities rather than a heuristic.}
+%
+%This measure also takes into account different covariance matrices among those Gaussian distributions. The measure is designed to compute similarity in a way that is easily differentiable. This measure satisfies these goals better than other measures, and there no known analytic solution for the similarity between many multivariate Gaussians. Revised descriptions on why this measure is chosen can be found in the revised description before (23) and (24).
+%
+%\item {\itshape More in depth discussion of the weighting factor $c$ should be included.  Maybe a quick derivation of what it should be, based on a particular example?
+%\\
+%More fundamentally, this problem is a multi-objective optimization which means there exists a Pareto frontier, which should be explored.  By choosing a specific $c$, you are making an assumption of a particular design.  This is not necessarily wrong, but definitely warrants further discussion, from a multi-objective optimization standpoint.}
+%
+%The actual calculation of an optimal $c$ or $a$ (in the similarity measure) are beyond the scope of this paper. To compute these parameters, it is correct that there exists a Pareto frontier; the choice of $c$ depends on the type of scenario (for example, the II and IV results have different cost function parameters). A little more explanation on this is included after (25):
+%
+%\begin{correction}
+%The estimator gain $K_i$ is selected to minimize the above cost $\mathbf{J}$. By considering similarity to obtain the estimator gain, we mitigate some coalescence at the expense of increasing estimate uncertainty according to the magnitude of $c$. The choice of $c$ depends on the type of scenario and the parameter $a$ composing the similarity cost $J_S$.
+%\end{correction}
+%
+%\item {\itshape The C-JPDAF is referred to as a ``coalescence-avoiding optimal JPDAF".   While I don't disagree that you defined a cost function and optimized it, there is no proof that this correlates to a good filter.  The cost function $J_S$ seems to be completely heuristic.  By simply combing two cost function with a weight parameter, the new cost function in eqn (24) is generally not optimal with respect to either $J_P$ or $J_S$, so calling it ``optimal coalescence avoiding" is not true.
+%\\
+%The C-JPDAF, by virtue of the cost function in eqn (25), seems to define an inherently biased estimator.  The $J_S$ term introduces a bias.  Biases are a very bad property for an estimator.  This bias may also cause the filter to fail completely, and no discussion on how to avoid this is included. The C-JPDAF as derived appears to have major flaws involved in cross tagging (aka track swapping).  Cross tagging happens when two objects become identical in the measurement space, implying inherent unobservablity.  This implies that during the unobservability, you cannot distinguish the tracks. The C-JPDAF attempts to solve this problem by adding a repulsive term to the cost function.  It seems to me that if two objects cross over each other similar to Fig (2), this repulsive term may serve to encourage cross tagging.  In general, there may be many unintended consequences of this filter, which is dangerous.}
+%
+%The C-JPDAF is only optimal with respect to the combined cost, where the $J_S$ component is based on multivariate Gaussian similarity. Similarity in the context of the JPDAF leads to sharing of measurements, ultimately causing coalescence.
+%Optimizing the cost function of the C-JPDAF is based on a compromise between uncertainty or mean square error of each estimate and similarity between the nearby estimates. In many cases, the C-JPDAF avoids cross tagging of the JPDAF or M-JPDAF, which cause large errors. Crossing scenarios may be improved as well (see the numerical simulation of [13]) as the coalescence-avoiding benefit of the C-JPDAF is only effective when objects are in close-proximity such that estimates may cross without becoming ambiguous. In all other situations, the C-JPDAF produces estimates with negligible difference to the M-JPDAF. The weighted cost function of the C-JPDAF is fairly common in literature (e.g. LQR optimal controller).
+%The terms ``coalescence-avoiding optimal'' might convey to some readers that the optimized parameter is coalescence only, so the name has been changed to ``coalescence-avoiding JPDAF'', so ``C-JPDAF'' is still used as its shorthand name.
+%Also correctly noted, there is no analytic proof that the filter is ``good'', so the following is added at the last paragraph of Section 4:
+%
+%\begin{correction}
+%Filter performance is largely governed by tuning the weighted costs, and several numerical scenarios demonstrate the coalescence-avoiding benefits of the C-JPDAF in the subsequent section.
+%\end{correction}
+%
+%The coalescence itself causes the JPDAF and M-JPDAF to be biased estimators, and there is no guarantee that cross tagging will be avoided. 
+%The following is added as the second-to-last paragraph of Section 5 to address this issues:
+%
+%\begin{correction}
+%Furthermore, coalescence serves as a bias to the soft decision data association algorithms, where the bias is toward nearby tracks. The C-JPDAF also has an inherent bias by including $J_S$ from (32), except this bias tends to repel neighboring tracks. While there is no guarantee that these biases cancel, their opposite effects can reduce estimation error and track swapping. If (26) is poorly tuned such that $J_S$ is too strong, its repulsive nature may yield increased estimation error and track swapping.
+%Furthermore, when estimates are not close, the additional term $J_S$ has minimal effect as it becomes small.
+%In short, $J_S$ is active mostly in the vicinity of coalescence to avoid it, and the C-JPDAF performs better than the JPDAF or M-JPDAF as detrimental track swapping is less likely.
+%\end{correction}
+%
+%\item {\itshape There is no proof that the C-JPDAF solves the coalescence problem.  A heuristic cost function and 6 simulated test cases are not enough proof.
+%\\
+%Everything that is claimed as a contribution in this paper is mathematically correct (e.g. a cost function is correctly defined and optimized over). This filter is optimal with respect to a cost function and may avoid coalescence in certain test cases.  However, this filter may also fail in certain test cases, cause problems with cross tagging, and not actually solve coalescence.  If you are convinced my assessment is incorrect, then you must prove these properties mathematically.}
+%
+%The assessments are correct. The C-JPDAF provides a method to mitigate some coalescence, though it does not prove that the problem is solved completely. The following is added at the end of the last paragraph of Section 3 to clarify these points:
+%
+%\begin{correction}
+%When $c>0$, the gains of the C-JPDAF serve to mitigate some coalescence from data association and filtering. In some cases, the C-JPDAF prevents cross tagging, when ambiguous estimates yield consistent incorrect associations. However, the C-JPDAF is not proven to solve the problem of coalescence completely, so it is possible that the C-JPDAF may cause cross tagging.
+%\end{correction}
+%
+%
+%\item {\itshape Results section shows a few test cases and claims them as representative.  Given that the C-JPDAF is completely heuristic, simulation results should be comprehensive, to at least back up numerically that claimed properties of the filter. The work is in filtering which is fundamentally stochastic.  The results need to be run over many different test cases.  Some measure of success, most likely in terms of percent success should be shown.  When does this method break down and how does it fail? If this is to be accepted, Monte Carlo level results are needed to give evidence in support of claims.}
+%
+%The C-JPDAF is not completely heuristic; it solves an optimization problem, where the cost function itself can be considered heuristic, as many cost functions are. This is contrary to other coalescence-avoiding techniques that simply remove possible associations or artificially change estimation parameters known to cause coalescence.
+%
+%Regarding the Monte Carlo results, running 100 trials of Cases I--IV with different noise (same noise levels) highlighted some important points. These are included under the paragraph ``Monte Carlo Results of All Scenarios'' at the end of the results section, copied below.
+%
+%\begin{correction}
+%Since data association and filtering are fundamentally stochastic, Cases I--IV are repeated $100$ times with different noise to obtain mean metrics and number of failures.
+%For these cases, a failure is defined as at least one of the following: (i) track swapping (when estimates are consistently incorrectly associated with measurements from other estimates), (ii) when the estimates become ambiguous with respect to each other (their position relative to each other is consistently closer than half of the true estimate separation), or (iii) a numerical optimization does not converge (C-JPDAF only).
+%The following Monte Carlo results are tabulated in Table \ref{tab:MonteCarlo}.
+%
+%In Case I, neither the JPDAF nor the M-JPDAF experience failures.
+%However, these data support that the error and uncertainty cost are reduced on average, without an increase in computation time.
+%The simulated results of Case III also serves to compare these two algorithms, where both are subject to failures.
+%The computation time and uncertainty cost follow the same trends as Case I.
+%However, both algorithms suffer from track swapping, but this happens roughly twice as often with the JPDAF than it does with the M-JPDAF. As a result, the RMS error of the JPDAF is almost twice that of the M-JPDAF.
+%
+%All three algorithms are compared with Cases II and IV. Case II is designed as a scenario where both the JPDAF and M-JPDAF yield object estimates with ambiguous estimates, which is considered a failure all $100$ times.
+%However, when the C-JPDAF converges properly, this failure is mitigated and the RMS error is reduced.
+%Since the C-JPDAF is solved numerically rather than analytically, a global minimum is not always obtained in four-dimensional measurement space.
+%Conversely, the C-JPDAF algorithm converges well every time with Case IV. The C-JPDAF solves a simpler optimization problem, where the number of estimates is reduced from three to two and the measurement space is reduced by two dimensions with angles-only measurements (no range or range-rate).
+%In every trial, the optimized cost of the C-JPDAF avoids the track swapping and ambiguity of the JPDAF and M-JPDAF algorithms, and in consequence the C-JPDAF RMS error is reduced as well.
+%\end{correction}
+%
+%\begin{center}
+%\begin{threeparttable}[h]
+%\caption{Monte Carlo Results} \label{tab:MonteCarlo}
+%\begin{tabularx}{0.65\textwidth}
+%{
+%>{$}c<{$} | >{$}c<{$} | >{$}c<{$} | >{$}c<{$} | >{$}c<{$} | >{$}c<{$}
+%%*{1}{>{$}c<{$}} |
+%%*{2}{>{$}c<{$}} |
+%%*{2}{>{$}c<{$}}
+%}
+%\toprule
+%\multirow{1}{*}{Approach} & \multirow{1}{*}{Case} & \multirow{1}{*}{RMS Err.} & \multirow{1}{*}{Time (sec)} & \multirow{1}{*}{Mean $J_P$} & \multirow{1}{*}{Failures}
+%\\
+%\midrule
+%\text{JPDAF}        & \text{I} & 0.12181 & 0.564 & 0.51843 & 0 \\
+%\text{M-JPDAF}    & \text{I} & 0.10791 & 0.563 & 0.49490 & 0 \\
+%\midrule
+%\text{JPDAF}        & \text{II} & 0.14520 & 1.668 & 0.24859 & 100 \\
+%\text{M-JPDAF}    & \text{II} & 0.11004 & 1.671 & 0.17791 & 100 \\
+%\text{C-JPDAF}\textsuperscript{*}    & \text{II} & 0.09752 & 117.115 & 0.18032 & 20 \\
+%\midrule
+%\text{JPDAF}        & \text{III} & 8.66749 & 2.764 & 16.5046 & 69 \\
+%\text{M-JPDAF}    & \text{III} & 4.76320 & 2.763 & 16.5023 & 36 \\
+%\midrule
+%\text{JPDAF}        & \text{IV} & 1.01311 & 1.107 & 0.00762 & 100 \\
+%\text{M-JPDAF}    & \text{IV} & 0.84104 & 1.107 & 0.00736 & 100 \\
+%\text{C-JPDAF}    & \text{IV} & 0.57102 & 31.360 & 0.00738 & 0 \\
+%\midrule
+%\end{tabularx}
+%{\small
+%\begin{tablenotes}
+%	\item RMS error, time, and mean $J_P$ are the mean values of $100$ trials.
+%	\item Failures are the number of failures out of $100$ trials.
+%	\item The RMS error unit for Cases I and II is km, and the RMS error unit for Cases III and IV is $10^{-6}$ rad.
+%	\item In Case II with the C-JPDAF (denoted with \textsuperscript{*}), the $20$ failures occurred when the optimal gains failed to converge, and the metrics are not based on the failed trials.
+%%    \item *: track swapping
+%%    \item $\dagger$: ambiguous
+%  \end{tablenotes}}
+%\end{threeparttable}
+%\end{center}
+%
+%
+%\subsubsection*{Technical Detail Comments}
+%
+%\item {\itshape Eqn (9), you have $R_i$ as dependent on the object rather than dependent on the measurement.  Because you don't a priori know which objects produce which measurements, and you make no ``hard decision", the measurement noise can only be a function of the measurement itself, ``$R_j$"}
+%
+%Note that this is the ``a priori innovation covariance matrix'', which has nothing to do with a particular $z_j$, but rather only the expected noise of a correctly associated measurement originating from the $i$-th estimate. The term $R_i$ is indexed with the objects because it might be different among various object estimates, e.g., an object much closer to a sensor might have a measurement with less expected noise than with an object much farther away. In short, the term $R_i$ is based on a correct association, where the measurement origin uncertainty is accounted for later.
+%
+%\item {\itshape Eqn (11), the notation is very confusing.  Do not use i and j as both global markers, and summation counters in the same equation.}
+%
+%The summation counter index is replaced with $l$.
+%
+%\item {\itshape Eqn (12), the $e_i$ is boldface, while up until now, no variable type has been used as bold.  Please use consistent notation.}
+%
+%The boldface has been removed from this variable.
+%
+%\item {\itshape Eqn (14) and throughout the derivation, random variables don't appear to be correctly handled. $e_{ij}$ is a function of $z_j$.  $z_j$ is a random variable which means $e_{ij}$ is a random variable.  $\tilde P_i$ should not be a random variable.}
+%
+%It is true that $z_j$ and $e_{ij}$ are random variables, but so too is $\tilde P_i$ (see [3]), because this positive semi-definite portion of the posterior covariance matrix depends on the innovation spread composed of random variables. This term is specific to soft decision updates only, so this type of term is not found in a nearest neighbor Kalman filter, for example.
+%
+%\item {\itshape Section 4.1: There are some discrepancies between multivariate probability distributions and Gaussian distributions.  You describe Matusita's method as a measure for any two PDFs, but then define it for specifically, Gaussian variables.  Use consistent language.}
+%
+%The measure is only valid for Gaussian distributions, and this is updated accordingly in the paper.
+%
+%\item {\itshape In section 4.1, you use the term ``similarity measure''.  Measure is a mathematical term with a very specific meaning.  Please clarify or use different terminology.}
+%
+%While the term ``measure'' does not come directly from measure theory, this is referred to as a ``measure'' because is represents the degree of similarity. The similarity measure is a positive scalar when the two estimates are the same, and approaches zero as their separation grows. The first sentence of Section 4.1 is revised as follows:
+%
+%\begin{correction}
+%We choose Matusita's measure because it provides a degree of similarity among multivariate Gaussian distributions [18], [19]. 
+%\end{correction}
+%
+%%The term is a ``measure'' because it is a systematic way of assigning a number. In this case, the number refers to the similarity of multivariate Gaussian random variables.
+%
+%\item {\itshape Between Eqn (26) and (27) you make the claim that $P_i^+$ does not depend on any gain except $K_i$.  Your posterior distribution does depend on implicitly on previous gains.  Clarify or correct this statement.}
+%
+%This point is clarified not to explicitly exclude past gains:
+%
+%\begin{correction}
+%...where $P^+_i$ is obtained by (13), dependent on the gain $K_i$ at the current time step.
+%\end{correction}
+%
+%\item {\itshape I am not convinced the weighting factor, $a$, cannot be taken out of eqn (31) and combined with $c$.  Same as with $c$, a discussion of what $a$ should be must be included.}
+%
+%The weighting factor $a$ is part of a product inside the exponent, so it cannot be easily removed; $a$ affects the shape of the similarity cost, whereas $c$ only affects the size. The added portion from a previous comment above discusses this briefly:
+%
+%\begin{correction}
+%The choice of $c$ depends on the type of scenario and the parameter $a$ shapes the similarity cost $J_S$.
+%\end{correction}
+%
+%\item {\itshape The C-JPDAF appear to have a global minimum, but in 6 dimensional state space it will most likely be difficult to determine.  More discussion on ways to solve this problem would be useful.}
+%
+%The paper provides a necessary condition for local optimality. However, global optimality is beyond the scope of this paper.
+%%It is in fact difficult to determine. A little more discussion on this with the Monte Carlo simulations is included per your suggestion.
+%
+%\item {\itshape The thorough discussion of Keplarian orbital dynamics around eqn (35-36) is largely unnecessary considering the audience.}
+%
+%This is true considering the majority of the audience. However, the contributions from this paper are easily extended to other data association problems, such as vision-based tracking of people or automobiles. Because other audiences do not necessarily have an aerospace background, we did not want to alienate this audience from understanding the results.
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+%
+%
+%
+%\end{itemize}
+%
+
+\end{document}
+%

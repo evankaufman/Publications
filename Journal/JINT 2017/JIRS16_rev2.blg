@@ -1,0 +1,59 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: JIRS16_rev2.aux
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: BibSources.bib
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Too many commas in name 1 of "Chen H, Ding S, Chen X, et al" for entry ChiDinChe14
+while executing---line 2403 of file IEEEtran.bst
+
+Done.
+You've used 22 entries,
+            4087 wiz_defined-function locations,
+            966 strings with 11320 characters,
+and the built_in function-call counts, 15873 in all, are:
+= -- 1240
+> -- 359
+< -- 122
++ -- 194
+- -- 62
+* -- 737
+:= -- 2375
+add.period$ -- 47
+call.type$ -- 22
+change.case$ -- 24
+chr.to.int$ -- 291
+cite$ -- 22
+duplicate$ -- 1148
+empty$ -- 1393
+format.name$ -- 76
+if$ -- 3722
+int.to.chr$ -- 0
+int.to.str$ -- 22
+missing$ -- 204
+newline$ -- 91
+num.names$ -- 26
+pop$ -- 492
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 1239
+stack$ -- 0
+substring$ -- 698
+swap$ -- 886
+text.length$ -- 25
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 22
+warning$ -- 0
+while$ -- 75
+width$ -- 24
+write$ -- 227
+(There was 1 error message)

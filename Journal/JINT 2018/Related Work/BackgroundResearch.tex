@@ -1,0 +1,149 @@
+\documentclass[review]{elsarticle}
+
+\usepackage{lineno,hyperref}
+\modulolinenumbers[5]
+
+\journal{Journal of Robotics and Autonomous Systems}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Elsevier bibliography styles
+%%%%%%%%%%%%%%%%%%%%%%%
+%% To change the style, put a % in front of the second line of the current style and
+%% remove the % from the second line of the style you would like to use.
+%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Numbered
+%\bibliographystyle{model1-num-names}
+
+%% Numbered without titles
+%\bibliographystyle{model1a-num-names}
+
+%% Harvard
+%\bibliographystyle{model2-names.bst}\biboptions{authoryear}
+
+%% Vancouver numbered
+%\usepackage{numcompress}\bibliographystyle{model3-num-names}
+
+%% Vancouver name/year
+%\usepackage{numcompress}\bibliographystyle{model4-names}\biboptions{authoryear}
+
+%% APA style
+%\bibliographystyle{model5-names}\biboptions{authoryear}
+
+%% AMA style
+%\usepackage{numcompress}\bibliographystyle{model6-num-names}
+
+%% `Elsevier LaTeX' style
+\bibliographystyle{elsarticle-num}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Background Research on Patrol}
+%\tnotetext[mytitlenote]{Fully documented templates are available in the elsarticle package on \href{http://www.ctan.org/tex-archive/macros/latex/contrib/elsarticle}{CTAN}.}
+
+%% Group authors per affiliation:
+\author[GWU]{Evan Kaufman\corref{mycorrespondingauthor}}
+
+\author[GWU]{Kuya Takami}
+
+\author[NRL]{Zhuming Ai}
+
+\author[GWU]{Taeyoung Lee}
+%% or include affiliations in footnotes:
+%\author[mymainaddress,mysecondaryaddress]{Elsevier Inc}
+%\ead[url]{www.elsevier.com}
+
+\fntext[GWU]{Department of Mechanical and Aerospace Engineering\\
+The George Washington University, Washington, DC 20052\\
+Email: \{evankaufman, kuya, tylee\}@gwu.edu}
+\fntext[NRL]{Information Management \& Decision Architectures
+\\ U.S. Naval Research Laboratory, Washington, DC 20375}
+
+
+%\author[mysecondaryaddress]{Global Customer Service}
+\cortext[mycorrespondingauthor]{Corresponding author}
+%\ead{support@elsevier.com}
+
+%\address[mymainaddress]{1600 John F Kennedy Boulevard, Philadelphia}
+%\address[mysecondaryaddress]{360 Park Avenue South, New York}
+
+
+
+\end{frontmatter}
+
+\begin{itemize}
+	\item Survey
+	\begin{itemize}
+		\item A Survey on Multi-robot Patrolling Algorithms~\cite{PorRoc11}
+		\begin{itemize}
+			\item Refs 2,3,4 use unweighted or weighted graphs to visit various environment nodes using local or global information
+			\item Ref. 5 uses minimal-cost cyclic patrol paths (Hamilton cycles) at an optimal frequency, and independent of robot number (robust, best for largely-connected closed-loop graphs)
+			\item Ref. 6 is like 5 except it uses a TSP cycle and segmenting the environment into different partitioned regions for patrolling (best for long corridors)
+			\item Ref. 7 uses reinforcement learning to select actions to maximize a long-term performance criterion
+			\item Ref. 8 has auctions between negotiating agents to visit random vertices to minimize visits to the same vertex
+			\item Ref. 9 considers the length of patrolling roots for negotiations, but is only tested in open space
+			\item Ref. 12 uses a neural net for patrol patterns, where a threat mode is activated when an intruder is detected
+			\item Ref. 13 has robots drop pheromones that evaporate to indicate time since a robot has visited
+			\item Ref. 14 focusses on catching intruders with various algorithms
+			\item Refs 15,16 present a centralized and efficient algorithm for multi-level partitioning of the space to assign different regions to different agents
+		\end{itemize}
+	\end{itemize}
+	\item Cell periodicity
+	\begin{itemize}
+		\item Spectral Analysis for Long-Term Robotic Mapping~\cite{KraFenCieDonDuc14}, Persistent Localization and Life-long Mapping in Changing Environments using the Frequency Map Enhancement~\cite{KraFenHanDuc16}
+		\begin{itemize}
+			\item Long-term dynamics of objects are predicted by re-observing the same locations on an occupancy grid using the periodicity of individual cells
+			\item Experiment with exploring and navigating a human-populated environment for long-term autonomy
+			\item Uses the \emph{FreMEn map} which provided probabilities as a function of time based on re-observations of each cell
+		\end{itemize}
+	\end{itemize}
+	\item Voronoi Diagrams
+	\begin{itemize}
+		\item Extracting Surveillance Graphs from Robot Maps~\cite{KolCar08}
+		\begin{itemize}
+			\item Create surveillance graphs from occupancy grids: breaking down environment into partitions and tracking intruders through regions
+			\item Voronoi Diagram extracted from 2D maps
+			\item Use \emph{blocking}: detect intruders passing through a heavily-sensed edge
+			\item Use \emph{contractions}: graph modifiers to use less robots for the same surveillance tasks
+		\end{itemize}
+		\item MSP Algorithm Multi-Robot Patrolling based on Territory Allocation using Balanced Graph Partitioning~\cite{PorRoc10}
+		\begin{itemize}
+			\item Ref. 16 of survey paper
+			\item Known environment
+			\item Assigns different regions (subgraphs) to different robots
+			\item Deterministic
+		\end{itemize}
+		\item Performance Based Task Assignment in Multi-Robot Patrolling~\cite{PipChrWei13}
+		\begin{itemize}
+			\item Distribute patrol areas among robot team members
+			\item Addresses issue when some team members patrol inefficiently
+			\item Monitor robot performance and dynamically reassigns tasks from poorly-performing members
+			\item Assume map provided in advance
+			\item Partition using same Voronoi approach as Portugal and Rocha
+		\end{itemize}	
+	\end{itemize}
+	\item Other Metrics
+	\begin{itemize}
+		\item A Patrolling Scheme in Wireless Sensor and Robot Networks~\cite{ZhaXia11}
+		\begin{itemize}
+			\item Use pheromones to show where robots were last, but does not reference Ref. 13 of survey paper
+		\end{itemize}
+		\item Multi-robot patrol: A distributed algorithm based on expected idleness~\cite{YanZha16}
+		\begin{itemize}
+			\item Decentralized patrol algorithm along a graph to minimize idleness
+			\item Assumes a graph is already known, possibly from a Voronoi Diagram
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+% NOTE: at GW, look up "degradation" and "patrol" together (maybe "occupancy grid map")
+
+%Example reference: \cite{KauTakAiLee17}.
+
+\section*{References}
+
+\bibliography{../../../BibSources}% master source for all publications
+
+\end{document}

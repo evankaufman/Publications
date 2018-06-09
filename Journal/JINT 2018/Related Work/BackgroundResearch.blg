@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: BackgroundResearch.aux
+The style file: elsarticle-num.bst
+Database file #1: ../../../BibSources.bib
+You've used 8 entries,
+            2937 wiz_defined-function locations,
+            732 strings with 6840 characters,
+and the built_in function-call counts, 3413 in all, are:
+= -- 333
+> -- 74
+< -- 6
++ -- 30
+- -- 22
+* -- 198
+:= -- 405
+add.period$ -- 8
+call.type$ -- 8
+change.case$ -- 8
+chr.to.int$ -- 0
+cite$ -- 8
+duplicate$ -- 146
+empty$ -- 402
+format.name$ -- 30
+if$ -- 913
+int.to.chr$ -- 0
+int.to.str$ -- 8
+missing$ -- 8
+newline$ -- 32
+num.names$ -- 8
+pop$ -- 84
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 241
+stack$ -- 0
+substring$ -- 257
+swap$ -- 62
+text.length$ -- 6
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 30
+width$ -- 9
+write$ -- 76

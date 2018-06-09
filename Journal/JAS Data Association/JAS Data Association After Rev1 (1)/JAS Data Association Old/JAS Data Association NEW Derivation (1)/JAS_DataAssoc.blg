@@ -1,0 +1,11 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: JAS_DataAssoc.aux
+The style file: spmpsci.bst
+Database file #1: BibSources.bib
+Warning--string name "january" is undefined
+--line 237 of file BibSources.bib
+I was expecting a `,' or a `}'---line 285 of file BibSources.bib
+ :  
+ :  Year = {2011}}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+(There was 1 error message)

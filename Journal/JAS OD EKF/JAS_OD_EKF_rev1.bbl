@@ -1,0 +1,98 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{DOI~\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{DOI~\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem{BroPNEC66}
+Brown, R.: Not just observable, but how observable.
+\newblock In: Proceedings of the National Electronic Conference, vol.~22, pp.
+  709--714 (1966)
+
+\bibitem{HahEdgCCE02}
+Hahn, J., Edgar, T.: An improved method for nonlinear model reduction using
+  balancing of empirical gramians.
+\newblock Computers and Chemical Engineering \textbf{26}, 1379--1397 (2002)
+
+\bibitem{HahEdgJPC03}
+Hahn, J., Edgar, T., Marquardt, W.: Controllability and observability
+  covariance matrices for the analysis and order reduction of stable nonlinear
+  systems.
+\newblock Journal of Process Control \textbf{13}, 115--127 (2003)
+
+\bibitem{HerKreITAC77}
+Hermann, R., Krener, A.J.: Nonlinear controllability and observability.
+\newblock IEEE Transactions on Automatic Control \textbf{22}(5), 728--740
+  (1977)
+
+\bibitem{KreIdePICDC09}
+Krener, A., Ide, K.: Measures of unobservability.
+\newblock In: Proceedings of the IEEE Conference on Decision and Control, pp.
+  6401--6406 (2009)
+
+\bibitem{LalMarPIWC99}
+Lall, S., Marsden, J., Glavaski, S.: Empirical model reduction of controlled
+  nonlinear systems.
+\newblock In: Proceedings of the IFAC World Congress (1999)
+
+\bibitem{LalMarIJRNC02}
+Lall, S., Marsden, J., Glavaski, S.: A subspace approach to balanced truncation
+  for model reduction of nonlinear control systems.
+\newblock International Journal of Robust and Nonlinear Control \textbf{12}(6),
+  519--539 (2002)
+
+\bibitem{LovLeePISSFD14}
+Lovell, T., Lee, T.: Nonlinear observability for relative satellite orbits with
+  angles-only measurements.
+\newblock In: Proceedings of the International Symposium on Space Flight
+  Dynamics (2014)
+
+\bibitem{MonITAC67}
+Monzingo, R.: A note on sensitivity of system observability.
+\newblock IEEE Transactions on Automatic Control \textbf{12}(3), 314--315
+  (1967)
+
+\bibitem{MulWebA72}
+M\"{u}ller, P., Weber, H.: Analysis and optimization of certain qualities of
+  controllability and observability for linear dynamical systems.
+\newblock Automatica \textbf{8}(3), 237--246 (1972)
+
+\bibitem{NewKriPICDC98}
+Newman, A., Krishnaprasad, P.: Computation for nonlinear balancing.
+\newblock In: Proceedings of the IEEE Conference on Decision and Control, pp.
+  4103--4104 (1998)
+
+\bibitem{Nijvan90}
+Nijmeijer, H., {van der Schaft}, A.: Nonlinear Dynamical Control Systems.
+\newblock Springer (1990)
+
+\bibitem{PatLovPASFMM12}
+Patel, H., Lovell, T.A., Allgeier, S., Russell, R., Sinclair, A.: Relative
+  navigation for satellites in close proximity using angles-only observations.
+\newblock In: Proceedings of the AAS/AIAA Space Flight Mechanics Meeting
+  (2012).
+\newblock AAS 12-202
+
+\bibitem{SchSCL93}
+Scherpen, J.: Balancing for nonlinear systems.
+\newblock Systems and Control Letters \textbf{21}, 143--153 (1993)
+
+\bibitem{Sch94}
+Scherpen, J.: Balancing for nonlinear systems.
+\newblock Ph.D. dissertation (1994).
+\newblock University of Twente
+
+\bibitem{WofGelITAES09}
+Woffinden, D., Geller, D.: Observability criteria for angles-only navigation.
+\newblock IEEE Transactions on Aerospace and Electronic Systems \textbf{45}(3),
+  1194--1208 (2009)
+
+\bibitem{YimCraPASMM04}
+Yim, J., Crassidis, J., Junkins, J.: Autonomous orbit navigation of two
+  spacecraft system using relative line of sight vector measurements.
+\newblock In: Proceedings of the AAS/AIAA Spaceflight Mechanics Meeting (2004).
+\newblock AAS 04-257
+
+\end{thebibliography}

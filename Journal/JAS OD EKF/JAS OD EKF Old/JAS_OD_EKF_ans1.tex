@@ -1,0 +1,202 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,text={6.5in,8.6in},centering]{geometry}
+\usepackage{amssymb,amsmath,times,url}
+\usepackage{xr,color}
+\usepackage{hyperref}
+
+
+\externaldocument[]{JAS_OD_EKF_rev1}
+
+\newcommand{\norm}[1]{\ensuremath{\left\| #1 \right\|}}
+\newcommand{\bracket}[1]{\ensuremath{\left[ #1 \right]}}
+\newcommand{\braces}[1]{\ensuremath{\left\{ #1 \right\}}}
+\newcommand{\parenth}[1]{\ensuremath{\left( #1 \right)}}
+\newcommand{\pair}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\met}[1]{\ensuremath{\langle\langle #1 \rangle\rangle}}
+\newcommand{\refeqn}[1]{(\ref{eqn:#1})}
+\newcommand{\reffig}[1]{Fig. \ref{fig:#1}}
+\newcommand{\tr}[1]{\mathrm{tr}\ensuremath{\negthickspace\bracket{#1}}}
+\newcommand{\trs}[1]{\mathrm{tr}\ensuremath{[#1]}}
+\newcommand{\deriv}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+\newcommand{\SO}{\ensuremath{\mathsf{SO(3)}}}
+\newcommand{\T}{\ensuremath{\mathsf{T}}}
+\renewcommand{\L}{\ensuremath{\mathsf{L}}}
+\newcommand{\so}{\ensuremath{\mathfrak{so}(3)}}
+\newcommand{\SE}{\ensuremath{\mathsf{SE(3)}}}
+\newcommand{\se}{\ensuremath{\mathfrak{se}(3)}}
+\renewcommand{\Re}{\ensuremath{\mathbb{R}}}
+\newcommand{\aSE}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&1\end{bmatrix}}}
+\newcommand{\ase}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&0\end{bmatrix}}}
+\newcommand{\D}{\ensuremath{\mathbf{D}}}
+\newcommand{\Sph}{\ensuremath{\mathsf{S}}}
+\renewcommand{\S}{\Sph}
+\newcommand{\J}{\ensuremath{\mathbf{J}}}
+\newcommand{\Ad}{\ensuremath{\mathrm{Ad}}}
+\newcommand{\intp}{\ensuremath{\mathbf{i}}}
+\newcommand{\extd}{\ensuremath{\mathbf{d}}}
+\newcommand{\hor}{\ensuremath{\mathrm{hor}}}
+\newcommand{\ver}{\ensuremath{\mathrm{ver}}}
+\newcommand{\dyn}{\ensuremath{\mathrm{dyn}}}
+\newcommand{\geo}{\ensuremath{\mathrm{geo}}}
+\newcommand{\Q}{\ensuremath{\mathsf{Q}}}
+\newcommand{\G}{\ensuremath{\mathsf{G}}}
+\newcommand{\g}{\ensuremath{\mathfrak{g}}}
+\newcommand{\Hess}{\ensuremath{\mathrm{Hess}}}
+\newcommand{\refprop}[1]{Proposition \ref{prop:#1}}
+
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+\newcommand{\RI}{\text{\RNum{1}}}
+\newcommand{\RII}{\text{\RNum{2}}}
+\newcommand{\RIII}{\text{\RNum{3}}}
+
+\newenvironment{correction}{\begin{list}{}{\setlength{\leftmargin}{1cm}\setlength{\rightmargin}{1cm}}\vspace{\parsep}\item[]``}{''\end{list}}
+
+
+\begin{document}
+
+%\pagestyle{empty}
+
+\section*{Response to the Reviewers' Comments for JASS-D-15-00027}
+
+The authors would like to thank for the reviewers for their thoughtful comments, which are aimed toward improving the quality of the paper and the clarity of the results. In accordance with the comments and suggestions, the paper has been revised as follows. 
+
+\subsection*{Reviewer 1}
+
+\setlength{\leftmargini}{0pt}
+\begin{itemize}\setlength{\itemsep}{2\parsep}
+
+\item {\itshape Reviewer \#1: This paper addresses the question of observability from angles-only measurements. It is known that in the linear approximation, the motion is not fully observable; the present paper addresses the question of observability in the nonlinear case. This topic has received some attention in the field in recent years. It is appropriate for the Journal of the Astronautical Sciences.
+
+   The authors divide their paper into two parts. The first gives, analytically, sufficient conditions for nonlinear observability. To my knowledge, this is original, and while I did not confirm all the math in detail, there was nothing that jumped out at me as obviously wrong. The second part of the paper is a numerical study of the observability of relative orbits, and an extended Kalman filter to demonstrate this observability and to connect their proposed observability measure and the accuracy of the filtered solution.
+
+   The paper makes a good start on the goal, but feels incomplete. More specifically, it reads like the starts to two different papers were merged into one. The analytical observability analysis is developed over ten pages but the reader is left to figure out the physical/geometric implication of this result. The authors emphasize that they have shown sufficient conditions for observability and that failing the sufficiency test doesn't show a given point isn't observable. Then, the authors jump right into the numerical study without any connection or apparent use of the analytical study. Why bother doing the first part if it doesn't give you what you really want? On the other hand, the numerical analysis seems very short. While the connection to physical and geometric properties of the relative orbit is better shown here, it could be made clearer. The conclusion section says "... a quantitative observability measure...is proposed. It is illustrated by several numerical
+examples"; it should have specific numerical conclusions that can be drawn from the presented results, such as those given in section 5. The connection between the two parts should be better drawn out; I suggest the physical/geometric implications of each because readers will be able to better relate the general statements to specific relative motion scenarios.$ $}\\
+
+As pointed out by the reviewer, there are two main contributions in this paper. The first is verifying nonlinear observability of relative orbital dynamics with angles-only measurements, and the second is proposing a computational method to obtain a measure of observability. 
+
+The first part is motivated by the fact that no literature has definitely addressed whether the nonlinear relative orbital dynamics are observable with angles-measurements only. In other words, the main objective is to \textit{provide reasonable assurance} that it is actually observable under certain conditions. Since this paper verifies that the nonlinear relative orbital dynamics is observable under certain conditions, the objectives of studying nonlinear observability and providing confidence are indeed achieved in this paper. 
+
+As noted by the reviewers, there are certain limitations in the provided results. The presented conditions for observability are based on the second order derivatives, and they only provide sufficient conditions that are not suitable to understand the type of relative orbits that prohibit observability. However, these limitations originate from the differential algebraic approach for nonlinear observability criteria: it requires higher-order derivatives of the measurements; it yields sufficient conditions but it does not provide necessary conditions for observability. 
+
+Therefore, new observability criteria for nonlinear dynamic systems should be developed from first principles, to study observability of relative orbits completely and to provide sufficient conditions for unobservability as suggested by the reviewer. Such theoretical study for nonlinear observability is certainly a next step in this work, but is out of the scope of this paper, which is focused on verifying nonlinear observability of relative orbital dynamics. 
+
+To clarify these, the second to last paragraph of the introduction has been revised as follows.
+
+\begin{correction}
+In short, the main contributions of this paper are constructing sufficient conditions for the observability of nonlinear relative orbits with angles-only measurements that have not been studied before, and proposing a new quantitative measure of observability. The main objective is to provide assurance that relative orbits are observable with angles-only measurements under certain conditions, if the nonlinearity of relative orbital dynamics are properly considered. More comprehensive study for observability of nonlinear relative orbits, such as obtaining necessary conditions for observability or sufficient conditions for unobservability is referred to as future study. 
+\end{correction}
+
+Furthermore, the limitations of the presented results are explicitly summarized in the last paragraph of Section 3 as follows.
+
+\begin{correction}
+However, \refeqn{cond1} and \refeqn{cond2} are sufficient conditions for observability, and the fact that any of these conditions is not satisfied does not necessarily imply that the considered point is not observable. In such cases, the third or higher order Lie derivatives should be checked to confirm observability. Furthermore, the presented differential geometric approaches to determine observability do not yield necessary conditions for observability. As such, these conditions cannot be used to determine the certain types of relative motions that are not observable with angles-only measurements. This paper is focused on verifying the observability of nonlinear relative orbits via angles-only measurements under certain conditions, and determining observability with higher-order Lie derivatives or necessary conditions for observability is referred to future investigation.
+\end{correction}
+
+The relevant future work is also summarized in the conclusions.
+
+\begin{correction}
+Future work objectives include constructing observability criteria based on higher-order Lie derivatives of the measurement, and developing necessary conditions for observability to classify the type of relative orbits that are not observable completely. We also plan to develop nonlinear filtering techniques that can capture the weak coupling between the dynamics of relative motion and the line-of-sight measurements effectively, as well as studying the effects of higher-order gravitational perturbations on the observability. 
+\end{correction}
+
+The observability measure proposed in Section 4 is motivated by the limitations of the differential geometric approach in Section 3. Since the observability rank condition is defined for a state vector at a specific time, it does not capture the observability with respect to the measurement trajectories over a certain time period. Also, it only provides binary information whether the system is completely observable or not. Therefore, the observability criteria presented in Section 3 are not suitable to determine whether a particular relative orbit is easier to observe compared with other orbits. 
+
+The quantitative observability measure in Section 4 addresses these issues. As the observability gramian given in (28) is defined with respect to the measurement trajectory over a certain time period, it actually captures the accumulated effects of the line-of-sight measurements on observability. As such, it can be used to anticipate the evolution of the performance of nonlinear estimators over time. It also yields a certain quantitative measure of observability.
+
+In contrast to the observability criteria in Section 3, the observability measure in Section 4 is obtained numerically.  While it is likely very difficult to extract physical implications that can be applied to various classes of relative orbits from the presented observability measure, the measure can be used to determine whether a certain relative orbit is easier or more difficult to estimate compared with other relative orbits.
+
+Instead, this paper presents the correlation between the performance of extended Kalman filters and the proposed observability measure numerically in Section 5. In particular, the planar relative orbits presented in Section 5.3 correspond to a case where the observability criteria in Section 3 are violated, but the observability measure in Section 4 can be used to study the degree of observability. 
+
+In short, the numerical observability measure proposed in Section 4 is complementary to the analytic observability criteria in Section 3. The first two paragraphs of Section 4 have been revised as follows to motivate the observability measure more explicitly.
+
+\begin{correction}
+The observability criteria derived in the previous section guarantee that the nonlinear relative orbital dynamics are indeed observable under certain geometric conditions. However, they are limited in the sense that they only provide binary information about observability. Therefore, they cannot be used to determine whether a certain type of orbit is more easily estimated compared with other orbits based on angles-only measurements. Furthermore, as they are defined in terms of the state vector at a specific time, they do not capture the effects of the measurement trajectory over a certain time period on the observability, which often predicts the performance of estimation.
+
+Motivated by the above issues, we propose a quantitative measure that represents the degree of observability for relative orbits in this section. More explicitly, this measure evaluates the observability in a quantitative manner as it determines how effectively the relative orbit can be estimated by line-of-sight measurements. 
+\end{correction}
+
+Also, the following paragraph is added at the end of Section 4 to summarize the limitation and the usage of the proposed observability measure explicitly.
+
+\begin{correction}
+In contrast to the observability criteria presented in Section 3, the proposed observability measure is obtained numerically. As such, it is not useful to identify the particular class of the relative orbits that yield stronger, or weaker observability. However, it can be used to analyze the degree of observability in a complementary manner when the sufficient conditions of the observability criteria are violated, as illustrated by the following numerical examples.  
+\end{correction}
+
+
+In Section 5.3, it is explicitly stated that the observability criteria proposed in Section 3 cannot be used to investigate the observability of the selected planar orbits, but the observability measure can be used instead.
+
+\begin{correction}
+As discussed in Section 3, these relative orbits violate the observability criteria summarized in Proposition 1 since they are planar orbits. Therefore, Proposition 1 cannot be applied to investigate the observability of these orbits. Instead, the observability is analyzed by the observability measure proposed in Section 4 as follows. 
+\end{correction}
+
+
+
+\item   {\itshape The concept of degree of observability should be explained better; reference is made to "weakly observable" and "how strong the observability is" without ever explaining what that means. A brief review of observability with an explanation of the measure of strength at the beginning would be helpful, given how central this concept is to the paper.}
+
+The concept of the degree of controllability and observability is relatively popular in linear system theory. As discussed above, the first two paragraphs of Section 4 are revised to convey the concept of degree of observability and motivate the observability measure. The subsequent paragraph is also revised as follows to provide additional references for the observability measure.
+
+%paragraph of Section 4 is revised to motivate the observability measure. The subsequent paragraphs are also revised as follows to give the definition of the observability clearly, and to provide additional references for the observability measure. 
+
+\begin{correction}
+%Motivated by these, we propose a quantitative measure that represents the degree of observability for relative orbits in this section. More explicitly, this evaluates the quality of observability in a quantitative manner as it determines whether the relative orbit can be estimated effectively by line-of-sight measurements. 
+%
+The problem of assigning physically meaningful measures of the quality of observability has been introduced in~[1,9,10] for linear systems, and in particular, in [10] the determinant, trace, and maximal eigenvalue of the inverse characteristic observability matrix are maximized with respect to certain parameters of a dynamic system. Several approaches have been proposed for an observability measure of nonlinear systems....
+\end{correction}
+
+
+
+
+
+\item    {\itshape The writing is generally quite clear, and I noticed few typographical, spelling, grammar or phrasing problems, in comparison to most papers I review for technical journals. Nevertheless, there are some:
+   
+   1) Figures and particularly the legend and scale markings are much too small.\\
+   2) p. 2 l. 44 "motivated to understand" awkward.\\
+   3) p. 3 l. 10 "...with angles-only measurements that have not been studied before" rephrase as it reads like the last clause modifies the previous one (when it is intended to modify "sufficient conditions for the observability" earlier in the sentence, I presume).\\
+   4) p. 4 l. 36 and elsewhere, I suggest replacing "line-of-sight" with "direction vector" for clarity.\\
+   5) Eq. (7) needs more space between the rows of the first matrix.\\
+   6) p. 10 l. 49 replace "linearly dependent to" with "linearly dependent on".\\
+   7) References 2 and 3 "AAS" should be all capitals, and it would help the reader if more details were provided for AAS conference proceedings (publisher, volume title, volume number, page numbers).}
+   
+   
+The authors appreciate the detailed comments. All of the above comments are addressed in the revised paper. With regards to the comments about replacing ``line-of-sight'' with ``direction vector'', the authors decided to continue to use the term, ``line-of-sight'' as it is relatively more common in the literature. 
+
+%\textbf{EVAN:} can you address the comments 1) and 7)?
+
+
+
+
+
+\end{itemize}
+
+\subsection*{Reviewer 2}
+
+\setlength{\leftmargini}{0pt}
+\begin{itemize}\setlength{\itemsep}{2\parsep}
+
+\item {\itshape Reviewer \#2: This is a well-written paper that uses the appropriate nonlinear tools to analyze the observability of one satellite
+using angle only measurements from another.  The treatment is complete, first taking Lie derivatives and giving sufficient
+for the observability rank condition to hold, next computing the condition number of the observability gramian and finally comparing
+the condition number with the errors of an Extended Kalman Filter.}
+
+The authors appreciate the comment.
+
+\item {\itshape The dimension of the state is six and the dimension of measurement is two so one expects
+that only $L^k_f(h)$, $k=0,1,2$ need only be taken into account for verifying the observability rank condition
+and this what the authors do.  The system is real analytic so if the observability rank condition holds for one state
+and $k=0,1,2$ then it holds for almost all states.  Therefore I don't see much value in considering larger $k$.}
+
+For linear systems, it is well known that the observability matrix is defined in terms of $A^0,\ldots, A^{n-1}$. This is due to the Cayley-Hamilton theorem guaranteeing that $A^n$ is a linear combination of $A^0,\ldots, A^{n-1}$.
+
+The similar results for nonlinear systems had been nonexistent, perhaps until it was shown that for  $n$-dimensional analytic systems, only the Lie derivatives up to the $(n-1)$-th order are required for observability analysis, as suggested by the reviewer. This is shown in
+
+\begin{itemize}
+\item[] M. Anguelova, ``Nonlinear Observability and Identifiability: General Theory and a Case Study of a Kinetic Model,'' Ph.D Dissertation, Chalmers University of Technology, 2004.
+\end{itemize}
+
+However, according to the above reference, for multiple output systems, the Lie derivatives up to the $(n-1)$-th order is required for \textit{each} output. This can be noted from the multi-output linear systems as well, where the observability matrix defined as $nm\times n$ when the number of the output is $m$.
+
+Therefore, as far as the authors understand, there is a certain value of deriving higher-order Lie derivatives up to $k=5$. 
+
+
+\end{itemize}
+
+
+\end{document}
