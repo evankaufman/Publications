@@ -1,0 +1,206 @@
+% !TEX root = ../thesis-sample.tex
+
+% --------- FRONT MATTER PAGES ---------------------
+% Title of the thesis
+\title{Multi-Robot Probabilistic Mapping and Exploration}
+
+% Author name
+\author{Evan Kaufman}
+
+% Previous degrees
+\bsdepartment{Mechanical Engineering}
+\bsschool{Bucknell University}
+\bsgrad{May 2012}
+
+\hidemsdegree
+
+
+\showcommitteepage % hide this page if you're doing a MS thesis
+%\hidecommitteepage 
+\committee{ %
+Taeyoung Lee\\
+Department of Mechanical and Aerospace Engineering\\
+The George Washington University\\ 
+Dissertation Director\\ % remember to add a space between committee members
+
+James Hahn\\
+Department of Computer Science\\
+The George Washington University\\
+Committee Member\\
+
+Yin-Lin Shen\\
+Department of Mechanical and Aerospace Engineering\\
+The George Washington University\\ 
+Committee Member
+}
+
+% Chair must be entered separately for formatting reasons.
+\chair{Tayeoung Lee}
+\chairtitle{Associate Professor of Mechanical and Aerospace Engineering}
+% Department
+\department{Mechanical and Aerospace Engineering}
+
+\phdgrad{August 31, 2018}
+\defensedate{July 11, 2018}
+% Year of completion for copyright page and perhaps other places
+\year=2018
+
+% Copyright page
+%\copyrightholder{Someone else}
+
+%% Dedication
+%\dedication{ 
+%Add here...
+%%
+%%This dissertation is dedicated to my parents, Elizabeth Kaufman and Stephen Kaufman, who have consistently supported me throughout my many years of education. And others...
+%}
+
+% Acknowledgments
+\acknowledgments{
+My academic career has certainly been a long and bumpy road, but I was never alone. I would like thank many people for their support throughout my life for pursuing difficult and interesting work.
+
+First and foremost, I would like to thank my parents. In my younger years, I was not always a great student, but they believed in me. When I struggled, they helped every time. I figured that this is what all parents do, but later I realized how lucky I was. Looking back, my academic career not ending prematurely is largely thanks to my mother and father. They have loved me and supported my academic pursuits, and I am extremely grateful.
+
+I would also like to thank all other parts of my family, including my fianc\'ee, brother, grandparents, aunts, uncles, and cousins. We make it a priority to come together and support each other, even when our careers differ greatly and our lives change unpredictably. Despite the long academic road, and they provide support and love.
+
+Finally, I would like to thank my research advisor, Taeyoung Lee, for the excellent guidance over the last six years. Unlike many relationships between advisors and students, we treats his students like colleagues rather than subordinates. This way, I could focus on completing my research objectives properly rather than trying to impress superior figure. Taeyoung Lee knew just what to say to push my research forward, even when my mind was going another direction. His positive influence over my research has been unparalleled, and I will continue using his valuable lessons.% in the years to come.
+
+ I think that following a passion is something truly special. Even though I find great satisfaction in doing anything well, regardless of how simple or complicated the task, I find myself extremely fortunate to pursue endeavors that I actually find exciting and stimulating. With tremendous support around me, I begin a career in an amazing field and ready to take on future challenges.
+}
+
+% -----------------------------------------------------------------
+% Typically only one of Preface/Foreward/Prologue would be in your thesis.
+% To choose one simply delete the others and they will automatically dissappear
+
+%% Preface
+%\preface{
+%Add here...
+%%    This is the preface. 
+%%    It's another front matter page that offers additional detail into your work.
+%%    Typically, only one (preface OR prologue OR foreword) is used. 
+%%    You can remove the other sections by deleting them inside \texttt{tex/frontmatter.tex} or using the appropriate show or hide commands.
+%}
+
+%\prologue{
+%    This is the prologue. 
+%    It's another front matter page that offers additional detail into your work.
+%    Typically, only one (preface OR prologue OR foreword) is used. 
+%    You can remove the other sections by deleting them inside \texttt{tex/frontmatter.tex} or using the appropriate show or hide commands.
+%}
+%
+%\foreword[2]{
+%    This is the foreword. 
+%    It's another front matter page that offers additional detail into your work.
+%    Typically, only one (preface OR prologue OR foreword) is used. 
+%    You can remove the other sections by deleting them inside \texttt{tex/frontmatter.tex} or using the appropriate show or hide commands.
+%}
+% ----------------------------------------------------------------------
+
+% commands to show or hide front matter pages
+
+\showcopyright
+\showabstract
+\showcommitteepage
+\hidededication
+\showacknowledgments
+\hidepreface
+\hideprologue
+\hideforeword
+
+% ------------ TABLE OF CONTENTS ----------------------
+% Commands to hide or show lists of figures, tables, etc.
+\showlistoffigures
+\showlistoftables
+\hidenomenclature
+
+% --------- ACRONYMS and SYMBOLS ------------------------------
+% TODO Deprecate the entire acronym package and switch to glossaries
+
+% You can either use the acronymn or glossaries package (both work)
+% Definition of any abbreviations used.
+\abbreviations{
+    \acro{CRTBP}{Circular Restricted Three Body Problem}
+    \acro{NSA}{National Security Agency}
+    \acro{SSME}{Space Shuttle Main Engine}
+}
+% call an abbreviation using \ac{abbrev}
+
+% symbols and acronyms only show up when used in the text
+\symbols{
+    \acro{J}{Moment of Inertia}
+}       
+
+% if you want acronymn (simpler) then change these to show
+\hidelistofabbreviations
+\hidelistofsymbols
+
+% if you want glossaries (more powerful) then leave above as hide
+% GLOSSARIES package options - automatically turns off front pages from acronym package
+
+% acronymns and symbols are basically the same, but there are two provided 
+% locations where they can show up
+\setabbreviationstyle[acronym]{long-short}
+\setabbreviationstyle[abbreviation]{long-short}
+\makeglossaries
+% you can hide/show the glossaries page
+\showglossarieslistofabbreviations
+\showglossarieslistofsymbols
+\showglossariesglossaryofterms
+
+% acronyms defined in glossaries
+\newabbreviation{lidar}{LIDAR}{Light Detection and Ranging}
+% defining abbreviations like this allows for autocompletion
+\newglossaryentry{filo}{
+    name={FILO},
+    type=\glsxtrabbrvtype,
+    description={first in last out},
+    first={first in last out (FILO)}
+}
+
+% glossary entries
+\newglossaryentry{linux}{
+    name=Linux,
+    description={is a generic term referring to the family of Unix-like computer operating systems that use the Linux kernel},
+    plural=Linuces
+}
+
+\newglossaryentry{matrix}{
+    name={matrix},
+    plural={matrices},
+    description={rectangular array of quantiities}
+}
+
+% symbols
+\newglossaryentry{M}{
+    type=symbols,
+    name={\ensuremath{M}},
+    sort=M,
+    description={a \gls{matrix}}
+}
+
+\newglossaryentry{F}{
+    type=symbols,
+    name={\ensuremath{F}},
+    sort=F,
+    description={External Force}
+}
+% Some abstract text
+\abstract{
+This dissertation focusses on robotic mapping and exploration of uncertain environments. Computational algorithms are developed to provide important probability and uncertainty properties. These algorithms are designed for real-time implementation for robotic autonomy.
+
+Probabilistic occupancy grid mapping is developed using Bayesian probability. A novel approach to this problem is explored, which uses important physical properties of the environment and stochastic properties of depth sensors. We develop an exact solution to occupancy grid probability that can be achieved in real-time using sensor properties and conventional assumptions of an occupancy grid. The rapid computation allows the algorithm to consider large scans of measurements in 2D and 3D environments. The mapping algorithm is demonstrated with several numerical examples and experiments.
+
+The next topic this dissertation addresses is autonomous exploration, where a robot selects actions to maximize its knowledge about the probabilistic map. We select Shannon's entropy as a metric that represents grid cell uncertainty. Using the earlier contributions on probabilistic occupancy grid mapping, we determine the expected value of entropy change from possible future measurements. This entropy change provides important insights for where a robot should move to maximize its mapping information gain. Dijkstra's search is integral to the algorithm to account for collision-free distances during motion planning. This algorithm is designed for 2D and 3D, where computation time is carefully considered to ensure real-time algorithm performance. Several versions of the exploration algorithm are applied to simulations and experiments.
+
+The final topic of this dissertation relates to multi-vehicle cooperative scenarios. The mapping algorithm is multi-threaded to accept measurements from multiple sources with differing sensor properties. More importantly, the exploration algorithm structure is modified with a bidding-based framework. A series of auctions determines where robots should travel such that the members act together as a team. This solution is further extended to multi-vehicle patrol, where robots begin with an uncertain map, autonomously explore the space, and periodically revisit regions. Autonomous multi-vehicle patrol is accomplished through map degradation, where the probabilistic map becomes more uncertain over time, and the robots must revisit these spaces. These complex algorithms are demonstrated with numerical simulations.
+
+In short, this dissertation proposes novel solutions to probabilistic occupancy grid mapping, autonomous exploration, and patrol in single-vehicle and multi-vehicle scenarios. Real-time implementation is paramount to ensure autonomy during a task. The efficacy of the approaches are shown with several experiments and numerical examples. 
+
+}
+
+
+
+
+
+
+
