@@ -10,7 +10,6 @@
 
 # Don't save PDFs created by LaTeX
 *.pdf
-*.PDF
 
 # Don't track changes of aux LaTeX files
 *.aux
