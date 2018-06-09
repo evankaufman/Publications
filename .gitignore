@@ -1,8 +1,11 @@
-# Avoid some big files
-Conference/IRC\ 2018.zip
-Conference/SIMPAR\ 2016/JIRS16_experiment_SideBySide_speedup8x.mov
-Conference/SIMPAR\ 2016/JIRS16_experiment_SideBySide_speedup8x.mpeg
-Conference/SIMPAR\ 2016/JIRS16_simulation_speedup10x_then_speedup100x.mov
+# Compressed files
+*.zip
+*.tar.bz
+
+# Videos
+*.mp4
+*.mpeg
+*.mov
 
 # Don't save PDFs created by LaTeX
 *.pdf
