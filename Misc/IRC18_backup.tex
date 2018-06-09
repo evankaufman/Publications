@@ -1,0 +1,962 @@
+
+%% bare_conf.tex
+%% V1.3
+%% 2007/01/11
+%% by Michael Shell
+%% See:
+%% http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.7 or later) with an IEEE conference paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/tex-archive/macros/latex/contrib/IEEEtran/
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%
+%% File list of work: IEEEtran.cls, IEEEtran_HOWTO.pdf, bare_adv.tex,
+%%                    bare_conf.tex, bare_jrnl.tex, bare_jrnl_compsoc.tex
+%%*************************************************************************
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. IEEE's font choices can trigger bugs that do  ***
+% *** not appear when using other class files.                            ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+
+% Note that the a4paper option is mainly intended so that authors in
+% countries using A4 can easily print to A4 and see how their papers will
+% look in print - the typesetting of the document will not typically be
+% affected with changes in paper size (but the bottom and side margins will).
+% Use the testflow package mentioned above to verify correct handling of
+% both paper sizes by the user's LaTeX system.
+%
+% Also note that the "draftcls" or "draftclsnofoot", not "draft", option
+% should be used if it is desired that the figures are to be displayed in
+% draft mode.
+%
+\documentclass[conference]{IEEEtran}
+% Add the compsoc option for Computer Society conferences.
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[conference]{../sty/IEEEtran}
+
+
+
+
+\usepackage{graphicx}
+\usepackage{amssymb,url,times}%,subfigure}% amsthm is the one!
+\usepackage{caption,subcaption,hyperref}
+\usepackage{color,comment}
+\usepackage{curves,pgfgantt}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e} 
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+%\usepackage{cite}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 4.0 (2003-05-27) and later if using hyperref.sty. cite.sty does
+% not currently provide for hyperlinked citations.
+% The latest version can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/cite/
+% The documentation is contained in the cite.sty file itself.
+
+
+
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+  % \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation can
+% be obtained at: 
+% http://www.ctan.org/tex-archive/macros/latex/required/graphics/
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found as epslatex.ps or
+% epslatex.pdf at: http://www.ctan.org/tex-archive/info/
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+\usepackage[cmex10]{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics. If using
+% it, be sure to load this package with the cmex10 option to ensure that
+% only type 1 fonts will utilized at all point sizes. Without this option,
+% it is possible that some math symbols, particularly those within
+% footnotes, will be rendered in bitmap form which will result in a
+% document that can not be IEEE Xplore compliant!
+%
+% Also, note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/amslatex/math/
+
+
+\newtheorem{prop}{Proposition}
+\newcommand{\norm}[1]{\ensuremath{\left\| #1 \right\|}}
+\newcommand{\abs}[1]{\ensuremath{\left| #1 \right|}}
+\newcommand{\bracket}[1]{\ensuremath{\left[ #1 \right]}}
+\newcommand{\braces}[1]{\ensuremath{\left\{ #1 \right\}}}
+\newcommand{\parenth}[1]{\ensuremath{\left( #1 \right)}}
+\newcommand{\ip}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\refeqn}[1]{(\ref{eqn:#1})}
+\newcommand{\reffig}[1]{Figure \ref{fig:#1}}
+\newcommand{\tr}[1]{\mbox{tr}\ensuremath{\negthickspace\bracket{#1}}}
+\newcommand{\trs}[1]{\mbox{tr}\ensuremath{\!\bracket{#1}}}
+\newcommand{\deriv}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+\newcommand{\G}{\ensuremath{\mathsf{G}}}
+\newcommand{\SO}{\ensuremath{\mathsf{SO(3)}}}
+\newcommand{\T}{\ensuremath{\mathsf{T}}}
+\renewcommand{\L}{\ensuremath{\mathsf{L}}}
+\newcommand{\so}{\ensuremath{\mathfrak{so}(3)}}
+\newcommand{\SE}{\ensuremath{\mathsf{SE(3)}}}
+\newcommand{\se}{\ensuremath{\mathfrak{se}(3)}}
+\renewcommand{\Re}{\ensuremath{\mathbb{R}}}
+\newcommand{\Sph}{\ensuremath{\mathsf{S}}}
+\newcommand{\aSE}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&1\end{bmatrix}}}
+\newcommand{\ase}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&0\end{bmatrix}}}
+\newcommand{\D}{\ensuremath{\mathbf{D}}}
+\renewcommand{\d}{\ensuremath{\mathbf{d}}}
+\newcommand{\pair}[1]{\ensuremath{\left\langle #1 \right\rangle}}
+\newcommand{\met}[1]{\ensuremath{\langle\!\langle #1 \rangle\!\rangle}}
+\newcommand{\Ad}{\ensuremath{\mathrm{Ad}}}
+\newcommand{\ad}{\ensuremath{\mathrm{ad}}}
+\newcommand{\g}{\ensuremath{\mathfrak{g}}}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\WriteBlue}[1]{{\color{blue}\protect #1}}
+\graphicspath{{./Fig/}}
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithms/
+% There is also a support site at:
+% http://algorithms.berlios.de/index.html
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithmicx/
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/tools/
+
+
+%\usepackage{mdwmath}
+%\usepackage{mdwtab}
+% Also highly recommended is Mark Wooding's extremely powerful MDW tools,
+% especially mdwmath.sty and mdwtab.sty which are used to format equations
+% and tables, respectively. The MDWtools set is already installed on most
+% LaTeX systems. The lastest version and documentation is available at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/mdwtools/
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+%\usepackage{eqparbox}
+% Also of notable interest is Scott Pakin's eqparbox package for creating
+% (automatically sized) equal width boxes - aka "natural width parboxes".
+% Available at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/eqparbox/
+
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\usepackage[tight,footnotesize]{subfigure}
+% subfigure.sty was written by Steven Douglas Cochran. This package makes it
+% easy to put subfigures in your figures. e.g., "Figure 1a and 1b". For IEEE
+% work, it is a good idea to load it with the tight package option to reduce
+% the amount of white space around the subfigures. subfigure.sty is already
+% installed on most LaTeX systems. The latest version and documentation can
+% be obtained at:
+% http://www.ctan.org/tex-archive/obsolete/macros/latex/contrib/subfigure/
+% subfigure.sty has been superceeded by subfig.sty.
+
+
+
+%\usepackage[caption=false]{caption}
+%\usepackage[font=footnotesize]{subfig}
+% subfig.sty, also written by Steven Douglas Cochran, is the modern
+% replacement for subfigure.sty. However, subfig.sty requires and
+% automatically loads Axel Sommerfeldt's caption.sty which will override
+% IEEEtran.cls handling of captions and this will result in nonIEEE style
+% figure/table captions. To prevent this problem, be sure and preload
+% caption.sty with its "caption=false" package option. This is will preserve
+% IEEEtran.cls handing of captions. Version 1.3 (2005/06/28) and later 
+% (recommended due to many improvements over 1.2) of subfig.sty supports
+% the caption=false option directly:
+%\usepackage[caption=false,font=footnotesize]{subfig}
+%
+% The latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/subfig/
+% The latest version and documentation of caption.sty can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/caption/
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure. The latest version and documentation can be found at:
+% http://www.ctan.org/tex-archive/macros/latex/base/
+
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/sttools/
+% Documentation is contained in the stfloats.sty comments as well as in the
+% presfull.pdf file. Do not use the stfloats baselinefloat ability as IEEE
+% does not allow \baselineskip to stretch. Authors submitting work to the
+% IEEE should note that IEEE rarely uses double column equations and
+% that authors should try to avoid such use. Do not be tempted to use the
+% cuted.sty or midfloat.sty packages (also by Sigitas Tolusis) as IEEE does
+% not format its papers in such ways.
+
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/misc/
+% Read the url.sty source comments for usage information. Basically,
+% \url{my_url_here}.
+
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+%
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+\title{Autonomous Quadrotor 3D Mapping and Exploration Using Exact Probabilities and Entropies}
+
+
+% author names and affiliations
+% use a multiple column layout for up to three different
+% affiliations
+
+
+
+%\author{Evan Kaufman, Taeyoung Lee, and Zhuming Ai%, and Ira S. Moskowitz%
+%\thanks{Evan Kaufman, Taeyoung Lee, Mechanical and Aerospace Engineering, George Washington University, Washington DC 20052 {\tt \{evankaufman,tylee\}@gwu.edu}}
+%\thanks{Zhuming Ai, Information Management \& Decision Architectures, U.S. Naval Research Laboratory,  Washington, DC 20375}
+%\thanks{This research has been supported by the U.S. Naval Research Laboratory Base Program ``Intelligent Microflyer'' and in part by NSF under the grants CMMI-1243000, CMMI-1335008, and CNS-1337722.}
+%}
+
+
+
+
+
+
+
+
+%\author{\IEEEauthorblockN{Evan Kaufman, Kuya Takami, Taeyoung Lee}
+%\IEEEauthorblockA{Department of Mechanical and Aerospace Engineering\\The George Washington University\\
+%Washington, DC 20052\\
+%Email: \{evankaufman,kuya,tylee\}@gwu.edu}
+%\and
+%\IEEEauthorblockN{Zhuming Ai}
+%\IEEEauthorblockA{Information Management \& Decision Architectures
+%              \\ U.S. Naval Research Laboratory \\
+%              Washington, DC 20375}
+%}
+
+% conference papers do not typically use \thanks and this command
+% is locked out in conference mode. If really needed, such as for
+% the acknowledgment of grants, issue a \IEEEoverridecommandlockouts
+% after \documentclass
+
+% for over three affiliations, or if they all won't fit within the width
+% of the page, use this alternative format:
+% 
+\author{\IEEEauthorblockN{Evan Kaufman\IEEEauthorrefmark{1},
+Kuya Takami\IEEEauthorrefmark{1},
+Zhuming Ai\IEEEauthorrefmark{2} and
+Taeyoung Lee\IEEEauthorrefmark{1}}
+\IEEEauthorblockA{\IEEEauthorrefmark{1}Department of Mechanical and Aerospace Engineering\\
+The George Washington University, Washington, DC 20052\\
+Email: \{evankaufman, kuya, tylee\}@gwu.edu}
+\IEEEauthorblockA{\IEEEauthorrefmark{2}Information Management \& Decision Architectures
+\\ U.S. Naval Research Laboratory, Washington, DC 20375}
+}
+
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+
+% make the title area
+\maketitle
+
+
+\begin{abstract}
+%\boldmath
+Robotic mapping and exploration has received significant attention recently because exploring uncertain environments can pose danger to humans, and robots can produce highly detailed maps. Commonly uncertain environments contain complex geometries and robots frequently face restrictive terrains, motivating a 3D representation of mapping from a vehicle capable of hover. This paper focusses on the popular occupancy grid mapping representation, with the goal of determining occupancy probabilities of evenly-spaced grid cells in 3D. With recent developments from the authors using the stochastic properties of depth sensors directly with a rigorous, probabilistic formulation, this paper extends this precise mapping technique to 3D for real-time implementation with realistic sensor capabilities. Furthermore, important aspects of the 3D map are projected onto 2D maps, where a predicted level of map uncertainty, known as Shannon's entropy, provides an exploration policy that governs robotic motion. Both mapping and exploration algorithms produce important information that impacts each other and are demonstrated simultaneously with numerical simulations and experiments in real-time.
+\end{abstract}
+
+\section{Introduction}
+
+Robotic mapping is the process of generating maps, which represent the environment surrounding a robot. 
+Effectively modeling this environment is crucial when building an understanding of an initially uncertain environment.
+Robotic mapping serves an important role in tasks such as search-and-rescue, surveillance, and robotic cleaning.
+Several grid-based map representations have been studied, e.g.,~\cite{WolSuk05,MeyBeiBur12,TanThoWolBus14}, because they provide abundant occupancy knowledge of the environment are computationally tractable.
+
+Most grid-based mapping representations are designed for 2D, while others are extended to capture a full 3D environment. In particular, occupancy probabilities have been assigned to a uniform 3D grid in~\cite{Andert09,PirRutBisSch11}. Another highly-popular variation of occupancy grid mapping is the Octomap representation~\cite{WurHorBenStaBur10,HorWurBenStaBur13}, which provides powerful open-source software tools for representing free and occupied spaces nearby the robot, with the capability of extending the mapping limits and changing cell sizes. However, Octomaps produce cell occupancy probabilities that do not directly depend on the depth sensor stochastic properties, known as the forward sensor model. Ideally, the probability density provided by the forward sensor model should be used explicitly when determining occupancy probabilities of grid cells conditioned on the robot pose and measurements, known as the inverse sensor model. Instead, these approaches mentioned above determine occupancy probabilities using an approximate function to replace the true inverse sensor model. Additionally, this approach replaces probabilities with log-odds ratios, then combines past and current information with a potentially harmful Markov assumption.
+
+Alternatively, another popular approach is to simulate maps, robot poses, and measurements and use a learning algorithm, to approximate the inverse sensor model~\cite{Thr01,ThrBurFox05}, which is implemented in 3D with~\cite{SouMaiGon12}. These approaches are undesirable in practice due to complexities associated with implementing a learning algorithm. For example, the accuracy of such inverse sensor models strongly depends on the samples selected for learning, but it is unclear how to select those samples, or how many samples are required to obtain a reasonable approximation. Furthermore, it is challenging to apply any learning algorithm over the large dimensional space composed of maps, poses, and measurements. 
+
+The approximate nature of the inverse sensor model motivated the authors of this paper to design computationally-efficient algorithm to construct the exact inverse sensor model that follows a Bayesian framework~\cite{KauLeeAiMos16,KauTakAiLee17}. The key idea is reducing the computational load by using the fact that if a cell is occupied, the occupancies of the other cells blocked by it are irrelevant to the forward sensor model, and this model is systematically utilized with various probabilistic properties to derive a computationally-efficient solution to the inverse sensor model. This method combines a priori probabilities of occupancy and multiple range measurements according to a Bayesian framework to obtain more accurate maps. As such, it contrasts from the existing framework based on log-odds ratios that impose an additional Markov assumption or particle-filtering methods such as~\cite{TanThoWolBus14} that require particle weighting and resampling to obtain a variation on a Bayesian solution. 
+This paper proposes extending this algorithm to 3D with realistic sensor limitations. We demonstrate the efficacy of the proposed algorithm using two different depth sensors simultaneously to generate a 3D occupancy grid map with accurate probabilities in real-time with numerical simulations and experiments.
+
+The second topic of this paper deals with autonomous exploration. A common approach to solve the autonomous exploration problem is known as frontier-based exploration, proposed for 2D environments in~\cite{Yam97,Yam98}. This is the process of executing actions that move the robot toward the closest boundary between visited and unvisited space, known as a frontier.
+Then the robot takes measurements at this location such that the mapped territory expands, and thus the new frontiers are pushed back. This process is repeated until the map is well-known.
+This frontier-based approach is extended to 3D with~\cite{ZhuDinLinWu15,SenWan16,KleDor13} using the Octomap representation, and similarly in~\cite{SawKriSri09} using a visibility metric.
+Frontier-based exploration assumes that repeatedly moving toward the closest frontier and taking measurements are the best actions to gain new information about the map, though these systematic actions are not based on any consideration of the future uncertainty of the probabilistic map or optimality.
+
+Alternatively, there have been exploration techniques that are based on a quantitative measure of uncertainty known as Shannon's entropy~\cite{StaGriBur05}, an uncertainty metric based on grid cell occupancy probabilities. However, the expected entropy of an action is not directly calculated. Instead, this approach assumes that expected entropy is equivalent to entropy based on expected measurement scans; a Rao-Blackwellized particle filter estimates the robot pose and map, where expected measurements are drawn from each particle when finding the expected information gains, then combined with the weighting on each particle. However, assuming an expected measurement is sufficient to predict expected information is subject to inaccuracies due to the nonlinear nature of object detection probability and entropy. For these reasons, the authors have proposed a direct calculation of expected information gain from occupancy probabilities and stochastic sensor models~\cite{KauAiLee16,KauTakAiLee17}. In this paper, this concept is extended to 3D, where grid cells above and below a predetermined exploration height are projected onto 2D maps for entropy and collision calculations. In this sense, the proposed approach is entropy-based in 3D similar to~\cite{JohStaPfaBur07} where uncertainties are projected onto a 2D map, except that the entropy measures are based on map probabilities and sensor properties directly.
+
+The paper is organized as follows. The problem is formulated in Section II. Special considerations for mapping and exploration in 3D are established in Section III. A numerical example is demonstrated in Section IV. Experimental results are shown in Section V, followed by conclusions.
+
+
+\section{Problem Formulation}
+
+The key differences between the approaches presented in this paper and others is how map cell occupancy probability and measurement ray entropy are calculated directly from a priori cell probabilities and stochastic properties of the sensors involved. These are defined next.
+
+\subsection{Probabilistic Occupancy Grid Mapping}
+\label{subsec:POGM}
+Let a map $m$ be an occupancy grid map decomposed into $n$ evenly-spaced cubic grid cells with fixed edge length $\alpha$. The $i$-th grid cell is assigned to a static binary random variable $\mathbf{m}_i$ for $i\in\braces{1,2,\ldots,n}$, that is defined as $\mathbf{m}_i=1$ when occupied, and $\mathbf{m}_i=0$ when free. The location and size of each grid cell is assumed known, where a smaller cell size better represents a space, but increases computation and memory. Therefore, a map $m$ is defined by $\{\mathbf{m}_1,\ldots, \mathbf{m}_{n}\}$ ($2^{n}$ possible maps).
+
+Another random variable is defined as $\bar{\mathbf{m}}_i=1-\mathbf{m}_i$ for convenience, which is the event that the $i$-th cell is free, i.e., $P(\bar{\mathbf{m}}_i)=1-P(\mathbf{m}_i)$. The random variables composing $m$ are assumed mutually independent, 
+\begin{align}
+P(m)=P(\mathbf{m}_1,\mathbf{m}_2,\ldots,\mathbf{m}_{n})=\prod_{i=1}^{n}P(\mathbf{m}_i).
+\end{align}
+
+% {R ? R3×3 | RT R = I, det R = 1}
+Consider a range sensor that provides scans of the surrounding environment in order to identify the closest occupied space. Let the measurement scan at the $t$-th time step be $Z_t$, where $z\in Z_t$ is a single measurement ray. Let the $t$-th pose be denoted by $X_t=\braces{x_t,R_t}$ such that $x_t\in\Re^3$ and $R_t\in\SO=\braces{R\in\Re^{3\times3}|R^\T R=I,\det{R}=1}$, where $X_t$ is assumed to be known. Given the sensor probabilistic properties $p(z|X_t,m)$, commonly referred to as the \emph{forward sensor model}, the goal is finding the \emph{inverse sensor model}, $P(m|z,X_{1:t},Z_{1:t-1})$. To obtain this probability for all cells,~\cite{KauLeeAiMos16,KauTakAiLee17} introduced a reduced map $r\subset m$ composed of $n_r$ cells along $z$, where cells are indexed by increasing distance from $x_t$, and $\mathbf{r}_{k+}$ refers to the event that the $k$-th cell is the closest occupied space. Then, the inverse sensor model for the $k$-th cell is
+\begin{align}
+\label{eqn:RayISMAnswer}
+P(\mathbf{r}_{k}|z,X_{1:t},Z_{1:t-1})&=\eta\tilde P(\mathbf{r}_{k}|z,X_{1:t},Z_{1:t-1}),
+\end{align}
+where the unnormalized probability of the inverse sensor model is defined as
+\begin{align}
+\label{eqn:Unnormalized}
+\tilde P(\mathbf{r}_{k}|z,X_{1:t},&Z_{1:t-1})\nonumber\\
+&=\mathbf{P}_k^-
+\bigg[\sum_{i=1}^{k-1}\bigg\{\prod_{j=0}^{i-1}\bar{\mathbf{P}}_j^-\bigg\}p(z|\mathbf{r}_{i+},X_t)\mathbf{P}_k^-\bigg]\nonumber\\
+&\quad + \bigg\{\prod_{j=0}^{k-1}\bar{\mathbf{P}}_j^-\bigg\}p(z|\mathbf{r}_{k+},X_t)\mathbf{P}_k^-,
+\end{align}
+where a priori probability is $\mathbf{P}_k^-=P(\mathbf{r}_{k}|X_{1:t-1},Z_{1:t-1})$, its complement is $\bar{\mathbf{P}}_k^-=1-\mathbf{P}_k^-$, $P(\bar{\mathbf{r}}_{0}|X_{1:t-1},Z_{1:t-1})=P(\mathbf{r}_{n_r+1}|X_{1:t-1},Z_{1:t-1})=1$ for convenience, and $p(z|\mathbf{r}_{(n_r+1)+},X_t)$ represents the forward sensor model of a maximum sensor reading. The normalizer $\eta$ is given by
+\begin{align}
+\label{eqn:allEta}
+\eta
+&=
+\bigg[\sum_{i=1}^{n_{r}+1}\bigg\{\prod_{j=0}^{i-1}\bar{\mathbf{P}}_j^-\bigg\} p(z|\mathbf{r}_{i+},X_t)\mathbf{P}_k^-\bigg]^{-1},
+\end{align}
+and it is independent of the cell index $k$. Since the terms of \refeqn{Unnormalized} are easily obtained and several are used repeatedly to obtain \refeqn{allEta}, the computational cost of \refeqn{RayISMAnswer} is trivial and can be applied in real-time. This process is repeated for all measurements composing scan $Z_t$.
+
+\subsection{Predictive Entropy-Based Autonomous Exploration}
+
+
+Since occupancy grid mapping provides a probabilistic representation of surrounding space, this mapping scheme holds probabilistic information about the uncertainty of the map. Shannon's entropy is commonly used as a measure of uncertainty, such as in~\cite{StaGriBur05}. Given the probabilities of each grid cell of map $m$, Shannon's entropy of an individual cell and the entire map are defined as
+\begin{align}
+\label{eqn:ShannonsEntropyCell}
+H(P(\mathbf{m}_i))&=-P(\mathbf{m}_i)\log{P(\mathbf{m}_i})-P(\bar{\mathbf{m}}_i)\log{P(\bar{\mathbf{m}}_i}),
+\\
+\label{eqn:ShannonsEntropyMap}
+H(P(m))&=\sum_{i=1}^{n_m}H(P(\mathbf{m}_i)),
+\end{align}
+respectively.
+The entropy of the $i$-th grid cell is maximized when $P(\mathbf{m}_i)=0.5$ (greatest uncertainty) and minimized as $P(\mathbf{m}_i)$ approaches $0$ or $1$ (smallest uncertainty). %; thus Shannon's entropy is a measure of uncertainty.
+
+Let an unvisited candidate future pose and its measurement scan be $X_c$ and $Z_c$, respectively. Since the robot has not visited $X_c$, any change to the probabilistic map must be predicted. Much like the probabilistic mapping, this is achieved ray-by-ray~\cite{KauAiLee16,KauTakAiLee17}. Since all grid cell probabilities are conditioned on the history of poses $X_{1:t}$ and measurement scans $Z_{1:t}$, these are removed from the remaining equations for simplicity. For candidate ray $z_c$, the expected entropy is
+\begin{align}
+\label{eqn:DiscExpEntropyRay}
+&\text{E}[H(P(m|x_c,z_{c}))]=\sum_{k=1}^{n_{r}+1}\bigg\{H(P(m|x_c,z_{c,k}))P(z_{c,k}|x_c)\bigg\},
+\end{align}
+where subscript $k$ refers to the event that the candidate \emph{measurement} captures the $k$-th cell along the ray, i.e., $z_{c,k}$ is the distance from $x_c$ to the $k$-th grid cell. The first term of the summation of \refeqn{DiscExpEntropyRay}, namely $H(P(m|x_c,z_{c,k}))$, is obtained with the inverse sensor model \refeqn{RayISMAnswer}--\refeqn{allEta} and entropy definitions \refeqn{ShannonsEntropyCell}, \refeqn{ShannonsEntropyMap}. The second term is found using \refeqn{allEta} with
+\begin{align}
+P(z_{c,k}|x_c)&=\frac{p(z_{c,k}|x_c)}{\sum_{i=1}^{n_{r}+1}p(z_{c,i}|x_c)}=\frac{\eta_{c,k}^{-1}}{\sum_{i=1}^{n_{r}+1}\eta_{c,i}^{-1}}.
+\end{align}
+
+The goal of entropy-based autonomous exploration is to select the optimal pose $X^*_c$ that maximizes the expected information gain,
+\begin{align}
+\label{eqn:objectiveFunOptimized}
+X_c^*&=\argmax_{X_c}{\ \mathcal I(X_c)},
+\\
+\label{eqn:objectiveFun}
+\mathcal I(X_c)&=H(P(m|X_{1:t},Z_{1:t}))-\text{E}\left[H(P(m|X_c,Z_c))\right],
+\end{align}
+where \refeqn{DiscExpEntropyRay} is used repeatedly for several sample rays that compose scan $Z_c$ as shown in~\cite{KauAiLee16}.
+
+Once an optimal pose $X^*_c$ is selected, a set of collision-free waypoints along the occupancy grid is easily obtained with Dijkstra's algorithm~\cite{Dij59}. Then, a constrained least squares optimization provides a trajectory as a tracking command for the robot controller.
+
+\section{Mapping and Exploring in 3D}
+
+\subsection{Mapping in 3D Space}
+
+The inverse sensor model from~\cite{KauLeeAiMos16,KauTakAiLee17} is based on an arbitrary vector spanning 2D space. The distances from the robot to grid cells are obtained geometrically through ray casting. This method is easily extended to 3D space, and the inverse sensor model is applied identically. 
+
+However, implementation in 3D requires several careful considerations. First, the number of cell occupancy probabilities tracked with computer memory increases by a factor of the number of cells in the added dimension. In its current form, the proposed method assumes fixed map limits, so these should be carefully selected with grid cell resolution based on available memory. Second, measurement rays spanning 3D space typically involve more intersections with grid cells. The computational order of ray casting and the inverse sensor model are proportional to the number of grid cells along the ray $n_r$, so careful consideration must be placed on sensor limits and rays per scan that can be considered. Typically, computers small enough to be carried onboard flying robots lack the memory or processing capabilities to update massive maps quickly. Therefore, an onboard computer can simply stream the sensor data, and a more powerful computer can run the mapping.
+
+Additionally, flying vehicles are frequently subject to fast movements, and the time stamps for pose estimates and depth sensor readings are not guaranteed to align. For example, the most recent pose estimate and measurement scan may have significantly different time stamps while the robot is rapidly rotating. Using these together violates the assumption that the robot pose is well-known for every measurement scan, i.e., $X_t$ and $Z_t$ are given. Therefore, pose estimates and sensor readings must be paired according to their time stamps. A useful tool that easily satisfies this goal is message filtering with the Robot Operating System (ROS), where stamped poses and measurement scans are synchronized using recently received data.
+
+\subsection{Autonomous Exploration in 3D Space}
+
+The goal of the proposed autonomous exploration strategy is moving to poses that maximize the information the robot expects to learn about the map, measured with entropy. To achieve this in real-time, careful consideration is placed on computational costs. In particular, the expected entropy computational order of a ray that intersects $n_r$ cells is $(n_r+1)^2$. Since most quadrotor flight is close to level, i.e., the third body-fixed axis (up/down) of the inertial and quadrotor body-fixed frames are nearly aligned, the proposed exploration uses 2D occupancy grid maps located at the desired exploration height. This approach decreases $n_r$ and simplifies the exploration problem with 3D space. These 2D maps project important properties of the 3D map, described next.
+
+\subsubsection{Collision and Entropy Maps}
+Occupancy grid map cell volume is frequently smaller than the size of the robot taking measurements, particularly with highly-detailed maps. This motivates a method to simply represent locations that risk collision, referred to as a \emph{collision map} $C$. Let $k_C\geq1$ be an integer representing the minimum number of 3D grid cells that form a cube that can completely encompass the robot, i.e., the collision map cell edge length is
+\begin{align}
+\label{eqn:alphaC}
+\alpha_C=k_C\alpha.
+\end{align}
+Consider the set $m_{C,k}\subset m$ consisting of the 3D grid cells falling inside the limits of the $k$-th cell of collision map $C$, namely $\mathbf{C}_k$. Then the collision probability is
+\begin{align}
+P(\mathbf{C}_k)=\max{(P(\mathbf{m}_i)\ \forall \ i\in m_{C,k})}.
+\end{align}
+Then, the robot is only allowed to consider moving into $k$-th cell of the collision map if
+\begin{align}
+P(\mathbf{C}_k) \leq C_\text{thresh},
+\end{align}
+where $C_\text{thresh}>0$ is a maximum acceptable collision threshold, typically chosen slightly greater than $0$. In short, this conservative approach limits robotic motion to regions with a low risk of collision while neglecting objects far above or below the exploration plane.
+
+In a similar method, \emph{entropy map} $E$ determines cells based on the entropy metric of \refeqn{ShannonsEntropyCell} over a different subset of cells. Let the $E$ be a 2D map composed of cells with edge length $\alpha$ located at the exploration height. Let the set $m_{E,k}\subset m$ be the cells directly above and below the $k$-th cell of $E$, neglecting any 3D cells located lower than the floor height. Selecting this set is advantageous because measurements are assumed not to penetrate occupied cells (edge length $\alpha$) and measurement rays are typically not closely-aligned with the third axis of the inertial frame (vertically long set). Furthermore, any cells located below the floor, which cannot be reached, should not impact the uncertainty of the space. Then, the occupancy probability of the $k$-th entropy map cell is selected as
+\begin{align}
+\label{eqn:ProbEntropyMap}
+P(\mathbf{E}_k)=\argmax_{P(\mathbf{m}_i)}(H(P(\mathbf{m}_i))\ \forall \ i\in m_{E,k}).
+\end{align}
+After several measurements of the cells belonging to $m_{E,k}$, it is common for $H(P(\mathbf{E}_k))\approx0$, which implies that these cells are well-known. However, this does not imply that the captured space is \emph{entirely} free or occupied (e.g. a floor with free space above it, an object that does not breach the upper map boundary), so applying \refeqn{ProbEntropyMap} alone could arbitrarily set $P(\mathbf{E}_k)$ close to $0$ or $1$. This can have damaging effects on the expected information of cells beyond the $k$-th cell. Let $P_\text{min}>0$ be a lower bound such that $H(P_\text{min})=H(1-P_\text{min})\approx0$. If $H(P(\mathbf{E}_k))\leq H(P_\text{min})$, then this probability is corrected to
+\begin{align}
+P(\mathbf{E}_k)= 
+\begin{cases}
+    P_\text{min},			& \text{if } \text{mean}(P(\mathbf{m}_i)\ \forall \ i\in m_{E,k})\leq0.5\\
+    1-P_\text{min},              & \text{otherwise}
+\end{cases},
+\end{align}
+where the first case corresponds to mostly open space and the second case corresponds to mostly occupied space (e.g. walls and objects). In short, the candidates are only considered if they can be reached over collision map $C$ via Dijkstra's search, and the information gains of the reachable candidates are predicted using entropy map $E$.
+
+\subsubsection{Collision and Entropy Combination Map}
+The second proposed technique combines the advantages of both the collision and entropy maps into a 2D projected occupancy grid map, which can be used for both tasks. Let the \emph{collision and entropy combination map} $B$ be a 2D projected map located at the exploration height with grid cell edges the same as the collision map, namely $\alpha_C$ from \refeqn{alphaC}, using the same subset of grid cells from the collision map, namely $m_C$. Considering that the cells begin with uniform probability $P_\text{init}$ where $0<P_\text{init}<1$, define a threshold $P_\text{thresh}$ such that $P_\text{init}<P_\text{thresh}<1$. Then, the probability assigned to the $k$-th grid cell of $B$ is
+\begin{align}
+P(\mathbf{B}_k)= 
+\begin{cases}
+    P(\mathbf{C}_k),			& \text{if }P(\mathbf{C}_k)\geq P_\text{thresh}\\
+    \min{(P(\mathbf{m}_i)\ \forall \ i\in m_{C,k})},              & \text{otherwise}
+\end{cases}.
+\end{align}
+
+This approach has several advantages. First, measurements must enter the vicinity of the $k$-th cell for $P(\mathbf{B}_k)$ to change from $P_\text{init}$. Without prior measurements, capturing $P(\mathbf{B}_k)$ produces a large reward for the expected information gain in \refeqn{objectiveFun}. Second, the value of $P_\text{thresh}$ can be modified based on how conservative the collision risk assessment for a robot should be. Additionally, when $P(\mathbf{B}_k)<P_\text{thresh}$, this event tends to favor free cells such that expected information gains of cells beyond the $k$-th cell have greater impact on exploration. Furthermore, a single map is simpler, and since cell sizes satisfy $\alpha_C\geq\alpha$, it follows that $n_r$ can only be decreased with $\alpha_C$, thereby increasing computational speed.
+
+\section{Numerical Results}
+
+The 3D mapping and exploration algorithms are simulated using the first proposed approach with separate collision and entropy 2D projected maps. The Robot Operating System (ROS) provides an excellent framework for several programs to communicate easily. Gazebo serves as the simulator, which provides plugins to simulate an Asus Xtion color depth sensor and a Hokuyo LIDAR. It also provides position and attitude transforms from the world to the quadrotor body. Using fixed transforms between the quadrotor body and its onboard sensors, an original mapping node uses a variation of ROS message filters, known as transform message filters, to synchronize the sensor poses with the sensor reading time stamps. The node is designed to work for any number of sensors and uses the sensor properties directly when solving the inverse sensor model. In particular, the Xtion and Hokuyo are modeled using normalized Gaussian and uniform distributions for the sensor model, with a Gaussian probability of $0.9$ with $\sigma_\text{Xtion}=0.25$ and $\sigma_\text{Hokuyo}=0.1$, respectively, which are greater than their specified values to account for pose uncertainty and distortion with the Xtion. Since the Xtion tends to distort depths significantly beyond $4$m, this maximum reading considered for both the Xtion and Hokuyo, and the uniform distribution (probability $0.1$) covers the sensor ranges from $0.5$m to $4$m. A cell size of $\alpha=0.075$m is selected and the map limits are $-4$m to $4$m in the x-direction, $-6$m to $6$m in the y-direction, and $-0.15$m to $1.5$m in the z-direction. The initial probability of cells was selected at $P_\text{init}=0.1$.
+
+The other original node is for autonomous exploration. For this section, separate 2D collision and entropy maps are used. For the collision map, the cell edge factor is $k_C=3$. Additionally, Dijkstra's algorithm produces a cost map composed of distance costs for each collision map cell, denoted $d_\text{cell}$, from the current robot position to the candidate pose locations over a collision-free path about the occupancy grid. A normalized variation on the \emph{bump function}~\cite{Joh06} with maximum distance $d_\text{max}>0$,% TODO: CHECK!
+\begin{align}
+\text{bump}(d_\text{cell})= 
+\begin{cases}
+    e^{1-\frac1{1-(d_\text{cell}/d_\text{max})^2}},			& \text{if }-d_\text{max}<d_\text{cell}<d_\text{max}\\
+    0,              				& \text{otherwise}
+\end{cases},
+\end{align}
+is multiplied to \refeqn{objectiveFun} when optimizing \refeqn{objectiveFunOptimized}. For this experiment, $d_\text{max}$ is chosen as the maximum value of $d_\text{cell}$ on the cost map. This serves to prioritize understanding the local surrounding space before the robot moves across the map to distant regions.
+
+In the simulation, the robot explores the simulated environment for $5$min while taking measurements. The 3D occupancy grid map and true environment are shown in Fig. \ref{fig:sim3DMap}. The Gazebo simulated environment and two 2D projected maps for collision and entropy are shown in Fig. \ref{fig:sim2Dmaps}. The total map entropy as a function of time is shown in Fig. \ref{fig:simH}.
+
+
+\begin{figure}[!t]
+    	\begin{subfigure}[t]{0.24\columnwidth}
+           	\centering
+          	\includegraphics[trim = {41.5cm 17cm 14.3cm 3.8cm}, clip, height=\textwidth]{gazebo_1min.jpg}
+        		\caption{$t=1$min}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.24\columnwidth}
+           	\centering
+          	\includegraphics[trim = {41.5cm 17cm 14.3cm 3.8cm}, clip, height=\textwidth]{gazebo_2min.jpg}
+        		\caption{$t=2$min}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.24\columnwidth}
+           	\centering
+          	\includegraphics[trim = {41.5cm 17cm 14.3cm 3.8cm}, clip, height=\textwidth]{gazebo_3min.jpg}
+        		\caption{$t=3$min}
+   	\end{subfigure}
+    	\begin{subfigure}[t]{0.24\columnwidth}
+           	\centering
+          	\includegraphics[trim = {41.5cm 17cm 14.3cm 3.8cm}, clip, height=\textwidth]{gazebo_4min.jpg}
+        		\caption{$t=4$min}
+    	\end{subfigure}
+	\begin{subfigure}[t]{0.24\columnwidth}
+           	\centering
+          	\includegraphics[trim = {41.5cm 17cm 14.3cm 3.8cm}, clip, height=\textwidth]{gazebo_5min.jpg}
+        		\caption{$t=5$min}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.24\columnwidth}
+           	\centering
+          	\includegraphics[trim = {41.5cm 17cm 14.3cm 3.8cm}, clip, height=\textwidth]{gazebo_6min.jpg}
+        		\caption{$t=6$min}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.24\columnwidth}
+           	\centering
+          	\includegraphics[trim = {41.5cm 17cm 14.3cm 3.8cm}, clip, height=\textwidth]{gazebo_7min.jpg}
+        		\caption{$t=7$min}
+   	\end{subfigure}
+    	\begin{subfigure}[t]{0.24\columnwidth}
+           	\centering
+          	\includegraphics[trim = {41.5cm 17cm 14.3cm 3.8cm}, clip, height=\textwidth]{gazebo_8min.jpg}
+        		\caption{$t=8$min}
+    	\end{subfigure}
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+\caption{Simulated 3D Occupancy Grid Map}
+\label{fig:sim3DMap}
+\end{figure}
+
+
+\begin{figure}[!t]
+	\centering
+	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[height=1.5\textwidth]{gazebo_view.png}
+        		\caption{Environment}
+    	\end{subfigure}
+		\hspace*{0.05cm}
+    	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[trim = {3.6cm 17cm 52.5cm 4cm}, clip, height=1.5\textwidth]{gazebo_4min.jpg}
+        		\caption{Collision Map}
+    	\end{subfigure}
+	\hspace*{0.1cm}
+	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[trim = {18cm 17cm 38.1cm 4cm}, clip, height=1.5\textwidth]{gazebo_4min.jpg}
+        		\caption{Entropy Map}
+    	\end{subfigure}
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+\caption{Simulated Environment and 2D Projected Maps at $4$min}
+\label{fig:sim2Dmaps}
+\end{figure}
+
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=0.4\textwidth]{SimEntropy.pdf}
+	\caption{Simulated Environment Map Entropy}
+	\label{fig:simH}
+\end{figure}
+
+The two-map approach exhibits advantages and disadvantages. The exploration algorithm governs robotic motion to poses that were highly beneficial to the 3D occupancy grid of the local environment. The floor, which is not always visible, is properly estimated in most places. Conversely, this attention to detail has negative consequences that encourage the robot to repeatedly look at the same regions for different vantage points. Occasionally an entropy map cell, composed of all cells above the floor single-stacked vertically, is rarely captured, which yields large expected information gains, even though other regions might warrant observation more. This is because there is no explicit consideration for the \emph{number} of 3D cells with high uncertainty to projected onto the entropy map, only a single probability associated with the maximum entropy belonging to that set. In short, this algorithms successfully explores the space collision-free while producing a complete map, but over-attention to just a few uncertain cells has negative consequences on the exploration time.
+
+
+\section{Experimental Results}
+
+The experimental setup follows similar conditions with a few key differences. Most importantly, the second proposed exploration approach, namely a collision and entropy combination map, replaces the two-map approach. Additionally, instead of using a simulated environment such as Gazebo, where the robot state can be set and measured directly, a Vicon motion capture system provides pose data and nonlinear geometric flight controller~\cite{GooDaeLee13} provides the necessary forces and moments to follow the desired exploration trajectories, run onboard a Jetson TX2 computer. The Asus Xtion and Hokuyo Lidar are configured the same was as simulation, but their data is streamed from the Jetson TX2 via Wifi to a host computer running the mapping and exploration nodes with an Intel Core i7-6800K CPU (12$\times$3.40GHz).
+
+The Laboratory for Autonomous Systems Research (LASR) at the U.S. Naval Research Laboratory (NRL) provided a large experimental space for testing. An experimental setup, involving Ram Board suspended from stanchions resembled a building floor plan, as well as miscellaneous objects like trash cans and tables. The map limits were $0.5$m to $10.3$m in the x-direction, $-8.3$m to $3.5$m in the y-direction, and $-0.15$m to $1.5$m in the z-direction. Pictures of the environment are shown in Fig. \ref{fig:exp3DEnvironment}, and the resulting 3D maps at various time steps are shown in Fig. \ref{fig:exp3DMap}. The 2D projected maps (x-direction upward) at corresponding time steps are shown in Figure \ref{fig:exp2DMap}, where trajectories are shown with curves to candidate poses, shown with arrows. The total map entropy as a function of time is shown in Figure \ref{fig:expH}.
+
+% trim={<left> <lower> <right> <upper>}
+\begin{figure}[!t]
+\centering
+    	\begin{subfigure}[t]{0.44\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{experiment_north.jpg}
+        		\caption{North Region}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.44\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{experiment_south.jpg}
+        		\caption{South Region}
+    	\end{subfigure}
+	\caption{3D Environment}
+	\label{fig:exp3DEnvironment}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+    	\begin{subfigure}[t]{0.44\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{experiment_ogm3D_0min.jpg}
+        		\caption{$0$min}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.44\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{experiment_ogm3D_1min.jpg}
+        		\caption{$1$min}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.44\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{experiment_ogm3D_2min.jpg}
+        		\caption{$2$min}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.44\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{experiment_ogm3D_2min47sec.jpg}
+        		\caption{$2$min $47$sec (end)}
+    	\end{subfigure}
+	\caption{3D Occupancy Grid Map and Point Clouds}
+	\label{fig:exp3DMap}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+    	\begin{subfigure}[t]{0.44\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{experiment_0min_2D.jpg}
+        		\caption{$0$min}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.44\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{experiment_1min_2D.jpg}
+        		\caption{$1$min}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.44\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{experiment_2min_2D.jpg}
+        		\caption{$2$min}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.44\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{experiment_2min47sec_2D.jpg}
+        		\caption{$2$min $47$sec (end)}
+    	\end{subfigure}
+	\caption{2D Collision and Exploration Combination Map}
+	\label{fig:exp2DMap}
+\end{figure}
+
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=0.4\textwidth]{ExpEntropy.pdf}
+	\caption{Experimental Environment Map Entropy}
+	\label{fig:expH}
+\end{figure}
+
+The projected map used for both collision and exploration demonstrated several benefits. The robot measured walls and objects with the 3D map, and nicely represented these as occupied space with the 2D projected map. Additionally, the robot explored the space much faster than with two separate maps, primarily because the exploration experiment avoided several
+	
+\begin{itemize}
+	\item Important result: free space and walls correctly estimated, but features of the floor could be improved
+\end{itemize}
+
+
+% ATTENTION: left out patched segment size and polynomial order
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulation Results}
+%\label{fig_sim}
+%\end{figure}
+
+% Note that IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command, the
+% \label for the overall figure must come after \caption.
+% \hfil must be used as a separator to get equal spacing.
+% The subfigure.sty package works much the same way, except \subfigure is
+% used instead of \subfloat.
+%
+%\begin{figure*}[!t]
+%\centerline{\subfloat[Case I]\includegraphics[width=2.5in]{subfigcase1}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{subfigcase2}%
+%\label{fig_second_case}}}
+%\caption{Simulation results}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+
+
+% An example of a floating table. Note that, for IEEE style tables, the 
+% \caption command should come BEFORE the table. Table text will default to
+% \footnotesize as IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}[!t]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+%\caption{An Example of a Table}
+%\label{table_example}
+%\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{table}
+
+
+% Note that IEEE does not put floats in the very first column - or typically
+% anywhere on the first page for that matter. Also, in-text middle ("here")
+% positioning is not used. Most IEEE journals/conferences use top floats
+% exclusively. Note that, LaTeX2e, unlike IEEE journals/conferences, places
+% footnotes above bottom floats. This can be corrected via the \fnbelowfloat
+% command of the stfloats package.
+
+
+
+\section{Conclusions and Future Work}
+
+\begin{itemize}
+	\item Paper demonstrated results for mapping and exploration can be successfully executed in 3D
+	\item Note on differences with projected maps
+	\item Future work: projected maps can serve multiple robots working cooperatively
+	\item Future work: ray casting in 3D allows entropy calculation and exploration in 3D
+\end{itemize}
+
+
+
+
+
+% conference papers do not normally have an appendix
+
+
+% use section* for acknowledgement
+%\section*{Acknowledgment}
+%
+%
+%The authors would like to thank...
+
+
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+\bibliography{../../BibSources}
+\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+%\begin{thebibliography}{1}
+%
+%\bibitem{IEEEhowto:kopka}
+%H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
+%  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+%
+%\end{thebibliography}
+
+
+
+
+% that's all folks
+\end{document}
+
+

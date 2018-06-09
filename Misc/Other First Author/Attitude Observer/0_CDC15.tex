@@ -1,0 +1,169 @@
+%\documentclass[11pt,professionalfonts,hyperref={pdftex,pdfpagemode=none,pdfstartview=FitH}]{beamer}
+\documentclass[handout,draft]{beamer}  %% handout mode
+%\usepackage{times}
+\usefonttheme{serif}
+%\usepackage{helvet}
+%\usepackage{graphicx,multirow}
+\usepackage[scriptsize]{subfigure}
+\usepackage{movie15, amsmath,bbm, alltt}
+\usepackage{color, ulem, cancel, tcolorbox}
+%\usepackage{graphicx, subcaption, caption}
+\usepackage{pifont, bbding}
+%\usepackage{warmread}
+%\usepackage[all,import]{xy}
+
+%\renewcommand\mathfamilydefault{\rmdefault}
+%\newcommand{\norm}[1]{\ensuremath{\left\| #1 \right\|}}
+%\newcommand{\bracket}[1]{\ensuremath{\left[ #1 \right]}}
+%\newcommand{\braces}[1]{\ensuremath{\left\{ #1 \right\}}}
+%\newcommand{\parenth}[1]{\ensuremath{\left( #1 \right)}}
+%\newcommand{\pair}[1]{\ensuremath{\langle #1 \rangle}}
+%\newcommand{\met}[1]{\ensuremath{\langle\langle #1 \rangle\rangle}}
+
+
+\newcommand{\al}{\alpha}
+\newcommand{\be}{\beta}
+\newcommand{\ga}{\gamma}
+\newcommand{\lam}{\lambda}
+\newcommand{\diag}{\mathrm{diag}}
+\newcommand{\refeqn}[1]{(\ref{eqn:#1})}
+\newcommand{\reffig}[1]{Fig. \ref{fig:#1}}
+\newcommand{\tr}[1]{\mathrm{tr}\ensuremath{\negthickspace\bracket{#1}}}
+\newcommand{\trs}[1]{\mathrm{tr}\ensuremath{[#1]}}
+\newcommand{\deriv}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+\newcommand{\SO}{\ensuremath{\mathsf{SO(3)}}}
+\newcommand{\T}{\ensuremath{\mathsf{T}}}
+\renewcommand{\t}{\times}
+\newcommand{\tc}{\textcolor}
+\newcommand{\td}{\tilde}
+\renewcommand{\tr}{\mathrm{tr}}
+\newcommand{\fn}{\footnotesize}
+\renewcommand{\L}{\ensuremath{\mathsf{L}}}
+\newcommand{\so}{\ensuremath{\mathfrak{so}(3)}}
+\newcommand{\SE}{\ensuremath{\mathsf{SE(3)}}}
+\newcommand{\se}{\ensuremath{\mathfrak{se}(3)}}
+\renewcommand{\Re}{\ensuremath{\mathbb{R}}}
+\newcommand{\aSE}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&1\end{bmatrix}}}
+\newcommand{\ase}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&0\end{bmatrix}}}
+\newcommand{\D}{\ensuremath{\mathbf{D}}}
+\newcommand{\Sph}{\ensuremath{\mathsf{S}}}
+\renewcommand{\S}{\Sph}
+\newcommand{\J}{\ensuremath{\mathbf{J}}}
+\newcommand{\Ad}{\ensuremath{\mathrm{Ad}}}
+\newcommand{\intp}{\ensuremath{\mathbf{i}}}
+\newcommand{\extd}{\ensuremath{\mathbf{d}}}
+\newcommand{\hor}{\ensuremath{\mathrm{hor}}}
+\newcommand{\ver}{\ensuremath{\mathrm{ver}}}
+\newcommand{\dyn}{\ensuremath{\mathrm{dyn}}}
+\newcommand{\geo}{\ensuremath{\mathrm{geo}}}
+\newcommand{\Q}{\ensuremath{\mathsf{Q}}}
+\newcommand{\G}{\ensuremath{\mathsf{G}}}
+\newcommand{\g}{\ensuremath{\mathfrak{g}}}
+\newcommand{\W}{\Omega}
+\newcommand{\w}{\omega}
+\newcommand{\Ra}{\mathrm{I}}
+\newcommand{\Rb}{\mathrm{II}}
+\newcommand{\Rc}{\mathrm{III}}
+\newcommand{\m}{\mathrm{\mathbf{m}}} 
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Hess}{\ensuremath{\mathrm{Hess}}}
+\newcommand{\refprop}[1]{Proposition \ref{prop:#1}}
+\newcommand{\mypaper}{}
+\theoremstyle{definition} 
+\newtheorem{prop}{Proposition}
+
+%\definecolor{RoyalBlue}{rgb}{0.25,0.41,0.88}
+%\def\Emph{\textcolor{RoyalBlue}}
+\definecolor{drab}{rgb}{0.59, 0.44, 0.09}
+\def\Emph{\textcolor{drab}}
+%\definecolor{ginger}{rgb}{0.69, 0.4, 0.0}
+%\def\Emph{\textcolor{ginger}}
+
+\definecolor{mygray}{gray}{0.9}
+\graphicspath{{./Figures/}}
+
+
+\mode<presentation> 
+{
+%  \usetheme{Warsaw}
+  \usetheme{JuanLesPins}
+%  \usetheme{Frankfurt}
+%  \usetheme{Boadilla}
+%  \usecolortheme{default}
+  \usecolortheme{whale}
+  \usefonttheme{serif}
+  \setbeamercovered{transparent}
+}
+
+\setbeamertemplate{footline}%{split theme}
+{%
+  \leavevmode%
+  \hbox{
+%  \begin{beamercolorbox}[wd=.5\paperwidth, ht=2.5ex, dp=1.125ex, leftskip=.3cm, rightskip=.3cm plus1fill]{author in head/foot}%
+%  \usebeamerfont{author in head/foot}\insertshorttitle
+%  \end{beamercolorbox}%
+
+%  \begin{beamercolorbox}[wd=.5\paperwidth, ht=2.5ex, dp=1.125ex, leftskip=.3cm, 	rightskip=.3cm]{title in head/foot}
+%  \usebeamerfont{title in head/foot}\mypaper\hfill \insertframenumber/\inserttotalframenumber
+%  \usebeamerfont{title in head/foot}\hfill \insertframenumber/\inserttotalframenumber
+%  \end{beamercolorbox}
+  }%
+  \vskip0pt%
+} \setbeamercolor{box}{fg=black,bg=yellow}
+
+\title[Globally Asymptotically Stable Attitude Observer on $\SO$]
+%\title[]
+{\Large
+Globally Asymptotically Stable \\ Attitude Observer on $\SO$
+}
+
+%\author{}
+
+
+\institute{
+{\bf{Tse-Huai Wu}, \bf{Evan Kaufman}} \\
+\vspace*{0.1cm}
+\bf{and}\\
+\vspace*{0.1cm}
+\bf{Taeyoung Lee}\\
+\vspace*{0.4cm}
+%\vspace*{0.2cm}
+\bf{Departmen of Mechanical \& Aerospace Engineering} \\
+\vspace*{-0.1cm} 
+ 	\begin{figure} %figure%
+    \includegraphics[width=4.50cm]{gwu_logo.png}
+  	\end{figure}
+}
+\date{}
+
+\definecolor{tmp}{rgb}{0.804,0.941,1.0}
+\setbeamercolor{numerical}{fg=black,bg=tmp}
+\setbeamercolor{exact}{fg=black,bg=red}
+
+\begin{document}
+%=======================================================%
+%latet modift: 11/19/2012%
+%\begin{frame} %-----------------------------%
+%\frametitle{}
+%  \begin{itemize} \item \end{itemize} 
+%\end{frame}   %-----------------------------%
+\begin{frame} %-----------------------------%
+  \titlepage
+\end{frame}   %-----------------------------%
+
+
+
+\include{1_Introduction}
+\include{4_AttOb}
+
+
+
+
+
+
+%\begin{frame} %-----------------------------%
+%\frametitle{}
+%  \begin{itemize} \item \vspace*{0.1cm} \end{itemize} 
+%\end{frame}   %-----------------------------%
+%=======================================================%
+\end{document}
