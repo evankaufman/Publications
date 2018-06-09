@@ -1,6 +1,7 @@
 # Compressed files
 *.zip
 *.tar.bz
+*.tar.gz
 
 # Videos
 *.mp4
