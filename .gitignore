@@ -15,6 +15,9 @@ Conference/SIMPAR\ 2016/JIRS16_simulation_speedup10x_then_speedup100x.mov
 *.out
 *.synctex.gz
 
+# Misc
+.DS_Store
+
 # Keep PDFs inside the Fig directory
 !Fig/*.pdf
 !Fig/*.PDF
