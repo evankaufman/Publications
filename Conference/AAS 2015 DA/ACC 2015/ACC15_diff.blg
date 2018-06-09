@@ -1,0 +1,96 @@
+This is BibTeX, Version 0.99d (TeX Live 2014)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: ACC15_diff.aux
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: BibMaster.bib
+I was expecting a `,' or a `}'---line 114 of file BibMaster.bib
+ :  
+ :  Year={1986}}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 202 of file BibMaster.bib
+ :  title = {Combining {IMM} and {JPDA} for tracking multiple maneuvering targets in clutter}
+ :                                                                                           .
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 270 of file BibMaster.bib
+ :  
+ :  Year = {2001}}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 280 of file BibMaster.bib
+ :  
+ :  Year = {1990}}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 290 of file BibMaster.bib
+ :  
+ :  Year = {2001}}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 297 of file BibMaster.bib
+ : 
+ : % Pages = {1–-22},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+-- IEEEtran.bst version 1.11 (2003/04/02) by Michael Shell.
+-- http://www.ctan.org/tex-archive/macros/latex/contrib/supported/IEEEtran/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in JPDAF1
+Warning--missing institution in Fitzgerald
+Warning--empty year in Fitzgerald
+Warning--missing institution in Coal_e
+Warning--empty year in Coal_e
+Warning--empty year in Bar1990
+Warning--empty year in Val01
+Warning--empty title in VerSauSco04
+Warning--empty year in VerSauSco04
+Warning--empty year in ShaRonThi2001
+
+Done.
+You've used 18 entries,
+            3975 wiz_defined-function locations,
+            915 strings with 9883 characters,
+and the built_in function-call counts, 9718 in all, are:
+= -- 750
+> -- 201
+< -- 56
++ -- 103
+- -- 37
+* -- 446
+:= -- 1577
+add.period$ -- 35
+call.type$ -- 18
+change.case$ -- 12
+chr.to.int$ -- 123
+cite$ -- 28
+duplicate$ -- 756
+empty$ -- 884
+format.name$ -- 49
+if$ -- 2184
+int.to.chr$ -- 0
+int.to.str$ -- 18
+missing$ -- 136
+newline$ -- 74
+num.names$ -- 18
+pop$ -- 340
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 776
+stack$ -- 0
+substring$ -- 303
+swap$ -- 533
+text.length$ -- 15
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 0
+warning$ -- 10
+while$ -- 37
+width$ -- 20
+write$ -- 171
+(There were 6 error messages)

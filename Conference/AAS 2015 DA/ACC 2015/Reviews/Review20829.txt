@@ -1,0 +1,10 @@
+Reviewer 5 of 2015 ACC submission 1089
+
+Comments to the author
+======================
+
+This paper considers an estimation problem
+in which a known number of objects in close proximity are
+observed but the measurement origins are uncertain. It can
+be accepted for presentation in the conference. The authors
+should clearly state the new innovation compared with [1].

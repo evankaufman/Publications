@@ -1,0 +1,149 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{#1}
+\csname url@rmstyle\endcsname
+\providecommand{\newblock}{\relax}
+\providecommand{\bibinfo}[2]{#2}
+\providecommand\BIBentrySTDinterwordspacing{\spaceskip=0pt\relax}
+\providecommand\BIBentryALTinterwordstretchfactor{4}
+\providecommand\BIBentryALTinterwordspacing{\spaceskip=\fontdimen2\font plus
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
+\providecommand\BIBforeignlanguage[2]{{%
+\expandafter\ifx\csname l@#1\endcsname\relax
+\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
+\typeout{** loaded for the language `#1'. Using the pattern for}%
+\typeout{** the default language instead.}%
+\else
+\language=\csname l@#1\endcsname
+\fi
+#2}}
+
+\bibitem{WolSuk05}
+D.~Wolf and G.~Sukhatme, ``Mobile robot simultaneous localization and mapping
+  in dynamic environments,'' \emph{Autonomous Robots}, vol.~1, no.~19, pp.
+  53--65, 2005.
+
+\bibitem{MeyBeiBur12}
+D.~Meyer-Delius, M.~Beinhofer, and W.~Burgard, ``Occupancy grid models for
+  robot mapping in changing environments,'' in \emph{Proceedings of the
+  Twenty-Sixth AAAI Conference on Artificial Intelligence}, 2012.
+
+\bibitem{TanThoWolBus14}
+G.~Tanzmeister, J.~Thomas, D.~Wollherr, and M.~Buss, ``Grid-based mapping and
+  tracking in dynamic environments using a uniform evidential environment
+  representation,'' in \emph{IEEE International Conference on Robotics and
+  Automation (ICRA)}, 2014.
+
+\bibitem{Andert09}
+F.~Andert, ``Drawing stereo disparity images into occupancy grids: Measurement
+  model and fast implementation,'' in \emph{IEEE/RSJ International Conference
+  on Intelligent Robots and Systems}, 2009.
+
+\bibitem{PirRutBisSch11}
+K.~Pirker, M.~Ruther, H.~Bischof, and G.~Schweighofer, ``Fast and accurate
+  environment modeling using three-dimensional occupancy grids,'' in \emph{IEEE
+  International Conference on Computer Vision Workshops}, 2011.
+
+\bibitem{WurHorBenStaBur10}
+K.~Wurm, A.~Hornung, M.~Bennewitz, C.~Stachniss, and W.~Burgard, ``Octomap: A
+  probabilistic, flexible, and compact 3d map representation for robotic
+  systems,'' in \emph{Proceeding of the ICRA 2010 Workshop on Best Practice in
+  3D Perception and Modeling for Mobile Manipulation}, 2010.
+
+\bibitem{HorWurBenStaBur13}
+A.~Hornung, K.~M. Wurm, M.~Bennewitz, C.~Stachniss, and W.~Burgard, ``Octomap:
+  an efficient probabilistic 3d mapping framework based on octrees,''
+  \emph{Autonomous Robots}, vol.~34, no.~3, pp. 189--206, 2013.
+
+\bibitem{KauLeeAiMos16}
+E.~Kaufman, T.~Lee, Z.~Ai, and I.~S. Moskowitz, ``Bayesian occupancy grid
+  mapping via an exact inverse sensor model,'' in \emph{American Control
+  Conference}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2016, pp.
+  5709--5715.
+
+\bibitem{KauTakAiLee17}
+E.~Kaufman, K.~Takami, Z.~Ai, and T.~Lee, ``Autonomous exploration with exact
+  inverse sensor models,'' \emph{Journal of Intelligent and Robotic Systems},
+  2017.
+
+\bibitem{KauTakAiLee18}
+------, ``Autonomous quadrotor 3d mapping and exploration using exact occupancy
+  probabilities,'' in \emph{The Second IEEE International Conference on Robotic
+  Computing}, 2018, pp. 49--55.
+
+\bibitem{Yam97}
+B.~Yamauchi, ``A frontier-based approach for autonomous exploration,'' in
+  \emph{International Symposium on Computational Intelligence in Robotics and
+  Automation}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 1997, pp. 146--151.
+
+\bibitem{Yam98}
+------, ``Frontier-based exploration using multiple robots,'' in \emph{Second
+  International Conference on Autonomous Agents}, ACM, Ed., 1998, pp. 47--53.
+
+\bibitem{ZhuDinLinWu15}
+C.~Zhu, R.~Ding, M.~Lin, and Y.~Wu, ``A 3d frontier-based exploration tool for
+  mavs,'' in \emph{IEEE 27th International Conference on Tools with Artificial
+  Intelligence}, 2015, pp. 348--352.
+
+\bibitem{SenWan16}
+P.~Senarathne and D.~Wang, ``Towards autonomous 3d exploration using surface
+  frontiers,'' in \emph{2016 IEEE International Symposium on Safety, Security,
+  and Rescue Robotics (SSRR)}, 2016, pp. 34--41.
+
+\bibitem{KleDor13}
+C.~D. Alexander~Kleiner, ``A frontier-void-based approach for autonomous
+  exploration in 3d,'' \emph{Advanced Robotics}, vol.~27, no.~6, pp. 459--468,
+  2013.
+
+\bibitem{SawKriSri09}
+R.~Sawhney, K.~M. Krishna, and K.~Srinathan, ``On fast exploration in 2d and 3d
+  terrains with multiple robots,'' in \emph{International Conference on
+  Autonomous Agents and Multiagent Systems}, 2009, pp. 73--80.
+
+\bibitem{StaGriBur05}
+C.~Stachniss, G.~Grisetti, and W.~Burgard, ``Information gain-based exploration
+  using {R}ao-{B}lackwellized particle filters,'' in \emph{In RSS}, 2005, pp.
+  65--72.
+
+\bibitem{KauAiLee16}
+E.~Kaufman, Z.~Ai, and T.~Lee, ``Autonomous exploration by expected information
+  gain from probabilistic occupancy grid mapping,'' in \emph{Proceedings of the
+  2016 IEEE International Conference on Simulation, Modeling, and Programming
+  for Autonomous Robots}.\hskip 1em plus 0.5em minus 0.4em\relax San Francisco,
+  USA: IEEE, December 13--16 2016, pp. 246--251.
+
+\bibitem{SimApfBurFoxMooThrYou00}
+R.~Simmons, D.~Apfelbaum, W.~Burgard, D.~Fox, M.~Moors, S.~Thrun, and
+  H.~Younes, ``Coordination for multi-robot exploration and mapping,'' in
+  \emph{Proceedings of the Seventeenth National Conference on Artificial
+  Intelligence and Twelfth Conference on Innovative Applications of Artificial
+  Intelligence}, AAAI, Ed., 2000, pp. 852--858.
+
+\bibitem{DiaSte00}
+M.~B. Dias and A.~Stentz, ``A free market architecture for distributed control
+  of a multirobot system,'' in \emph{6th International Conference on
+  Intelligent Autonomous Systems}, Venice, Italy, July 2000, pp. 115--122.
+
+\bibitem{GerMaj02}
+B.~P. Gerkey and M.~J. Matari{\'c}, ``Sold!: Auction methods for multirobot
+  coordination,'' \emph{IEEE Transactions on Robotics and Automation}, vol.~18,
+  no.~5, pp. 758--768, 2002.
+
+\bibitem{ZloSteDiaTha02}
+R.~Zlot, A.~Stentz, M.~B. Dias, and S.~Thayer, ``Multi-robot exploration
+  controlled by a market economy,'' in \emph{Proceedings of the 2002 IEEE
+  International Conference on Robotics \& Automation}, IEEE, Ed., 2002, pp.
+  3016--3023.
+
+\bibitem{SarBal05}
+S.~Sariel and T.~Balch, ``Real time auction based allocation of tasks for
+  multi-robot exploration problem in dynamic environments,'' in
+  \emph{Integrating Planning into Scheduling: Papers from the 2005 AAAI
+  Workshop}, 2005.
+
+\bibitem{ChoBruHow09}
+H.-L. Choi, L.~Brunet, and J.~P. How, ``Consensus-based decentralized auctions
+  for robust task allocation,'' \emph{IEEE Transactions on Robotics}, vol.~25,
+  no.~4, pp. 912--926, August 2009.
+
+\end{thebibliography}

@@ -1,0 +1,37 @@
+\begin{thebibliography}{1}
+\providecommand{\url}[1]{#1}
+\csname url@rmstyle\endcsname
+\providecommand{\newblock}{\relax}
+\providecommand{\bibinfo}[2]{#2}
+\providecommand\BIBentrySTDinterwordspacing{\spaceskip=0pt\relax}
+\providecommand\BIBentryALTinterwordstretchfactor{4}
+\providecommand\BIBentryALTinterwordspacing{\spaceskip=\fontdimen2\font plus
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
+\providecommand\BIBforeignlanguage[2]{{%
+\expandafter\ifx\csname l@#1\endcsname\relax
+\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
+\typeout{** loaded for the language `#1'. Using the pattern for}%
+\typeout{** the default language instead.}%
+\else
+\language=\csname l@#1\endcsname
+\fi
+#2}}
+
+\bibitem{LeeSrePICDC13}
+T.~Lee, K.~Sreenath, and V.~Kumar, ``Geometric control of cooperating multiple
+  quadrotor {UAV}s with a suspended load,'' in \emph{Proceedings of the IEEE
+  Conference on Decision and Control}, vol. 5510--5515, Florence, Italy, Dec.
+  2013.
+
+\bibitem{GooLeePACC14}
+F.~Goodarzi, D.~Lee, and T.~Lee, ``Geometric stabilization of a quadrotor {UAV}
+  with a payload connected by flexible cable,'' in \emph{Proceedings of the
+  American Control Conference}, June 2014, pp. 4925--4930.
+
+\bibitem{LeePICDC14}
+T.~Lee, ``Geometric control of multiple quadrotor {UAVs} transporting a
+  cable-suspended rigid body,'' in \emph{Proceedings of the IEEE Conference on
+  Decision and Control}, Dec. 2014, pp. 6155--6160.
+
+\end{thebibliography}

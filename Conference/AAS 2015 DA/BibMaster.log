@@ -1,0 +1,25 @@
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdftex 2012.10.10)  26 JAN 2015 22:20
+entering extended mode
+**C:/Users/evankaufman/Google*Drive/FDCL/Evan/Publications/AAS*2015*Data*Associ
+ation/BibMaster.bib
+
+("C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 Data Associ
+ation/BibMaster.bib"
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.36 @inproceedings{SN_
+                       amplitudes,
+? 
+! Emergency stop.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.36 @inproceedings{SN_
+                       amplitudes,
+End of file on the terminal!
+
+!  ==> Fatal error occurred, no output PDF file produced!

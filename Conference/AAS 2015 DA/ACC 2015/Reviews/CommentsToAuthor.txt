@@ -1,0 +1,8 @@
+This paper considers an estimation problem in which a known
+number 
+of objects in close proximity are observed but the
+measurement origins 
+are uncertain. The authors should clearly state the new
+innovation compared with [1] as well as clarify what is a
+major contribution of this paper. Many 
+statements require more rigorous formulations. 

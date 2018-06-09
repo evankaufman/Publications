@@ -1,0 +1,22 @@
+\contentsline {subsubsection}{\bfseries Abstract}{1}
+\contentsline {section}{\numberline {1}Introduction}{1}
+\contentsline {section}{\numberline {2}Dynamics of Hexrotor UAV}{2}
+\contentsline {subsection}{Configuration of Hexrotor UAV}{2}
+\contentsline {subsection}{Equations of Motion}{2}
+\contentsline {subsection}{Hovering Capability}{3}
+\contentsline {section}{\numberline {3}Geometric Control of Hexrotor UAV}{3}
+\contentsline {subsection}{Tracking Problem Formulation}{3}
+\contentsline {subsection}{Geometric Control on $\ensuremath {\mathsf {SE(3)}}$}{3}
+\contentsline {subsection}{Numerical Example}{5}
+\contentsline {section}{\numberline {4}Hardware Development of Hexrotor UAV}{5}
+\contentsline {subsection}{Hardware Configuration for Thrust and Moment}{5}
+\contentsline {subsection}{Controller and Sensor Configuration}{6}
+\contentsline {subsection}{Hardware Assembly}{6}
+\contentsline {subsection}{Implementation of Geometric Controller}{7}
+\contentsline {subsection}{Preliminary Experimental Tests}{7}
+\contentsline {section}{\numberline {5}Conclusions and Future Work}{7}
+\contentsline {section}{\numberline {}Appendix}{8}
+\contentsline {subsection}{Proof for Proposition 2}{8}
+\contentsline {section}{\numberline {}Acknowledgments}{9}
+\contentsline {section}{\numberline {}References}{9}
+\contentsline {section}{\numberline {}Biography}{10}

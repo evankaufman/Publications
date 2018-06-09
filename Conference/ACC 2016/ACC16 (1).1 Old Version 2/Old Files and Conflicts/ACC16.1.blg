@@ -1,0 +1,86 @@
+This is BibTeX, Version 0.99d (TeX Live 2014)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: ACC16.1.aux
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: BibSources.bib
+I was expecting a `,' or a `}'---line 236 of file BibSources.bib
+ :  
+ :  Year={1986}}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 323 of file BibSources.bib
+ :  Title = {Combining {IMM} and {JPDA} for tracking multiple maneuvering targets in clutter}
+ :                                                                                           .
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 391 of file BibSources.bib
+ :  
+ :  Year = {2001}}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 401 of file BibSources.bib
+ :  
+ :  Year = {1990}}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 514 of file BibSources.bib
+ :  
+ :  Year = {2001}}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 521 of file BibSources.bib
+ : 
+ : % Pages = {1–-22},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+-- IEEEtran.bst version 1.11 (2003/04/02) by Michael Shell.
+-- http://www.ctan.org/tex-archive/macros/latex/contrib/supported/IEEEtran/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+You've used 11 entries,
+            3975 wiz_defined-function locations,
+            866 strings with 9233 characters,
+and the built_in function-call counts, 6747 in all, are:
+= -- 497
+> -- 159
+< -- 36
++ -- 82
+- -- 31
+* -- 317
+:= -- 1051
+add.period$ -- 22
+call.type$ -- 11
+change.case$ -- 9
+chr.to.int$ -- 84
+cite$ -- 11
+duplicate$ -- 513
+empty$ -- 653
+format.name$ -- 38
+if$ -- 1546
+int.to.chr$ -- 0
+int.to.str$ -- 11
+missing$ -- 97
+newline$ -- 53
+num.names$ -- 11
+pop$ -- 248
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 535
+stack$ -- 0
+substring$ -- 205
+swap$ -- 356
+text.length$ -- 8
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 0
+warning$ -- 0
+while$ -- 27
+width$ -- 13
+write$ -- 115
+(There were 6 error messages)

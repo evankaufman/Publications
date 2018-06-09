@@ -1,0 +1,1007 @@
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.10.8)  20 NOV 2014 16:25
+entering extended mode
+**C:/Users/evankaufman/Google*Drive/FDCL/Evan/Publications/AAS*2015*OD*EKF/Obse
+rvabilityMeasure_IOD.tex
+
+("C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/Obse
+rvabilityMeasure_IOD.tex"
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2009-06-19, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, lao, latin, lat
+vian, lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerm
+an, ngerman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese, 
+romanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swis
+sgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, u
+senglishmax, welsh, loaded.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size10.clo"
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count87
+\Gm@cntv=\count88
+\c@Gm@tempcnt=\count89
+\Gm@bindingoffset=\dimen103
+\Gm@wd@mp=\dimen104
+\Gm@odd@mp=\dimen105
+\Gm@even@mp=\dimen106
+\Gm@layoutwidth=\dimen107
+\Gm@layoutheight=\dimen108
+\Gm@layouthoffset=\dimen109
+\Gm@layoutvoffset=\dimen110
+\Gm@dimlist=\toks15
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2009/06/22 v3.00
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\@emptytoks=\toks16
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsmath.sty"
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks17
+\ex@=\dimen111
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen112
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count90
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count91
+\leftroot@=\count92
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count93
+\DOTSCASE@=\count94
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen113
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count95
+\c@MaxMatrixCols=\count96
+\dotsspace@=\muskip10
+\c@parentequation=\count97
+\dspbrk@lvl=\count98
+\tag@help=\toks18
+\row@=\count99
+\column@=\count100
+\maxfields@=\count101
+\andhelp@=\toks19
+\eqnshift@=\dimen114
+\alignsep@=\dimen115
+\tagshift@=\dimen116
+\tagwidth@=\dimen117
+\totwidth@=\dimen118
+\lineht@=\dimen119
+\@envbody=\toks20
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\classes\amsthm.sty"
+Package: amsthm 2004/08/06 v2.20
+\thm@style=\toks22
+\thm@bodyfont=\toks23
+\thm@headfont=\toks24
+\thm@notefont=\toks25
+\thm@headpunct=\toks26
+\thm@preskip=\skip46
+\thm@postskip=\skip47
+\thm@headsep=\skip48
+\dth@everypar=\toks27
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\times.sty"
+Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count102
+))
+\Gin@req@height=\dimen120
+\Gin@req@width=\dimen121
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\subfigure\subfigure.
+sty
+Package: subfigure 2002/07/30 v2.1.4 subfigure package
+\subfigtopskip=\skip49
+\subfigcapskip=\skip50
+\subfigcaptopadj=\dimen122
+\subfigbottomskip=\skip51
+\subfigcapmargin=\dimen123
+\subfiglabelskip=\skip52
+\c@subfigure=\count103
+\c@lofdepth=\count104
+\c@subtable=\count105
+\c@lotdepth=\count106
+
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\subfigure\subfigure.
+cfg)
+\subfig@top=\skip53
+\subfig@bottom=\skip54
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\tabularx.sty"
+Package: tabularx 1999/01/07 v2.07 `tabularx' package (DPC)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\array.sty"
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen124
+\extrarowheight=\dimen125
+\NC@list=\toks28
+\extratabsurround=\skip55
+\backup@length=\skip56
+)
+\TX@col@width=\dimen126
+\TX@old@table=\dimen127
+\TX@old@col=\dimen128
+\TX@target=\dimen129
+\TX@delta=\dimen130
+\TX@cols=\count107
+\TX@ftn=\toks29
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\booktabs\booktabs.st
+y
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen131
+\lightrulewidth=\dimen132
+\cmidrulewidth=\dimen133
+\belowrulesep=\dimen134
+\belowbottomsep=\dimen135
+\aboverulesep=\dimen136
+\abovetopsep=\dimen137
+\cmidrulesep=\dimen138
+\cmidrulekern=\dimen139
+\defaultaddspace=\dimen140
+\@cmidla=\count108
+\@cmidlb=\count109
+\@aboverulesep=\dimen141
+\@belowrulesep=\dimen142
+\@thisruleclass=\count110
+\@lastruleclass=\count111
+\@thisrulewidth=\dimen143
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\colortbl\colortbl.st
+y
+Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\color.sty"
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+)
+\everycr=\toks30
+\minrowclearance=\skip57
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption.sty
+Package: caption 2012/02/19 v3.2f Customizing captions (AR)
+
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption3.sty
+Package: caption3 2012/01/12 v1.4b caption3 kernel (AR)
+\captionmargin=\dimen144
+\captionmargin@=\dimen145
+\captionwidth=\dimen146
+\caption@indent=\dimen147
+\caption@parindent=\dimen148
+\caption@hangindent=\dimen149
+)
+\c@ContinuedFloat=\count112
+Package caption Info: subfigure package is loaded.
+)
+\c@definition=\count113
+\c@lem=\count114
+\c@prop=\count115
+\c@remark=\count116
+
+("C:\Users\evankaufman\Google Drive\FDCL\Evan\Publications\AAS 2015 OD EKF\Obse
+rvabilityMeasure_IOD.aux")
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 69.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: letterpaper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* hratio: 1:1
+* vratio: 1:1
+* modes: 
+* h-part:(L,W,R)=(72.27pt, 469.75499pt, 72.27pt)
+* v-part:(T,H,B)=(86.72377pt, 621.52243pt, 86.72379pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=469.75499pt
+* \textheight=621.52243pt
+* \oddsidemargin=0.00002pt
+* \evensidemargin=0.00002pt
+* \topmargin=-22.54622pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count117
+\scratchdimen=\dimen150
+\scratchbox=\box28
+\nofMPsegments=\count118
+\nofMParguments=\count119
+\everyMPshowfont=\toks31
+\MPscratchCnt=\count120
+\MPscratchDim=\dimen151
+\MPnumerator=\count121
+\makeMPintoPDFobject=\count122
+\everyMPtoPDFconversion=\toks32
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 72.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 73.
+
+Overfull \hbox (1.76743pt too wide) in paragraph at lines 72--76
+\OT1/ptm/b/n/14.4 Nonlinear Ob-serv-abil-ity for Rel-a-tive Or-bits with Line-o
+f-Sight Mea-sure-ments 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--76
+
+ []
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 84.
+LaTeX Font Info:    Try loading font information for U+msa on input line 88.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 88.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+) [1
+
+{C:/Users/evankaufman/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+<OM_IOD_0A_traj.pdf, id=13, 361.35pt x 397.485pt>
+File: OM_IOD_0A_traj.pdf Graphic file (type pdf)
+ <use OM_IOD_0A_traj.pdf>
+Package pdftex.def Info: OM_IOD_0A_traj.pdf used on input line 122.
+(pdftex.def)             Requested size: 164.4171pt x 180.85596pt.
+
+<OM_IOD_0A_cri.pdf, id=14, 501.875pt x 416.55624pt>
+File: OM_IOD_0A_cri.pdf Graphic file (type pdf)
+ <use OM_IOD_0A_cri.pdf>
+Package pdftex.def Info: OM_IOD_0A_cri.pdf used on input line 122.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_0A_svd.pdf, id=15, 501.875pt x 416.55624pt>
+File: OM_IOD_0A_svd.pdf Graphic file (type pdf)
+ <use OM_IOD_0A_svd.pdf>
+Package pdftex.def Info: OM_IOD_0A_svd.pdf used on input line 129.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_0A_cond.pdf, id=16, 494.84875pt x 416.55624pt>
+File: OM_IOD_0A_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_0A_cond.pdf>
+Package pdftex.def Info: OM_IOD_0A_cond.pdf used on input line 129.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+ <OM_IOD_0A_W_svd.pdf, id=17, 501.875pt x 416.55624pt>
+File: OM_IOD_0A_W_svd.pdf Graphic file (type pdf)
+
+<use OM_IOD_0A_W_svd.pdf>
+Package pdftex.def Info: OM_IOD_0A_W_svd.pdf used on input line 136.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_0A_W_cond.pdf, id=18, 494.84875pt x 416.55624pt>
+File: OM_IOD_0A_W_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_0A_W_cond.pdf>
+Package pdftex.def Info: OM_IOD_0A_W_cond.pdf used on input line 136.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+
+
+LaTeX Warning: Float too large for page by 4.56017pt on input line 138.
+
+[2 <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM
+_IOD_0A_traj.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS
+ 2015 OD EKF/OM_IOD_0A_cri.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/Pu
+blications/AAS 2015 OD EKF/OM_IOD_0A_svd.pdf> <C:/Users/evankaufman/Google Driv
+e/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_0A_cond.pdf> <C:/Users/evankauf
+man/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_0A_W_svd.pdf> <C
+:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_
+0A_W_cond.pdf>] <OM_IOD_0B_traj.pdf, id=121, 456.70625pt x 399.4925pt>
+File: OM_IOD_0B_traj.pdf Graphic file (type pdf)
+
+<use OM_IOD_0B_traj.pdf>
+Package pdftex.def Info: OM_IOD_0B_traj.pdf used on input line 148.
+(pdftex.def)             Requested size: 164.4171pt x 143.81718pt.
+ <OM_IOD_0B_cri.pdf, id=122, 501.875pt x 416.55624pt>
+File: OM_IOD_0B_cri.pdf Graphic file (type pdf)
+
+<use OM_IOD_0B_cri.pdf>
+Package pdftex.def Info: OM_IOD_0B_cri.pdf used on input line 148.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+ <OM_IOD_0B_svd.pdf, id=123, 501.875pt x 416.55624pt>
+File: OM_IOD_0B_svd.pdf Graphic file (type pdf)
+
+<use OM_IOD_0B_svd.pdf>
+Package pdftex.def Info: OM_IOD_0B_svd.pdf used on input line 155.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_0B_cond.pdf, id=124, 494.84875pt x 416.55624pt>
+File: OM_IOD_0B_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_0B_cond.pdf>
+Package pdftex.def Info: OM_IOD_0B_cond.pdf used on input line 155.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+
+<OM_IOD_0B_W_svd.pdf, id=125, 501.875pt x 416.55624pt>
+File: OM_IOD_0B_W_svd.pdf Graphic file (type pdf)
+
+<use OM_IOD_0B_W_svd.pdf>
+Package pdftex.def Info: OM_IOD_0B_W_svd.pdf used on input line 162.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_0B_W_cond.pdf, id=126, 494.84875pt x 416.55624pt>
+File: OM_IOD_0B_W_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_0B_W_cond.pdf>
+Package pdftex.def Info: OM_IOD_0B_W_cond.pdf used on input line 162.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+ [3 <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/O
+M_IOD_0B_traj.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AA
+S 2015 OD EKF/OM_IOD_0B_cri.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/P
+ublications/AAS 2015 OD EKF/OM_IOD_0B_svd.pdf> <C:/Users/evankaufman/Google Dri
+ve/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_0B_cond.pdf> <C:/Users/evankau
+fman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_0B_W_svd.pdf> <
+C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD
+_0B_W_cond.pdf>]
+<OM_IOD_0C_traj.pdf, id=226, 506.89375pt x 397.485pt>
+File: OM_IOD_0C_traj.pdf Graphic file (type pdf)
+ <use OM_IOD_0C_traj.pdf>
+Package pdftex.def Info: OM_IOD_0C_traj.pdf used on input line 174.
+(pdftex.def)             Requested size: 164.4171pt x 128.92635pt.
+
+<OM_IOD_0C_cri.pdf, id=227, 501.875pt x 416.55624pt>
+File: OM_IOD_0C_cri.pdf Graphic file (type pdf)
+ <use OM_IOD_0C_cri.pdf>
+Package pdftex.def Info: OM_IOD_0C_cri.pdf used on input line 174.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_0C_svd.pdf, id=228, 501.875pt x 416.55624pt>
+File: OM_IOD_0C_svd.pdf Graphic file (type pdf)
+ <use OM_IOD_0C_svd.pdf>
+Package pdftex.def Info: OM_IOD_0C_svd.pdf used on input line 181.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_0C_cond.pdf, id=229, 494.84875pt x 416.55624pt>
+File: OM_IOD_0C_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_0C_cond.pdf>
+Package pdftex.def Info: OM_IOD_0C_cond.pdf used on input line 181.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+
+<OM_IOD_0C_W_svd.pdf, id=230, 501.875pt x 416.55624pt>
+File: OM_IOD_0C_W_svd.pdf Graphic file (type pdf)
+
+<use OM_IOD_0C_W_svd.pdf>
+Package pdftex.def Info: OM_IOD_0C_W_svd.pdf used on input line 188.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_0C_W_cond.pdf, id=231, 494.84875pt x 416.55624pt>
+File: OM_IOD_0C_W_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_0C_W_cond.pdf>
+Package pdftex.def Info: OM_IOD_0C_W_cond.pdf used on input line 188.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+ [4 <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/O
+M_IOD_0C_traj.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AA
+S 2015 OD EKF/OM_IOD_0C_cri.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/P
+ublications/AAS 2015 OD EKF/OM_IOD_0C_svd.pdf> <C:/Users/evankaufman/Google Dri
+ve/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_0C_cond.pdf> <C:/Users/evankau
+fman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_0C_W_svd.pdf> <
+C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD
+_0C_W_cond.pdf>]
+<OM_IOD_1_traj.pdf, id=331, 339.2675pt x 388.45125pt>
+File: OM_IOD_1_traj.pdf Graphic file (type pdf)
+ <use OM_IOD_1_traj.pdf>
+Package pdftex.def Info: OM_IOD_1_traj.pdf used on input line 200.
+(pdftex.def)             Requested size: 164.4171pt x 188.25044pt.
+
+<OM_IOD_1_cri.pdf, id=332, 501.875pt x 416.55624pt>
+File: OM_IOD_1_cri.pdf Graphic file (type pdf)
+ <use OM_IOD_1_cri.pdf>
+Package pdftex.def Info: OM_IOD_1_cri.pdf used on input line 200.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_1_svd.pdf, id=333, 501.875pt x 416.55624pt>
+File: OM_IOD_1_svd.pdf Graphic file (type pdf)
+ <use OM_IOD_1_svd.pdf>
+Package pdftex.def Info: OM_IOD_1_svd.pdf used on input line 207.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_1_cond.pdf, id=334, 494.84875pt x 416.55624pt>
+File: OM_IOD_1_cond.pdf Graphic file (type pdf)
+ <use OM_IOD_1_cond.pdf>
+Package pdftex.def Info: OM_IOD_1_cond.pdf used on input line 207.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+
+<OM_IOD_1_W_svd.pdf, id=335, 501.875pt x 416.55624pt>
+File: OM_IOD_1_W_svd.pdf Graphic file (type pdf)
+ <use OM_IOD_1_W_svd.pdf>
+Package pdftex.def Info: OM_IOD_1_W_svd.pdf used on input line 214.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_1_W_cond.pdf, id=336, 494.84875pt x 416.55624pt>
+File: OM_IOD_1_W_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_1_W_cond.pdf>
+Package pdftex.def Info: OM_IOD_1_W_cond.pdf used on input line 214.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+
+
+LaTeX Warning: Float too large for page by 11.95465pt on input line 216.
+
+[5 <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM
+_IOD_1_traj.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 
+2015 OD EKF/OM_IOD_1_cri.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publ
+ications/AAS 2015 OD EKF/OM_IOD_1_svd.pdf> <C:/Users/evankaufman/Google Drive/F
+DCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_1_cond.pdf> <C:/Users/evankaufman/
+Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_1_W_svd.pdf> <C:/Use
+rs/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_1_W_c
+ond.pdf>] <OM_IOD_2A_traj.pdf, id=436, 487.8225pt x 392.46625pt>
+File: OM_IOD_2A_traj.pdf Graphic file (type pdf)
+
+<use OM_IOD_2A_traj.pdf>
+Package pdftex.def Info: OM_IOD_2A_traj.pdf used on input line 226.
+(pdftex.def)             Requested size: 187.89912pt x 151.16882pt.
+ <OM_IOD_2A_cri.pdf, id=437, 501.875pt x 416.55624pt>
+File: OM_IOD_2A_cri.pdf Graphic file (type pdf)
+
+<use OM_IOD_2A_cri.pdf>
+Package pdftex.def Info: OM_IOD_2A_cri.pdf used on input line 226.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+ <OM_IOD_2A_svd.pdf, id=438, 501.875pt x 416.55624pt>
+File: OM_IOD_2A_svd.pdf Graphic file (type pdf)
+
+<use OM_IOD_2A_svd.pdf>
+Package pdftex.def Info: OM_IOD_2A_svd.pdf used on input line 233.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_2A_cond.pdf, id=439, 494.84875pt x 416.55624pt>
+File: OM_IOD_2A_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_2A_cond.pdf>
+Package pdftex.def Info: OM_IOD_2A_cond.pdf used on input line 233.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+
+<OM_IOD_2A_W_svd.pdf, id=440, 501.875pt x 416.55624pt>
+File: OM_IOD_2A_W_svd.pdf Graphic file (type pdf)
+
+<use OM_IOD_2A_W_svd.pdf>
+Package pdftex.def Info: OM_IOD_2A_W_svd.pdf used on input line 240.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_2A_W_cond.pdf, id=441, 494.84875pt x 416.55624pt>
+File: OM_IOD_2A_W_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_2A_W_cond.pdf>
+Package pdftex.def Info: OM_IOD_2A_W_cond.pdf used on input line 240.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+ [6 <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/O
+M_IOD_2A_traj.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AA
+S 2015 OD EKF/OM_IOD_2A_cri.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/P
+ublications/AAS 2015 OD EKF/OM_IOD_2A_svd.pdf> <C:/Users/evankaufman/Google Dri
+ve/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_2A_cond.pdf> <C:/Users/evankau
+fman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_2A_W_svd.pdf> <
+C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD
+_2A_W_cond.pdf>]
+<OM_IOD_2B_traj.pdf, id=541, 457.71pt x 394.47375pt>
+File: OM_IOD_2B_traj.pdf Graphic file (type pdf)
+ <use OM_IOD_2B_traj.pdf>
+Package pdftex.def Info: OM_IOD_2B_traj.pdf used on input line 252.
+(pdftex.def)             Requested size: 187.89912pt x 161.93993pt.
+
+<OM_IOD_2B_cri.pdf, id=542, 501.875pt x 416.55624pt>
+File: OM_IOD_2B_cri.pdf Graphic file (type pdf)
+ <use OM_IOD_2B_cri.pdf>
+Package pdftex.def Info: OM_IOD_2B_cri.pdf used on input line 252.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_2B_svd.pdf, id=543, 501.875pt x 416.55624pt>
+File: OM_IOD_2B_svd.pdf Graphic file (type pdf)
+ <use OM_IOD_2B_svd.pdf>
+Package pdftex.def Info: OM_IOD_2B_svd.pdf used on input line 259.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_2B_cond.pdf, id=544, 494.84875pt x 416.55624pt>
+File: OM_IOD_2B_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_2B_cond.pdf>
+Package pdftex.def Info: OM_IOD_2B_cond.pdf used on input line 259.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+
+<OM_IOD_2B_W_svd.pdf, id=545, 501.875pt x 416.55624pt>
+File: OM_IOD_2B_W_svd.pdf Graphic file (type pdf)
+
+<use OM_IOD_2B_W_svd.pdf>
+Package pdftex.def Info: OM_IOD_2B_W_svd.pdf used on input line 266.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_2B_W_cond.pdf, id=546, 494.84875pt x 416.55624pt>
+File: OM_IOD_2B_W_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_2B_W_cond.pdf>
+Package pdftex.def Info: OM_IOD_2B_W_cond.pdf used on input line 266.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+ [7 <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/O
+M_IOD_2B_traj.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AA
+S 2015 OD EKF/OM_IOD_2B_cri.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/P
+ublications/AAS 2015 OD EKF/OM_IOD_2B_svd.pdf> <C:/Users/evankaufman/Google Dri
+ve/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_2B_cond.pdf> <C:/Users/evankau
+fman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_2B_W_svd.pdf> <
+C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD
+_2B_W_cond.pdf>]
+<OM_IOD_2C_traj.pdf, id=647, 505.89pt x 395.4775pt>
+File: OM_IOD_2C_traj.pdf Graphic file (type pdf)
+ <use OM_IOD_2C_traj.pdf>
+Package pdftex.def Info: OM_IOD_2C_traj.pdf used on input line 279.
+(pdftex.def)             Requested size: 187.89912pt x 146.89162pt.
+
+<OM_IOD_2C_cri.pdf, id=648, 501.875pt x 416.55624pt>
+File: OM_IOD_2C_cri.pdf Graphic file (type pdf)
+ <use OM_IOD_2C_cri.pdf>
+Package pdftex.def Info: OM_IOD_2C_cri.pdf used on input line 279.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_2C_svd.pdf, id=649, 501.875pt x 416.55624pt>
+File: OM_IOD_2C_svd.pdf Graphic file (type pdf)
+ <use OM_IOD_2C_svd.pdf>
+Package pdftex.def Info: OM_IOD_2C_svd.pdf used on input line 286.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_2C_cond.pdf, id=650, 494.84875pt x 416.55624pt>
+File: OM_IOD_2C_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_2C_cond.pdf>
+Package pdftex.def Info: OM_IOD_2C_cond.pdf used on input line 286.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+
+<OM_IOD_2C_W_svd.pdf, id=651, 501.875pt x 416.55624pt>
+File: OM_IOD_2C_W_svd.pdf Graphic file (type pdf)
+
+<use OM_IOD_2C_W_svd.pdf>
+Package pdftex.def Info: OM_IOD_2C_W_svd.pdf used on input line 293.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_2C_W_cond.pdf, id=652, 494.84875pt x 416.55624pt>
+File: OM_IOD_2C_W_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_2C_W_cond.pdf>
+Package pdftex.def Info: OM_IOD_2C_W_cond.pdf used on input line 293.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+ [8 <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/O
+M_IOD_2C_traj.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AA
+S 2015 OD EKF/OM_IOD_2C_cri.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/P
+ublications/AAS 2015 OD EKF/OM_IOD_2C_svd.pdf> <C:/Users/evankaufman/Google Dri
+ve/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_2C_cond.pdf> <C:/Users/evankau
+fman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_2C_W_svd.pdf> <
+C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD
+_2C_W_cond.pdf>]
+<OM_IOD_3A_traj.pdf, id=752, 527.9725pt x 323.2075pt>
+File: OM_IOD_3A_traj.pdf Graphic file (type pdf)
+ <use OM_IOD_3A_traj.pdf>
+Package pdftex.def Info: OM_IOD_3A_traj.pdf used on input line 305.
+(pdftex.def)             Requested size: 187.89912pt x 115.02304pt.
+
+<OM_IOD_3A_cri.pdf, id=753, 501.875pt x 416.55624pt>
+File: OM_IOD_3A_cri.pdf Graphic file (type pdf)
+ <use OM_IOD_3A_cri.pdf>
+Package pdftex.def Info: OM_IOD_3A_cri.pdf used on input line 305.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_3A_svd.pdf, id=754, 501.875pt x 416.55624pt>
+File: OM_IOD_3A_svd.pdf Graphic file (type pdf)
+ <use OM_IOD_3A_svd.pdf>
+Package pdftex.def Info: OM_IOD_3A_svd.pdf used on input line 312.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_3A_cond.pdf, id=755, 494.84875pt x 416.55624pt>
+File: OM_IOD_3A_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_3A_cond.pdf>
+Package pdftex.def Info: OM_IOD_3A_cond.pdf used on input line 312.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+
+<OM_IOD_3A_W_svd.pdf, id=756, 501.875pt x 416.55624pt>
+File: OM_IOD_3A_W_svd.pdf Graphic file (type pdf)
+
+<use OM_IOD_3A_W_svd.pdf>
+Package pdftex.def Info: OM_IOD_3A_W_svd.pdf used on input line 319.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_3A_W_cond.pdf, id=757, 494.84875pt x 416.55624pt>
+File: OM_IOD_3A_W_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_3A_W_cond.pdf>
+Package pdftex.def Info: OM_IOD_3A_W_cond.pdf used on input line 319.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+ [9 <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/O
+M_IOD_3A_traj.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AA
+S 2015 OD EKF/OM_IOD_3A_cri.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/P
+ublications/AAS 2015 OD EKF/OM_IOD_3A_svd.pdf> <C:/Users/evankaufman/Google Dri
+ve/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_3A_cond.pdf> <C:/Users/evankau
+fman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_3A_W_svd.pdf> <
+C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD
+_3A_W_cond.pdf>]
+<OM_IOD_3B_traj.pdf, id=857, 527.9725pt x 353.32pt>
+File: OM_IOD_3B_traj.pdf Graphic file (type pdf)
+ <use OM_IOD_3B_traj.pdf>
+Package pdftex.def Info: OM_IOD_3B_traj.pdf used on input line 332.
+(pdftex.def)             Requested size: 187.89912pt x 125.73947pt.
+
+<OM_IOD_3B_cri.pdf, id=858, 501.875pt x 416.55624pt>
+File: OM_IOD_3B_cri.pdf Graphic file (type pdf)
+ <use OM_IOD_3B_cri.pdf>
+Package pdftex.def Info: OM_IOD_3B_cri.pdf used on input line 332.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_3B_svd.pdf, id=859, 501.875pt x 416.55624pt>
+File: OM_IOD_3B_svd.pdf Graphic file (type pdf)
+ <use OM_IOD_3B_svd.pdf>
+Package pdftex.def Info: OM_IOD_3B_svd.pdf used on input line 339.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_3B_cond.pdf, id=860, 494.84875pt x 416.55624pt>
+File: OM_IOD_3B_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_3B_cond.pdf>
+Package pdftex.def Info: OM_IOD_3B_cond.pdf used on input line 339.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+
+<OM_IOD_3B_W_svd.pdf, id=861, 501.875pt x 416.55624pt>
+File: OM_IOD_3B_W_svd.pdf Graphic file (type pdf)
+
+<use OM_IOD_3B_W_svd.pdf>
+Package pdftex.def Info: OM_IOD_3B_W_svd.pdf used on input line 346.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_3B_W_cond.pdf, id=862, 494.84875pt x 416.55624pt>
+File: OM_IOD_3B_W_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_3B_W_cond.pdf>
+Package pdftex.def Info: OM_IOD_3B_W_cond.pdf used on input line 346.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+ [10 <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/
+OM_IOD_3B_traj.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/A
+AS 2015 OD EKF/OM_IOD_3B_cri.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/
+Publications/AAS 2015 OD EKF/OM_IOD_3B_svd.pdf> <C:/Users/evankaufman/Google Dr
+ive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_3B_cond.pdf> <C:/Users/evanka
+ufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_3B_W_svd.pdf> 
+<C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IO
+D_3B_W_cond.pdf>]
+<OM_IOD_3C_traj.pdf, id=962, 527.9725pt x 385.44pt>
+File: OM_IOD_3C_traj.pdf Graphic file (type pdf)
+ <use OM_IOD_3C_traj.pdf>
+Package pdftex.def Info: OM_IOD_3C_traj.pdf used on input line 358.
+(pdftex.def)             Requested size: 187.89912pt x 137.17033pt.
+
+<OM_IOD_3C_cri.pdf, id=963, 501.875pt x 416.55624pt>
+File: OM_IOD_3C_cri.pdf Graphic file (type pdf)
+ <use OM_IOD_3C_cri.pdf>
+Package pdftex.def Info: OM_IOD_3C_cri.pdf used on input line 358.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_3C_svd.pdf, id=964, 501.875pt x 416.55624pt>
+File: OM_IOD_3C_svd.pdf Graphic file (type pdf)
+ <use OM_IOD_3C_svd.pdf>
+Package pdftex.def Info: OM_IOD_3C_svd.pdf used on input line 365.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_3C_cond.pdf, id=965, 494.84875pt x 416.55624pt>
+File: OM_IOD_3C_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_3C_cond.pdf>
+Package pdftex.def Info: OM_IOD_3C_cond.pdf used on input line 365.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+
+<OM_IOD_3C_W_svd.pdf, id=966, 501.875pt x 416.55624pt>
+File: OM_IOD_3C_W_svd.pdf Graphic file (type pdf)
+
+<use OM_IOD_3C_W_svd.pdf>
+Package pdftex.def Info: OM_IOD_3C_W_svd.pdf used on input line 372.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_3C_W_cond.pdf, id=967, 494.84875pt x 416.55624pt>
+File: OM_IOD_3C_W_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_3C_W_cond.pdf>
+Package pdftex.def Info: OM_IOD_3C_W_cond.pdf used on input line 372.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+ [11 <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/
+OM_IOD_3C_traj.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/A
+AS 2015 OD EKF/OM_IOD_3C_cri.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/
+Publications/AAS 2015 OD EKF/OM_IOD_3C_svd.pdf> <C:/Users/evankaufman/Google Dr
+ive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_3C_cond.pdf> <C:/Users/evanka
+ufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_3C_W_svd.pdf> 
+<C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IO
+D_3C_W_cond.pdf>]
+<OM_IOD_4A_traj.pdf, id=1067, 489.83pt x 259.97125pt>
+File: OM_IOD_4A_traj.pdf Graphic file (type pdf)
+ <use OM_IOD_4A_traj.pdf>
+Package pdftex.def Info: OM_IOD_4A_traj.pdf used on input line 384.
+(pdftex.def)             Requested size: 187.89912pt x 99.7223pt.
+
+<OM_IOD_4A_cri.pdf, id=1068, 501.875pt x 416.55624pt>
+File: OM_IOD_4A_cri.pdf Graphic file (type pdf)
+ <use OM_IOD_4A_cri.pdf>
+Package pdftex.def Info: OM_IOD_4A_cri.pdf used on input line 384.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_4A_svd.pdf, id=1069, 501.875pt x 416.55624pt>
+File: OM_IOD_4A_svd.pdf Graphic file (type pdf)
+ <use OM_IOD_4A_svd.pdf>
+Package pdftex.def Info: OM_IOD_4A_svd.pdf used on input line 391.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_4A_cond.pdf, id=1070, 494.84875pt x 416.55624pt>
+File: OM_IOD_4A_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_4A_cond.pdf>
+Package pdftex.def Info: OM_IOD_4A_cond.pdf used on input line 391.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+
+<OM_IOD_4A_W_svd.pdf, id=1071, 501.875pt x 416.55624pt>
+File: OM_IOD_4A_W_svd.pdf Graphic file (type pdf)
+
+<use OM_IOD_4A_W_svd.pdf>
+Package pdftex.def Info: OM_IOD_4A_W_svd.pdf used on input line 398.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_4A_W_cond.pdf, id=1072, 494.84875pt x 416.55624pt>
+File: OM_IOD_4A_W_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_4A_W_cond.pdf>
+Package pdftex.def Info: OM_IOD_4A_W_cond.pdf used on input line 398.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+ [12 <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/
+OM_IOD_4A_traj.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/A
+AS 2015 OD EKF/OM_IOD_4A_cri.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/
+Publications/AAS 2015 OD EKF/OM_IOD_4A_svd.pdf> <C:/Users/evankaufman/Google Dr
+ive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_4A_cond.pdf> <C:/Users/evanka
+ufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_4A_W_svd.pdf> 
+<C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IO
+D_4A_W_cond.pdf>]
+<OM_IOD_4B_traj.pdf, id=1172, 526.96875pt x 262.9825pt>
+File: OM_IOD_4B_traj.pdf Graphic file (type pdf)
+
+<use OM_IOD_4B_traj.pdf>
+Package pdftex.def Info: OM_IOD_4B_traj.pdf used on input line 410.
+(pdftex.def)             Requested size: 187.89912pt x 93.77074pt.
+ <OM_IOD_4B_cri.pdf, id=1173, 501.875pt x 416.55624pt>
+File: OM_IOD_4B_cri.pdf Graphic file (type pdf)
+
+<use OM_IOD_4B_cri.pdf>
+Package pdftex.def Info: OM_IOD_4B_cri.pdf used on input line 410.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+ <OM_IOD_4B_svd.pdf, id=1174, 501.875pt x 416.55624pt>
+File: OM_IOD_4B_svd.pdf Graphic file (type pdf)
+
+<use OM_IOD_4B_svd.pdf>
+Package pdftex.def Info: OM_IOD_4B_svd.pdf used on input line 417.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_4B_cond.pdf, id=1175, 494.84875pt x 416.55624pt>
+File: OM_IOD_4B_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_4B_cond.pdf>
+Package pdftex.def Info: OM_IOD_4B_cond.pdf used on input line 417.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+
+<OM_IOD_4B_W_svd.pdf, id=1176, 501.875pt x 416.55624pt>
+File: OM_IOD_4B_W_svd.pdf Graphic file (type pdf)
+
+<use OM_IOD_4B_W_svd.pdf>
+Package pdftex.def Info: OM_IOD_4B_W_svd.pdf used on input line 424.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_4B_W_cond.pdf, id=1177, 494.84875pt x 416.55624pt>
+File: OM_IOD_4B_W_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_4B_W_cond.pdf>
+Package pdftex.def Info: OM_IOD_4B_W_cond.pdf used on input line 424.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+ [13 <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/
+OM_IOD_4B_traj.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/A
+AS 2015 OD EKF/OM_IOD_4B_cri.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/
+Publications/AAS 2015 OD EKF/OM_IOD_4B_svd.pdf> <C:/Users/evankaufman/Google Dr
+ive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_4B_cond.pdf> <C:/Users/evanka
+ufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_4B_W_svd.pdf> 
+<C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IO
+D_4B_W_cond.pdf>]
+<OM_IOD_4C_traj.pdf, id=1278, 526.96875pt x 262.9825pt>
+File: OM_IOD_4C_traj.pdf Graphic file (type pdf)
+
+<use OM_IOD_4C_traj.pdf>
+Package pdftex.def Info: OM_IOD_4C_traj.pdf used on input line 436.
+(pdftex.def)             Requested size: 187.89912pt x 93.77074pt.
+ <OM_IOD_4C_cri.pdf, id=1279, 501.875pt x 416.55624pt>
+File: OM_IOD_4C_cri.pdf Graphic file (type pdf)
+
+<use OM_IOD_4C_cri.pdf>
+Package pdftex.def Info: OM_IOD_4C_cri.pdf used on input line 436.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+ <OM_IOD_4C_svd.pdf, id=1280, 501.875pt x 416.55624pt>
+File: OM_IOD_4C_svd.pdf Graphic file (type pdf)
+
+<use OM_IOD_4C_svd.pdf>
+Package pdftex.def Info: OM_IOD_4C_svd.pdf used on input line 443.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_4C_cond.pdf, id=1281, 494.84875pt x 416.55624pt>
+File: OM_IOD_4C_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_4C_cond.pdf>
+Package pdftex.def Info: OM_IOD_4C_cond.pdf used on input line 443.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+
+<OM_IOD_4C_W_svd.pdf, id=1282, 501.875pt x 416.55624pt>
+File: OM_IOD_4C_W_svd.pdf Graphic file (type pdf)
+
+<use OM_IOD_4C_W_svd.pdf>
+Package pdftex.def Info: OM_IOD_4C_W_svd.pdf used on input line 450.
+(pdftex.def)             Requested size: 211.3883pt x 175.45456pt.
+
+<OM_IOD_4C_W_cond.pdf, id=1283, 494.84875pt x 416.55624pt>
+File: OM_IOD_4C_W_cond.pdf Graphic file (type pdf)
+
+<use OM_IOD_4C_W_cond.pdf>
+Package pdftex.def Info: OM_IOD_4C_W_cond.pdf used on input line 450.
+(pdftex.def)             Requested size: 211.3883pt x 177.9398pt.
+ [14 <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/
+OM_IOD_4C_traj.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/A
+AS 2015 OD EKF/OM_IOD_4C_cri.pdf> <C:/Users/evankaufman/Google Drive/FDCL/Evan/
+Publications/AAS 2015 OD EKF/OM_IOD_4C_svd.pdf> <C:/Users/evankaufman/Google Dr
+ive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_4C_cond.pdf> <C:/Users/evanka
+ufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IOD_4C_W_svd.pdf> 
+<C:/Users/evankaufman/Google Drive/FDCL/Evan/Publications/AAS 2015 OD EKF/OM_IO
+D_4C_W_cond.pdf>]
+("C:\Users\evankaufman\Google Drive\FDCL\Evan\Publications\AAS 2015 OD EKF\Obse
+rvabilityMeasure_IOD.aux") ) 
+Here is how much of TeX's memory you used:
+ 4455 strings out of 494045
+ 66821 string characters out of 3145951
+ 134388 words of memory out of 3000000
+ 7615 multiletter control sequences out of 15000+200000
+ 20100 words of font info for 50 fonts, out of 3000000 for 9000
+ 715 hyphenation exceptions out of 8191
+ 36i,12n,38p,447b,309s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/
+fontname/8r.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
+/cmmi6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+mi7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10
+.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb
+><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:
+/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/P
+rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Prog
+ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program
+ Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86
+)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb>
+Output written on ObservabilityMeasure_IOD.pdf (14 pages, 12599241 bytes).
+PDF statistics:
+ 1419 PDF objects out of 1440 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 391 words of extra memory for PDF output out of 10000 (max. 10000000)
+

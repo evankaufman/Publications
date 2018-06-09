@@ -1,0 +1,118 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[letterpaper,text={6.5in,9.5in},centering]{geometry}
+\usepackage{epic,eepic}
+\usepackage{amssymb,amsmath,times,subfigure,graphicx,theorem}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{authblk}
+\title{Design and Development of a Free-Floating Hexrotor UAV for 6-DOF Maneuvers}
+\author{Evan Kaufman\thanks{evankaufman@gwu.edu}}
+\author{Kiren Caldwell\thanks{kirencaldwell@gmail.com}}
+\author{Taeyoung Lee\thanks{tylee@gwu.edu}}
+\affil{Department of Mechanical and Aerospace Engineering, The George Washington University}
+
+
+\renewcommand\Authands{ and }
+
+%\usepackage{warmread}
+%\usepackage[all,import]{xy}
+%\usepackage{eepic}
+\usepackage{subfigure}
+
+\usepackage{amsmath}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+
+\newcommand{\norm}[1]{\ensuremath{\left\| #1 \right\|}}
+\newcommand{\bracket}[1]{\ensuremath{\left[ #1 \right]}}
+\newcommand{\braces}[1]{\ensuremath{\left\{ #1 \right\}}}
+\newcommand{\parenth}[1]{\ensuremath{\left( #1 \right)}}
+\newcommand{\pair}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\met}[1]{\ensuremath{\langle\langle #1 \rangle\rangle}}
+\newcommand{\refeqn}[1]{(\ref{eqn:#1})}
+\newcommand{\reffig}[1]{Figure \ref{fig:#1}}
+\newcommand{\tr}[1]{\mathrm{tr}\ensuremath{\negthickspace\bracket{#1}}}
+\newcommand{\trs}[1]{\mathrm{tr}\ensuremath{[#1]}}
+\newcommand{\deriv}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+\newcommand{\SO}{\ensuremath{\mathsf{SO(3)}}}
+\newcommand{\T}{\ensuremath{\mathsf{T}}}
+\renewcommand{\L}{\ensuremath{\mathsf{L}}}
+\newcommand{\so}{\ensuremath{\mathfrak{so}(3)}}
+\newcommand{\SE}{\ensuremath{\mathsf{SE(3)}}}
+\newcommand{\se}{\ensuremath{\mathfrak{se}(3)}}
+\renewcommand{\Re}{\ensuremath{\mathbb{R}}}
+\newcommand{\aSE}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&1\end{bmatrix}}}
+\newcommand{\ase}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&0\end{bmatrix}}}
+\newcommand{\D}{\ensuremath{\mathbf{D}}}
+\newcommand{\Sph}{\ensuremath{\mathsf{S}}}
+\renewcommand{\S}{\Sph}
+\newcommand{\J}{\ensuremath{\mathbf{J}}}
+\newcommand{\Ad}{\ensuremath{\mathrm{Ad}}}
+\newcommand{\intp}{\ensuremath{\mathbf{i}}}
+\newcommand{\extd}{\ensuremath{\mathbf{d}}}
+\newcommand{\hor}{\ensuremath{\mathrm{hor}}}
+\newcommand{\ver}{\ensuremath{\mathrm{ver}}}
+\newcommand{\dyn}{\ensuremath{\mathrm{dyn}}}
+\newcommand{\geo}{\ensuremath{\mathrm{geo}}}
+\newcommand{\Q}{\ensuremath{\mathsf{Q}}}
+\newcommand{\G}{\ensuremath{\mathsf{G}}}
+\newcommand{\g}{\ensuremath{\mathfrak{g}}}
+\newcommand{\Hess}{\ensuremath{\mathrm{Hess}}}
+
+\renewcommand{\baselinestretch}{1.2}
+\date{September 3, 2013}
+
+\renewcommand{\thesubsection}{\arabic{subsection}. }
+\renewcommand{\thesubsubsection}{\arabic{subsection}.\arabic{subsubsection} }
+
+\theoremstyle{plain}\theorembodyfont{\normalfont}
+\newtheorem{prob}{Question}[section]
+%\renewcommand{\theprob}{\arabic{section}.\arabic{prob}}
+\renewcommand{\theprob}{\arabic{prob}}
+
+\newenvironment{subprob}%
+{\renewcommand{\theenumi}{\alph{enumi}}\renewcommand{\labelenumi}{(\theenumi)}\begin{enumerate}}%
+{\end{enumerate}}%
+
+
+\begin{document}
+\maketitle
+We designed an experimental platform for testing nonlinear control on a fully-actuated system. We have designed a nonlinear controller, developed in a geometric framework such that the nonlinearities of the attitude configuration manifold are explicitly considered in controller design, which is tested extensively with numerical simulations. The research presented in this paper provides a technique to experimentally validate this control on a dynamic system with six decoupled degrees of freedom--three position and three attitude--with an unmanned aerial vehicle. Quadrotor UAVs have been tested for geometric control; however, quadrotors are unable to hover when the propeller thrust is not parallel to the gravitational force. Hence, we propose a hexrotor UAV testbed that is fully-actuated to maneuver in the special Euclidean group $\SE$. The system design is completed and the actuators are successfully tested.
+
+The UAV testbed for fully-actuated geometric control uses variable pitch propeller actuators, capable of quick reversal of thrust, so that the UAV may produce large angle rotations. The UAV frame holds two of these propellers on each of three orthogonal planes. Thorough calibration tests show a wide range of thrust values from the motor and propeller combination, yielding nearly identical thrust magnitudes in both positive and negative directions. The expected flight of this UAV will take place at George Washington University's (GWU) Motion Capture (MoCa) laboratory, which uses line-of-sight measurements to capture markers rigidly attached to the UAVs. We expect preliminary flight results of this UAV in the coming months.
+
+The key results of the testing show how the variable pitch propellers are able to accurately and consistently provide up to 3.5 Newtons of force in each direction; these results yield large admissible hovering and maneuvering regions of attitude for the UAV. Hence, we provide evidence that the system is not constrained to a single plane for hovering; maneuvers involving more complex and nontrivial trajectories are possible. Furthermore, these results serve to improve aspects of numerical modeling of the control, namely saturation regions and dynamic response times. These results confirmed the feasibility of the experimental testbed.
+
+Geometric control has direct applications with spacecraft formation control. Controllers using inertial measurement unit (IMU) data to determine relative attitude with local coordinates yield a complicated controller structure and measurement error accumulation of the sensors. A technique developed at GWU involves group of spacecraft using line-of-sight measurements in a geometric framework to control relative attitude directly with no accumulation of sensor error. Conventional testbeds to validate this control scheme such as spherical air bearings have severe restrictions in tumbling motions; however, the UAV testbed presented in this paper is capable of hover in a wide range of directions to perform ground tests of large angle rotational maneuvers of spacecraft attitude dynamics. This hardware platform is also readily extended to other single- or multi-agent systems for cooperative controls. Experimental results serve as evidence for the merit of geometric control in space systems.
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

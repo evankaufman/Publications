@@ -1,0 +1,134 @@
+\documentclass[10pt]{article}
+\usepackage[letterpaper,text={6.5in,8.7in},centering]{geometry}
+\usepackage{epic,eepic}
+\usepackage{amssymb,amsmath,times,subfigure,graphicx,theorem}
+%\usepackage{warmread}
+%\usepackage[all,import]{xy}
+%\usepackage{eepic}
+\usepackage{subfigure}
+\usepackage[]{algorithm2e}
+\usepackage{amsmath}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+
+\newcommand{\norm}[1]{\ensuremath{\left\| #1 \right\|}}
+\newcommand{\bracket}[1]{\ensuremath{\left[ #1 \right]}}
+\newcommand{\braces}[1]{\ensuremath{\left\{ #1 \right\}}}
+\newcommand{\parenth}[1]{\ensuremath{\left( #1 \right)}}
+\newcommand{\pair}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\met}[1]{\ensuremath{\langle\langle #1 \rangle\rangle}}
+\newcommand{\refeqn}[1]{(\ref{eqn:#1})}
+\newcommand{\reffig}[1]{Figure \ref{fig:#1}}
+\newcommand{\tr}[1]{\mathrm{tr}\ensuremath{\negthickspace\bracket{#1}}}
+\newcommand{\trs}[1]{\mathrm{tr}\ensuremath{[#1]}}
+\newcommand{\deriv}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+\newcommand{\SO}{\ensuremath{\mathsf{SO(3)}}}
+\newcommand{\T}{\ensuremath{\mathsf{T}}}
+\renewcommand{\L}{\ensuremath{\mathsf{L}}}
+\newcommand{\so}{\ensuremath{\mathfrak{so}(3)}}
+\newcommand{\SE}{\ensuremath{\mathsf{SE(3)}}}
+\newcommand{\se}{\ensuremath{\mathfrak{se}(3)}}
+\renewcommand{\Re}{\ensuremath{\mathbb{R}}}
+\newcommand{\aSE}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&1\end{bmatrix}}}
+\newcommand{\ase}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&0\end{bmatrix}}}
+\newcommand{\D}{\ensuremath{\mathbf{D}}}
+\newcommand{\Sph}{\ensuremath{\mathsf{S}}}
+\renewcommand{\S}{\Sph}
+\newcommand{\J}{\ensuremath{\mathbf{J}}}
+\newcommand{\Ad}{\ensuremath{\mathrm{Ad}}}
+\newcommand{\intp}{\ensuremath{\mathbf{i}}}
+\newcommand{\extd}{\ensuremath{\mathbf{d}}}
+\newcommand{\hor}{\ensuremath{\mathrm{hor}}}
+\newcommand{\ver}{\ensuremath{\mathrm{ver}}}
+\newcommand{\dyn}{\ensuremath{\mathrm{dyn}}}
+\newcommand{\geo}{\ensuremath{\mathrm{geo}}}
+\newcommand{\Q}{\ensuremath{\mathsf{Q}}}
+\newcommand{\G}{\ensuremath{\mathsf{G}}}
+\newcommand{\g}{\ensuremath{\mathfrak{g}}}
+\newcommand{\Hess}{\ensuremath{\mathrm{Hess}}}
+
+\renewcommand{\baselinestretch}{1.2}
+\date{}
+
+\renewcommand{\thesubsection}{\arabic{subsection}. }
+\renewcommand{\thesubsubsection}{\arabic{subsection}.\arabic{subsubsection} }
+
+\theoremstyle{plain}\theorembodyfont{\normalfont}
+\newtheorem{prob}{Question}[section]
+%\renewcommand{\theprob}{\arabic{section}.\arabic{prob}}
+\renewcommand{\theprob}{\arabic{prob}}
+
+\newenvironment{subprob}%
+{\renewcommand{\theenumi}{\alph{enumi}}\renewcommand{\labelenumi}{(\theenumi)}\begin{enumerate}}%
+{\end{enumerate}}%
+
+
+\begin{document}
+
+\section*{ICRA15 Workshops}
+
+
+\begin{itemize}
+\item Robotic Vision: Challenges and Opportunities
+\begin{itemize}
+\item Vision goals: how many objects can I recognize and how well?
+\item Robotics goals: what can we do with those objects?
+\item Deep reinforcement of Learning
+\begin{itemize}
+\item Deep learning (2012) - 8 layer neural network
+\item $0.216$ trillion sets of training data--could only be done with large computing power, linearized functions
+\item Reinforcement Learning: find a control policy to optimize the ability to accomplish a goal
+\item Training: guided policy search: either removing the nonlinearities or a complicated policy simplifies the process
+\end{itemize}
+\item The 100/100 Tracking Challenge
+\begin{itemize}
+\item Assume the environment and everything inside it is known
+\item Goal: track 100\% of the objects with 100\% accuracy
+\item Modeling non-rigid objects
+\item Fairly decent tracking down to the joints of an object (hand, body)
+\item Detecting articulated objects: data association challenge
+\item Challenges: robust data association and occlusions for very fast motion, activity and task recognition
+\end{itemize}
+\item Geometry vs. Appearance
+\begin{itemize}
+\item Geometry: properties and relations in wold space--map representations (occupancy grids), sparse point clouds, landmark-based SLAM, dense SLAM
+\item Appearance: the was something looks in sensor space (typical definitions)--feature detectors, bag of words, pixel trackers, artificial landmarks (QR codes)
+\item Lots of ways to relate the two, but rarely are they considered together
+\item Why? physics of the sensors that relates geometry and appearance is difficult
+\item Removing illumination does great things
+\end{itemize}
+\item Natural Vision for Robotic Vision: Pillage or Pass Over?
+\begin{itemize}
+\item Mouses have much blurrier vision than humans, although they can quickly learn how to navigate and do tasks
+\item There is a large disconnect between measuring vision as a whole and the actual tasks of animals
+\item Cameras are getting so cheap that mostly nature-based approaches are not very useful now
+\end{itemize}
+\item Visual Navigation
+\begin{itemize}
+\item Self-driving vehicles have a perception problem
+\item Occlusion is incredibly difficult
+\item Signals become very difficult (waving you through an intersection)
+\item Signs may be blocked, but must be understood
+\item Challenges: maintaining maps, dealing with adverse weather, dealing with people, robust computer vision
+\item We need object-based understanding
+\end{itemize}
+\end{itemize}
+\newpage
+\item Tutorial: Industrial Applications with Large-Scale 3D Poin Cloud Processing
+\begin{itemize}
+\item Basic principles, solving problems of modern sensor data processing
+\item 3DTK: 3D Toolkit, OpenSource/GPL
+\item How to save a point cloud?
+\begin{itemize}
+\item vector of (x,y,z) as a text file
+\item range/intensity image: 2D array of kinect-like sensors, but there is distortion of a spherical sensor space onto a 2D image plane: projecting each 3D point to an image plane, but you cannot map a complete sphere into a 2D image
+\item oc-tree: occupancy trees break down the space into blocks, where free space is removed and those being measured are split to increase resolution in this region
+\item k-d tree: binary, heavily used in nearest-neighbor-like scenarios
+\end{itemize}
+\item
+\end{itemize}
+\end{itemize}
+
+\end{document}
+
+
+

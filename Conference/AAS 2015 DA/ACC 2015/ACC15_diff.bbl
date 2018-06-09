@@ -1,0 +1,107 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{#1}
+\csname url@rmstyle\endcsname
+\providecommand{\newblock}{\relax}
+\providecommand{\bibinfo}[2]{#2}
+\providecommand\BIBentrySTDinterwordspacing{\spaceskip=0pt\relax}
+\providecommand\BIBentryALTinterwordstretchfactor{4}
+\providecommand\BIBentryALTinterwordspacing{\spaceskip=\fontdimen2\font plus
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
+\providecommand\BIBforeignlanguage[2]{{%
+\expandafter\ifx\csname l@#1\endcsname\relax
+\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
+\typeout{** loaded for the language `#1'. Using the pattern for}%
+\typeout{** the default language instead.}%
+\else
+\language=\csname l@#1\endcsname
+\fi
+#2}}
+
+\bibitem{KauLovLee14}
+E.~Kaufman, T.~A. Lovell, and T.~Lee, ``Optimal joint probabilistic data
+  association filter avoiding coalescence in close proximity,'' in
+  \emph{Proceedings of the IEEE European Control Conference}, 2014.
+
+\bibitem{MHT1}
+S.~S. Blackman, ``Multiple hypothesis tracking for multiple target tracking,''
+  \emph{IEEE Aerospace and Electronic Systems Magazine}, vol.~19, no.~1, 2004.
+
+\bibitem{PHD1}
+L.~Lin, Y.~Bar-Shalom, and T.~Kirubarajan, ``Track labeling and {PHD} filter
+  for multitarget tracking,'' \emph{IEEE Transactions on Aerospace and
+  Electronic Systems}, vol.~42, no.~3, pp. 778--794, 2006.
+
+\bibitem{PHD2}
+H.~Sidenbladh, ``Development of practical {PDA} logic for multitarget tracking
+  by microprocessor,'' in \emph{Proceedings of the American Control
+  Conference}, 1986.
+
+\bibitem{JPDAF1}
+Y.~Bar-Shalom, F.~Daum, and J.~Huang, ``The probabilistic data association
+  filter,'' 2009.
+
+\bibitem{NN2}
+X.~R. Li and Y.~Bar-Shalom, ``Tracking in clutter with nearest neighbor
+  filters: Analysis and performance,'' \emph{IEEE Transactions on Aerospace and
+  Electronic Systems}, vol.~32, no.~3, pp. 995--1010, 1996.
+
+\bibitem{TrackDataAssoc}
+Y.~Bar-Shalom and T.~E. Fortmann, \emph{Tracking and Data Association}.\hskip
+  1em plus 0.5em minus 0.4em\relax San Diego, CA: Elsevier, Inc, 1988.
+
+\bibitem{Coal1}
+H.~A.~P. Blom and E.~Bloem, ``Probabilistic data association avoiding track
+  coalescence,'' \emph{IEEE Transactions on Automatic Control}, vol.~45,
+  no.~17, pp. 247--259, 2000.
+
+\bibitem{Fitzgerald}
+R.~J. Fitzgerald, ``Development of practical {PDA} logic for multitarget
+  tracking by microprocessor,'' Raytheon Company, Missile Systems Division,
+  Tech. Rep., {B}edford, Massachusetts.
+
+\bibitem{Coal_d}
+E.~A. Bloem and H.~A. Blom, ``Joint probabilistic data association methods
+  avoiding track coalescence,'' in \emph{Proceedings of the IEEE Conference on
+  Decision and Control}, 1995.
+
+\bibitem{Coal_e}
+H.~A. Blom and E.~A. Bloem, ``Combining {IMM} and {JPDA} for tracking multiple
+  maneuvering targets in clutter,'' National Aerospace Laboratory NLR, Tech.
+  Rep.
+
+\bibitem{Coal_c}
+S.~Chen and Y.~Xu, ``A new joint probabilistic data association algorithm
+  avoiding track coalescence,'' \emph{International Journal of Intelligent
+  Systems and Applications}, vol.~2, pp. 45--51, 2011.
+
+\bibitem{Bar1990}
+Y.~Bar-Shalom, \emph{Multitarget-Multisensor Tracking}.\hskip 1em plus 0.5em
+  minus 0.4em\relax Norwood, MA: Artech House, Inc.
+
+\bibitem{OptEst1}
+A.~Gelb, \emph{Applied Optimal Estimation}.\hskip 1em plus 0.5em minus
+  0.4em\relax Cambridge, Massachusetts and London, England: The Analytic
+  Sciences Corporation, 1974.
+
+\bibitem{Val01}
+D.~A. Vallado, \emph{Fundamentals of Astrodynamics and Applications}.\hskip 1em
+  plus 0.5em minus 0.4em\relax El Segundo, CA: Microcosm Press and Kluwer
+  Academic Publishers.
+
+\bibitem{VerSauSco04}
+P.~Vergez, L.~Sauter, and S.~Dahlke, \emph{The Journal of the Astronautical
+  Sciences}.
+
+\bibitem{KurAriAriEfe10}
+F.~Kural, F.~Arikan, O.~Arikan, and M.~Efe, ``Performance evaluation of track
+  association and maintenance for a mfpar with doppler velocity measurements,''
+  \emph{Progress In Electromagnetics Research}, vol. 108, pp. 249–--275,
+  2010.
+
+\bibitem{ShaRonThi2001}
+Y.~Bar-Shalom, X.~R. Li, and T.~Kirubarajan, \emph{Estimation with Applications
+  to Tracking and Navagation}.\hskip 1em plus 0.5em minus 0.4em\relax New York:
+  A Wiley-Interscience Publication.
+
+\end{thebibliography}

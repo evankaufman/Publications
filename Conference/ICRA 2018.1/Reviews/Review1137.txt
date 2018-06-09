@@ -1,0 +1,104 @@
+Reviewer 1 of ICUAS'18 submission 144
+
+Comments to the author
+======================
+
+The paper proposes a method for autonomous robotic
+exploration with multiple robots. The authors employ an
+occupancy grid map as environment's model, and they employ
+a bidding-based method for multi-robot cooperation.
+Moreover, the authors include a receding horizon method to
+handle dynamic obstacles.
+
+Overall the paper is well written. Moreover, I strongly
+believe that the use of bidding-based methods for
+multi-robot cooperation has a strong potential.
+
+However, I've identified two major issues while reading the
+paper:
+- There are no references to previous work on multi-robot
+exploration. I would recommend the authors the paper
+"Coordination strategies for multi-robot exploration and
+mapping"
+(http://journals.sagepub.com/doi/abs/10.1177/02783649135153
+09) for a review of the state of the art. Unfortunately,
+for me as reviewer I cannot judge the paper if authors do
+not explicitly mention the improvement of their method
+respect to the state of the art. In addition,
+state-of-the-art works should be employed as benchmark to
+test the authors method.
+- The paper structure is not clear. I'm missing a section
+that presents an overview of the whole approach. Without
+this, I was not able to fully understand the algorithm. I
+had multiple unanswered questions like e.g.: when does the
+bidding based cooperation takes place? Continuously?
+Every-single step? How the receding horizon method works
+together with the the bidding-based method? When does the
+robot take measurements? A block diagram of the whole
+approach would definitely help to answer all these
+questions.
+
+Appart from those issues, I would like to raise some
+additional comments:
+- The authors employ an uncertainty-based exploration
+technique. It's not fully justified why you selected such
+method. Why not for example using mutual information (MI)?.
+MI, in contrast to uncertainty, is a more informative
+metric. See e.g. "On mutual information-based control of
+range sensing robots for mapping applications", or
+"Distributed Multi-Robot Cooperation for Information
+Gathering under Communication Constraints".
+- The reviewer does not fully understand the use of a
+receding horizon method. Although the authors justify its
+use in case of dynamic obstacles, the evaluation does not
+include any dynamic obstacles. It's a nice add-on, but its
+use should be better justified.
+- The assumptions that you consider in your work are not
+completely clear. In particular, it was not clear to me the
+following: do you assume a perfect robot localization? do
+you consider sensor noise in your approach?
+- The authors project the 3D map in a 2D map. However, they
+do not comment on the implications of such projection. What
+do you lose in terms of map representability, and in terms
+of algorithm's performance?
+- You mention in the conclusions, that your approach is
+near-optimal. However, this is not justified in the paper;
+neither from a theoretical nor from a heuristic
+perspective. Fig. 5 could be a good indicator of the
+algorithm's performance. However, in Fig. 5 we can only see
+that entropy decreases but it does not go to 0. Authors
+justify that this is due to the fact that there are
+unreachable positions. Nevertheless, authors could
+calculate entropy only at reachable positions. This way, we
+should see that entropy converges to zero.
+
+To finalize, I would like to highlight a couple of points
+for improvement:
+- The authors consider a centralized bidding approach. I
+strongly believe that a clear next step is employing a
+distributed approach. 
+- The authors employ a myopic coordination approach, where
+robots plan their intermediate next step. I would recommend
+the authors to look at non-myopic approaches. See e.g.
+"Online Information Gathering using Sampling-Based Planners
+and GPs: an Information Theoretic Approach".
+- In figures 3,4 I would only include a couple of snapshots
+(not that many). I believe this is not needed as that
+content can be better seen in the video.
+
+In summary, I believe this paper has potential to become a
+relevant contribution. Nevertheless it should be improved
+to better justify the novelty and details of the proposed
+approach.
+
+Comments on the Video Demonstration
+===================================
+
+The video overall is good, as it shows the exploration run.
+This gives the reader a good feeling on how robots
+coordinate.
+
+Possible improvements:
+- Include a simultaneous plot showing the reduction in the
+total map entropy.
+- As the robots you're conside

@@ -1,0 +1,56 @@
+Reviewer 1 of SIMPAR 2016 submission 48
+
+Comments to the author
+======================
+
+This paper presents an algorithm for a robot to explore an
+unknown
+environment (represented as an occupancy grid map) by
+moving to a
+pose to minimize the expected map entropy.  The paper is
+clearly
+written and easy to follow.  The main innovation is an
+efficient
+computation of the expected entropy (or, equivalently, the
+information gain) for a robot with a single ray laser range
+finder.  The
+computation relies on a recent derivation by the authors
+for
+efficiently computing the normalization factor in the
+Bayesian update
+for occupancy grid mapping.  The proposed control algorithm
+is
+otherwise standard.
+
+The paper is interesting and presents a concrete
+contribution.  My
+only significant concern is that it does not seem to be
+well-aligned
+with the theme of the conference, as simulation is not a
+significant
+part of the paper.  Aside from that, I have some more minor
+recommendations:
+
+1.  I recommend that the authors cite recent related work
+from Brian
+Julian, Sertac Karaman, and Daniela Rus as well as recent
+work by
+Philip Dames, Vijiay Kumar, and various other co-authors.
+
+2.  I recommend that the authors rephrase the claim in the
+intro that
+in SLAM the trajectory is given.  I would rather state that
+the data
+is given (the trajectory has to be estimated along with the
+map).  I
+understand the intention of the authors, but this could be
+misinterpreted by a reader to think that SLAM only
+estimates a map,
+not a trajectory and a map (which is not correct).
+
+3.  Also, since this paper does assume a known robot
+trajectory
+(X_{1:t}) it is perhaps not wise to begin with SLAM as a
+motivating
+example, as SLAM is a more challenging estimation problem
+than the one considered here.

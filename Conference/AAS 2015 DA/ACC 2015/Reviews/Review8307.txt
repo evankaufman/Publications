@@ -1,0 +1,26 @@
+Reviewer 3 of 2015 ACC submission 1089
+
+Comments to the author
+======================
+
+I am not quite certain whether this paper fits within the
+profile of this conference. The contribution of the paper
+is not clear to me. What's proposed is probably useful from
+a target tracking application viewpoint, but all the
+calculations are pretty much straightforward and the ideas
+behind them are hardly surprising. There paper has no
+rigorous statements that would challenge my mind, and the
+ideas proposed are pretty much ad hock. If I were attending
+the presentation, what is the main message of the paper
+that I should take home?  
+
+On the minor point, numerous abbreviations used throughout
+the paper were irritating as they were forcing me to
+repeatedly search through the paper to try to remember what
+they mean. Another point (perhaps not so minor) is
+concerned with the terminology. I don't get why the paper
+talks about minimum uncertainty - you minimize a posteriori
+covariance, not the uncertainty. Also, you should explain
+if there are differences between your MUJPDA filter and the
+Kalman filters with missing measurements. There have been
+many results on the latter topic lately.   

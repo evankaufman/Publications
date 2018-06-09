@@ -1,0 +1,25 @@
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdftex 2013.7.7)  22 OCT 2013 00:17
+entering extended mode
+**C:/Users/Evan/Dropbox/Dr.*Lee*Research*Group/Evan/Publications/ECC*2014/BibMa
+ster.bib
+
+("C:/Users/Evan/Dropbox/Dr. Lee Research Group/Evan/Publications/ECC 2014/BibMa
+ster.bib"
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.36 @inproceedings{SN_
+                       amplitudes,
+? 
+! Emergency stop.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.36 @inproceedings{SN_
+                       amplitudes,
+End of file on the terminal!
+
+!  ==> Fatal error occurred, no output PDF file produced!

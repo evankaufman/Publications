@@ -1,0 +1,124 @@
+\documentclass[12pt,letterpaper]{ISSFD_v01}
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+\usepackage{graphicx}
+
+\usepackage{times} % use times font
+\usepackage{mathptmx} %use same font for math mode
+\DeclareSymbolFont{largesymbols}{OMX}{cmex}{m}{n} %undo the definition of large symbols from the mathptmx package
+\usepackage{authblk} % use authblk package for author formatting
+\renewcommand\Authfont{\bfseries} % make authors bold
+\renewcommand\Affilfont{\normalfont\itshape} % make affiliation italic
+\setlength{\affilsep}{0em} % no spacing between authors and affiliations
+\usepackage[pdffitwindow=false,pdfstartview={FitH},colorlinks=true,citecolor=black,linkcolor=black,urlcolor=black]{hyperref}
+\usepackage{microtype} % makes detailed spacing look nicer.  This is only optional -- not required.
+
+\usepackage{xspace}
+\newcommand{\twentyfourth}{24\textsuperscript{th}\xspace}
+\newcommand{\figText}{Fig.\ }
+\newcommand{\tabText}{Tab.\ }
+\newcommand{\eqText}{Eq.\ }
+
+\title{NONLINEAR OBSERVABILITY FOR RELATIVE SATELLITE ORBITSWITH ANGLES-ONLY MEASUREMENTS}
+
+\author[(1)]{T. Alan Lovell}
+\author[(2)]{Taeyoung Lee}
+\affil[(1)]{Air Force Research Laboratory, 3550 Aberdeen Ave SE, Kirtland AFB, NM 87117 USA,\newline Tel: +1-505-853-4132, Email: splash73@yahoo.com}
+\affil[(2)]{Department of Mechanical and Aerospace Engineering, The George Washington University,\newline801 22nd St NW, Washington DC 20052, Tel: +1-202-994-8710, Email:tylee@gwu.edu}
+
+\date{}  % don't display a date
+
+\begin{document}
+\maketitle
+
+
+\begin{abstract}
+In this paper, nonlinear observability criteria are presented for the relative orbital dynamics represented by the solutions of the two-body problem. It is assumed that a chief is on a circular orbit with a prescribed orbital radius, and it measures line-of-sight toward a deputy. A differential geometric method, based on the Lie derivatives is used to derive sufficient conditions for observability of the orbital properties of deputy. It is shown that under certain geometric conditions on the relative configuration between the chief and the deputy, the nonlinear relative motion is observable from angles-only measurements. An extended Kalman filter is also developed to numerically illustrate the observability of nonlinear relative orbits with angles-only measurements.
+\end{abstract}
+
+\begin{keywords}
+Relative orbit, Observability, Line-of-sight measurement, Extended Kalman filter.
+\end{keywords}
+
+\section{Introduction}
+Space-based surveillance or relative navigation is desirable for many spacecraft missions, such as formation control and rendezvous. Spacecraft maneuvers based only on on-board measurements reduce the total operating cost significantly, and it improves safety against communication interruptions with ground stations.  Relative navigation between spacecraft in close-proximity essentially correspond to space-based orbit determination.  In particular, vision-based navigation and estimation of relative orbit have received attention recently, since optical sensors have desirable properties of low cost and minimal maintenance, while providing accurate line-of-sight measurements.
+
+Relative navigation based on angles-only measurements has been investigated in.  The problem is to determine the relative orbit between a chief spacecraft and a deputy spacecraft by using the line-of-sight between the two objects, as-suming that the orbit of the chief is known.  Reference 1 shows that the relative orbit is unobserv-able from angles-only measurements when linear relative orbital dynamics are assumed, unless there are thrusting maneuvers.  Reference 2 investigates observability by using a relative orbit model linearized about spherical coordinates.  Reference 3 introduces the concept of partial ob-servability to determine a basis vector representing a family of relative orbits, and an initial orbit determination technique for this method.  However, all of these results are based on linear relative orbital dynamics.
+
+In this paper, the authors derive observability criteria for the nonlinear relative orbital dynam-ics represented by the solutions of the two-body problem.  Assuming that a chief is on a circular orbit with a prescribed orbital radius, nonlinear equations of motion for the relative orbital motion of a deputy with respect to the chief are derived.  A differential geometric method, based on the Lie derivatives of the line-of-sight from the chief to the deputy4, is applied to obtain sufficient conditions for observability.  It is shown that under certain geometric conditions on the relative configuration between the chief and the deputy, the nonlinear relative motion is observable from angles-only measurements.  We also develop an extended Kalman filter to illustrate the observa-bility properties numerically.
+
+
+\section{Problem Formulation}
+
+\section{Nonlinear Observability Criteria}
+
+
+\section{Extended Kalman Filtering}
+
+\section{Conclusions}
+
+\bibliographystyle{ISSFD_v01}
+\bibliography{references}
+
+
+\end{document}
+
+
+\subsection{Language}
+All papers shall be presented and written in English.
+
+\subsection{Page Layout and Paper Size}
+The paper shall be written in standard letter paper format (8.5x11 inches, 21.59x27.94 cm) with 1-inch (25.4 mm) margins on all sides (left, right, top and bottom), 
+as illustrated in \figText \ref{fig:page_layout}. 
+
+\begin{figure}[ht]
+ \centering
+ \includegraphics{./page_layout.pdf}
+ \caption{Page layout}
+ \label{fig:page_layout}
+\end{figure}
+
+\section{Title and Author Names}
+The article should have a centered title of up to 15 words using 12 pt Times New Roman font, in boldface capital 
+letters. The author names, which follow the title, should also be centered and written in boldface 12 pt Times New Roman. The author affiliations, addresses and emails shall follow the author names and be
+written in 12 pt Times New Roman, formatted in italic style, and centered. These specifications are 
+exemplified by the title and author section of this template.
+
+\section{Text Specification}
+The text shall be written according to the format specifications presented in \tabText \ref{formatTable}.
+
+\begin{table}[ht]
+\caption{Text Formatting}\label{formatTable}
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Line spacing & Single \\ \hline
+Alignment & Justified \\ \hline
+Font type & Times New Roman \\ \hline
+Font size & 12 pt \\ \hline
+Font style & Regular text \\ \hline
+\end{tabular}
+\end{table} 
+
+\section{Figures and Tables}
+All figures and tables should have a caption and be placed as close as possible to their first reference in the text. 
+Captions of tables or figures should be formatted in bold 12 pt Times New Roman font, and be centered below the figures 
+and above the tables. See \figText \ref{fig:page_layout} and \tabText \ref{formatTable}, above, as examples. Refer to figures in the text with the abbreviation ``\figText 1'', except at the beginning of a sentence, where ``Figure 1'' should be used.
+
+Figures should have good quality and may be grayscale or color. Lettering in figures should be large enough to 
+be clearly legible.
+
+\section{Equations}
+Each equation should be on a separate line with one blank line before and after. Equations should be numbered 
+in increasing order with the numbering flush right to the page margin. Refer to equations in the text with the abbreviation 
+ ``\eqText 1'', except at the beginning of a sentence, where ``Equation 1'' should be used. Equation \ref{eq1} is an 
+example.
+\begin{equation}
+ U = \sum_{n=0}^{\infty} \rho_n \sum_{m=0}^{n} A_{nm}(u)D_{nm}(s,t) \label{eq1}
+\end{equation}
+
+
+
+\nocite{Radice2006}
+
+
+\end{document}

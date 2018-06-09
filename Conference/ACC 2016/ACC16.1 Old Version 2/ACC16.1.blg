@@ -1,0 +1,38 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: ACC16.1.aux
+The style file: IEEEtran.bst
+Database file #1: BibSources.bib
+I was expecting a `,' or a `}'---line 236 of file BibSources.bib
+ :  
+ :  Year={1986}}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 323 of file BibSources.bib
+ :  Title = {Combining {IMM} and {JPDA} for tracking multiple maneuvering targets in clutter}
+ :                                                                                           .
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 391 of file BibSources.bib
+ :  
+ :  Year = {2001}}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 401 of file BibSources.bib
+ :  
+ :  Year = {1990}}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 514 of file BibSources.bib
+ :  
+ :  Year = {2001}}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 521 of file BibSources.bib
+ : 
+ : % Pages = {1–-22},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+-- IEEEtran.bst version 1.11 (2003/04/02) by Michael Shell.
+-- http://www.ctan.org/tex-archive/macros/latex/contrib/supported/IEEEtran/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+(There were 6 error messages)

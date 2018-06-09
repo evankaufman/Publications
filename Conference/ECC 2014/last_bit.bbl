@@ -1,0 +1,78 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{#1}
+\csname url@rmstyle\endcsname
+\providecommand{\newblock}{\relax}
+\providecommand{\bibinfo}[2]{#2}
+\providecommand\BIBentrySTDinterwordspacing{\spaceskip=0pt\relax}
+\providecommand\BIBentryALTinterwordstretchfactor{4}
+\providecommand\BIBentryALTinterwordspacing{\spaceskip=\fontdimen2\font plus
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
+\providecommand\BIBforeignlanguage[2]{{%
+\expandafter\ifx\csname l@#1\endcsname\relax
+\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
+\typeout{** loaded for the language `#1'. Using the pattern for}%
+\typeout{** the default language instead.}%
+\else
+\language=\csname l@#1\endcsname
+\fi
+#2}}
+
+\bibitem{NN2}
+X.~R. Li and Y.~Bar-Shalom, ``Tracking in clutter with nearest neighbor
+  filters: Analysis and performance,'' \emph{IEEE Transactions on Aerospace and
+  Electronic Systems}, vol.~32, no.~3, pp. 995--1010, 1996.
+
+\bibitem{JPDAF1}
+Y.~Bar-Shalom, F.~Daum, and J.~Huang, ``The probabilistic data association
+  filter,'' 2009.
+
+\bibitem{MHT1}
+S.~S. Blackman, ``Multiple hypothesis tracking for multiple target tracking,''
+  \emph{IEEE Aerospace and Electronic Systems Magazine}, vol.~19, no.~1, 2004.
+
+\bibitem{PHD1}
+L.~Lin, Y.~Bar-Shalom, and T.~Kirubarajan, ``Track labeling and {PHD} filter
+  for multitarget tracking,'' \emph{IEEE Transactions on Aerospace and
+  Electronic Systems}, vol.~42, no.~3, pp. 778--794, 2006.
+
+\bibitem{PHD2}
+H.~Sidenbladh, ``Development of practical {PDA} logic for multitarget tracking
+  by microprocessor,'' in \emph{Proceedings of the American Control
+  Conference}, 1986.
+
+\bibitem{TrackDataAssoc}
+Y.~Bar-Shalom and T.~E. Fortmann, \emph{Tracking and Data Association}.\hskip
+  1em plus 0.5em minus 0.4em\relax San Diego, CA: Academic Press, Inc, 1988.
+
+\bibitem{Coal1}
+H.~A.~P. Blom and E.~Bloem, ``Probabilistic data association avoiding track
+  coalescence,'' \emph{IEEE Transactions on Automatic Control}, vol.~45,
+  no.~17, pp. 247--259, 2000.
+
+\bibitem{Fitzgerald}
+R.~J. Fitzgerald, ``Development of practical {PDA} logic for multitarget
+  tracking by microprocessor,'' Raytheon Company, Missile Systems Division,
+  Tech. Rep., {B}edford, Massachusetts.
+
+\bibitem{Coal_d}
+E.~A. Bloem and H.~A. Blom, ``Joint probabilistic data association methods
+  avoiding track coalescence,'' in \emph{Proceedings of the IEEE Conference on
+  Decision and Control}, 1995.
+
+\bibitem{Coal_e}
+H.~A. Blom and E.~A. Bloem, ``Combining {IMM} and {JPDA} for tracking multiple
+  maneuvering targets in clutter,'' National Aerospace Laboratory NLR, Tech.
+  Rep.
+
+\bibitem{Coal_c}
+S.~Chen and Y.~Xu, ``A new joint probabilistic data association algorithm
+  avoiding track coalescence,'' \emph{International Journal of Intelligent
+  Systems and Applications}, vol.~2, pp. 45--51, 2011.
+
+\bibitem{Coal_k}
+M.~Minami and K.~Shimizu, ``Estimation of similarity measure for multivariate
+  normal distributions,'' \emph{Environmental and Ecological Statistics},
+  vol.~45, no.~6, pp. 229--248, 1999.
+
+\end{thebibliography}

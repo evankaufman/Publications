@@ -1,0 +1,727 @@
+\documentclass[10pt]{article}
+\usepackage[letterpaper,text={6.5in,8.6in},centering]{geometry}
+\usepackage{amssymb,amsmath,amsthm,times,graphicx,subfigure,tabularx,booktabs,colortbl}
+\usepackage[small]{caption}
+
+\newcommand{\norm}[1]{\ensuremath{\left\| #1 \right\|}}
+\newcommand{\bracket}[1]{\ensuremath{\left[ #1 \right]}}
+\newcommand{\braces}[1]{\ensuremath{\left\{ #1 \right\}}}
+\newcommand{\parenth}[1]{\ensuremath{\left( #1 \right)}}
+\newcommand{\pair}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\met}[1]{\ensuremath{\langle\langle #1 \rangle\rangle}}
+\newcommand{\refeqn}[1]{(\ref{eqn:#1})}
+\newcommand{\reffig}[1]{Fig. \ref{fig:#1}}
+\newcommand{\tr}[1]{\mathrm{tr}\ensuremath{\negthickspace\bracket{#1}}}
+\newcommand{\trs}[1]{\mathrm{tr}\ensuremath{[#1]}}
+\newcommand{\ave}[1]{\mathrm{E}\ensuremath{[#1]}}
+\newcommand{\deriv}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+\newcommand{\SO}{\ensuremath{\mathsf{SO(3)}}}
+\newcommand{\T}{\ensuremath{\mathsf{T}}}
+\renewcommand{\L}{\ensuremath{\mathsf{L}}}
+\newcommand{\so}{\ensuremath{\mathfrak{so}(3)}}
+\newcommand{\SE}{\ensuremath{\mathsf{SE(3)}}}
+\newcommand{\se}{\ensuremath{\mathfrak{se}(3)}}
+\renewcommand{\Re}{\ensuremath{\mathbb{R}}}
+\newcommand{\aSE}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&1\end{bmatrix}}}
+\newcommand{\ase}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&0\end{bmatrix}}}
+\newcommand{\D}{\ensuremath{\mathbf{D}}}
+\renewcommand{\d}{\ensuremath{\mathfrak{d}}}
+\newcommand{\Sph}{\ensuremath{\mathsf{S}}}
+\renewcommand{\S}{\Sph}
+\newcommand{\J}{\ensuremath{\mathbf{J}}}
+\newcommand{\Ad}{\ensuremath{\mathrm{Ad}}}
+\newcommand{\intp}{\ensuremath{\mathbf{i}}}
+\newcommand{\extd}{\ensuremath{\mathbf{d}}}
+\newcommand{\hor}{\ensuremath{\mathrm{hor}}}
+\newcommand{\ver}{\ensuremath{\mathrm{ver}}}
+\newcommand{\dyn}{\ensuremath{\mathrm{dyn}}}
+\newcommand{\geo}{\ensuremath{\mathrm{geo}}}
+\newcommand{\Q}{\ensuremath{\mathsf{Q}}}
+\newcommand{\G}{\ensuremath{\mathsf{G}}}
+\newcommand{\g}{\ensuremath{\mathfrak{g}}}
+\newcommand{\Hess}{\ensuremath{\mathrm{Hess}}}
+
+\newcommand{\x}{\ensuremath{\mathbf{x}}}
+\renewcommand{\r}{\mathbf{r}}
+\renewcommand{\u}{\mathbf{u}}
+\newcommand{\y}{\mathbf{y}}
+
+\newcommand{\bfi}{\bfseries\itshape\selectfont}
+
+\renewcommand{\baselinestretch}{1.2}
+
+\date{}
+
+\newtheorem{definition}{Definition}
+\newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{remark}{Remark}
+
+\renewcommand{\thesubsection}{\arabic{subsection}. }
+\renewcommand{\thesubsubsection}{\arabic{subsection}.\arabic{subsubsection} }
+
+%\graphicspath{{/Users/tylee@seas.gwu.edu/Documents/Research/Estimation/Simulation/GloUncPro/DistSph/Build/Products/Debug/Diff/}}
+
+
+
+\begin{document}
+\thispagestyle{empty}
+
+\noindent{\large \bf Air Force Summer Faculty Fellowship Program Final Report:}\vspace*{0.1cm}\\
+\noindent{\Large \bf Nonlinear Observability and Estimation\\for Relative Orbits with Line-of-Sight Measurements}\vspace*{0.1cm}\\
+\noindent{Taeyoung Lee}\\
+\noindent{July 29, 2013}\\
+
+
+%\subsubsection*{Abstract}
+
+
+
+
+\tableofcontents
+
+\subsection{Relative Orbital Dynamics}\label{sec:PD}
+
+Suppose that a chief satellite on a circular orbit with an orbital radius of $a$. Define a local-vertical, local-horizontal (LVLH) whose origin is located at the chief satellite. In this frame, the $x$ axis is along the radial direction, the $y$-axis is along the velocity vector of the chief, and the $z$ axis is normal to the orbital plane. The LVLH frame is rotating with the angular velocity of $\mathbf{\omega}=[0,0,n]^T$, where $n=\sqrt{\frac{\mu}{a^3}}$ is the mean motion of the chief satellite. Let the relative position of a deputy satellite with respect to the chief satellite be given by $\mathbf{r}=[x,y,z]^T\in\Re^3$ in the LVLH frame. 
+
+\subsubsection{Nonlinear Equations of Motion}
+
+Nonlinear equations of motion for the relative motion can be derived as follows based on Lagrangian mechanics. 
+
+\paragraph{Lagrangian} 
+
+Considering that the LVLH frame is rotating with the angular velocity of $\mathbf{\omega}=[0,0,n]^T$, the inertial velocity of the deputy satellite is given by
+\begin{align*}
+\mathbf{v}_{deputy}
+=
+\mathbf{v}_{chief} + \dot{\r} + \mathbf{\omega}\times \mathbf{r} = 
+\begin{bmatrix}
+0 \\ na \\ 0
+\end{bmatrix}
++
+\begin{bmatrix}
+\dot x \\ \dot y \\ \dot z
+\end{bmatrix}
++
+\begin{bmatrix}
+-n y \\ nx \\ 0
+\end{bmatrix}
+=
+\begin{bmatrix}
+\dot x - ny \\ \dot y + nx + na \\ \dot z
+\end{bmatrix}.
+\end{align*}
+Therefore, the (normalized) kinetic energy of the deputy satellite is 
+\begin{align*}
+T = \frac{1}{2} \braces{(\dot x -ny)^2+(\dot y + nx +na)^2 + \dot z^2}.
+\end{align*}
+The gravitational potential energy is 
+\begin{align*}
+U = -\frac{\mu}{\sqrt{(x+a)^2 + y^2 + z^2}} = -\frac{\mu}{\|\r_a\|},
+\end{align*}
+where $\r_a=[x+a,y,z]^T\in\Re^3$, which represents the location of the deputy from the central body (e.g, Earth). Therefore, the Lagrangian of the deputy satellite is expressed in terms of $(x,y,z)$ as 
+\begin{align}
+L & = T-U = \frac{1}{2} \braces{(\dot x -ny)^2+(\dot y + nx +na)^2 + \dot z^2}
++\frac{\mu}{\sqrt{(x+a)^2 + y^2 + z^2}}.
+\end{align}
+
+\paragraph{Euler-Lagrange Equations}
+
+%The derivatives of the Lagrangian are given by
+%\allowdisplaybreaks
+%\begin{align*}
+%\frac{d}{dt}\deriv{L}{\dot x} & = \ddot x - n\dot y\\
+%\frac{d}{dt}\deriv{L}{\dot y} & = \ddot y + n\dot x \\
+%\frac{d}{dt}\deriv{L}{\dot z} & = \ddot z,\\
+%\deriv{L}{x} &= n\dot y + n^2x +n^2 a - \frac{\mu (x+a)}{((x+a)^2 + y^2 + z^2)^{3/2}}\\
+%\deriv{L}{y} &= -n\dot x + n^2 y  - \frac{\mu y}{((x+a)^2 + y^2 + z^2)^{3/2}}\\
+%\deriv{L}{z} &=  - \frac{\mu z}{((x+a)^2 + y^2 + z^2)^{3/2}}.
+%\end{align*}
+Substituting these into the Euler-Lagrange equations, we obtain the nonlinear equations of motion for the relative orbit as follows:
+\begin{align}
+\ddot x - 2n\dot y -n^2 x&=n^2 a - \frac{\mu (x+a)}{((x+a)^2 + y^2 + z^2)^{3/2}},\label{eqn:ddotx}\\
+\ddot y + 2n\dot x -n^2 y &=   - \frac{\mu y}{((x+a)^2 + y^2 + z^2)^{3/2}},\label{eqn:ddoty}\\
+\ddot z &= - \frac{\mu z}{((x+a)^2 + y^2 + z^2)^{3/2}}.\label{eqn:ddotz}
+\end{align}
+
+These can be written as 
+\begin{align}
+\dot{\mathbf{x}} = f (\mathbf{x}), \label{eqn:xxdot}
+\end{align}
+where the state vector is $\mathbf{x}=[x,y,z,\dot x, \dot y,\dot z]^T\in\Re^6$, and
+\begin{align}
+f(\mathbf{x}) = \begin{bmatrix}
+\dot x\\
+\dot y\\
+\dot z\\
+2n\dot y +n^2 (x+a) - \dfrac{\mu (x+a)}{((x+a)^2 + y^2 + z^2)^{3/2}}\\
+-2n\dot x +n^2 y  - \dfrac{\mu y}{((x+a)^2 + y^2 + z^2)^{3/2}}\\
+- \dfrac{\mu z}{((x+a)^2 + y^2 + z^2)^{3/2}}
+\end{bmatrix}
+=\begin{bmatrix}
+\dot \r \\
+-2\omega\times \dot\r - \omega\times(\omega\times \r_a) -\dfrac{\mu \r_a}{\|\r_a\|^3}
+\end{bmatrix},\label{eqn:f}
+\end{align}
+where $\r=[x,y,z]^T\in\Re^3$, $\r_a = [x+a,y,z]^T\in\Re^3$, and $\dot\r =[\dot x,\dot y,\dot x]^T\in\Re^3$. 
+
+%\subsubsection{Equilibrium and Jacobi-Constant}
+%
+%\paragraph{Equilibrium}
+%
+%Define an effective (negative) potential function as follows:
+%\begin{align*}
+%U(x,y,z) = \frac{1}{2}n^2 ((x+a)^2+y^2) + \frac{\mu}{\sqrt{(x+a)^2 + y^2 + z^2}}.
+%\end{align*}
+%Then, the nonlinear equation of motion can be written as
+%\begin{align}
+%\ddot x - 2n\dot y = \deriv{U}{x},\\
+%\ddot y + 2n\dot x = \deriv{U}{y},\\
+%\ddot z = \deriv{U}{z}.\label{eqn:zddotU}
+%\end{align}
+%
+%Then, the equilibrium of the nonlinear equations of motion corresponds to the critical point of the effective potential, where the derivatives of $U$ are zero. From \refeqn{zddotU}, $z=0$ when $\deriv{U}{z}=0$. This implies that there are only planar equilibrium. When $z=0$, the effective potential can be written as
+%\begin{align*}
+%U(r_a) = \frac{1}{2}n^2 r_a^2 + \frac{\mu}{r_a},
+%\end{align*}
+%where $r_a = \sqrt{(x+a)^2 + y^2}$. The critical points of $U(r_a)$ is given by
+%\begin{align*}
+%\deriv{U(r_a)}{r_a} = n^2 r_a - \frac{\mu}{r_a^2} = 0\quad\Rightarrow\quad r_a^3 = \frac{\mu}{n^2} = a^3.
+%\end{align*}
+%Therefore, there are infinitely many equilibria given by
+%\begin{align}
+%r_a = \sqrt{(x+a)^2 + y^2} = a,
+%\end{align}
+%which corresponds to the cases where the deputy satellite is on the same circular orbit of the chief satellite. 
+%
+%\paragraph{Jacobi Constant}
+%
+%Define a Jacobi constant:
+%\begin{align}
+%C & = 2U-(\dot x^2 + \dot y^2 + \dot z^2)\nonumber\\
+%& = 
+%n^2 ((x+a)^2+y^2) + \frac{2\mu}{\sqrt{(x+a)^2 + y^2 + z^2}}
+%-(\dot x^2 + \dot y^2 + \dot z^2).
+%\end{align}
+%We can show that the Jacobi constant is fixed along the solution of the nonlinear equations of motion as follows. The time-derivative of $C$ is given by
+%\begin{align*}
+%\frac{1}{2}\frac{dC}{dt} & =  \deriv{U}{x}\dot x + \deriv{U}{y}\dot y + \deriv{U}{z}\dot z-\dot x \ddot x - \dot y \ddot y - \dot z \ddot z\\
+%& = -\dot x (2n\dot y) + \dot y (2n\dot x) = 0.
+%\end{align*}
+%
+%
+%
+%For a given initial condition $\r(0),\dot \r(0)$, we compute the value of the Jacobi constant $C$. Then, the feasible region of the solution of the nonlinear  equations of motion is described by
+%\begin{align}
+%v^2 = 2U - C = n^2 ((x+a)^2+y^2) + \frac{2\mu}{\sqrt{(x+a)^2 + y^2 + z^2}}-C \geq 0.
+%\end{align}
+%
+%\paragraph{Feasible Region of Planar Maneuvers}
+%
+%For a planar maneuver, this condition can be rewritten as
+%\begin{align}
+%n^2 r_a^2 + \frac{2\mu}{r_a}\geq C,\text{\quad or equivalently,\quad} \parenth{\frac{r_a}{a}}^2 + 2\parenth{\frac{r_a}{a}}^{-1} \geq \frac{a}{\mu}C
+%\end{align}
+%The curve for $\parenth{\frac{r_a}{a}}^2 + 2\parenth{\frac{r_a}{a}}^{-1}$ is illustrated at \reffig{jacobi_cri}.
+%
+%
+%\begin{figure}
+%\centerline{
+%\subfigure[The curve of $\parenth{\frac{r_a}{a}}^2 + 2\parenth{\frac{r_a}{a}}^{-1}$]{
+%	\includegraphics[width=0.38\textwidth]{jacobi_cri.pdf}\label{fig:jacobi_cri}}
+%	\hspace*{0.1\textwidth}
+%\subfigure[The forbidden region of the deputy is the inside of the circular strip $C=\frac{4\mu}{a}$.]{
+%	\includegraphics[width=0.41\textwidth]{jacobi_for.pdf}\label{fig:feafor}}}
+%\caption{Relative orbit analysis using the Jacobi constant}
+%\end{figure}
+%
+%
+%The left hand side of the above expression is minimized when $r_a=a$, and the corresponding minimum value is given by
+%\begin{align}
+%1^2 + 2\times 1^{-1} = 3.
+%\end{align}
+%Therefore, if $C\leq 3\frac{\mu}{a}$, then the above inequality is always satisfied. In other words, if $C\leq 3\frac{\mu}{a}$, or if the Jacobi constant $C$ is less than three times of the orbital energy of the chief, there is no forbidden region for the deputy satellite, and the deputy can coast to anywhere.
+%
+%If $C> 3\frac{\mu}{a}$, the feasible region is described by
+%\begin{align*}
+%r_a \leq \alpha_1 <a \text{\quad or\quad} r_a \geq \alpha_2> a,
+%\end{align*}
+%for some positive constants $\alpha_1,\alpha_2$. This states that the deputy satellite cannot pass through a circular strip that contains the chief. In other words, the deputy stays inside of a circular orbit smaller than the circular orbit of the chief, or the deputy stays outside of a circular orbit larger than the circular orbit of the chief. 
+%
+%For example, when $C=4\frac{\mu}{a}$, we have $\alpha_1=0.5392a$ and $\alpha_2=1.6751a$. The corresponding boundary between the feasible region and the forbidden region of the deputy are illustrated at \reffig{feafor}, where the forbidden region corresponds to a donut-shaped area between two circles, i.e., the deputy can stay either inside of the smaller circle, or the outside of the larger circle. A  sample trajectory of the deputy inside of the smaller circle is also illustrated by blue curve. 
+
+
+%\subsubsection{Linearized Equations of Motion}
+%
+%To implement an extended Kalman filter, the nonlinear equation of motion \refeqn{xxdot} should be linearized. The variation of $f(\mathbf{x})$ can be written as
+%\begin{align*}
+%\delta f(\mathbf{x}) = 
+%\begin{bmatrix}
+%\delta\dot\r\\
+%-2\omega\times\delta \dot\r - \omega\times(\omega\times\delta \r) -\dfrac{\mu \delta\r}{\|\r_a\|^3} + 3\dfrac{\mu \r_a\r_a^T}{\|\r_a\|^5}\delta\r
+%\end{bmatrix}.
+%\end{align*}
+%Using this, the system matrix of the linearized equations of motion is given by
+%\begin{align}
+%A(\mathbf{x}) & = \deriv{f(\mathbf{x})}{\mathbf{x}}= \begin{bmatrix}
+%0_{3\times 3} & I_{3\times 3} \\
+%-[\omega]_\times^2 -\dfrac{\mu I_{3\times 3}}{\|\r_a\|^3} + \dfrac{3\mu\r_a\r_a^T}{\|\r_a\|^5} & -2[\omega]_\times 
+%\end{bmatrix},
+%\end{align}
+%where $[\omega]_\times\in\Re^{3\times 3}$ is defined as
+%\begin{align*}
+%[\omega]_\times = \begin{bmatrix} 0 & -n & 0 \\ n & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}.
+%\end{align*}
+%The system matrix $A$ can be rewritten in terms of the coordinates as
+%\begin{align}
+%A(\mathbf{x}) = \begin{bmatrix}
+%0 & 0 & 0 & 1 & 0 & 0\\
+%0 & 0 & 0 & 0 & 1 & 0\\
+%0 & 0 & 0 & 0 & 0 & 1\\
+%n^2 -\frac{\mu}{r_a^3} + \frac{3\mu(x+a)^2}{r_a^5} &
+%\frac{3\mu(x+a)y}{r_a^5} &
+%\frac{3\mu(x+a)z}{r_a^5} &
+%0 & 2n & 0 \\
+%\frac{3\mu y(x+a)}{r_a^5} &
+%n^2 -\frac{\mu}{r_a^3} + \frac{3\mu y^2 }{r_a^5} &
+%\frac{3\mu yz}{r_a^5} &
+%-2n & 0 & 0 \\
+%\frac{3\mu z(x+a) }{r_a^5} &
+%\frac{3\mu zy }{r_a^5} &
+%-\frac{\mu}{r_a^3} + \frac{3\mu z^2 }{r_a^5} &
+%0 & 0 & 0
+%\end{bmatrix},\label{eqn:Ax}
+%\end{align}
+%where $r_a  = \sqrt{(x+a)^2+y^2+z^2}$. 
+
+%\paragraph{HCW Equations}
+%
+%When $\|\mathbf{r}\|\ll 1$, we have $r_a=a$, and $\frac{\mu}{r_a} = n^2$. Substituting these into \refeqn{Ax}, we obtain the Hills-Clohessy-Wiltshire (HCW) equations:
+%\begin{align}
+%A(0_{6\times 1}) = \begin{bmatrix}
+%0 & 0 & 0 & 1 & 0 & 0\\
+%0 & 0 & 0 & 0 & 1 & 0\\
+%0 & 0 & 0 & 0 & 0 & 1\\
+%3n^2 &
+%0 &
+%0 &
+%0 & 2n & 0 \\
+%0 &
+%0 &
+%0 &
+%-2n & 0 & 0 \\
+%0 &
+%0 &
+%-n^2 &
+%0 & 0 & 0
+%\end{bmatrix}.\label{eqn:A}
+%\end{align}
+%
+%
+%\clearpage\newpage
+\subsection{Observability}
+
+We assume that the line-of-sight from the chief to the deputy is measured by a vision-based sensor. In this section, using the Lie-derivatives of the measurement, we determine the observability for the nonlinear two-body model and the observability for the linear HCW model.
+
+\subsubsection{Measurement Equation}
+
+The measurement equation for the line-of-sight is given by
+\begin{align}
+\mathbf{y}= h(\mathbf{x}) =\frac{\r}{\|\r\|}
+= \frac{1}{\sqrt{x^2+y^2+z^2}}\begin{bmatrix} x\\y\\z\end{bmatrix}.
+\end{align}
+Note that it has the unit-length, i.e. $\y^T\y=1$.
+
+\subsubsection{Observability Test for the Nonlinear Two-Body Model}\label{sec:OT}
+
+\paragraph{Lie derivatives}
+
+To check observability, we find Lie derivatives of the measurement equation. The following identity is repeatedly used:
+\begin{align*}
+\delta \parenth{\frac{1}{\|\mathbf{r}\|^n}} 
+& = -n\frac{ \mathbf{r}^T \delta \mathbf{r}}{\|\mathbf{r}\|^{n+2}},
+\end{align*}
+for any integer $n$. 
+
+The derivative of the measurement equation is given by
+\begin{align}
+\deriv{h(\mathbf{x})}{\mathbf{x}} = 
+\begin{bmatrix}
+\dfrac{I}{\|\mathbf{r}\|} - \dfrac{\mathbf{r}\mathbf{r}^T}{\|\mathbf{r}\|^3}
+&
+0_{3\times 3}
+\end{bmatrix}=
+\frac{1}{\|\r\|}
+\begin{bmatrix}
+I - \y\y^T & 0_{3\times 3}
+\end{bmatrix}.\label{eqn:dh}
+\end{align}
+The first-order Lie derivative of the output is 
+\begin{align*}
+\dot\y = L_f h = \deriv{h(\mathbf{x})}{\mathbf{x}} f(\mathbf{x}) = 
+\parenth{\dfrac{I}{\|\mathbf{r}\|} - \dfrac{\mathbf{r}\mathbf{r}^T}{\|\mathbf{r}\|^3}}\dot{\mathbf{r}}.
+\end{align*}
+The variation of the first-order Lie derivative can be written as
+\begin{align}
+\delta (L_f h) & = 
+\parenth{-\frac{\r^T \delta \r}{\|\r\|^3}\dot\r
+-\frac{\delta\r \r^T +\r\delta\r^T}{\|\r\|^3}\dot \r
++ 3 \frac{\r\r^T \r^T\delta\r}{\|\r\|^5}\dot\r }
++\parenth{\dfrac{I}{\|\mathbf{r}\|} - \dfrac{\mathbf{r}\mathbf{r}^T}{\|\mathbf{r}\|^3}}\delta\dot{\mathbf{r}} \nonumber\\
+& = 
+\begin{bmatrix}
+-\dfrac{\dot\r\r^T +\r^T\dot\r I +\r\dot\r^T}{\|\r\|^3}
++ 3 \dfrac{\r\r^T\dot\r \r^T}{\|\r\|^5} & 
+\parenth{\dfrac{I}{\|\mathbf{r}\|} - \dfrac{\mathbf{r}\mathbf{r}^T}{\|\mathbf{r}\|^3}}
+\end{bmatrix}
+\delta\mathbf{x}\nonumber\\
+& = 
+\begin{bmatrix}
+-\frac{1}{\|\r\|^2}\braces{
+{\dot\r\y^T +\y^T\dot\r I +\y\dot\r^T}
+- 3\y\y^T\dot\r \y^T} & 
+\frac{1}{\|\r\|}\braces{I-\y\y^T}
+\end{bmatrix}
+\delta\mathbf{x}.\label{eqn:dLfh}
+\end{align}
+
+From \refeqn{f}, the second-order Lie derivative of the output is given by
+\begin{align*}
+\ddot\y =L_f^2 h = 
+-\dfrac{2\dot\r\r^T\dot\r +\r\dot\r^T\dot\r}{\|\r\|^3}
++ 3 \dfrac{\r\r^T\dot\r \r^T\dot\r}{\|\r\|^5}
++ \parenth{\dfrac{I}{\|\mathbf{r}\|} - \dfrac{\mathbf{r}\mathbf{r}^T}{\|\mathbf{r}\|^3}}
+\parenth{-2\omega\times \dot\r - \omega\times(\omega\times \r_a) -\dfrac{\mu \r_a}{\|\r_a\|^3}
+}.
+\end{align*}
+The variation of the second-order Lie derivative can be written as
+\begin{align}
+ \delta(L_f^2 h) %& = 
+%-\dfrac{2\dot\r \delta\r^T\dot\r +\delta\r\dot\r^T\dot\r}{\|\r\|^3}
+%+3\dfrac{2\dot\r\r^T\dot\r +\r\dot\r^T\dot\r}{\|\r\|^5}\r^T\delta \r
+%+ 3 \dfrac{\delta\r\r^T\dot\r \r^T\dot\r
+%+\r\delta\r^T\dot\r \r^T\dot\r
+%+\r\r^T\dot\r \delta\r^T\dot\r}{\|\r\|^5}
+%- 15 \dfrac{\r\r^T\dot\r \r^T\dot\r}{\|\r\|^7}\r^T\delta\r\nonumber\\
+%&\quad 
+%-\dfrac{2\delta\dot\r\r^T\dot\r +2\dot\r\r^T\delta\dot\r +2\r\dot\r^T\delta\dot\r}{\|\r\|^3}
+%+ 3 \dfrac{\r\r^T\delta\dot\r \r^T\dot\r+\r\r^T\dot\r \r^T\delta\dot\r}{\|\r\|^5}\nonumber\\
+%&\quad + \braces{-\dfrac{\ddot{\r}\r^T +\r^T\ddot{\r} I +\r \ddot{\r}^T}{\|\r\|^3}
+%+ 3 \dfrac{\r\r^T\ddot{\r} \r^T}{\|\r\|^5}}\delta \r \nonumber\\
+%&\quad + \parenth{\dfrac{I}{\|\mathbf{r}\|} - \dfrac{\mathbf{r}\mathbf{r}^T}{\|\mathbf{r}\|^3}}
+%\braces{\parenth{-[\omega]_\times^2 -\dfrac{\mu I_{3\times 3}}{\|\r_a\|^3} + \dfrac{3\mu\r_a\r_a^T}{\|\r_a\|^5}}\delta\r  -2[\omega]_\times\delta\dot\r }
+%\nonumber\\
+%%
+& = \braces{
+-\dfrac{2\dot\r \dot\r^T  +\dot\r^T\dot\r I}{\|\r\|^3}
++3\dfrac{2\dot\r\r^T\dot\r\r^T +\r\dot\r^T\dot\r\r^T
++\r^T\dot\r \r^T\dot\r I
++2\r \r^T\dot\r \dot\r^T
+}{\|\r\|^5}
+- 15 \dfrac{\r\r^T\dot\r \r^T\dot\r\r^T}{\|\r\|^7}
+}\delta\r\nonumber\\
+&\quad + \braces{-\dfrac{\ddot{\r}\r^T +\r^T\ddot{\r} I +\r \ddot{\r}^T}{\|\r\|^3}
++ 3 \dfrac{\r\r^T\ddot{\r} \r^T}{\|\r\|^5}
++\parenth{\dfrac{I}{\|\mathbf{r}\|} - \dfrac{\mathbf{r}\mathbf{r}^T}{\|\mathbf{r}\|^3}}
+\parenth{-[\omega]_\times^2 -\dfrac{\mu I_{3\times 3}}{\|\r_a\|^3} + \dfrac{3\mu\r_a\r_a^T}{\|\r_a\|^5}}
+}\delta \r \nonumber\\
+&\quad +
+\braces{-\dfrac{2\r^T\dot\r I +2\dot\r\r^T +2\r\dot\r^T}{\|\r\|^3}
++ 6 \dfrac{\r\r^T\dot\r \r^T}{\|\r\|^5}
+- 2\parenth{\dfrac{I}{\|\mathbf{r}\|} - \dfrac{\mathbf{r}\mathbf{r}^T}{\|\mathbf{r}\|^3}}[\omega]_\times
+}\delta\dot\r.\label{eqn:dLf2h}
+\end{align}
+
+\paragraph{Nonlinear Observability Matrix}
+
+Using \refeqn{dh}, \refeqn{dLfh}, and \refeqn{dLf2h}, the first three blocks of rows of the observability matrix can be written as follows:
+\begin{align}
+\mathcal{O} = 
+\begin{bmatrix}
+\mathcal{O}_{00} & 0_{3\times 3}\\
+\mathcal{O}_{10} & \mathcal{O}_{11}\\
+\mathcal{O}_{20} & \mathcal{O}_{21}
+\end{bmatrix}
+=\begin{bmatrix}
+\deriv{\y}{\r} & \deriv{\y}{\dot\r}\\
+\deriv{\dot\y}{\r} & \deriv{\dot\y}{\dot\r}\\
+\deriv{\ddot\y}{\r} & \deriv{\ddot\y}{\dot\r}
+\end{bmatrix}
+,\label{eqn:OO}
+\end{align}
+where
+\begin{align}
+\mathcal{O}_{00} & = \deriv{\y}{\r} = \frac{1}{\|\r\|}(I - \y\y^T),\label{eqn:O_00}\\
+\mathcal{O}_{10} & = \deriv{\dot\y}{\r} = \deriv{}{\r} \parenth{\deriv{\y}{\r}\dot \r}= -\frac{1}{\|\r\|^2}\braces{
+{\dot\r\y^T +\y^T\dot\r I +\y\dot\r^T}
+- 3\y\y^T\dot\r \y^T},\\
+\mathcal{O}_{11} & = \deriv{\dot\y}{\dot\r} = \deriv{}{\dot\r} \parenth{\deriv{\y}{\r}\dot \r}= \deriv{\y}{\r} = \mathcal{O}_{00},\label{eqn:O11}\\
+\mathcal{O}_{20} & = \deriv{\ddot\y}{\r} = -\dfrac{2\dot\r \dot\r^T  +\dot\r^T\dot\r I}{\|\r\|^3}
++3\dfrac{2(\r^T\dot\r) \dot\r\r^T +(\dot\r^T\dot\r)\r\r^T
++(\r^T\dot\r)^2 I
++2(\r^T\dot\r)\r  \dot\r^T
+}{\|\r\|^5}
+- 15 \dfrac{(\r^T\dot\r)^2\r  \r^T}{\|\r\|^7}\nonumber \\
+&\quad -\dfrac{\ddot{\r}\r^T +\r^T\ddot{\r} I +\r \ddot{\r}^T}{\|\r\|^3}
++ 3 \dfrac{(\r^T\ddot{\r})\r \r^T}{\|\r\|^5}
++\parenth{\dfrac{I}{\|\mathbf{r}\|} - \dfrac{\mathbf{r}\mathbf{r}^T}{\|\mathbf{r}\|^3}}
+\parenth{-[\omega]_\times^2 -\dfrac{\mu I_{3\times 3}}{\|\r_a\|^3} + \dfrac{3\mu\r_a\r_a^T}{\|\r_a\|^5}},\\
+\mathcal{O}_{21} & = \deriv{\ddot\y}{\dot\r} = \deriv{}{\dot\r}\parenth{\deriv{}{\r}\parenth{\deriv{\y}{\r}\dot\r}\dot\r + \deriv{\y}{\r}\ddot\r} = 2 \deriv{}{\r} \parenth{\deriv{\y}{\r}\dot\r} + \deriv{\y}{\r} \deriv{\ddot\r}{\dot\r}
+\nonumber\\
+& \quad = 2\mathcal{O}_{10} 
+- 2 \mathcal{O}_{00}[\omega]_\times.\label{eqn:O_21}
+\end{align}
+(\textit{These expressions for the observability matrix has been verified by Matlab Symbolic Toolbox.})
+
+\paragraph{Observability Rank Condition}
+
+Now we find sufficient conditions that the observability matrix $\mathcal{O}$ has full rank. After some algebraic analysis, we can show that the relative orbit with direction-only measurements is observable if the following three conditions are satisfied:
+\begin{itemize}
+\item[(i)] $\r\times\dot\r \neq 0$ or $\r\times\mathbf{o}_1 \neq 0$,
+\item[(ii)] $\r\times\mathbf{o}_2 \neq 0$.
+\item[(iii)] $(\mathcal{O}_{20}\r + \mathcal{O}_{21}\dot\r)\times \mathcal{O}_{21}\r\neq 0$, or equivalently, $\mathrm{Proj}[\mathbf{o}_2] \times \mathrm{Proj}[\mathbf{o}_3]\neq 0$,
+\end{itemize}
+where
+\begin{align}
+\mathbf{o}_1 & = \ddot\r-\deriv{\ddot\r}{\r}\r = -2\omega\times \dot\r - [\omega]_\times^2 a \mathbf{e}_1 -\dfrac{\mu a }{\|\r_a\|^3}\mathbf{e}_1- \dfrac{3\mu\r_a^T\r}{\|\r_a\|^5}\r_a,\\
+\mathbf{o}_2 & = \dot\r + [\omega]_\times \r,\\
+\mathbf{o}_3 & = \ddot\r-\deriv{\ddot\r}{\r}\r -\deriv{\ddot\r}{\dot\r}\dot\r = \mathbf{o}_1+2\omega\times\dot\r= - [\omega]_\times^2 a \mathbf{e}_1 -\dfrac{\mu a }{\|\r_a\|^3}\mathbf{e}_1- \dfrac{3\mu\r_a^T\r}{\|\r_a\|^5}\r_a.
+\end{align}
+%
+Note that the condition (iii) implies the conditions (ii), as if the condition (ii) is violated, then the condition (iii) is also violated (if $\mathbf{o}_2$ is parallel to $\r$, then the projection of $\mathbf{o}_2$ to the plane normal to $\r$ is zero).
+
+We consider several cases where these conditions are violated. The condition (i) is violated when $\r$ is parallel to either $\dot\r$ or $\mathbf{o}_1$. The vector $\mathbf{o}_2$ represents the the difference between the inertial velocity of the chief and the inertial velocity of the deputy. The condition (ii) is not satisfied if the relative velocity vector in the inertial frame is either zero or parallel to the relative position. The condition (iii) is always violated if the relative motion is co-planar with the orbital plane of the chief, i.e., $z(t)\equiv 0$. This is because if there is no out-of-plane relative motion, then the vectors $\r$, $\mathbf{o}_2$ and $\mathbf{o}_3$ always lie in the $x-y$ plane, and the projections of $\mathbf{o}_2$ and $\mathbf{o}_3$ to the plane normal to $\r$ is always parallel with each other.
+
+However, these are only sufficient conditions for observability derived from the second-order Lie derivatives of the measurement equation. If any of these conditions is not satisfied, we may need to check the higher-order Lie derivatives of the measurement equation to determine observability. 
+
+
+\subsection{Observability Measure}
+
+The observability rank conditions derived in the previous section provide sufficient conditions for observability. But, it does not state how strong or weak the observability is. In this section, we present two quantitative measures of observability. The first one is an analytic expression based on the second order approximated solution of \refeqn{xxdot}, and the second one is a generalization of observability gramian to nonlinear systems.
+
+\subsubsection{Analytic Observability Measure}
+
+The goal of this analysis is to define an observability measure that can be derived analytically. It is based on a series solution obtained by Volterra series. For simplicity, we consider the class of initial conditions that can be represented by
+\begin{align*}
+\r_0=[x_0,\,0,\,0]^T,\quad \dot\r=[0,\, \dot y_0,\, 0]^T.
+\end{align*}
+And, we only consider 2-dimensional relative orbits confined to the orbital plane of the chief.
+
+\paragraph{Analytic Solution based on Volterra Series}
+The solution based on the linearized HCW equations are given by
+\begin{align}
+x_{CW}(t;x_0,\dot y_0)&=(4-3\cos nt )x_0+\frac{2}{n}(1-\cos nt) \dot y_0,\\
+y_{CW}(t;x_0,\dot y_0)&=6(\sin nt -nt) x_0+\frac{1}{n}(4\sin nt -3nt)  \dot y_0,
+\end{align}
+where $x_{CW}(t;x_0,\dot y_0)$ denotes the value of $x(t)$ when the initial condition is specified by $x(0)=x_0$, $\dot y(0)=\dot y_0$ for the HCW dyanmics.
+
+A second-order solution is obtained by using Volterra series as
+\begin{align}
+x(t;x_0,\dot y_0)&=x_{CW}(t)    +\frac{3}{2R_0}(7-10\cos nt +3\cos2nt +12nt \sin nt -12n^2t^2)x_0^2 \nonumber\\
+&\quad +\frac{1}{2n^2 R_0}(6-10\cos nt +4\cos2nt +12nt \sin nt -9n^2t^2)\dot y_0^2 \nonumber\\
+&\quad +\frac{3}{nR_0}(4-6\cos nt +2\cos2nt +7nt \sin nt -6n^2t^2)x_0\dot y_0,\\
+y(t;x_0,\dot y_0)&=y_{CW}(t)    +\frac{3}{4R_0}(40\sin nt +3\sin 2nt -22nt-24nt\cos nt )x_0^2\nonumber\\
+&\quad    +\frac{1}{n^2R_0}(10\sin nt +\sin 2nt -6nt-6nt\cos nt )\dot y_0^2\nonumber\\
+&\quad    +\frac{3}{nR_0}(12\sin nt +\sin 2nt -7nt-7nt\cos nt )x_0\dot y_0.
+\end{align}
+
+\paragraph{Measurement}
+
+The line of sight measurement can be written as
+\begin{align}
+\y(t;x_0,\dot y_0) =\begin{bmatrix} y_1(t;x_0,\dot y_0) \\ y_2(t;x_0,\dot y_0) \end{bmatrix} = \frac{1}{\sqrt{x^2(t;x_0,\dot y_0) + y^2(t;x_0,\dot y_0)}}\begin{bmatrix} x(t;x_0,\dot y_0)\\y(t;x_0,\dot y_0)\end{bmatrix}.
+\end{align}
+
+\paragraph{Observability Measure}
+
+We first introduce a very simple form of observability measure. Consider the sensitivity of each element of the measurement with respect to the magnitude of the initial condition. More explicitly,
+\begin{align*}
+z_i (t; x_0,\dot y_0) = \deriv{}{\alpha}\bigg|_{\alpha=1} y_i(t; \alpha x_0,\alpha \dot y_0) =\deriv{y_i(t;x_0,\dot y_0)}{x_0}x_0 + \deriv{y_i(t;x_0,\dot y_0)}{\dot y_0}\dot y_0,
+\end{align*}
+which is essentially the directional derivative of $y_i$, and it represents how much $y_i$ is sensitive to the variation of the magnitude of the initial condition.
+
+The state will be more observable, if $z_1$ and $z_2$ are more linearly independent. A simplest way to check linear independence of a set of functions is formulating their Wronskian:
+\begin{align*}
+W(t;x_0,\dot y_0) = \begin{bmatrix} z_1(t;x_0,\dot y_0) & z_2(t;x_0,\dot y_0)\\
+\dot z_1(t;x_0,\dot y_0) & \dot z_2(t;x_0,\dot y_0)
+\end{bmatrix}.
+\end{align*}
+If $\mathrm{det}(W(t';x_0,\dot y_0))\neq 0$ for some time $t=t'$, then $z_1$ and $z_2$ are linearly independent at any time interval containing $t'$. If it is zero over some interval of time, then they are linearly dependent.
+
+We choose its absolute value, namely $|\mathrm{det}(W(t';x_0,\dot y_0))|$ as a measure of observability. It is straightforward to show that $W_{CW}(t;x_0,\dot y_0)=0$ for the linearized HCW dynamics. 
+
+For the second order solution, the determinant is computed via Matlab symbolic computational tool, and it is evaluated for several values of $t$. For example, when $t=\frac{2\pi}{n}$, we have
+\begin{align}
+\mathrm{det}(W(\frac{2\pi}{n};x_0,\dot y_0)) = \frac{C_0 C_1^2 C_2}{C_3^3},
+\end{align}
+where
+{\small
+\begin{verbatim}
+C_0 = -9*pi^2*R^2*n^3,
+C_1 = 23*n^3*x0^3 + 36*pi^2*y_dot0^3 + 8*n*x0*y_dot0^2 + 28*n^2*x0^2*y_dot0 + 288*pi^2*n^3*x0^3 
+      + 432*pi^2*n^2*x0^2*y_dot0 + 216*pi^2*n*x0*y_dot0^2,
+C_2 = - R^2*n^3*x0*y_dot0 + 432*pi^2*R*n^4*x0^3 + 648*pi^2*R*n^3*x0^2*y_dot0 
+      + 324*pi^2*R*n^2*x0*y_dot0^2 + 54*pi^2*R*n*y_dot0^3 + 2484*pi^2*n^4*x0^4 
+      + 5094*pi^2*n^3*x0^3*y_dot0 + 3798*pi^2*n^2*x0^2*y_dot0^2 + 1224*pi^2*n*x0*y_dot0^3 
+      + 144*pi^2*y_dot0^4,
+C_3 = 576*pi^2*y_dot0^4 + 324*pi^4*y_dot0^4 + 4761*pi^2*n^4*x0^4 + 5184*pi^4*n^4*x0^4 
+      + R^2*n^4*x0^2 + 1512*pi^2*R*n^4*x0^3 + 11592*pi^2*n^3*x0^3*y_dot0 
+      + 10368*pi^4*n^3*x0^3*y_dot0 + 144*pi^2*R^2*n^4*x0^2 + 36*pi^2*R^2*n^2*y_dot0^2 
+      + 10368*pi^2*n^2*x0^2*y_dot0^2 + 7776*pi^4*n^2*x0^2*y_dot0^2 + 288*pi^2*R*n*y_dot0^3 
+      + 4032*pi^2*n*x0*y_dot0^3 + 2592*pi^4*n*x0*y_dot0^3 + 1548*pi^2*R*n^2*x0*y_dot0^2 
+      + 2700*pi^2*R*n^3*x0^2*y_dot0 + 144*pi^2*R^2*n^3*x0*y_dot0.
+\end{verbatim}}
+
+We introduced a simple form of observability measure. But, the above expression is still too complicated to be analyzed to understand the physical nature of observability.
+
+Instead, we assume that the chief is on a circular orbit with the altitude of $500\,\mathrm{km}$, and we vary the semi-major axis and the eccentricity of the deputy. The observability measure is computed for several values of $t$, and they are illustrated at the following figures. Note that the range of $e_{deputy}$ and $a_{deputy}$ variations is quite limited, as the second order solution is valid for small values of $e_{deputy}$ and $a_{deputy}$ variations.
+
+It turned out that the observability measure increases as $e_{deputy}$ increases. For a fixed value of $e_{deputy}$, the semi-major axis $a_{deputy}$ should be chosen slightly less than $a_{deputy}$ to maximize the observability measure, i.e., the deputy is below the chief and it is orbiting faster. 
+
+
+\clearpage\newpage
+
+\begin{figure}[h!]
+\centerline{
+	\subfigure[$|\mathrm{det}W(t;x_0,\dot y_0))|$]{
+		\includegraphics[width=0.48\textwidth]{July23/detW_ae_1.png}}
+	\hfill
+	\subfigure[$\log_{10}|\mathrm{det}W(t;x_0,\dot y_0))|$]{
+	\includegraphics[width=0.48\textwidth]{July23/detW_ae_log_1.png}}
+}
+\caption{Observability Measure: $t=0.5T$}
+\end{figure}
+\begin{figure}[h!]
+\centerline{
+	\subfigure[$|\mathrm{det}W(t;x_0,\dot y_0))|$]{
+		\includegraphics[width=0.48\textwidth]{July23/detW_ae_2.png}}
+	\hfill
+	\subfigure[$\log_{10}|\mathrm{det}W(t;x_0,\dot y_0))|$]{
+	\includegraphics[width=0.48\textwidth]{July23/detW_ae_log_2.png}}
+}
+\caption{Observability Measure: $t=T$}
+\end{figure}
+
+\subsubsection{Observability Gramian}\label{sec:OM}
+
+\paragraph{Linear Systems} The above observability rank condition provides sufficient conditions for observability, and it does not state how difficult to observe each mode of the state vector. For linear dynamic systems, observability Gramian is commonly used as a measure of observability:
+\begin{align}
+\mathcal{W}(t_0,t_f) = \int_{t_0}^{t_f}\Phi(\tau,t_0)^T C^T(\tau)  C(\tau) \Phi(\tau,t_0) d\tau,\label{eqn:Wo_Lin}
+\end{align}
+where $\Phi(t,\tau)$ is the state transition matrix. Since the initial state can be computed by the inverse of $W_o(t_0,t_f)$ as 
+\begin{align*}
+x(t_0) = \mathcal{W}^{-1}(t_0,t_f)\int_{t_0}^{t_f}\Phi(\tau,t_0)^T C^T(\tau)  y(\tau) d\tau,
+\end{align*}
+the condition number of $W_o(t_0,t_f)$ is often used as a quantitive measure of observability: if the condition number is high, computing the inverse of $W_o$ becomes more sensitive to noise, and it is difficult to determine $x(t_0)$.
+
+
+\paragraph{Nonlinear Systems} The measure of observability has been generalized to nonlinear dynamic systems, in order to obtain balanced realizations. In~\cite{SchSCL93,Sch94}, an energy-like observability function is introduced to measure the degree of contribution of an initial state to the output, and it is applied to a pendulum system~\cite{NewKriPICDC98}. But, this approach is only applicable to asymptotically stable equilibrium states. An empirical observability Gramian is introduced in~\cite{LalMarPIWC99,LalMarIJRNC02}, which is essentially a covariance matrix of the output computed by a number of sample trajectories. It has been applied to balanced realization of chemical processes in~\cite{HahEdgJPC03,HahEdgCCE02}. However, this approach is based on the assumption that the output converges to a steady-state value, and it is not clear how  sample trajectories are selected. 
+
+A similar observability Gramian is introduced in~\cite{KreIdePICDC09}, which is basically the Gramian for the sensitivity of the output with respect to the initial condition:
+\begin{align}
+\mathcal{W} (\x_0,t_0,t_f) = \int_{t_0}^{t_f} \parenth{\deriv{\y(\tau)}{\x_0}}^T\deriv{\y(\tau)}{\x_0}\,d\tau,\label{eqn:Wo_NL}
+\end{align}
+where $\y(t)$ denotes the output for the initial condition given by $\x(t_0)=\x_0$, and $\deriv{\y}{\x_0}\in\Re^{p\times n}$ is defined such that its $i,j$-th element is $\deriv{\y_i}{\x_{0_j}}$. 
+
+In general, the Gramian of a set of time-dependent functions represents the degree of linear independence of those functions over a given period of time. Therefore, the observability Gramian defined at \refeqn{Wo_NL} measures how much the sensitivities of the output with respect to the initial condition are linearly independent with each other. This represents the degree of observability, since for example, if $\deriv{\y}{\x_{0_i}}$ is linearly dependent to $\deriv{\y}{\x_{0_j}}$, then it is difficult to distinguish the effects of $\delta \x_{0_i}$ to the output $\y$ from the effects of $\delta \x_{0_j}$ to $\y$. Therefore, the condition number of $W_o (\x_0,t_0,t_f)$ can be used as a measure of observability. Futhermore, we can easily show that \refeqn{Wo_NL} reduces to \refeqn{Wo_Lin} for linear dynamic systems since the output is given by $\y(t) = \Phi(t,t_0)\x_0$. 
+
+A numerical approach is proposed as follows. The $i,j$--th element of $\mathcal{W}_o$ can be approximated by
+\begin{align}
+[\mathcal{W}]_{ij} = \frac{1}{4\epsilon^2}\sum_{k=0}^N (\y^{i+}_k-\y^{i-}_k)(\y^{j+}_k-\y^{j-}_k) \Delta t_k,
+\end{align}
+where $\y^{i\pm}_k$ denotes the value of $\y^i$ at $t=t_k$ with the initial condition of $\x(t_0)=\x_0\pm \epsilon \mathbf{e}_i $ for a positive constant $\epsilon$, and the standard basis $\mathbf{e}_i$ of $\Re^n$.  The above expression can be computed numerically.
+
+\subsection{Extended Kalman Filter}
+
+Extended Kalman filter is developed for the relative orbital dynamics. The observability measures are computed for several cases. 
+
+\paragraph{Initial Condition}
+
+The initial condition of a deputy satellite is chosen as
+\begin{align*}
+\mathbf{r}_0=[r_{x_0},\, 0,\, 0]^T\,\mathrm{km},\quad \mathbf{v}_0=[0,\, -2r_{x_0}n,\, 0]^T\,\mathrm{km/s},
+\end{align*}
+which yields an elliptic orbit around the chief for the HCW equations.
+
+
+\subsubsection{Observability Measure}
+
+The initial range $r_{x_0}$ is varied as $1,\,2,\,5,\,10,\,20,\,50,\,100\,\mathrm{km}$, and the observability matrix $\mathcal{O}$ and the nonlinear observability Gramian $\mathcal{W}$ are computed for 20 orbits of the chief. The logarithmic mean of the minimum singular value and the condition number of $\mathcal{O}$ and $\mathcal{W}$ are summarized as follows.
+
+\definecolor{Gray}{gray}{0.85}
+
+\begin{center}
+\begin{tabularx}{0.56\textwidth}{*{4}{>{$}c<{$}}{>{\cellcolor{Gray}$}c<{$}}}\toprule
+r_{x_0} & \text{min} \braces{\sigma(\mathcal{O})} & \mathrm{cond}\braces{\mathcal{O}} &
+\text{min} \braces{\sigma(\mathcal{W})} & \mathrm{cond}\braces{\mathcal{W}}\\\midrule
+    1 &   10^{-16.1780} & 10^{16.0019} & 10^{-2.9347} & 10^{16.6653}\\
+    2 &   10^{-16.4667} & 10^{15.9894} & 10^{-3.7041} & 10^{16.8323}\\
+    5 &   10^{-16.8806} & 10^{16.0050} & 10^{-4.0220} & 10^{16.3535}\\
+   10 &   10^{-17.1783} & 10^{16.0009} & 10^{-4.0906} & 10^{15.8194}\\
+   20 &   10^{-17.4863} & 10^{16.0066} & 10^{-4.1552} & 10^{15.2832}\\
+   50 &   10^{-17.8846} & 10^{16.0034} & 10^{-4.0462} & 10^{14.4052}\\
+  100 &   10^{-18.2198} & 10^{16.0106} & 10^{-2.7198} & 10^{12.9884}\\\bottomrule
+\end{tabularx}
+\end{center}
+
+%    1.0000  -16.1780   16.0019   -2.9347   16.6653
+%    2.0000  -16.4667   15.9894   -3.7041   16.8323
+%    5.0000  -16.8806   16.0050   -4.0220   16.3535
+%   10.0000  -17.1783   16.0009   -4.0906   15.8194
+%   20.0000  -17.4863   16.0066   -4.1552   15.2832
+%   50.0000  -17.8846   16.0034   -4.0462   14.4052
+%  100.0000  -18.2198   16.0106   -2.7198   12.9884
+  
+The minimum singular value of $\mathcal{O}$ decreases for increasing $r_{x_0}$. However, since they are close to, or smaller than the machine epsilon ($10^{-16}$), it is difficult to draw meaningful results from them. There is no significant change in the condition number of $\mathcal{O}$.
+
+There is no consistent variation of the minimum singular value of $\mathcal{W}$. But, it is interesting to observe that the condition number of $\mathcal{W}$ becomes smaller as $r_{x_0}$ increases at the last column. This is consistent with the proposition that it is relatively easier to estimate the state as the effects of nonlinear dynamics become stronger.
+
+\subsubsection{Filtering Results}
+
+\paragraph{Initial Estimate}
+
+It is assumed that the initial estimate is a constant multiple of the true state:
+\begin{align*}
+\hat \r_0=\alpha\r_0,\quad \hat{\mathbf{v}}_0=\alpha{\mathbf{v}}_0,
+\end{align*}
+where the scaling factor $\alpha$ is varied as $\alpha=1.5,\,2$, and $3$. 
+
+\paragraph{EKF}
+
+It is simulated for 10 orbits of the chief. To compare the filtering performance, we define the following error variables, for the direction and the magnitudes. For varying $r_{x_0}$, the error variables are summarized as follows:
+\begin{table}[h]
+\begin{center}
+\caption{Estimation errors for varying $r_{x_0}$ when $\alpha=1.5$}
+\begin{tabularx}{0.65\textwidth}{>{\centering $}X<{$}*{4}{>{$}c<{$}}}\toprule
+r_{x_0} & e_{dir} \;(\mathrm{rad}) & \cellcolor{Gray}{e_{mag}} \;(\mathrm{unitless}) 
+& e_{mag,r} \;(\mathrm{km}) & e_{mag,v} \;(\mathrm{km/s})\\\midrule
+    1 &   0.0031  & \cellcolor{Gray}{11.5962} &  18.3371  &  0.0203\\
+    2 &   0.0028  & \cellcolor{Gray}{9.6374} &  30.4988  &  0.0338\\
+    5 &   0.0030  & \cellcolor{Gray}{4.0041} &  31.7018  &  0.0351\\
+   10 &   0.0027  & \cellcolor{Gray}{2.6318} &  41.8535  &  0.0461\\
+   20 &   0.0027  & \cellcolor{Gray}{0.9250} &  29.7000  &  0.0325\\
+   50 &   0.0023  & \cellcolor{Gray}{0.5315} &  42.3871  &  0.0470\\
+  100 &   0.0021  & \cellcolor{Gray}{0.1675} &  26.4643  &  0.0298\\\bottomrule
+\end{tabularx}
+\end{center}
+\end{table}
+
+\noindent There is no meaningful difference in $e_{dir}$, as the direction is directly measured. However, the normalized magnitude error $e_{mag}$ decreases as $r_{x_0}$ increases. This is consistent with the condition number of the nonlinear observability gramian, and it illustrates that the proposed observability measure can be used as a quantitative measure for strength of observability. Filtering results for the case of $r_{x_0}=100\,\mathrm{km}$ is illustrated at Figure 3.
+
+\begin{figure}
+\centerline{
+\subfigure[Estimation error ($e_{mag},e_{dir}$)]{
+	\includegraphics[width=0.44\textwidth]{June24/EKF_PE_r0_100_e_s.pdf}}
+\hfill
+\subfigure[Magnitude of state vector (true:solid, estimation:dashed)]{
+	\includegraphics[width=0.44\textwidth]{June24/EKF_PE_r0_100_xx_norm_s.pdf}}
+}
+\caption{Extended Kalman Filter $r_{x_0}=100\,\mathrm{km}$ (red:true, blue:$\alpha=1.5$, green:$\alpha=2$, black:$\alpha=3$)}
+\end{figure}
+
+
+\bibliography{/Users/tylee@seas.gwu.edu/Documents/BibMaster}
+\bibliographystyle{IEEEtran}
+
+
+\end{document}

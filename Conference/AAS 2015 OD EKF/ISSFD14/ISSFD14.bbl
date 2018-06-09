@@ -1,0 +1,42 @@
+\begin{thebibliography}{1}
+\newcommand{\enquote}[1]{``#1''}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem{WofGelITAES09}
+Woffinden, D. and Geller, D.
+\newblock \enquote{Observability Criteria for Angles-Only Navigation.}
+\newblock IEEE Transactions on Aerospace and Electronic Systems, Vol.~45,
+  No.~3, pp. 1194--1208, 2009.
+
+\bibitem{Tom11}
+Tombasco, J.
+\newblock Orbit Estimation of Geosynchronous Objects via Ground-Based and
+  Space-Based Optical Tracking.
+\newblock Ph.D. thesis, University of Colorado, 2011.
+
+\bibitem{PatLovPASFMM12}
+Patel, H., Lovell, T.~A., Allgeier, S., Russell, R., and Sinclair, A.
+\newblock \enquote{Relative Navigation for Satellites in Close Proximity using
+  Angles-Only Observations.}
+\newblock \enquote{In Proceedings of the AAS/AIAA Space Flight Mechanics
+  Meeting,} 2012.
+\newblock AAS 12-202.
+
+\bibitem{YimCraPASMM04}
+Yim, J., Crassidis, J., and Junkins, J.
+\newblock \enquote{Autonomous Orbit Navigation of Two Spacecraft System Using
+  Relative Line of Sight Vector Measurements.}
+\newblock \enquote{Proceedings of the AAS/AIAA Spaceflight Mechanics Meeting,}
+  2004.
+\newblock AAS 04-257.
+
+\bibitem{HerKreITAC77}
+Hermann, R. and Krener, A.~J.
+\newblock \enquote{Nonlinear Controllability and Observability.}
+\newblock IEEE Transactions on Automatic Control, Vol.~22, No.~5, pp. 728--740,
+  1977.
+
+\end{thebibliography}

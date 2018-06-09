@@ -1,0 +1,93 @@
+\begin{thebibliography}{14}
+\newcommand{\enquote}[1]{``#1''}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem[{Smith et~al.(1999)Smith, Zuber, Solomon, Phillips, Head, Garvin,
+  Banerdt, Muhleman, Pettengill, Gregory A.~Neumann, Abshire, Aharonson, Brown,
+  Hauck, Ivanov, McGovern, Zwally, and Duxbury}]{MOLA99}
+Smith, D.~E., Zuber, M.~T., Solomon, S.~C., Phillips, R.~J., Head, J.~W.,
+  Garvin, J.~B., Banerdt, W.~B., Muhleman, D.~O., Pettengill, G.~H., Gregory
+  A.~Neumann, . F. G.~L., 1, Abshire, J.~B., Aharonson, O., Brown, C.~D.,
+  Hauck, S.~A., Ivanov, A.~B., McGovern, P.~J., Zwally, H.~J., and Duxbury,
+  T.~C., \enquote{The Global Topography of Mars and Implications for Surface
+  Evolution,} \emph{Science}, Vol. 284, No. 5419, 1999, pp. 1495--1503.
+
+\bibitem[{Thrun et~al.(2005)Thrun, Burgard, and Fox}]{ThrBurFox05}
+Thrun, S., Burgard, W., and Fox, D., \emph{Probabilistic Robotics}, Intelligent
+  Robotics and Autonomous Agents, Massachusetts Institute of Technology,
+  Cambridge, Massachusetts, 2005.
+
+\bibitem[{Wurm et~al.(2010)Wurm, Hornung, Bennewitz, Stachniss, and
+  Burgard}]{WurHorBenStaBur10}
+Wurm, K., Hornung, A., Bennewitz, M., Stachniss, C., and Burgard, W.,
+  \enquote{OctoMap: A Probabilistic, Flexible, and Compact 3D Map
+  Representation for Robotic Systems,} \emph{Proceeding of the ICRA 2010
+  Workshop on Best Practice in 3D Perception and Modeling for Mobile
+  Manipulation}, 2010.
+
+\bibitem[{Kaufman et~al.(2016{\natexlab{a}})Kaufman, Lee, Ai, and
+  Moskowitz}]{KauLeeAiMos16}
+Kaufman, E., Lee, T., Ai, Z., and Moskowitz, I.~S., \enquote{Bayesian Occupancy
+  Grid Mapping via an Exact Inverse Sensor Model,} \emph{American Control
+  Conference}, IEEE, 2016{\natexlab{a}}, pp. 5709--5715.
+
+\bibitem[{Kaufman et~al.(2017)Kaufman, Takami, Ai, and Lee}]{KauTakAiLee17}
+Kaufman, E., Takami, K., Ai, Z., and Lee, T., \enquote{Autonomous Exploration
+  with Exact Inverse Sensor Models,} \emph{Journal of Intelligent and Robotic
+  Systems}, 2017.
+
+\bibitem[{Zhu et~al.(2015)Zhu, Ding, Lin, and Wu}]{ZhuDinLinWu15}
+Zhu, C., Ding, R., Lin, M., and Wu, Y., \enquote{A 3D frontier-based
+  exploration tool for MAVs,} \emph{IEEE 27th International Conference on Tools
+  with Artificial Intelligence}, 2015, pp. 348--352.
+
+\bibitem[{Senarathne and Wang(2016)}]{SenWan16}
+Senarathne, P., and Wang, D., \enquote{Towards Autonomous 3D Exploration Using
+  Surface Frontiers,} \emph{2016 IEEE International Symposium on Safety,
+  Security, and Rescue Robotics (SSRR)}, 2016, pp. 34--41.
+
+\bibitem[{Alexander~Kleiner(2013)}]{KleDor13}
+Alexander~Kleiner, C.~D., \enquote{A Frontier-Void-Based Approach for
+  Autonomous Exploration in 3D,} \emph{Advanced Robotics}, Vol.~27, No.~6,
+  2013, pp. 459--468.
+
+\bibitem[{Stachniss et~al.(2005)Stachniss, Grisetti, and Burgard}]{StaGriBur05}
+Stachniss, C., Grisetti, G., and Burgard, W., \enquote{Information Gain-based
+  Exploration Using {R}ao-{B}lackwellized Particle Filters,} \emph{In RSS},
+  2005, pp. 65--72.
+
+\bibitem[{Kaufman et~al.(2016{\natexlab{b}})Kaufman, Ai, and Lee}]{KauAiLee16}
+Kaufman, E., Ai, Z., and Lee, T., \enquote{Autonomous Exploration by Expected
+  Information Gain from Probabilistic Occupancy Grid Mapping,}
+  \emph{Proceedings of the 2016 IEEE International Conference on Simulation,
+  Modeling, and Programming for Autonomous Robots}, IEEE, San Francisco, USA,
+  2016{\natexlab{b}}, pp. 246--251.
+
+\bibitem[{Kaufman et~al.(2018)Kaufman, Takami, Ai, and Lee}]{KauTakAiLee18}
+Kaufman, E., Takami, K., Ai, Z., and Lee, T., \enquote{Autonomous Quadrotor 3D
+  Mapping and Exploration Using Exact Occupancy Probabilities,} \emph{The
+  Second IEEE International Conference on Robotic Computing}, 2018, pp. 49--55.
+
+\bibitem[{Maurovi{\'c} et~al.(2014)Maurovi{\'c}, Dakulovi{\'c}, and
+  Petrovi{\'c}}]{MauDakPet14}
+Maurovi{\'c}, I., Dakulovi{\'c}, M., and Petrovi{\'c}, I., \enquote{Autonomous
+  Exploration of Large Unknown Indoor Environments for Dense 3D Model
+  Building,} \emph{Proceedings of the 19th World Congress}, The International
+  Federation of Automatic Control (IFAC), Cape Town, South Africa, 2014, pp.
+  10188--10193.
+
+\bibitem[{Dijkstra(1959)}]{Dij59}
+Dijkstra, E.~W., \enquote{A Note on Two Problems in Connexion with Graphs,}
+  \emph{Numerische Mathematik}, Vol.~1, No.~1, 1959, pp. 269--271.
+
+\bibitem[{Johnson(2015)}]{Joh06}
+Johnson, S.~G., \enquote{Saddle-point integration of C infinity bump
+  functions,} arXiv:1508.04376, August 19 2015.
+
+\end{thebibliography}

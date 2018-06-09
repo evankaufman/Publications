@@ -1,0 +1,16 @@
+\BOOKMARK [1][-]{section*.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section*.2}{Problem Formulation}{}% 2
+\BOOKMARK [2][-]{section*.3}{Dynamics of Objects and Measurements}{section*.2}% 3
+\BOOKMARK [2][-]{section*.4}{Measurement Origination Model}{section*.2}% 4
+\BOOKMARK [1][-]{section*.5}{Minimum Uncertainty Probabilistic Data Association Filter \(MUJPDAF\)}{}% 5
+\BOOKMARK [2][-]{section*.6}{Flow Update}{section*.5}% 6
+\BOOKMARK [2][-]{section*.7}{Measurement Update}{section*.5}% 7
+\BOOKMARK [1][-]{section*.8}{Coalescence-Avoiding Optimal JPDAF \(C-JPDAF\)}{}% 8
+\BOOKMARK [2][-]{section*.9}{Matusita's Similarity Measure of Many Estimates}{section*.8}% 9
+\BOOKMARK [2][-]{section*.10}{Optimal Coalescence Avoidance}{section*.8}% 10
+\BOOKMARK [1][-]{section*.13}{Numerical Examples}{}% 11
+\BOOKMARK [1][-]{section*.18}{Conclusion}{}% 12
+\BOOKMARK [2][-]{section*.19}{Appendix A: Invertibility of the new Ei}{section*.18}% 13
+\BOOKMARK [2][-]{section*.20}{Appendix B: The singularity of E is not an infinite limit}{section*.18}% 14
+\BOOKMARK [2][-]{section*.21}{Appendix C: The optimal gain yields an absolute minimum to the uncertainty cost}{section*.18}% 15
+\BOOKMARK [2][-]{section*.22}{Appendix D: The optimal gain and Kalman gain are not equivalent}{section*.18}% 16

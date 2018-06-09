@@ -1,0 +1,13 @@
+Reviewer 10 of ECC'14 submission 796
+
+Comments to the author
+======================
+
+The lack of a proper comparison to state-of-the-art
+algorithms makes this paper unacceptable.
+
+You have also forgotten to take units into account in your
+formulation. In equation 19 it is not possible to take the
+trace of a covariance matrix with components of different
+physical dimension. In equation 18 JP will have some
+physical dimension, but c*JS is a dimensionless quantity.

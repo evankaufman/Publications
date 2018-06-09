@@ -1,0 +1,100 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{#1}
+\csname url@rmstyle\endcsname
+\providecommand{\newblock}{\relax}
+\providecommand{\bibinfo}[2]{#2}
+\providecommand\BIBentrySTDinterwordspacing{\spaceskip=0pt\relax}
+\providecommand\BIBentryALTinterwordstretchfactor{4}
+\providecommand\BIBentryALTinterwordspacing{\spaceskip=\fontdimen2\font plus
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
+\providecommand\BIBforeignlanguage[2]{{%
+\expandafter\ifx\csname l@#1\endcsname\relax
+\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
+\typeout{** loaded for the language `#1'. Using the pattern for}%
+\typeout{** the default language instead.}%
+\else
+\language=\csname l@#1\endcsname
+\fi
+#2}}
+
+\bibitem{CroLanGCD11}
+B.~Crowther and A.~Lanzon, ``An improved method for nonlinear model reduction
+  using balancing of empirical gramians,'' \emph{Journal of Guidance, Control,
+  and Dynamics}, vol.~34, no.~6, 2011.
+
+\bibitem{ZouCheITJ13}
+X.~Zou and X.~Chen, ``Modeling and adaptive neuro-fuzzy interference system
+  based autonomous flight control for hex-rotor mav,'' \emph{Information
+  Technology Journal}, 2013.
+
+\bibitem{GueHamPIICCA05}
+N.~Guenard, T.~Hamel, and V.~Moreau, ``Dynamic modeling and intuitive control
+  strategy for an {X}4-flyer,'' in \emph{Proceedings of the IEEE International
+  Conference on Control and Application}, 2005.
+
+\bibitem{BouSiePIICRA05}
+S.~Bouabdalla and R.~Siegward, ``Backstepping and sliding-mode techniques
+  applied to an indoor micro quadrotor,'' in \emph{Proceedings of the IEEE
+  International Conference on Robotics and Automation}, 2005, pp. 2259--2264.
+
+\bibitem{MaySanPICDC09}
+C.~Mayhew, R.~Sanfelice, and A.~Teel, ``Robust global asymptotic attitude
+  stabilization of a rigid body by quaternion-based hybrid feedback,'' in
+  \emph{Proceedings of IEEE Conference on Decision and Control}, 2009, pp.
+  2522--2527.
+
+\bibitem{BhaBerSCL00}
+S.~Bhat and D.~Bernstein, ``A topological obstruction to continuous global
+  stabilization of rotational motion and the unwinding phenomenon,''
+  \emph{Systems and Control Letters}, vol.~39, no.~1, pp. 66--73, 2000.
+
+\bibitem{TayMcGITCSTI06}
+A.~Tayebi and S.~McGilvray, ``Attitude stabilization of a {V}{T}{O}{L}
+  quadrotor aircraft,'' \emph{IEEE Transactions on Control System Technology},
+  vol.~14, no.~3, pp. 562--571, 2006.
+
+\bibitem{CasLozICSM05}
+P.~Castillo, R.~Lozano, and A.~Dzul, ``Stabilization of a mini rotorcraft with
+  four rotors,'' \emph{IEEE Control System Magazine}, pp. 45--55, 2005.
+
+\bibitem{MarRat99}
+J.~Marsden and T.~Ratiu, \emph{Introduction to Mechanics and Symmetry},
+  2nd~ed., ser. Texts in Applied Mathematics.\hskip 1em plus 0.5em minus
+  0.4em\relax Springer-Verlag, 1999, vol.~17.
+
+\bibitem{BulLew05}
+F.~Bullo and A.~Lewis, \emph{Geometric control of mechanical systems}, ser.
+  Texts in Applied Mathematics.\hskip 1em plus 0.5em minus 0.4em\relax New
+  York: Springer-Verlag, 2005, vol.~49, modeling, analysis, and design for
+  simple mechanical control systems.
+
+\bibitem{LeeITCST13}
+T.~Lee, ``Robust adaptive tracking on {$\SO$} with an application to the
+  attitude dynamics of a quadrotor {UAV},'' \emph{IEEE Transactions on Control
+  Systems Technology}, vol.~21, no.~5, pp. 1924--1930, 2013.
+
+\bibitem{MaySanITAC11}
+C.~Mayhew, R.~Sanfelice, and A.~Teel, ``Quaternion-based hybrid control for
+  robust global attitude tracking,'' \emph{IEEE Transactions on Automatic
+  Control}, 2011.
+
+\bibitem{ChaMcCICSM11}
+N.~Chaturvedi and N.~McClamroch, ``Rigid-body attitude control,'' \emph{IEEE
+  Control Systems Magazine}, vol.~31, no.~3, pp. 30--51, 2011.
+
+\bibitem{CutUreMicHow11}
+M.~Cutler, N.~K. Ure, B.~Michini, and J.~P. How, ``Comparison of fixed and
+  variable pitch actuators for agile quadrotors,'' in \emph{AIAA Guidance,
+  Navigation, and Control Conference}, 2011.
+
+\bibitem{CutHow12}
+M.~Cutler and J.~P. How, ``Actuator constrained trajectory generation and
+  control for variable-pitch quadrotors,'' in \emph{AIAA Guidance, Navigation,
+  and Control Conference}, 2012.
+
+\bibitem{Kha02}
+H.~Khalil, \emph{Nonlinear Systems}.\hskip 1em plus 0.5em minus 0.4em\relax
+  Prentice Hall, 2002.
+
+\end{thebibliography}

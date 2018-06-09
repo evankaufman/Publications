@@ -1,0 +1,1120 @@
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.10.8)  4 AUG 2014 17:22
+entering extended mode
+**C:/Users/evankaufman/Dropbox/Dr.*Lee*Research*Group/Evan/Publications/ASC*201
+4/ASC14.tex
+
+("C:/Users/evankaufman/Dropbox/Dr. Lee Research Group/Evan/Publications/ASC 201
+4/ASC14.tex"
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2009-06-19, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, lao, latin, lat
+vian, lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerm
+an, ngerman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese, 
+romanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swis
+sgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, u
+senglishmax, welsh, loaded.
+
+("C:\Users\evankaufman\Dropbox\Dr. Lee Research Group\Evan\Publications\ASC 201
+4\IEEEAerospaceCLS.cls"
+Document Class: IEEEAerospaceCLS 2012/12/10 IEEE Aerospace Conference 2012 docu
+ment class
+Document Style `IEEEAerospaceCLS' <December 10, 2012>.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\times.sty"
+Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\color.sty"
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count79
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\rawfonts.sty"
+Package: rawfonts 1994/05/08 Low-level LaTeX 2.09 font compatibility
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\somedefs.sty"
+Package: somedefs 1994/06/01 v0.03 Toolkit for optional definitions
+)
+LaTeX Font Info:    Try loading font information for U+lasy on input line 45.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ulasy.fd"
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\oldlfont.sty"
+Package: oldlfont 1994/11/29 v2.2k Standard LaTeX package
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\tracefnt.sty"
+Package: tracefnt 1997/05/29 v3.0j Standard LaTeX package (font tracing)
+\tracingfonts=\count80
+LaTeX Info: Redefining \selectfont on input line 101.
+)
+\symbold=\mathgroup4
+\symsans=\mathgroup5
+\symtypewriter=\mathgroup6
+\symitalic=\mathgroup7
+\symsmallcaps=\mathgroup8
+\symslanted=\mathgroup9
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 71.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 72.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 73.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 79.
+LaTeX Info: Redefining \em on input line 89.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\latexsym.sty"
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup10
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count81
+\Gm@cntv=\count82
+\c@Gm@tempcnt=\count83
+\Gm@bindingoffset=\dimen102
+\Gm@wd@mp=\dimen103
+\Gm@odd@mp=\dimen104
+\Gm@even@mp=\dimen105
+\Gm@layoutwidth=\dimen106
+\Gm@layoutheight=\dimen107
+\Gm@layouthoffset=\dimen108
+\Gm@layoutvoffset=\dimen109
+\Gm@dimlist=\toks15
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+-- This is a 10 point document
+\tmpitemindent=\dimen110
+\c@section=\count84
+\c@subsection=\count85
+\captionindent=\skip41
+\c@figure=\count86
+\c@table=\count87
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsmath.sty"
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip42
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks16
+\ex@=\dimen111
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen112
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count88
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count89
+\leftroot@=\count90
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count91
+\DOTSCASE@=\count92
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen113
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count93
+\c@MaxMatrixCols=\count94
+\dotsspace@=\muskip10
+\c@parentequation=\count95
+\dspbrk@lvl=\count96
+\tag@help=\toks17
+\row@=\count97
+\column@=\count98
+\maxfields@=\count99
+\andhelp@=\toks18
+\eqnshift@=\dimen114
+\alignsep@=\dimen115
+\tagshift@=\dimen116
+\tagwidth@=\dimen117
+\totwidth@=\dimen118
+\lineht@=\dimen119
+\@envbody=\toks19
+\multlinegap=\skip43
+\multlinetaggap=\skip44
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2009/06/22 v3.00
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\symAMSa=\mathgroup11
+\symAMSb=\mathgroup12
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
+\Urlmuskip=\muskip11
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+)
+\Gin@req@height=\dimen120
+\Gin@req@width=\dimen121
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\subfigure\subfigure.
+sty
+Package: subfigure 2002/07/30 v2.1.4 subfigure package
+\subfigtopskip=\skip45
+\subfigcapskip=\skip46
+\subfigcaptopadj=\dimen122
+\subfigbottomskip=\skip47
+\subfigcapmargin=\dimen123
+\subfiglabelskip=\skip48
+\c@subfigure=\count100
+\c@lofdepth=\count101
+\c@subtable=\count102
+\c@lotdepth=\count103
+
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\subfigure\subfigure.
+cfg)
+\subfig@top=\skip49
+\subfig@bottom=\skip50
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\frontendlayer\ti
+kz.sty
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\basiclayer\pgf.s
+ty
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\utilities\pgfrcs
+.sty
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfu
+til-common.tex
+\pgfutil@everybye=\toks21
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfu
+til-latex.def
+\pgfutil@abb=\box28
+
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\ms\everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfr
+cs.code.tex
+Package: pgfrcs 2010/10/25 v2.10 (rcs-revision 1.24)
+))
+Package: pgf 2008/01/15 v2.10 (rcs-revision 1.12)
+
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\basiclayer\pgfco
+re.sty
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\systemlayer\pgfs
+ys.sty
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pg
+fsys.code.tex
+Package: pgfsys 2010/06/30 v2.10 (rcs-revision 1.37)
+
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfk
+eys.code.tex
+\pgfkeys@pathtoks=\toks22
+\pgfkeys@temptoks=\toks23
+
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfk
+eysfiltered.code.tex
+\pgfkeys@tmptoks=\toks24
+))
+\pgf@x=\dimen124
+\pgf@y=\dimen125
+\pgf@xa=\dimen126
+\pgf@ya=\dimen127
+\pgf@xb=\dimen128
+\pgf@yb=\dimen129
+\pgf@xc=\dimen130
+\pgf@yc=\dimen131
+\w@pgf@writea=\write3
+\r@pgf@reada=\read1
+\c@pgf@counta=\count104
+\c@pgf@countb=\count105
+\c@pgf@countc=\count106
+\c@pgf@countd=\count107
+
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pg
+f.cfg
+File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
+)
+Package pgfsys Info: Driver file for pgf: pgfsys-pdftex.def on input line 900.
+
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pg
+fsys-pdftex.def
+File: pgfsys-pdftex.def 2009/05/22  (rcs-revision 1.26)
+
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pg
+fsys-common-pdf.def
+File: pgfsys-common-pdf.def 2008/05/19  (rcs-revision 1.10)
+)))
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pg
+fsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2008/07/18  (rcs-revision 1.7)
+\pgfsyssoftpath@smallbuffer@items=\count108
+\pgfsyssoftpath@bigbuffer@items=\count109
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pg
+fsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
+))
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\xcolor\xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+LaTeX Info: Redefining \color on input line 702.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgf
+core.code.tex
+Package: pgfcore 2010/04/11 v2.10 (rcs-revision 1.7)
+
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmath.c
+ode.tex
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathca
+lc.code.tex
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathut
+il.code.tex)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathpa
+rser.code.tex
+\pgfmath@dimen=\dimen132
+\pgfmath@count=\count110
+\pgfmath@box=\box29
+\pgfmath@toks=\toks25
+\pgfmath@stack@operand=\toks26
+\pgfmath@stack@operation=\toks27
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfu
+nctions.code.tex
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfu
+nctions.basic.code.tex)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfu
+nctions.trigonometric.code.tex)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfu
+nctions.random.code.tex)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfu
+nctions.comparison.code.tex)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfu
+nctions.base.code.tex)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfu
+nctions.round.code.tex)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfu
+nctions.misc.code.tex)))
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfl
+oat.code.tex
+\c@pgfmathroundto@lastzeros=\count111
+))
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgf
+corepoints.code.tex
+File: pgfcorepoints.code.tex 2010/04/09  (rcs-revision 1.20)
+\pgf@picminx=\dimen133
+\pgf@picmaxx=\dimen134
+\pgf@picminy=\dimen135
+\pgf@picmaxy=\dimen136
+\pgf@pathminx=\dimen137
+\pgf@pathmaxx=\dimen138
+\pgf@pathminy=\dimen139
+\pgf@pathmaxy=\dimen140
+\pgf@xx=\dimen141
+\pgf@xy=\dimen142
+\pgf@yx=\dimen143
+\pgf@yy=\dimen144
+\pgf@zx=\dimen145
+\pgf@zy=\dimen146
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgf
+corepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2010/08/03  (rcs-revision 1.24)
+\pgf@path@lastx=\dimen147
+\pgf@path@lasty=\dimen148
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgf
+corepathusage.code.tex
+File: pgfcorepathusage.code.tex 2008/04/22  (rcs-revision 1.12)
+\pgf@shorten@end@additional=\dimen149
+\pgf@shorten@start@additional=\dimen150
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgf
+corescopes.code.tex
+File: pgfcorescopes.code.tex 2010/09/08  (rcs-revision 1.34)
+\pgfpic=\box30
+\pgf@hbox=\box31
+\pgf@layerbox@main=\box32
+\pgf@picture@serial@count=\count112
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgf
+coregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2008/04/22  (rcs-revision 1.9)
+\pgflinewidth=\dimen151
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgf
+coretransformations.code.tex
+File: pgfcoretransformations.code.tex 2009/06/10  (rcs-revision 1.11)
+\pgf@pt@x=\dimen152
+\pgf@pt@y=\dimen153
+\pgf@pt@temp=\dimen154
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgf
+corequick.code.tex
+File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgf
+coreobjects.code.tex
+File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgf
+corepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2008/10/09  (rcs-revision 1.8)
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgf
+corearrows.code.tex
+File: pgfcorearrows.code.tex 2008/04/23  (rcs-revision 1.11)
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgf
+coreshade.code.tex
+File: pgfcoreshade.code.tex 2008/11/23  (rcs-revision 1.13)
+\pgf@max=\dimen155
+\pgf@sys@shading@range@num=\count113
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgf
+coreimage.code.tex
+File: pgfcoreimage.code.tex 2010/03/25  (rcs-revision 1.16)
+
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgf
+coreexternal.code.tex
+File: pgfcoreexternal.code.tex 2010/09/01  (rcs-revision 1.17)
+\pgfexternal@startupbox=\box33
+))
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgf
+corelayers.code.tex
+File: pgfcorelayers.code.tex 2010/08/27  (rcs-revision 1.2)
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgf
+coretransparency.code.tex
+File: pgfcoretransparency.code.tex 2008/01/17  (rcs-revision 1.2)
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgf
+corepatterns.code.tex
+File: pgfcorepatterns.code.tex 2009/07/02  (rcs-revision 1.3)
+)))
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\modules\pgfmod
+uleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2010/09/09  (rcs-revision 1.13)
+\pgfnodeparttextbox=\box34
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\modules\pgfmod
+uleplot.code.tex
+File: pgfmoduleplot.code.tex 2010/10/22  (rcs-revision 1.8)
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\compatibility\pg
+fcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2007/07/03 v2.10 (rcs-revision 1.7)
+\pgf@nodesepstart=\dimen156
+\pgf@nodesepend=\dimen157
+)
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\compatibility\pg
+fcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2007/07/23 v2.10 (rcs-revision 1.1)
+))
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\utilities\pgffor
+.sty
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\utilities\pgfkey
+s.sty
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfk
+eys.code.tex))
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgff
+or.code.tex
+Package: pgffor 2010/03/23 v2.10 (rcs-revision 1.18)
+\pgffor@iter=\dimen158
+\pgffor@skip=\dimen159
+\pgffor@stack=\toks28
+\pgffor@toks=\toks29
+))
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\
+tikz\tikz.code.tex
+Package: tikz 2010/10/13 v2.10 (rcs-revision 1.76)
+
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\pgfl
+ibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2010/05/31 v2.10 (rcs-revision 1.15)
+\pgf@plot@mark@count=\count114
+\pgfplotmarksize=\dimen160
+)
+\tikz@lastx=\dimen161
+\tikz@lasty=\dimen162
+\tikz@lastxsaved=\dimen163
+\tikz@lastysaved=\dimen164
+\tikzleveldistance=\dimen165
+\tikzsiblingdistance=\dimen166
+\tikz@figbox=\box35
+\tikz@tempbox=\box36
+\tikztreelevel=\count115
+\tikznumberofchildren=\count116
+\tikznumberofcurrentchild=\count117
+\tikz@fig@count=\count118
+
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\modules\pgfmod
+ulematrix.code.tex
+File: pgfmodulematrix.code.tex 2010/08/24  (rcs-revision 1.4)
+\pgfmatrixcurrentrow=\count119
+\pgfmatrixcurrentcolumn=\count120
+\pgf@matrix@numberofcolumns=\count121
+)
+\tikz@expandcount=\count122
+
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\
+tikz\libraries\tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2008/06/17 v2.10 (rcs-revision 1.2)
+)))
+(C:\Users\evankaufman\AppData\Roaming\MiKTeX\2.9\tex\latex\wrapfig\wrapfig.sty
+\wrapoverhang=\dimen167
+\WF@size=\dimen168
+\c@WF@wrappedlines=\count123
+\WF@box=\box37
+\WF@everypar=\toks30
+Package: wrapfig 2003/01/31  v 3.6
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\epstopdf.sty"
+Package: epstopdf 2010/02/09 v2.5 Conversion with epstopdf on the fly (HO)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\kvdefinekeys.sty"
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\kvsetkeys.sty"
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\etexcmds.sty"
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifluatex.sty"
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+))
+\c@prop=\count124
+
+
+LaTeX Warning: Unused global option(s):
+    [letterpaper].
+
+
+("C:\Users\evankaufman\Dropbox\Dr. Lee Research Group\Evan\Publications\ASC 201
+4\ASC14.aux")
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 63.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count125
+\scratchdimen=\dimen169
+\scratchbox=\box38
+\nofMPsegments=\count126
+\nofMParguments=\count127
+\everyMPshowfont=\toks31
+\MPscratchCnt=\count128
+\MPscratchDim=\dimen170
+\MPnumerator=\count129
+\makeMPintoPDFobject=\count130
+\everyMPtoPDFconversion=\toks32
+)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: letterpaper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(54.2025pt, 505.89pt, 54.2025pt)
+* v-part:(T,H,B)=(50.58878pt, 686.565pt, 57.81621pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=505.89pt
+* \textheight=686.565pt
+* \oddsidemargin=-18.06749pt
+* \evensidemargin=-18.06749pt
+* \topmargin=-21.68121pt
+* \headheight=0.0pt
+* \headsep=0.0pt
+* \topskip=10.0pt
+* \footskip=19.91692pt
+* \marginparwidth=0.0pt
+* \marginparsep=0.0pt
+* \columnsep=18.06749pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumntrue
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+ABD: EveryShipout initializing macros
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 89.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 89.
+LaTeX Font Info:    Try loading font information for U+msa on input line 89.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 89.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 89.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
+File: omsptm.fd 
+)
+LaTeX Font Warning: Font shape `OMS/ptm/bx/n' undefined
+(Font)              using `OMS/ptm/m/n' instead
+(Font)              for symbol `textbraceleft' on input line 89.
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 89.
+LaTeX Font Info:    Font shape `OMS/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 89.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 89.
+LaTeX Font Info:    Font shape `OMS/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 89.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 94.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 95.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 102.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/sc' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/sc' tried instead on input line 102.
+
+("C:\Users\evankaufman\Dropbox\Dr. Lee Research Group\Evan\Publications\ASC 201
+4\ASC14.toc"
+LaTeX Font Info:    Font shape `OT1/ptm/bx/sc' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/sc' tried instead on input line 2.
+
+Underfull \hbox (badness 1127) in paragraph at lines 11--11
+ [][] []\OT1/ptm/b/sc/10 Hardware De-vel-op-ment of Hexro-tor 
+ []
+
+)
+\tf@toc=\write4
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [1{C:/Users/evankaufman/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
+
+
+]
+<uav_complete.jpg, id=15, 1104.125pt x 853.1875pt>
+File: uav_complete.jpg Graphic file (type jpg)
+ <use uav_complete.jpg>
+Package pdftex.def Info: uav_complete.jpg used on input line 219.
+(pdftex.def)             Requested size: 170.73712pt x 131.93025pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+<hexrotorThrust_t123.png, id=16, 626.34pt x 533.995pt>
+File: hexrotorThrust_t123.png Graphic file (type png)
+
+<use hexrotorThrust_t123.png>
+Package pdftex.def Info: hexrotorThrust_t123.png used on input line 318.
+(pdftex.def)             Requested size: 195.12975pt x 166.3597pt.
+LaTeX Font Info:    Try loading font information for U+euf on input line 356.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\ueuf.fd"
+File: ueuf.fd 2009/06/22 v3.00 Euler Fraktur
+) [2 <C:/Users/evankaufman/Dropbox/Dr. Lee Research Group/Evan/Publications/ASC
+ 2014/uav_complete.jpg>] <CompletelyAdmissibleRegions.png, id=32, 421.575pt x 3
+16.18124pt>
+File: CompletelyAdmissibleRegions.png Graphic file (type png)
+
+<use CompletelyAdmissibleRegions.png>
+Package pdftex.def Info: CompletelyAdmissibleRegions.png used on input line 393
+.
+(pdftex.def)             Requested size: 109.75931pt x 82.31615pt.
+
+<CompletelyInadmissibleRegions.png, id=33, 421.575pt x 316.18124pt>
+File: CompletelyInadmissibleRegions.png Graphic file (type png)
+
+<use CompletelyInadmissibleRegions.png>
+Package pdftex.def Info: CompletelyInadmissibleRegions.png used on input line 3
+93.
+(pdftex.def)             Requested size: 109.75931pt x 82.31615pt.
+
+<PartiallyAdmissibleRegions_connecting.png, id=34, 421.575pt x 316.18124pt>
+File: PartiallyAdmissibleRegions_connecting.png Graphic file (type png)
+
+<use PartiallyAdmissibleRegions_connecting.png>
+Package pdftex.def Info: PartiallyAdmissibleRegions_connecting.png used on inpu
+t line 399.
+(pdftex.def)             Requested size: 109.75931pt x 82.31615pt.
+
+<PartiallyAdmissibleRegions_notconnecting.png, id=35, 421.575pt x 316.18124pt>
+File: PartiallyAdmissibleRegions_notconnecting.png Graphic file (type png)
+
+<use PartiallyAdmissibleRegions_notconnecting.png>
+Package pdftex.def Info: PartiallyAdmissibleRegions_notconnecting.png used on i
+nput line 399.
+(pdftex.def)             Requested size: 109.75931pt x 82.31615pt.
+ [3 <C:/Users/evankaufman/Dropbox/Dr. Lee Research Group/Evan/Publications/ASC 
+2014/hexrotorThrust_t123.png> <C:/Users/evankaufman/Dropbox/Dr. Lee Research Gr
+oup/Evan/Publications/ASC 2014/CompletelyAdmissibleRegions.png (PNG copy)> <C:/
+Users/evankaufman/Dropbox/Dr. Lee Research Group/Evan/Publications/ASC 2014/Com
+pletelyInadmissibleRegions.png (PNG copy)> <C:/Users/evankaufman/Dropbox/Dr. Le
+e Research Group/Evan/Publications/ASC 2014/PartiallyAdmissibleRegions_connecti
+ng.png (PNG copy)> <C:/Users/evankaufman/Dropbox/Dr. Lee Research Group/Evan/Pu
+blications/ASC 2014/PartiallyAdmissibleRegions_notconnecting.png (PNG copy)>]
+Overfull \hbox (7.80254pt too wide) in paragraph at lines 505--506
+[]\OT1/ptm/m/n/10 There are four equi-lib-rium con-fig-u-ra-tions where $\OT1/c
+mr/m/n/10 (\OML/cmm/m/it/10 x; v; \OT1/cmr/m/n/10 
+) =$
+ []
+
+
+Underfull \hbox (badness 4954) in paragraph at lines 505--506
+$\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; v[]; \OT1/cmr/m/n/10 
+[])$ \OT1/ptm/m/n/10 and $\OML/cmm/m/it/10 R \OMS/cmsy/m/n/10 2 f\OML/cmm/m/it/
+10 R[]\OMS/cmsy/m/n/10 g [ f\OML/cmm/m/it/10 R[] []\OT1/cmr/m/n/10 (\OML/cmm/m/
+it/10 []\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 j \OML/cmm/m/it/10 s \OMS/cmsy/m/n/
+10 2$
+ []
+
+[4] <PositionControl.pdf, id=47, 493.845pt x 382.42876pt>
+File: PositionControl.pdf Graphic file (type pdf)
+
+<use PositionControl.pdf>
+Package pdftex.def Info: PositionControl.pdf used on input line 545.
+(pdftex.def)             Requested size: 170.73712pt x 132.21231pt.
+ <RotationMatrix.pdf, id=48, 491.8375pt x 375.4025pt>
+File: RotationMatrix.pdf Graphic file (type pdf)
+
+<use RotationMatrix.pdf>
+Package pdftex.def Info: RotationMatrix.pdf used on input line 549.
+(pdftex.def)             Requested size: 170.73712pt x 130.31593pt.
+
+<PropellerOutput3by2.pdf, id=49, 493.845pt x 388.45125pt>
+File: PropellerOutput3by2.pdf Graphic file (type pdf)
+
+<use PropellerOutput3by2.pdf>
+Package pdftex.def Info: PropellerOutput3by2.pdf used on input line 553.
+(pdftex.def)             Requested size: 170.73712pt x 134.2944pt.
+ <VarPitchMech.png, id=50, 2601.72pt x 1943.26pt>
+File: VarPitchMech.png Graphic file (type png)
+
+<use VarPitchMech.png>
+Package pdftex.def Info: VarPitchMech.png used on input line 574.
+(pdftex.def)             Requested size: 207.32605pt x 154.8413pt.
+ <TestStand_Thrust.png, id=51, 963.6pt x 642.4pt>
+File: TestStand_Thrust.png Graphic file (type png)
+
+<use TestStand_Thrust.png>
+Package pdftex.def Info: TestStand_Thrust.png used on input line 586.
+(pdftex.def)             Requested size: 109.75931pt x 73.16377pt.
+ <TestStand_Moment.png, id=52, 963.6pt x 642.4pt>
+File: TestStand_Moment.png Graphic file (type png)
+
+<use TestStand_Moment.png>
+Package pdftex.def Info: TestStand_Moment.png used on input line 586.
+(pdftex.def)             Requested size: 109.75931pt x 73.16377pt.
+ [5 <C:/Users/evankaufman/Dropbox/Dr. Lee Research Group/Evan/Publications/ASC 
+2014/PositionControl.pdf> <C:/Users/evankaufman/Dropbox/Dr. Lee Research Group/
+Evan/Publications/ASC 2014/RotationMatrix.pdf> <C:/Users/evankaufman/Dropbox/Dr
+. Lee Research Group/Evan/Publications/ASC 2014/PropellerOutput3by2.pdf>]
+<ContoursThrustServo.png, id=96, 561.09625pt x 420.57124pt>
+File: ContoursThrustServo.png Graphic file (type png)
+
+<use ContoursThrustServo.png>
+Package pdftex.def Info: ContoursThrustServo.png used on input line 604.
+(pdftex.def)             Requested size: 256.0748pt x 191.93777pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+<HardwareSchematic.pdf, id=97, 722.7pt x 542.025pt>
+File: HardwareSchematic.pdf Graphic file (type pdf)
+
+<use HardwareSchematic.pdf>
+Package pdftex.def Info: HardwareSchematic.pdf used on input line 632.
+(pdftex.def)             Requested size: 256.0748pt x 192.05217pt.
+ [6 <C:/Users/evankaufman/Dropbox/Dr. Lee Research Group/Evan/Publications/ASC 
+2014/VarPitchMech.png> <C:/Users/evankaufman/Dropbox/Dr. Lee Research Group/Eva
+n/Publications/ASC 2014/TestStand_Thrust.png (PNG copy)> <C:/Users/evankaufman/
+Dropbox/Dr. Lee Research Group/Evan/Publications/ASC 2014/TestStand_Moment.png 
+(PNG copy)> <C:/Users/evankaufman/Dropbox/Dr. Lee Research Group/Evan/Publicati
+ons/ASC 2014/ContoursThrustServo.png (PNG copy)> <C:/Users/evankaufman/Dropbox/
+Dr. Lee Research Group/Evan/Publications/ASC 2014/HardwareSchematic.pdf>] <Moto
+rsESCs.png, id=118, 963.6pt x 642.4pt>
+File: MotorsESCs.png Graphic file (type png)
+
+<use MotorsESCs.png>
+Package pdftex.def Info: MotorsESCs.png used on input line 661.
+(pdftex.def)             Requested size: 109.75931pt x 73.16377pt.
+ <ESCsIMU.png, id=119, 963.6pt x 642.4pt>
+File: ESCsIMU.png Graphic file (type png)
+
+<use ESCsIMU.png>
+Package pdftex.def Info: ESCsIMU.png used on input line 661.
+(pdftex.def)             Requested size: 109.75931pt x 73.16377pt.
+
+
+pdfTeX warning: pdflatex.EXE (file C:/Users/evankaufman/Dropbox/Dr. Lee Researc
+h Group/Evan/Publications/ASC 2014/SoftwareSchematic.pdf): PDF inclusion: found
+ PDF version <1.6>, but at most version <1.5> allowed
+<SoftwareSchematic.pdf, id=120, 636.81021pt x 368.3129pt>
+File: SoftwareSchematic.pdf Graphic file (type pdf)
+
+<use SoftwareSchematic.pdf>
+Package pdftex.def Info: SoftwareSchematic.pdf used on input line 691.
+(pdftex.def)             Requested size: 256.0748pt x 148.10934pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+<NoSpinning.jpg, id=121, 2601.72pt x 1943.26pt>
+File: NoSpinning.jpg Graphic file (type jpg)
+ <use NoSpinning.jpg>
+Package pdftex.def Info: NoSpinning.jpg used on input line 718.
+(pdftex.def)             Requested size: 109.75931pt x 81.95735pt.
+
+<MoCa.jpg, id=122, 2601.72pt x 1943.26pt>
+File: MoCa.jpg Graphic file (type jpg)
+ <use MoCa.jpg>
+Package pdftex.def Info: MoCa.jpg used on input line 718.
+(pdftex.def)             Requested size: 109.75931pt x 81.95735pt.
+
+<Spinning.jpg, id=123, 2601.72pt x 1943.26pt>
+File: Spinning.jpg Graphic file (type jpg)
+ <use Spinning.jpg>
+Package pdftex.def Info: Spinning.jpg used on input line 725.
+(pdftex.def)             Requested size: 109.75931pt x 81.95735pt.
+
+<UAV_OnTestStand.jpg, id=124, 2601.72pt x 1943.26pt>
+File: UAV_OnTestStand.jpg Graphic file (type jpg)
+ <use UAV_OnTestStand.jpg>
+Package pdftex.def Info: UAV_OnTestStand.jpg used on input line 725.
+(pdftex.def)             Requested size: 109.75931pt x 81.95735pt.
+
+<Yaw_Test.png, id=125, 421.575pt x 316.18124pt>
+File: Yaw_Test.png Graphic file (type png)
+ <use Yaw_Test.png>
+Package pdftex.def Info: Yaw_Test.png used on input line 734.
+(pdftex.def)             Requested size: 243.91125pt x 182.93655pt.
+ [7 <C:/Users/evankaufman/Dropbox/Dr. Lee Research Group/Evan/Publications/ASC 
+2014/MotorsESCs.png (PNG copy)> <C:/Users/evankaufman/Dropbox/Dr. Lee Research 
+Group/Evan/Publications/ASC 2014/ESCsIMU.png (PNG copy)> <C:/Users/evankaufman/
+Dropbox/Dr. Lee Research Group/Evan/Publications/ASC 2014/SoftwareSchematic.pdf
+> <C:/Users/evankaufman/Dropbox/Dr. Lee Research Group/Evan/Publications/ASC 20
+14/NoSpinning.jpg> <C:/Users/evankaufman/Dropbox/Dr. Lee Research Group/Evan/Pu
+blications/ASC 2014/MoCa.jpg> <C:/Users/evankaufman/Dropbox/Dr. Lee Research Gr
+oup/Evan/Publications/ASC 2014/Spinning.jpg> <C:/Users/evankaufman/Dropbox/Dr. 
+Lee Research Group/Evan/Publications/ASC 2014/UAV_OnTestStand.jpg>]
+Overfull \hbox (1.68344pt too wide) in paragraph at lines 770--770
+[] 
+ []
+
+
+Overfull \hbox (10.57233pt too wide) in paragraph at lines 782--782
+[] 
+ []
+
+
+Overfull \hbox (11.11092pt too wide) in paragraph at lines 812--812
+[] 
+ []
+
+[8 <C:/Users/evankaufman/Dropbox/Dr. Lee Research Group/Evan/Publications/ASC 2
+014/Yaw_Test.png (PNG copy)>]
+("C:\Users\evankaufman\Dropbox\Dr. Lee Research Group\Evan\Publications\ASC 201
+4\ASC14.bbl"
+Underfull \hbox (badness 10000) detected at line 21
+[]\OT1/ptm/m/n/10 [1][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 26
+[]\OT1/ptm/m/n/10 [2][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 31
+[]\OT1/ptm/m/n/10 [3][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 36
+[]\OT1/ptm/m/n/10 [4][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 41
+[]\OT1/ptm/m/n/10 [5][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 47
+[]\OT1/ptm/m/n/10 [6][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 52
+[]\OT1/ptm/m/n/10 [7][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 57
+[]\OT1/ptm/m/n/10 [8][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 61
+[]\OT1/ptm/m/n/10 [9][]
+ []
+
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [9]
+Package epstopdf Info: Source file: <EvanKaufman.eps>
+(epstopdf)                    date: 2013-12-16 14:58:45
+(epstopdf)                    size: 1031594 bytes
+(epstopdf)             Output file: <EvanKaufman-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-12-16 15:34:22
+(epstopdf)                    size: 11392 bytes
+(epstopdf)             Command: <epstopdf --outfile=EvanKaufman-eps-converted-t
+o.pdf EvanKaufman.eps>
+(epstopdf)             \includegraphics on input line 859.
+Package epstopdf Info: Output file is already uptodate.
+
+<EvanKaufman-eps-converted-to.pdf, id=146, 90.3375pt x 108.405pt>
+File: EvanKaufman-eps-converted-to.pdf Graphic file (type pdf)
+
+<use EvanKaufman-eps-converted-to.pdf>
+Package pdftex.def Info: EvanKaufman-eps-converted-to.pdf used on input line 85
+9.
+(pdftex.def)             Requested size: 71.13287pt x 91.05295pt.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 859.
+Package epstopdf Info: Source file: <KirenCaldwell.eps>
+(epstopdf)                    date: 2013-12-16 15:27:59
+(epstopdf)                    size: 1031331 bytes
+(epstopdf)             Output file: <KirenCaldwell-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-12-16 15:34:23
+(epstopdf)                    size: 16420 bytes
+(epstopdf)             Command: <epstopdf --outfile=KirenCaldwell-eps-converted
+-to.pdf KirenCaldwell.eps>
+(epstopdf)             \includegraphics on input line 864.
+Package epstopdf Info: Output file is already uptodate.
+
+<KirenCaldwell-eps-converted-to.pdf, id=147, 90.3375pt x 108.405pt>
+File: KirenCaldwell-eps-converted-to.pdf Graphic file (type pdf)
+
+<use KirenCaldwell-eps-converted-to.pdf>
+Package pdftex.def Info: KirenCaldwell-eps-converted-to.pdf used on input line 
+864.
+(pdftex.def)             Requested size: 71.13287pt x 91.05295pt.
+
+Underfull \hbox (badness 1360) in paragraph at lines 864--866
+  []\OT1/ptm/b/it/10 Kiren Cald-well \OT1/ptm/m/it/10 is a se-nior at The
+ []
+
+Package epstopdf Info: Source file: <DaewonLee.eps>
+(epstopdf)                    date: 2013-12-16 15:28:11
+(epstopdf)                    size: 1031331 bytes
+(epstopdf)             Output file: <DaewonLee-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-12-16 15:34:24
+(epstopdf)                    size: 15789 bytes
+(epstopdf)             Command: <epstopdf --outfile=DaewonLee-eps-converted-to.
+pdf DaewonLee.eps>
+(epstopdf)             \includegraphics on input line 871.
+Package epstopdf Info: Output file is already uptodate.
+<DaewonLee-eps-converted-to.pdf, id=148, 90.3375pt x 108.405pt>
+File: DaewonLee-eps-converted-to.pdf Graphic file (type pdf)
+
+<use DaewonLee-eps-converted-to.pdf>
+Package pdftex.def Info: DaewonLee-eps-converted-to.pdf used on input line 871.
+
+(pdftex.def)             Requested size: 71.13287pt x 91.05295pt.
+
+Underfull \hbox (badness 1237) in paragraph at lines 871--873
+  []\OT1/ptm/b/it/10 Daewon Lee \OT1/ptm/m/it/10 re-ceived the B.S. and
+ []
+
+Package epstopdf Info: Source file: <TaeyoungLee.eps>
+(epstopdf)                    date: 2013-12-16 15:28:24
+(epstopdf)                    size: 1031331 bytes
+(epstopdf)             Output file: <TaeyoungLee-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-12-16 15:34:25
+(epstopdf)                    size: 20126 bytes
+(epstopdf)             Command: <epstopdf --outfile=TaeyoungLee-eps-converted-t
+o.pdf TaeyoungLee.eps>
+(epstopdf)             \includegraphics on input line 876.
+Package epstopdf Info: Output file is already uptodate.
+<TaeyoungLee-eps-converted-to.pdf, id=149, 90.3375pt x 108.405pt>
+File: TaeyoungLee-eps-converted-to.pdf Graphic file (type pdf)
+
+<use TaeyoungLee-eps-converted-to.pdf>
+Package pdftex.def Info: TaeyoungLee-eps-converted-to.pdf used on input line 87
+6.
+(pdftex.def)             Requested size: 71.13287pt x 91.05295pt.
+
+Underfull \hbox (badness 1221) in paragraph at lines 876--879
+\OT1/ptm/m/it/10 ge-o-met-ric me-chan-ics, ge-o-met-ric non-
+ []
+
+[10
+
+ <C:/Users/evankaufman/Dropbox/Dr. Lee Research Group/Evan/Publications/ASC 201
+4/EvanKaufman-eps-converted-to.pdf> <C:/Users/evankaufman/Dropbox/Dr. Lee Resea
+rch Group/Evan/Publications/ASC 2014/KirenCaldwell-eps-converted-to.pdf> <C:/Us
+ers/evankaufman/Dropbox/Dr. Lee Research Group/Evan/Publications/ASC 2014/Daewo
+nLee-eps-converted-to.pdf> <C:/Users/evankaufman/Dropbox/Dr. Lee Research Group
+/Evan/Publications/ASC 2014/TaeyoungLee-eps-converted-to.pdf>]
+("C:\Users\evankaufman\Dropbox\Dr. Lee Research Group\Evan\Publications\ASC 201
+4\ASC14.aux")
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+ ) 
+Here is how much of TeX's memory you used:
+ 11974 strings out of 494045
+ 220810 string characters out of 3145951
+ 275917 words of memory out of 3000000
+ 14904 multiletter control sequences out of 15000+200000
+ 52187 words of font info for 143 fonts, out of 3000000 for 9000
+ 715 hyphenation exceptions out of 8191
+ 56i,15n,55p,1484b,328s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
+m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Fi
+les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program File
+s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files (
+x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files (x86
+)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files (x86)/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files (x86)/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files (x86)/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmss10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmss8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/am
+sfonts/euler/eufm10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/a
+msfonts/latxfont/linew10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/symbols/msam10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
+public/amsfonts/symbols/msbm10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
+e1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/time
+s/utmbi8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.p
+fb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on ASC14.pdf (10 pages, 18356673 bytes).
+PDF statistics:
+ 240 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 143 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -1,0 +1,584 @@
+\documentclass[12pt,letterpaper]{ISSFD_v01}
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+\usepackage{amssymb,amsmath,amsthm,times,graphicx,subfigure,tabularx,booktabs,colortbl}
+
+\usepackage{times} % use times font
+\usepackage{mathptmx} %use same font for math mode
+\DeclareSymbolFont{largesymbols}{OMX}{cmex}{m}{n} %undo the definition of large symbols from the mathptmx package
+\usepackage{authblk} % use authblk package for author formatting
+\renewcommand\Authfont{\bfseries} % make authors bold
+\renewcommand\Affilfont{\normalfont\itshape} % make affiliation italic
+\setlength{\affilsep}{0em} % no spacing between authors and affiliations
+\usepackage[pdffitwindow=false,pdfstartview={FitH},colorlinks=true,citecolor=black,linkcolor=black,urlcolor=black]{hyperref}
+\usepackage{microtype} % makes detailed spacing look nicer.  This is only optional -- not required.
+
+\usepackage{xspace}
+\newcommand{\twentyfourth}{24\textsuperscript{th}\xspace}
+\newcommand{\figText}{Fig.\ }
+\newcommand{\tabText}{Tab.\ }
+\newcommand{\eqText}{Eq.\ }
+\newcommand{\norm}[1]{\ensuremath{\left\| #1 \right\|}}
+\newcommand{\bracket}[1]{\ensuremath{\left[ #1 \right]}}
+\newcommand{\braces}[1]{\ensuremath{\left\{ #1 \right\}}}
+\newcommand{\parenth}[1]{\ensuremath{\left( #1 \right)}}
+\newcommand{\pair}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\met}[1]{\ensuremath{\langle\langle #1 \rangle\rangle}}
+\newcommand{\refeqn}[1]{(\ref{eqn:#1})}
+\newcommand{\reffig}[1]{Fig. \ref{fig:#1}}
+\newcommand{\tr}[1]{\mathrm{tr}\ensuremath{\negthickspace\bracket{#1}}}
+\newcommand{\trs}[1]{\mathrm{tr}\ensuremath{[#1]}}
+\newcommand{\ave}[1]{\mathrm{E}\ensuremath{[#1]}}
+\newcommand{\deriv}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+\newcommand{\SO}{\ensuremath{\mathsf{SO(3)}}}
+\newcommand{\T}{\ensuremath{\mathsf{T}}}
+\renewcommand{\L}{\ensuremath{\mathsf{L}}}
+\newcommand{\so}{\ensuremath{\mathfrak{so}(3)}}
+\newcommand{\SE}{\ensuremath{\mathsf{SE(3)}}}
+\newcommand{\se}{\ensuremath{\mathfrak{se}(3)}}
+\renewcommand{\Re}{\ensuremath{\mathbb{R}}}
+\newcommand{\aSE}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&1\end{bmatrix}}}
+\newcommand{\ase}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&0\end{bmatrix}}}
+\newcommand{\D}{\ensuremath{\mathbf{D}}}
+\renewcommand{\d}{\ensuremath{\mathfrak{d}}}
+\newcommand{\Sph}{\ensuremath{\mathsf{S}}}
+\renewcommand{\S}{\Sph}
+\newcommand{\J}{\ensuremath{\mathbf{J}}}
+\newcommand{\Ad}{\ensuremath{\mathrm{Ad}}}
+\newcommand{\intp}{\ensuremath{\mathbf{i}}}
+\newcommand{\extd}{\ensuremath{\mathbf{d}}}
+\newcommand{\hor}{\ensuremath{\mathrm{hor}}}
+\newcommand{\ver}{\ensuremath{\mathrm{ver}}}
+\newcommand{\dyn}{\ensuremath{\mathrm{dyn}}}
+\newcommand{\geo}{\ensuremath{\mathrm{geo}}}
+\newcommand{\Q}{\ensuremath{\mathsf{Q}}}
+\newcommand{\G}{\ensuremath{\mathsf{G}}}
+\newcommand{\g}{\ensuremath{\mathfrak{g}}}
+\newcommand{\Hess}{\ensuremath{\mathrm{Hess}}}
+
+\renewcommand{\r}{\mathbf{r}}
+\renewcommand{\u}{\mathbf{u}}
+\newcommand{\y}{\mathbf{y}}
+\newcommand{\x}{\mathbf{x}}
+
+\newcommand{\bfi}{\bfseries\itshape\selectfont}
+\newtheorem{prop}{Proposition}
+
+\title{NONLINEAR OBSERVABILITY FOR RELATIVE SATELLITE ORBITS
+WITH ANGLES-ONLY MEASUREMENTS}
+
+\author[(1)]{T. Alan Lovell}
+\author[(2)]{Taeyoung Lee}
+\affil[(1)]{Air Force Research Laboratory, 3550 Aberdeen Ave SE, Kirtland AFB, NM 87117 USA,\newline Tel: +1-505-853-4132, Email: splash73@yahoo.com}
+\affil[(2)]{Department of Mechanical and Aerospace Engineering, The George Washington University,\newline
+801 22nd St NW, Washington DC 20052, Tel: +1-202-994-8710, Email:
+tylee@gwu.edu}
+
+\date{}  % don't display a date
+
+\begin{document}
+\maketitle
+
+
+\begin{abstract}
+In this paper, nonlinear observability criteria are presented for the relative orbital dynamics represented by the solutions of the two-body problem. It is assumed that a chief is on a circular orbit with a prescribed orbital radius, and it measures line-of-sight toward a deputy. A differential geometric method, based on the Lie derivatives is used to derive sufficient conditions for observability of the orbital properties of deputy. It is shown that under certain geometric conditions on the relative configuration between the chief and the deputy, the nonlinear relative motion is observable from angles-only measurements. An extended Kalman filter is also developed to numerically illustrate the observability of nonlinear relative orbits with angles-only measurements.
+\end{abstract}
+
+\begin{keywords}
+Relative orbit, Observability, Line-of-sight measurement, Extended Kalman filter.
+\end{keywords}
+
+\section{Introduction}
+Space-based surveillance or relative navigation is desirable for many spacecraft missions, such as formation control and rendezvous. Spacecraft maneuvers based only on on-board measurements reduce the total operating cost significantly, and it improves safety against communication interruptions with ground stations.  Relative navigation between spacecraft in close-proximity essentially corresponds to space-based orbit determination.  In particular, vision-based navigation and estimation of relative orbit have received attention recently, since optical sensors have desirable properties of low cost and minimal maintenance, while providing accurate line-of-sight measurements.%, or angles from a chief to a deputy.
+
+Relative navigation based on angles-only measurements has been investigated in~\cite{WofGelITAES09,Tom11,PatLovPASFMM12}.  The problem is to determine the relative orbit between a chief spacecraft and a deputy spacecraft by using the line-of-sight between the two objects, assuming that the orbit of the chief is prescribed exactly.  Reference \cite{WofGelITAES09} shows that the relative orbit is unobservable from angles-only measurements when linear relative orbital dynamics are assumed, unless there are thrusting maneuvers. Reference \cite{Tom11} investigates observability by using a relative orbit model linearized in terms of spherical coordinates.  Reference~\cite{PatLovPASFMM12} introduces the concept of partial observability to determine a basis vector representing a family of relative orbits, and an initial orbit determination technique is developed for this method.
+
+All of these results are based on linear relative orbital dynamics. It is straightforward to see that the relative orbit is not observable with angles-only measurements through its linearized dynamics, due the homogeneity property of linear dynamics implying that any solution of linear systems is directly proportional to its initial conditions. In other words, there are infinite number of relative orbits that yield the identical line-of-sight measurements, and the orbital distance between a deputy and a chief cannot be determined by angles-only measurements. As such, it is required to study the nonlinear relative orbital dynamics to determine observability with angles-only measurement. Linear observability analysis is performed numerically for a particular case in~\cite{YimCraPASMM04}. However, there have been no comprehensive analytic in nonlinear observability of relative orbits.
+
+In this paper, the authors derive observability criteria for the nonlinear relative orbital dynamics represented by the solutions of the two-body problem without linearization.  Assuming that a chief is on a circular orbit with a prescribed orbital radius, nonlinear equations of motion for the relative orbital motion of a deputy with respect to the chief are presented.  A differential geometric method, based on the Lie derivatives of the line-of-sight from the chief to the deputy, is applied to obtain sufficient conditions for observability.  It is shown that under certain geometric conditions on the relative configuration between the chief and the deputy, the nonlinear relative motion is observable from angles-only measurements.  We also develop an extended Kalman filter to illustrate the observability properties numerically.
+
+The main contribution of this paper is analytically confirming that the relative orbit is observable via line-of-sight measurements if its nonlinear dynamic characteristics are properly incorporated. To the authors' best knowledge, the sufficient conditions for nonlinear observability presented in this paper have not studied in prior publications. 
+
+This paper is organized as follows. The nonlinear dynamics of relative orbit is presented at Section 2, and observability criteria are developed at Section 3. These are followed by numerical examples of extended Kalman filtering and conclusions. 
+
+\section{Nonlinear Relative Orbital Dynamics}\label{sec:ND}
+
+Consider two satellites orbiting around the Earth, and each satellite is modeled as a rigid body. Suppose that a \textit{chief} satellite is on a circular orbit with a pre-determined orbital radius of $a\in\Re$.
+
+Define a local-vertical, local-horizontal (LVLH) frame as follows. Its origin is located at the chief satellite. The $x$-axis is along the radial direction from the Earth to the chief, and the $y$-axis is along the velocity vector of the chief. The $z$-axis is normal to the orbital plane, and it is parallel to the angular momentum vector of the chief. The LVLH frame is rotating with the angular velocity of $\mathbf{\omega}=[0,0,n]^T\in\Re^3$, where $n=\sqrt{\frac{\mu}{a^3}}$ is the mean motion of the chief satellite, and $\mu$ denotes the gravitational parameters of the Earth. Note that the velocity of the chief is given by $\mathbf{v}_{chief}=[0,na,0]^T\in\Re^3$. Let the relative position of a \textit{deputy} satellite with respect to the chief satellite be given by $\mathbf{r}=[x,y,z]^T\in\Re^3$ in the LVLH frame. 
+
+\subsection{Nonlinear Equations of Motion}
+
+Nonlinear equations of motion for the relative motion of the deputy with respect to the chief can be derived as follows based on Lagrangian mechanics. 
+
+\paragraph{Lagrangian} 
+
+Considering that the LVLH frame is rotating with the angular velocity of $\mathbf{\omega}=[0,0,n]^T$, the inertial velocity of the deputy satellite is given by
+\begin{align*}
+\mathbf{v}_{deputy}
+=
+\mathbf{v}_{chief} + \dot{\r} + \mathbf{\omega}\times \mathbf{r} = 
+\begin{bmatrix}
+0 \\ na \\ 0
+\end{bmatrix}
++
+\begin{bmatrix}
+\dot x \\ \dot y \\ \dot z
+\end{bmatrix}
++
+\begin{bmatrix}
+-n y \\ nx \\ 0
+\end{bmatrix}
+=
+\begin{bmatrix}
+\dot x - ny \\ \dot y + nx + na \\ \dot z
+\end{bmatrix}.
+\end{align*}
+Therefore, the (normalized) kinetic energy of the deputy satellite is 
+\begin{align*}
+T = \frac{1}{2}\|\mathbf{v}_{deputy}\|^2 = \frac{1}{2} \braces{(\dot x -ny)^2+(\dot y + nx +na)^2 + \dot z^2}.
+\end{align*}
+The location of the Earth from the chief is given by $[-a,0,0]^T$ in the LVLH frame. Therefore, the position vector of the deputy from the center of the Earth is given by 
+$\r_a=[x+a,y,z]^T\in\Re^3$. The gravitational potential energy is 
+\begin{align*}
+U = -\frac{\mu}{\sqrt{(x+a)^2 + y^2 + z^2}} = -\frac{\mu}{\|\r_a\|}.
+\end{align*}
+From the above equations, the Lagrangian of the deputy satellite is expressed in terms of $(x,y,z)$ as 
+\begin{align}
+L & = T-U = \frac{1}{2} \braces{(\dot x -ny)^2+(\dot y + nx +na)^2 + \dot z^2}
++\frac{\mu}{\sqrt{(x+a)^2 + y^2 + z^2}}.
+\end{align}
+
+\paragraph{Euler-Lagrange Equations}
+
+Using the Euler-Lagrange equations, given by
+\begin{align*}
+\frac{d}{dt}\deriv{L}{\dot q}-\deriv{L}{q}=0,
+\end{align*}
+for $q\in\{x,y,z\}$, we obtain the nonlinear equations of motion for the relative orbit as follows.
+\begin{align}
+\ddot x - 2n\dot y -n^2 x&=n^2 a - \frac{\mu (x+a)}{((x+a)^2 + y^2 + z^2)^{3/2}},\label{eqn:ddotx}\\
+\ddot y + 2n\dot x -n^2 y &=   - \frac{\mu y}{((x+a)^2 + y^2 + z^2)^{3/2}},\label{eqn:ddoty}\\
+\ddot z &= - \frac{\mu z}{((x+a)^2 + y^2 + z^2)^{3/2}}.\label{eqn:ddotz}
+\end{align}
+
+These can be written as the standard form of the state equation,
+\begin{align}
+\dot{\mathbf{x}} = f (\mathbf{x}), \label{eqn:xxdot}
+\end{align}
+where the state vector is $\mathbf{x}=[x,y,z,\dot x, \dot y,\dot z]^T\in\Re^N$ with $N=6$, and
+\begin{align}
+f(\mathbf{x}) 
+%= \begin{bmatrix}
+%\dot x\\
+%\dot y\\
+%\dot z\\
+%2n\dot y +n^2 (x+a) - \dfrac{\mu (x+a)}{((x+a)^2 + y^2 + z^2)^{3/2}}\\
+%-2n\dot x +n^2 y  - \dfrac{\mu y}{((x+a)^2 + y^2 + z^2)^{3/2}}\\
+%- \dfrac{\mu z}{((x+a)^2 + y^2 + z^2)^{3/2}}
+%\end{bmatrix}
+=\begin{bmatrix}
+\dot \r \\
+-2\omega\times \dot\r - \omega\times(\omega\times \r_a) -\dfrac{\mu \r_a}{\|\r_a\|^3}
+\end{bmatrix}.\label{eqn:f}
+\end{align}
+%where $\r=[x,y,z]^T\in\Re^3$, $\r_a = [x+a,y,z]^T\in\Re^3$, and $\dot\r =[\dot x,\dot y,\dot x]^T\in\Re^3$. 
+
+\subsection{Line-of-sight Measurement}
+
+We assume that the line-of-sight from the chief to the deputy is measured by an onboard sensor, such as optical sensors. The measurement is represented by the unit-vector of the relative position vector, i.e.,
+\begin{align}
+\y = h(\mathrm{x}) =\frac{\r}{\|\r\|},\label{eqn:y}
+\end{align}
+where $\y\in\Re^M$ with $M=3$, and it satisfies $\|\y\|=1$.
+
+
+\section{Nonlinear Observability Criteria}\label{sec:OC}
+
+Based on the nonlinear dynamic model presented at the previous section, here we present analyze the observability of the relative orbit with line-of-sight measurements.
+
+
+\subsection{Observability Criteria for Nonlinear Systems}
+
+Observability of nonlinear systems has been studied in~\cite{HerKreITAC77}, and it is summarized as follows. For a given nonlinear dynamic system \refeqn{xxdot} and \refeqn{y}, a pair of points $\x_0$ and $\x_1$ are called \textit{indistinguishable} if the outputs of the corresponding solutions starting from each of $\x_0$ and $\x_1$ are identical for a certain time period. The systems is \textit{locally weakly observable} at $\x_0$, if there exists an open neighborhood $V$ of $\x_0$ such that for every open neighborhood $U$ of $\x_0$ contained in $V$, the only indistinguishable point to $\x_0$ is the point $\x_0$ itself. 
+
+Let the Lie-derivative of the output $h(\x)$ along $f(\x)$ as follows:
+\begin{align*}
+L_f h(\x) = \deriv{h(\x)}{\x}f(\x)\in\Re^{M\times 1},
+\end{align*}
+which corresponds to the directional derivative of $h(\x)$ along $f(\x)$. For a non-negative integer $i$, the $i$-th order Lie-derivative is defined by induction as $L_f^i h = L_f (L_f^{i-1} h)$ with $L_f^0 h = h$. Define an observability matrix $\mathcal{O}\in\Re^{NM\times N}$ as
+\begin{align*}
+\mathcal{O}(\x_0) = \deriv{}{\x} \begin{bmatrix} L_f^0 h(\x) \\ L_f^1 h(\x)\\ \vdots \\L_f^{N-1} h(\x)\end{bmatrix}\bigg|_{\x=\x_0}.
+\end{align*}
+It has been shown that the system is locally weakly observable at $\x_0$ if the rank of the observability matrix $\mathcal{O}(\x_0) = N$. When applied to linear dynamics, this yields the well-known observability rank condition for linear systems. Note that when there are more than a single measurement, i.e., $M>1$, the observability rank condition can be satisfied without need for computing the higher-order Lie derivatives up to the $N-1$-th order.
+
+\subsection{Observability Criteria for Relative Orbital Dynamics}
+
+\paragraph{Observability Matrix}
+We apply the above observability criteria for the nonlinear relative orbital dynamics. Using the fact that $\x=[\r^T,\dot \r^T]$, the observability matrix of the relative orbital dynamics can be written as
+\begin{align}
+\mathcal{O} =
+\begin{bmatrix}
+\deriv{\y}{\r} & \deriv{\y}{\dot\r}\\
+\deriv{\dot\y}{\r} & \deriv{\dot\y}{\dot\r}\\
+\deriv{\ddot\y}{\r} & \deriv{\ddot\y}{\dot\r}
+\end{bmatrix}
+\triangleq
+\begin{bmatrix}
+\mathcal{O}_{00} & 0_{3\times 3}\\
+\mathcal{O}_{10} & \mathcal{O}_{11}\\
+\mathcal{O}_{20} & \mathcal{O}_{21}
+\end{bmatrix}.\label{eqn:OO}
+\end{align}
+Here we consider the observability matrix obtained by up to the second order Lie derivatives of the measurement due to complexity. But, this still provides sufficient conditions for observability. 
+
+After straightforward but tedious algebraic manipulations using the following identify repeatedly,
+\begin{align*}
+\delta \parenth{\frac{1}{\|\mathbf{r}\|^i}} 
+& = -i\frac{ \mathbf{r}^T \delta \mathbf{r}}{\|\mathbf{r}\|^{i+2}},
+\end{align*}
+for any positive integer $i$, we can show that each of the sub-matrices $\mathcal{O}_{ij}$ of the observability matrix $\mathcal{O}$ is given by
+\begin{align}
+\mathcal{O}_{00} & = \deriv{\y}{\r} = \frac{1}{\|\r\|}(I - \y\y^T),\label{eqn:O_00}\\
+\mathcal{O}_{10} & = \deriv{\dot\y}{\r} = \deriv{}{\r} \parenth{\deriv{\y}{\r}\dot \r}= -\frac{1}{\|\r\|^2}\braces{
+{\dot\r\y^T +\y^T\dot\r I +\y\dot\r^T}
+- 3\y\y^T\dot\r \y^T},\\
+\mathcal{O}_{11} & = \deriv{\dot\y}{\dot\r} = \deriv{}{\dot\r} \parenth{\deriv{\y}{\r}\dot \r}= \deriv{\y}{\r} = \mathcal{O}_{00},\label{eqn:O11}\\
+\mathcal{O}_{20} & = \deriv{\ddot\y}{\r} = -\dfrac{2\dot\r \dot\r^T  +\dot\r^T\dot\r I}{\|\r\|^3}
++3\dfrac{2(\r^T\dot\r) \dot\r\r^T +(\dot\r^T\dot\r)\r\r^T
++(\r^T\dot\r)^2 I
++2(\r^T\dot\r)\r  \dot\r^T
+}{\|\r\|^5}
+- 15 \dfrac{(\r^T\dot\r)^2\r  \r^T}{\|\r\|^7}\nonumber \\
+&\quad -\dfrac{\ddot{\r}\r^T +\r^T\ddot{\r} I +\r \ddot{\r}^T}{\|\r\|^3}
++ 3 \dfrac{(\r^T\ddot{\r})\r \r^T}{\|\r\|^5}
++\parenth{\dfrac{I}{\|\mathbf{r}\|} - \dfrac{\mathbf{r}\mathbf{r}^T}{\|\mathbf{r}\|^3}}
+\parenth{-[\omega]_\times^2 -\dfrac{\mu I_{3\times 3}}{\|\r_a\|^3} + \dfrac{3\mu\r_a\r_a^T}{\|\r_a\|^5}},\\
+\mathcal{O}_{21} & = \deriv{\ddot\y}{\dot\r} = \deriv{}{\dot\r}\parenth{\deriv{}{\r}\parenth{\deriv{\y}{\r}\dot\r}\dot\r + \deriv{\y}{\r}\ddot\r} = 2 \deriv{}{\r} \parenth{\deriv{\y}{\r}\dot\r} + \deriv{\y}{\r} \deriv{\ddot\r}{\dot\r}
+\nonumber\\
+& \quad = 2\mathcal{O}_{10} 
+- 2 \mathcal{O}_{00}[\omega]_\times,\label{eqn:O_21}
+\end{align}
+where $[\omega]_\times\in\Re^{3\times 3}$ is defined as
+\begin{align*}
+[\omega]_\times = \begin{bmatrix} 0 & -n & 0 \\ n & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}.
+\end{align*}
+These expressions were fully verified by the Matlab symbolic computation toolbox.
+
+After some algebraic manipulations, we can show that the sub-matrices satisfy the following identities. 
+\begin{align}
+\mathcal{O}_{10}\r & = 
+%-\frac{1}{\|\r\|}\braces{{\dot\r\y^T +\y^T\dot\r I +\y\dot\r^T}- 3\y\y^T\dot\r \y^T}\y\\
+%&=-\frac{1}{\|\r\|}\braces{\dot\r +(\y^T\dot\r)\y +\y(\dot\r^T\y)- 3\y(\y^T\dot\r) }\\
+%&=-\frac{1}{\|\r\|}\braces{\dot\r -\y(\y^T\dot\r) }=
+-\mathcal{O}_{00}\dot\r,\label{eqn:O10r}\\
+\mathcal{O}_{10}\dot\r & = -\frac{1}{\|\r\|^2}\braces{
+{2\dot\r(\y^T\dot \r)  +\y(\dot\r^T\dot \r)}
+- 3\y(\y^T\dot\r)^2},\label{eqn:O10dotr}\\
+\mathcal{O}_{20}\r %& = 
+%-\dfrac{2\dot\r \dot\r^T\y  +\dot\r^T\dot\r \y}{\|\r\|^2}
+%+3\dfrac{2(\y^T\dot\r) \dot\r\y^T\y +(\dot\r^T\dot\r)\y\y^T\y+(\y^T\dot\r)^2 y +2(\y^T\dot\r)\y \dot\r^T\y}{\|\r\|^2}
+%- 15 \dfrac{(\y^T\dot\r)^2\y  \y^T\y}{\|\r\|^2}\nonumber \\
+%&\quad -\dfrac{\ddot{\r}\y^Ty +\y^T\ddot{\r} \y +\y \ddot{\r}^T\y}{\|\r\|^1}
+%+ 3 \dfrac{(\y^T\ddot{\r})\y \y^T\y}{\|\r\|}
+%+\parenth{\dfrac{I}{\|\mathbf{r}\|} - \dfrac{\mathbf{r}\mathbf{r}^T}{\|\mathbf{r}\|^3}}
+%\parenth{-[\omega]_\times^2 -\dfrac{\mu I_{3\times 3}}{\|\r_a\|^3} + \dfrac{3\mu\r_a\r_a^T}{\|\r_a\|^5}}\r,\\
+%&=
+%-\dfrac{2\dot\r (\dot\r^T\y)  +(\dot\r^T\dot\r) \y}{\|\r\|^2}
+%+3\dfrac{2(\y^T\dot\r) \dot\r +(\dot\r^T\dot\r)\y+(\y^T\dot\r)^2 \y +2(\y^T\dot\r)^2\y }{\|\r\|^2}
+%- 15 \dfrac{(\y^T\dot\r)^2\y}{\|\r\|^2}\nonumber \\
+%&\quad -\dfrac{\ddot{\r} +(\y^T\ddot{\r}) \y +\y (\ddot{\r}^T\y)}{\|\r\|^1}
+%+ 3 \dfrac{(\y^T\ddot{\r})\y }{\|\r\|}
+%+\parenth{\dfrac{I}{\|\mathbf{r}\|} - \dfrac{\mathbf{r}\mathbf{r}^T}{\|\mathbf{r}\|^3}}
+%\parenth{-[\omega]_\times^2 -\dfrac{\mu I_{3\times 3}}{\|\r_a\|^3} + \dfrac{3\mu\r_a\r_a^T}{\|\r_a\|^5}}\r,\\
+%&=
+%-\dfrac{2\dot\r (\dot\r^T\y)  +(\dot\r^T\dot\r) \y}{\|\r\|^2}
+%+3\dfrac{2(\y^T\dot\r) \dot\r +(\dot\r^T\dot\r)\y+(\y^T\dot\r)^2 \y +2(\y^T\dot\r)^2\y }{\|\r\|^2}
+%- 15 \dfrac{(\y^T\dot\r)^2\y}{\|\r\|^2}\nonumber \\
+%&\quad -\dfrac{\ddot{\r} +(\y^T\ddot{\r}) \y +\y (\ddot{\r}^T\y)}{\|\r\|^1}
+%+ 3 \dfrac{(\y^T\ddot{\r})\y }{\|\r\|}
+%+\parenth{\dfrac{I}{\|\mathbf{r}\|} - \dfrac{\mathbf{r}\mathbf{r}^T}{\|\mathbf{r}\|^3}}
+%\parenth{-[\omega]_\times^2 -\dfrac{\mu I_{3\times 3}}{\|\r_a\|^3} + \dfrac{3\mu\r_a\r_a^T}{\|\r_a\|^5}}\r,\\
+%&=
+%\dfrac{4\dot\r (\dot\r^T\y)  -2(\dot\r^T\dot\r)\y-6(\y^T\dot\r)^2 \y }{\|\r\|^2}
+% -\mathcal{O}_{00}\ddot \r
+%+\parenth{\dfrac{I}{\|\mathbf{r}\|} - \dfrac{\mathbf{r}\mathbf{r}^T}{\|\mathbf{r}\|^3}}
+%\parenth{-[\omega]_\times^2 -\dfrac{\mu I_{3\times 3}}{\|\r_a\|^3} + \dfrac{3\mu\r_a\r_a^T}{\|\r_a\|^5}}\r,\\
+& = -2\mathcal{O}_{10}\dot\r +\mathcal{O}_{00}\braces{-\ddot \r +\deriv{\ddot\r}{\r}\r},\label{eqn:O20r}\\
+\mathcal{O}_{21}\r & = -2\mathcal{O}_{00} (\dot\r+\omega\times\r),\label{eqn:O21r}\\
+\mathcal{O}_{21}\dot\r & = 2\mathcal{O}_{10} \dot\r
+- 2 \mathcal{O}_{00}[\omega]_\times\dot\r,\label{eqn:O21rdot}
+\end{align}
+which are useful to derive the observability criteria. 
+
+\paragraph{Observability Rank Condition}
+
+
+
+Now we present sufficient conditions that the observability matrix $\mathcal{O}$ has full rank. 
+
+\begin{prop}
+Define three vectors $\mathbf{v}_{rel}$, $\mathbf{a}_1,\mathbf{a}_2\in\Re^3$ as 
+\begin{align}
+\mathbf{v}_{rel} & = \dot\r +\omega\times\r,\label{eqn:vrel}\\
+\mathbf{a}_1 & = \ddot\r-\deriv{\ddot\r}{\r}\r = -2\omega\times \dot\r - [\omega]_\times^2 a \mathbf{e}_1 -\dfrac{\mu a }{\|\r_a\|^3}\mathbf{e}_1- \dfrac{3\mu\r_a^T\r}{\|\r_a\|^5}\r_a,\label{eqn:a1}\\
+\mathbf{a}_2 & = \ddot\r-\deriv{\ddot\r}{\r}\r -\deriv{\ddot\r}{\dot\r}\dot\r = \mathbf{a}_1+2\omega\times\dot\r= - [\omega]_\times^2 a \mathbf{e}_1 -\dfrac{\mu a }{\|\r_a\|^3}\mathbf{e}_1- \dfrac{3\mu\r_a^T\r}{\|\r_a\|^5}\r_a.\label{eqn:a2}
+\end{align}
+The nonlinear relative orbital dynamics is locally weakly observable at $\x=[\r^T,\dot\r^T]$ if
+%\begin{list}{}{\setlength{\leftmargin}{1cm}\setlength{\itemsep}{0mm}\setlength{\parsep}{0mm}\setlength{\topsep}{0mm}\setlength{\parskip}{0mm}\setlength{\labelwidth}{2cm}}
+%\item[(i)] when $\r\times\dot\r =0$, $\r\times\mathbf{a}_1\neq 0$ and $\r^T(\mathbf{v}_{ref}\times \mathbf{a}_1)\neq 0$,
+%\item[(ii)] when $\r\times\dot\r \neq 0$, $\r\times\mathbf{a}_2\neq 0$ and $\r^T(\mathbf{v}_{ref}\times \mathbf{a}_2)\neq 0$.
+%\end{list}
+\begin{alignat}{2}
+(i)&\; &\text{when $\r\times\dot\r =0$, $\r\times\mathbf{v}_{ref}\neq0$, $\r\times\mathbf{a}_1\neq 0$,  and $\r^T(\mathbf{v}_{ref}\times \mathbf{a}_1)\neq 0$},\label{eqn:cond1}\\
+(ii)& &\text{when $\r\times\dot\r \neq 0$, $\r\times\mathbf{v}_{ref}\neq0$, $\r\times\mathbf{a}_2\neq 0$ and $\r^T(\mathbf{v}_{ref}\times \mathbf{a}_2)\neq 0$.}\label{eqn:cond2}
+\end{alignat}
+\end{prop}
+
+\begin{proof}
+We show that if the above conditions are satisfied, then the six columns of the observability matrix are linearly independent. Suppose that for a constant vector $\mathbf{c}=[\mathbf{c}_1^T,\mathbf{c}_2^T]\in\Re^6$, where $\mathbf{c}_1,\mathbf{c}_2\in\Re^3$, we have $\mathcal{O}\mathbf{c}=0$, i.e., 
+\begin{align}
+\mathcal{O} \mathbf{c} = \begin{bmatrix}
+\mathcal{O}_{00} & 0_{3\times 3}\\
+\mathcal{O}_{10} & \mathcal{O}_{11}\\
+\mathcal{O}_{20} & \mathcal{O}_{21}
+\end{bmatrix}
+\begin{bmatrix} \mathbf{c}_1 \\ \mathbf{c_2} \end{bmatrix}
+=
+\begin{bmatrix}
+\mathcal{O}_{00}\mathbf{c}_1\\
+\mathcal{O}_{10}\mathbf{c}_1+ \mathcal{O}_{11}\mathbf{c}_2\\
+\mathcal{O}_{20}\mathbf{c}_1+ \mathcal{O}_{21}\mathbf{c}_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+0_{3\times 1}\\
+0_{3\times 1}\\
+0_{3\times 1}
+\end{bmatrix}.\label{eqn:Oc}
+\end{align}
+
+We wish to show that there is no non-zero vector $\mathbf{c}$ satisfying \refeqn{Oc}. At the first three rows of \refeqn{Oc}, we have
+\begin{align*}
+\mathcal{O}_{00} \mathbf{c}_1 = \frac{1}{\|\r\|}(I-\y\y^T) \mathbf{c}_1 = 0.
+\end{align*}
+The matrix $\mathcal{O}_{00}$ has one-dimensional null space spanned by $\y$. Therefore, without loss of generality, we can choose $\mathbf{c}_1=0$ or $\mathbf{c}_1=\r$. Suppose $\mathbf{c}_1=\r$ for the subsequent development.
+
+For the chosen value of $\mathbf{c}_1=\r$, we find the next three rows of \refeqn{Oc} as
+\begin{align}
+\mathcal{O}_{10} \mathbf{c}_1 +\mathcal{O}_{11} \mathbf{c}_2 & = \mathcal{O}_{10} \r +\mathcal{O}_{11} \mathbf{c}_2  = \mathcal{O}_{00} (-\dot\r + \mathbf{c}_2)\nonumber\\
+& = \frac{1}{\|\r\|}(I-\y\y^T)(-\dot\r + \mathbf{c}_2)=0,\label{eqn:row2}
+\end{align}
+where we have used \refeqn{O11} and \refeqn{O10r}. Next, we consider two cases of \refeqn{row2}, namely (i) when $\r\times\dot\r=0$, and (ii) when $\r\times\dot\r\neq 0$.
+
+\paragraph{Case (i): $\r\times\dot \r=0$} In this case, $\dot \r$ can be written as $\dot \r = \alpha\r$ for some constant $\alpha$ as $\r$ is parallel to $\dot\r$. Then, \refeqn{row2} reduces to 
+\begin{align*}
+\frac{1}{\|\r\|}(I-\y\y^T)\mathbf{c}_2=0,
+\end{align*}
+which implies that $\mathbf{c}_2= c\r$ for an arbitrary constant $c$. For the given choice of $\mathbf{c}=[\r^T,c\r^T]^T$, the last three rows of \refeqn{Oc} are given by
+\begin{align*}
+\mathcal{O}_{20} \mathbf{c}_1 +\mathcal{O}_{21} \mathbf{c}_2 
+& = \mathcal{O}_{20} \r + c\mathcal{O}_{21} \r.
+\end{align*}
+Using \refeqn{O20r} and \refeqn{O21r}, this can be rewritten as
+\begin{align*}
+\mathcal{O}_{20} \mathbf{c}_1 +\mathcal{O}_{21} \mathbf{c}_2 
+& =
+-2\mathcal{O}_{10}\dot\r +\mathcal{O}_{00}\braces{-\ddot \r +\deriv{\ddot\r}{\r}\r}
+-2c\mathcal{O}_{00} (\dot\r+\omega\times\r).
+\end{align*}
+But, from \refeqn{O10dotr}, we can show that $2\mathcal{O}_{10}\dot\r=0$ when $\r$ is parallel to $\dot \r$. Using \refeqn{vrel} and \refeqn{a1}, this further reduces to
+\begin{align}
+\mathcal{O}_{20} \mathbf{c}_1 +\mathcal{O}_{21} \mathbf{c}_2 
+& =
+-\mathcal{O}_{00}(\mathbf{a}_1 +2c \mathbf{v}_{rel})\nonumber\\
+& = - \frac{1}{\|\r\|}(I-\y\y^T)(\mathbf{a}_1 +2c \mathbf{v}_{rel})=0.\label{eqn:row3i}
+\end{align}
+The matrix $(I-\y\y^T)$ represents the orthogonal projection of a vector into the plane normal to $\y$. From the second condition of \refeqn{cond1}, namely $\r\times\mathbf{a}_1\neq 0$, we have $(I-\y\y^T)\mathbf{a}_1\neq 0$, which implies that the constant $c$ cannot be simply chose as $c=0$. Therefore, the only possible case to satisfy the above equation is when $\mathbf{a}_1 +2c \mathbf{v}_{rel}$ is parallel to $\r$ for some values of $c$. However, that is not feasible since the third condition of \refeqn{cond1}, namely $\r^T(\mathbf{v}_{ref}\times\mathbf{a}_1)\neq0$,  implies that the three vectors $\r$, $\mathbf{a}_1$, and $\mathbf{v}_{rel}$ do not belong to a common plane, i.e., there is no constant $c$ such that $\mathbf{a}_1 +2c \mathbf{v}_{rel}$ is parallel to $\r$.
+
+Therefore, there is no $\mathbf{c}\in\Re^6$ satisfying \refeqn{Oc} if $\mathbf{c}_1=\r$, under the given condition \refeqn{cond1}. This implies that $\mathbf{c}_1=0$. Substituting this back to \refeqn{Oc}, we have $\mathcal{O}_{11}\mathbf{c}_2=\mathcal{O}_{00}\mathbf{c}_2=0$, which follows that $\mathbf{c}_2=c\r$ for some constant $c$. However, when $\mathbf{c}_2=c\r$, the last three rows of \refeqn{Oc} are given by
+\begin{align}
+\mathcal{O}_{21}\mathbf{c}_2 & = 2c(\mathcal{O}_{10}-\mathcal{O}_{00}[\omega]_\times) \r \\
+& = -2c\mathcal{O}_{00}\mathbf{v}_{rel}=0,\label{eqn:row3i1}
+\end{align}
+where \refeqn{O10r} is used. But, from the first condition of \refeqn{cond1}, we have $\mathcal{O}_{00}\mathbf{v}_{rel}\neq 0$, and therefore $c=0$, i.e., $\mathbf{c}_2=c\r =0$.
+
+In short, under the given condition \refeqn{cond1}, the equation \refeqn{Oc} implies that $\mathbf{c}=0$. Therefore, the six columns of the observability matrix $\mathcal{O}$ are linearly independent. 
+
+\paragraph{Case (ii): $\r\times\dot \r\neq0$} Next, we consider the second case of \refeqn{row2}. It implies that $-\dot\r + \mathbf{c}_2$ is parallel to $\r$, or equivalently, $\mathbf{c}_2 = \dot\r + c\r$ for an arbitrary constant $c$. For the given choice of $\mathbf{c}=[\r^T,\dot\r+ c\r^T]^T$, the last three rows of \refeqn{Oc} are given by
+\begin{align*}
+\mathcal{O}_{20} \mathbf{c}_1 +\mathcal{O}_{21} \mathbf{c}_2 
+& = (\mathcal{O}_{20} \r+\mathcal{O}_{21}\dot\r) + c\mathcal{O}_{21} \r.
+\end{align*}
+From \refeqn{O20r}, \refeqn{O21r}, \refeqn{O21rdot}, this can be rewritten as
+\begin{align*}
+\mathcal{O}_{20} \mathbf{c}_1 +\mathcal{O}_{21} \mathbf{c}_2 
+& = -\mathcal{O}_{00}(\mathbf{a}_2+2c\mathrm{v}_{ref})\\
+& = -\frac{1}{\|\r\|}(I-\y\y^T)(\mathbf{a}_2+2c\mathbf{v}_{ref})=0.
+\end{align*}
+By following the same argument given after \refeqn{row3i}, under \refeqn{cond2}, there is no $c$ satisfying the above equation. 
+
+This implies that $\mathbf{c}_1=0$. Then, by the same argument given at \refeqn{row3i1}, we have $\mathbf{c}_2=0$. In short, under the given condition \refeqn{cond2}, the equation \refeqn{Oc} implies that $\mathbf{c}=0$. Therefore, the six columns of the observability matrix $\mathcal{O}$ are linearly independent. 
+\end{proof}
+
+\paragraph{Remarks} We consider the cases where the given sufficient conditions \refeqn{cond1} and \refeqn{cond2} are violated. 
+For both cases, we have $\r\times\mathbf{v}_{rel}\neq 0$. At \refeqn{vrel}, $\mathbf{v}_{rel}$ corresponds to the relative velocity observed in the inertial frame. Therefore, the given sufficient conditions for observability is violated when the relative velocity vector is parallel to the relative position vector in the inertial frame. 
+
+The second condition of each of \refeqn{cond1} and \refeqn{cond2} is satisfied in general, as the expressions for $\mathbf{a}_1$ and $\mathbf{a}_2$ are relatively arbitrary at \refeqn{a1} and \refeqn{a2}. 
+
+The third condition of \refeqn{cond1} implies that three vectors $\r$, $\mathbf{v}_{rel}$ and $\mathbf{a}_1$ do not belong to the same plane. The third condition of \refeqn{cond2} has similar structure as well. This condition can be easily violated if the relative motion is planar, i.e., when $z(t)\equiv 0$ for all $t$. 
+
+However, \refeqn{cond1} and \refeqn{cond2} are sufficient conditions for observability, and the fact that any of these condition is not satisfied does not necessarily mean that the considered point is not observable. In such case, the third or higher order Lie derivatives should be checked to determine observability. The main contribution of this paper is showing that under certain geometric conditions, the nonlinear relative orbital dynamics are indeed observable via angles-only measurements. 
+
+\section{Numerical Examples}
+
+We illustrate the observability of nonlinear relative orbit by several numerical examples. A chief is assumed to be on a circular equatorial orbit with an orbital altitude of $500\,\mathrm{km}$. The orbit of a deputy is specified by orbital elements as follows. The eccentricity of the deputy is fixed at $e_{deputy}=0.2$, and the semi-major axis of the deputy is chosen such that its orbital period is identical to the chief, i.e., $a_{deputy} = (\frac{T_{chief}\sqrt{\mu}}{2\pi})^{2/3}$. Both of longitude of the ascending node and argument of periapsis are chosen to be zero. The inclination of the deputy is varied as $i_{deputy}=0^\circ,10^\circ,\ldots 50^\circ$. The corresponding orbital trajectories for the case of $i_{deputy}=30^\circ$ is illustrated at Fig. \ref{fig:OT}.
+
+\begin{figure}
+\centerline{
+\subfigure[Trajectory in the inertial frame (red:chief, blue:deputy)]{
+	\includegraphics[width=0.55\textwidth]{OT_itraj_PE_i_30}}
+\hspace*{0.05\textwidth}
+\subfigure[Relative trajectory in the LVLH frame]{
+	\includegraphics[width=0.35\textwidth]{OT_traj_PE_i_30}}
+}
+\caption{Orbital trajectories when $i_{deputy}=30^\circ$}\label{fig:OT}
+\end{figure}
+
+\subsection{Observability Test}
+For the varying inclinations of the deputy, the minimum singular values and the condition numbers of the observability matrix are summarized as follows.
+
+\begin{table}[h]
+\caption{Singular values and conditions number of observability matrix}\label{tab:SVD}
+\begin{center}
+\begin{tabularx}{0.38\textwidth}{*{3}{>{$}c<{$}}}\toprule
+i_{deputy} & \text{min} \braces{\sigma(\mathcal{O})} & \mathrm{cond}\braces{\mathcal{O}} \\\midrule
+0^\circ & 10^{-19.3041} & 10^{15.9893}  \\
+10^\circ & 10^{-10.3766} & 10^{7.0369}  \\
+20^\circ & 10^{-10.2584} & 10^{6.8603}  \\
+30^\circ & 10^{-10.2290} & 10^{6.7634}  \\
+40^\circ & 10^{-10.2176} & 10^{6.6873}  \\
+50^\circ & 10^{-10.2155} & 10^{6.6273}  \\\bottomrule
+\end{tabularx}
+\end{center}
+\end{table}
+
+When $i_{deputy}=0^\circ$, the relative motion becomes planar. As discussed in the previous section, in this case, the sufficient conditions for observability are violated. Therefore, the minimum singular value of the observability matrix $\mathcal{O}$ is close to zero. As $i_{deputy}$ is increased, out-of-plane orbital motions are more excited, and as a result, the condition number of $\mathcal{O}$ is increased. This implies that the relative motion is easier to estimate when the $i_{deputy}$ becomes large.
+
+\subsection{Extended Kalman Filter}
+
+To illustrate observability of nonlinear relative orbital dynamics, we develop an extended Kalman filter. The estimate of the initial state is chosen as two times of the true state, i.e., $\hat \x_0=2\x_0$. This implies that there is a large initial error in the magnitude of the state, which is difficult to estimate accurately using angles-only measurements. The initial covariance of the state is chosen as $P_0=\mathrm{diag}[50^2I_{3\times 3}, (50n)^2I_{3\times 3}]$. The covariance matrices for the process noise and the measurement noise are $Q_k=\mathrm{diag}[10^{-8}I_{3\times 3}, 10^{-10}I_{3\times 3}]$, and $R_k=1.306^2 I_{3\times 3}\,\mathrm{deg}^2$. It is assumed that the line-of-sight is measured at every $\Delta t = 0.47$ seconds. It is simulated for ten orbits of the chief around the Earth. 
+
+To compare the convergence property of each case, the following measures for estimation errors are introduced.
+\begin{align*}
+e_{dir}  & = \sqrt{\frac{1}{N}\sum_{k=0}^N\parenth{\cos^{-1}\parenth{\frac{\mathbf{x}(t_k)^T \hat{\mathbf{x}} (t_k)}
+{\|\mathbf{x}(t_k)\| \|\hat{\mathbf{x}} (t_k)\|}}}^2},\\
+e_{mag}  & = \sqrt{\frac{1}{N}\sum_{k=0}^N\parenth{
+\frac{\|\mathbf{x}(t_k)\|-\|\hat{\mathbf{x}} (t_k)\|}{\|\mathbf{x}(t_k)\|}}^2},\\
+e_{mag,r}  & = \sqrt{\frac{1}{N}\sum_{k=0}^N\parenth{
+\frac{\|\mathbf{r}(t_k)\|-\|\hat{\mathbf{r}} (t_k)\|}{\|\r(t_k)\|}}^2},\\
+e_{mag,v}  & = \sqrt{\frac{1}{N}\sum_{k=0}^N\parenth{
+\frac{\|\mathbf{v}(t_k)\|-\|\hat{\mathbf{v}} (t_k)\|}{\|\mathbf{v}(t_k)}}^2},
+\end{align*}
+where $N$ is the total number of time steps. The error variable $e_{dir}$ represents the mean squared value of the angle between the true state and the estimated state, and the variables $e_{mag},e_{mag,r},e_{mag,v}$ correspond to the normalized magnitude error for the state vector, position vector, and velocity vector, respectively. 
+
+These are summarized at Table \ref{tab:EE}. For all cases, the direction errors are fairly small, as the line-of-sight is directly measured. Overall, the magnitude error decreases as the inclination of the deputy increases. This is consistent with the condition number of the observability matrix summarized at Table \ref{tab:SVD}. 
+
+\begin{table}[h]
+\caption{Estimation Errors}\label{tab:EE}
+\begin{center}
+\begin{tabularx}{0.75\textwidth}{>{\centering $}X<{$}*{4}{>{$}c<{$}}}\toprule
+i_{deputy} & e_{dir} \;(\mathrm{rad}) & {e_{mag}} \;(\mathrm{unitless}) 
+& e_{mag,r} \;(\mathrm{unitless}) & e_{mag,v} \;(\mathrm{unitless})\\\midrule
+0 & 0.0211  & {0.3361} & 0.3361 & 0.3428\\
+10 & 0.0172  & {0.2204} & 0.2204 & 0.2385\\
+20 & 0.0187  & {0.1681} & 0.1681 & 0.1976\\
+30 & 0.0248  & {0.1596} & 0.1596 & 0.1922\\
+40 & 0.0421  & {0.1703} & 0.1703 & 0.1995\\
+50 & 0.0599  & {0.1841} & 0.1841 & 0.2092\\\bottomrule
+\end{tabularx}
+\end{center}
+\end{table}
+
+Estimation results are also illustrated at Figures \ref{fig:EKF_i_0}--\ref{fig:EKF_i_50}. At Figure \ref{fig:EKF_i_50}, the magnitude of the estimated state becomes quite close to the true value after four orbits. This confirms the observability of nonlinear relative orbital dynamics with angles-only measurements.
+
+
+\section{Conclusions}
+
+It is well known that the linearized relative orbital dynamics are not observable with angles-only measurements. This paper shows that the nonlinear relative orbital dynamics are observable under certain geometric conditions. Sufficient conditions for observability are derived based on the Lie derivatives of the measurements, and they are illustrated numerically by an extended Kalman filter. Future directions include formulating measure of nonlinear observability, and investigating less conservative observability criteria by using higher-order Lie derivatives. 
+
+\bibliographystyle{ISSFD_v01}
+\bibliography{references}
+
+\clearpage\newpage
+\begin{figure}
+\centerline{
+\subfigure[Estimation error ($e_{mag},e_{dir}$)]{
+	\includegraphics[width=0.44\textwidth]{PE_i_0_e}}
+\hfill
+\subfigure[Magnitude of state vector (true:solid, estimation:dashed)]{
+	\includegraphics[width=0.44\textwidth]{PE_i_0_xx_norm}}
+}
+\caption{Extended Kalman Filter $i_{deputy}=0^\circ$}\label{fig:EKF_i_0}
+\end{figure}
+
+\begin{figure}
+\centerline{
+\subfigure[Estimation error ($e_{mag},e_{dir}$)]{
+	\includegraphics[width=0.44\textwidth]{PE_i_10_e}}
+\hfill
+\subfigure[Magnitude of state vector (true:solid, estimation:dashed)]{
+	\includegraphics[width=0.44\textwidth]{PE_i_10_xx_norm}}
+}
+\caption{Extended Kalman Filter $i_{deputy}=10^\circ$}
+\end{figure}
+
+\begin{figure}
+\centerline{
+\subfigure[Estimation error ($e_{mag},e_{dir}$)]{
+	\includegraphics[width=0.44\textwidth]{PE_i_20_e}}
+\hfill
+\subfigure[Magnitude of state vector (true:solid, estimation:dashed)]{
+	\includegraphics[width=0.44\textwidth]{PE_i_20_xx_norm}}
+}
+\caption{Extended Kalman Filter $i_{deputy}=20^\circ$}
+\end{figure}
+
+\begin{figure}
+\centerline{
+\subfigure[Estimation error ($e_{mag},e_{dir}$)]{
+	\includegraphics[width=0.44\textwidth]{PE_i_30_e}}
+\hfill
+\subfigure[Magnitude of state vector (true:solid, estimation:dashed)]{
+	\includegraphics[width=0.44\textwidth]{PE_i_30_xx_norm}}
+}
+\caption{Extended Kalman Filter $i_{deputy}=30^\circ$}
+\end{figure}
+
+\begin{figure}
+\centerline{
+\subfigure[Estimation error ($e_{mag},e_{dir}$)]{
+	\includegraphics[width=0.44\textwidth]{PE_i_40_e}}
+\hfill
+\subfigure[Magnitude of state vector (true:solid, estimation:dashed)]{
+	\includegraphics[width=0.44\textwidth]{PE_i_40_xx_norm}}
+}
+\caption{Extended Kalman Filter $i_{deputy}=40^\circ$}
+\end{figure}
+
+\begin{figure}
+\centerline{
+\subfigure[Estimation error ($e_{mag},e_{dir}$)]{
+	\includegraphics[width=0.44\textwidth]{PE_i_50_e}}
+\hfill
+\subfigure[Magnitude of state vector (true:solid, estimation:dashed)]{
+	\includegraphics[width=0.44\textwidth]{PE_i_50_xx_norm}}
+}
+\caption{Extended Kalman Filter $i_{deputy}=50^\circ$}\label{fig:EKF_i_50}
+\end{figure}
+
+
+
+
+
+\end{document}
+

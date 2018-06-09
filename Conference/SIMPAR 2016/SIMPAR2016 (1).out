@@ -1,0 +1,16 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Problem Formulation}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Occupancy Grid Mapping}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Shannon's Entropy and Map Information}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Autonomous Exploration}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{1D Ray Expected Information Gain}{}% 6
+\BOOKMARK [2][-]{subsection.3.1}{Single Ray Expected Value of Entropy}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.2}{Approximation of Expected Ray Entropy}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.3}{1D Ray Expected Information Gain Algorithm}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.4}{Numerical Justification for Approximation}{section.3}% 10
+\BOOKMARK [1][-]{section.4}{Autonomous Exploration}{}% 11
+\BOOKMARK [2][-]{subsection.4.1}{Pose Selection Optimization}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.2}{Numerical Example}{section.4}% 13
+\BOOKMARK [1][-]{section.5}{Conclusions}{}% 14
+\BOOKMARK [1][-]{section*.1}{Acknowledgment}{}% 15
+\BOOKMARK [1][-]{section*.2}{References}{}% 16

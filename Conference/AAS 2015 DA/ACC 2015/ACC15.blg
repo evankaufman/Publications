@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: ACC15.aux
+The style file: IEEEtran.bst
+Database file #1: BibMaster.bib
+I was expecting a `,' or a `}'---line 114 of file BibMaster.bib
+ :  
+ :  Year={1986}}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 194 of file BibMaster.bib
+ :  title = {Combining {IMM} and {JPDA} for tracking multiple maneuvering targets in clutter}
+ :                                                                                           .
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 262 of file BibMaster.bib
+ :  
+ :  Year = {2001}}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 272 of file BibMaster.bib
+ :  
+ :  Year = {1990}}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 282 of file BibMaster.bib
+ :  
+ :  Year = {2001}}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 289 of file BibMaster.bib
+ : 
+ : % Pages = {1–-22},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+-- IEEEtran.bst version 1.11 (2003/04/02) by Michael Shell.
+-- http://www.ctan.org/tex-archive/macros/latex/contrib/supported/IEEEtran/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in JPDAF1
+Warning--missing institution in Fitzgerald
+Warning--empty year in Fitzgerald
+Warning--missing institution in Coal_e
+Warning--empty year in Coal_e
+Warning--empty year in Bar1990
+Warning--empty year in Val01
+Warning--empty title in VerSauSco04
+Warning--empty year in VerSauSco04
+Warning--empty year in ShaRonThi2001
+
+Done.
+(There were 6 error messages)

@@ -1,0 +1,23 @@
+\begin{thebibliography}{1}
+\newcommand{\enquote}[1]{``#1''}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem{MorleyBudnik2007}
+Morley, T. and Budnik, F.
+\newblock \enquote{Effects on Spacecraft Radiometric Data at Superior Solar
+  Conjunction.}
+\newblock Proceedings of the 20\textsuperscript{th} International Symposium on
+  Space Flight Dynamics --- 20\textsuperscript{th} ISSFD. Annapolis, MD, USA,
+  2007.
+
+\bibitem{Radice2006}
+Radice, G.
+\newblock \enquote{Deployment Considerations for Spacecraft Formation at
+  Sun-Earth L2 Point.}
+\newblock Nonlinear Dynamics and Systems Theory, Vol.~6, No.~4, pp. 401--411,
+  2006.
+
+\end{thebibliography}

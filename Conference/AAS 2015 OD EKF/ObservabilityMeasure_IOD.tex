@@ -1,0 +1,454 @@
+\documentclass[10pt]{article}
+\usepackage[letterpaper,text={6.5in,8.6in},centering]{geometry}
+\usepackage{amssymb,amsmath,amsthm,times,graphicx,subfigure,tabularx,booktabs,colortbl}
+\usepackage[small]{caption}
+
+\newcommand{\norm}[1]{\ensuremath{\left\| #1 \right\|}}
+\newcommand{\bracket}[1]{\ensuremath{\left[ #1 \right]}}
+\newcommand{\braces}[1]{\ensuremath{\left\{ #1 \right\}}}
+\newcommand{\parenth}[1]{\ensuremath{\left( #1 \right)}}
+\newcommand{\pair}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\met}[1]{\ensuremath{\langle\langle #1 \rangle\rangle}}
+\newcommand{\refeqn}[1]{(\ref{eqn:#1})}
+\newcommand{\reffig}[1]{Fig. \ref{fig:#1}}
+\newcommand{\tr}[1]{\mathrm{tr}\ensuremath{\negthickspace\bracket{#1}}}
+\newcommand{\trs}[1]{\mathrm{tr}\ensuremath{[#1]}}
+\newcommand{\ave}[1]{\mathrm{E}\ensuremath{[#1]}}
+\newcommand{\deriv}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+\newcommand{\SO}{\ensuremath{\mathsf{SO(3)}}}
+\newcommand{\T}{\ensuremath{\mathsf{T}}}
+\renewcommand{\L}{\ensuremath{\mathsf{L}}}
+\newcommand{\so}{\ensuremath{\mathfrak{so}(3)}}
+\newcommand{\SE}{\ensuremath{\mathsf{SE(3)}}}
+\newcommand{\se}{\ensuremath{\mathfrak{se}(3)}}
+\renewcommand{\Re}{\ensuremath{\mathbb{R}}}
+\newcommand{\aSE}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&1\end{bmatrix}}}
+\newcommand{\ase}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&0\end{bmatrix}}}
+\newcommand{\D}{\ensuremath{\mathbf{D}}}
+\renewcommand{\d}{\ensuremath{\mathfrak{d}}}
+\newcommand{\Sph}{\ensuremath{\mathsf{S}}}
+\renewcommand{\S}{\Sph}
+\newcommand{\J}{\ensuremath{\mathbf{J}}}
+\newcommand{\Ad}{\ensuremath{\mathrm{Ad}}}
+\newcommand{\intp}{\ensuremath{\mathbf{i}}}
+\newcommand{\extd}{\ensuremath{\mathbf{d}}}
+\newcommand{\hor}{\ensuremath{\mathrm{hor}}}
+\newcommand{\ver}{\ensuremath{\mathrm{ver}}}
+\newcommand{\dyn}{\ensuremath{\mathrm{dyn}}}
+\newcommand{\geo}{\ensuremath{\mathrm{geo}}}
+\newcommand{\Q}{\ensuremath{\mathsf{Q}}}
+\newcommand{\G}{\ensuremath{\mathsf{G}}}
+\newcommand{\g}{\ensuremath{\mathfrak{g}}}
+\newcommand{\Hess}{\ensuremath{\mathrm{Hess}}}
+
+\renewcommand{\r}{\mathbf{r}}
+\renewcommand{\u}{\mathbf{u}}
+\newcommand{\y}{\mathbf{y}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\e}{\mathbf{e}}
+
+
+\newcommand{\bfi}{\bfseries\itshape\selectfont}
+
+\renewcommand{\baselinestretch}{1.2}
+
+\date{}
+
+\newtheorem{definition}{Definition}
+\newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{remark}{Remark}
+
+\renewcommand{\thesubsection}{\arabic{subsection}. }
+\renewcommand{\thesubsubsection}{\arabic{subsection}.\arabic{subsubsection} }
+
+%\graphicspath{{/Users/tylee@seas.gwu.edu/Documents/Research/Estimation/Simulation/GloUncPro/DistSph/Build/Products/Debug/Diff/}}
+
+
+
+\begin{document}
+\thispagestyle{empty}
+
+\noindent{\large \bf Air Force Summer Faculty Fellowship Program:}\vspace*{0.1cm}\\
+\noindent{\Large \bf Nonlinear Observability for Relative Orbits with Line-of-Sight Measurements}\vspace*{0.1cm}\\
+\noindent{T. Alan Lovell and Taeyoung Lee}\\
+\noindent{July 25, 2013}\\
+
+
+
+
+\subsection{Numerical Examples}
+
+\paragraph{Initial Condition}
+
+Thirteen cases of the IOD data are simulated. 
+
+\paragraph{Observability Measure}
+
+The observability matrix $\mathcal{O}$ and the nonlinear observability Gramian $\mathcal{W}$ are computed for 20 orbits of the chief. The logarithmic mean of the minimum singular value and the condition number of $\mathcal{O}$ and $\mathcal{W}$ are summarized as follows.
+
+\definecolor{Gray}{gray}{0.85}
+
+\begin{center}
+\begin{tabularx}{0.58\textwidth}{*{4}{>{$}c<{$}}{>{\cellcolor{Gray}$}X<{$}}}\toprule
+Case & \text{min} \braces{\sigma(\mathcal{O})} & \mathrm{cond}\braces{\mathcal{O}} &
+\text{min} \braces{\sigma(\mathcal{W})} & \mathrm{cond}\braces{\mathcal{W}}\\\midrule
+0A & 10^{-10.1075} & 10^{8.3169} & 10^{2.2586} & \cellcolor{Gray}{10^{11.1486}} \\
+0B & 10^{-10.1078} & 10^{8.0166} & 10^{2.2854} & \cellcolor{Gray}{10^{10.9387}} \\
+0C & 10^{-10.1107} & 10^{7.8436} & 10^{2.1833} & \cellcolor{Gray}{10^{10.9851}} \\\midrule
+1 & 10^{-10.3161} & 10^{10.5927} & 10^{-2.0304} & \cellcolor{Gray}{10^{16.6871}} \\\midrule
+2A & 10^{-10.5057} & 10^{7.9048} & 10^{-1.8178} & \cellcolor{Gray}{10^{10.6492}} \\
+2B & 10^{-10.2762} & 10^{7.6257} & 10^{-1.5757} & \cellcolor{Gray}{10^{10.4163}} \\
+2C & 10^{-10.1667} & 10^{7.4691} & 10^{-1.3953} & \cellcolor{Gray}{10^{10.2155}} \\\midrule
+3A & 10^{-11.0134} & 10^{7.8582} & 10^{-1.0906} & \cellcolor{Gray}{10^{8.3490}} \\
+3B & 10^{-10.7332} & 10^{7.5645} & 10^{-1.1016} & \cellcolor{Gray}{10^{8.5372}} \\
+3C & 10^{-10.5768} & 10^{7.3946} & 10^{-1.1361} & \cellcolor{Gray}{10^{8.6586}} \\\midrule
+4A & 10^{-11.6762} & 10^{7.8817} & 10^{-1.5273} & \cellcolor{Gray}{10^{7.9062}} \\
+4B & 10^{-11.3854} & 10^{7.5869} & 10^{-1.6012} & \cellcolor{Gray}{10^{7.9903}} \\
+4C & 10^{-11.2062} & 10^{7.4043} & 10^{-1.6495} & \cellcolor{Gray}{10^{8.0645}} \\\bottomrule
+\end{tabularx}
+\end{center}
+
+
+
+\clearpage\newpage
+\begin{figure}
+\centerline{
+\subfigure[True trajectory]{
+	\includegraphics[width=0.35\textwidth]{OM_IOD_0A_traj.pdf}}
+\hspace*{0.15\textwidth}
+\subfigure[Observability criteria (ia):blue, (ib):green, (ii):red, (iii):cyan]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_0A_cri.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_0A_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_0A_cond.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_0A_W_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_0A_W_cond.pdf}}
+}
+\caption{Observability Measure: CASE0A (red,solid:HCW, \quad blue,dashed:two-body solution)}
+\end{figure}
+
+\clearpage\newpage
+\begin{figure}
+\centerline{
+\subfigure[True trajectory]{
+	\includegraphics[width=0.35\textwidth]{OM_IOD_0B_traj.pdf}}
+\hspace*{0.15\textwidth}
+\subfigure[Observability criteria (ia):blue, (ib):green, (ii):red, (iii):cyan]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_0B_cri.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_0B_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_0B_cond.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_0B_W_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_0B_W_cond.pdf}}
+}
+\caption{Observability Measure: CASE0B (red,solid:HCW, \quad blue,dashed:two-body solution)}
+\end{figure}
+
+\clearpage\newpage
+\begin{figure}
+\centerline{
+\subfigure[True trajectory]{
+	\includegraphics[width=0.35\textwidth]{OM_IOD_0C_traj.pdf}}
+\hspace*{0.15\textwidth}
+\subfigure[Observability criteria (ia):blue, (ib):green, (ii):red, (iii):cyan]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_0C_cri.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_0C_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_0C_cond.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_0C_W_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_0C_W_cond.pdf}}
+}
+\caption{Observability Measure: CASE0C (red,solid:HCW, \quad blue,dashed:two-body solution)}
+\end{figure}
+
+\clearpage\newpage
+\begin{figure}
+\centerline{
+\subfigure[True trajectory]{
+	\includegraphics[width=0.35\textwidth]{OM_IOD_1_traj.pdf}}
+\hspace*{0.15\textwidth}
+\subfigure[Observability criteria (ia):blue, (ib):green, (ii):red, (iii):cyan]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_1_cri.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_1_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_1_cond.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_1_W_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_1_W_cond.pdf}}
+}
+\caption{Observability Measure: CASE1 (red,solid:HCW, \quad blue,dashed:two-body solution)}
+\end{figure}
+
+\clearpage\newpage
+\begin{figure}
+\centerline{
+\subfigure[True trajectory]{
+	\includegraphics[width=0.4\textwidth]{OM_IOD_2A_traj.pdf}}
+\hspace*{0.15\textwidth}
+\subfigure[Observability criteria (ia):blue, (ib):green, (ii):red, (iii):cyan]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_2A_cri.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_2A_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_2A_cond.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_2A_W_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_2A_W_cond.pdf}}
+}
+\caption{Observability Measure: CASE2A (red,solid:HCW, \quad blue,dashed:two-body solution)}
+\end{figure}
+
+\clearpage\newpage
+\begin{figure}
+\centerline{
+\subfigure[True trajectory]{
+	\includegraphics[width=0.4\textwidth]{OM_IOD_2B_traj.pdf}}
+\hspace*{0.15\textwidth}
+\subfigure[Observability criteria (ia):blue, (ib):green, (ii):red, (iii):cyan]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_2B_cri.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_2B_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_2B_cond.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_2B_W_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_2B_W_cond.pdf}}
+}
+\caption{Observability Measure: CASE2B (red,solid:HCW, \quad blue,dashed:two-body solution)}
+\end{figure}
+
+
+\clearpage\newpage
+\begin{figure}
+\centerline{
+\subfigure[True trajectory]{
+	\includegraphics[width=0.4\textwidth]{OM_IOD_2C_traj.pdf}}
+\hspace*{0.15\textwidth}
+\subfigure[Observability criteria (ia):blue, (ib):green, (ii):red, (iii):cyan]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_2C_cri.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_2C_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_2C_cond.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_2C_W_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_2C_W_cond.pdf}}
+}
+\caption{Observability Measure: CASE2C (red,solid:HCW, \quad blue,dashed:two-body solution)}
+\end{figure}
+
+\clearpage\newpage
+\begin{figure}
+\centerline{
+\subfigure[True trajectory]{
+	\includegraphics[width=0.4\textwidth]{OM_IOD_3A_traj.pdf}}
+\hspace*{0.15\textwidth}
+\subfigure[Observability criteria (ia):blue, (ib):green, (ii):red, (iii):cyan]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_3A_cri.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_3A_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_3A_cond.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_3A_W_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_3A_W_cond.pdf}}
+}
+\caption{Observability Measure: CASE3A (red,solid:HCW, \quad blue,dashed:two-body solution)}
+\end{figure}
+
+
+\clearpage\newpage
+\begin{figure}
+\centerline{
+\subfigure[True trajectory]{
+	\includegraphics[width=0.4\textwidth]{OM_IOD_3B_traj.pdf}}
+\hspace*{0.15\textwidth}
+\subfigure[Observability criteria (ia):blue, (ib):green, (ii):red, (iii):cyan]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_3B_cri.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_3B_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_3B_cond.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_3B_W_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_3B_W_cond.pdf}}
+}
+\caption{Observability Measure: CASE3B (red,solid:HCW, \quad blue,dashed:two-body solution)}
+\end{figure}
+
+\clearpage\newpage
+\begin{figure}
+\centerline{
+\subfigure[True trajectory]{
+	\includegraphics[width=0.4\textwidth]{OM_IOD_3C_traj.pdf}}
+\hspace*{0.15\textwidth}
+\subfigure[Observability criteria (ia):blue, (ib):green, (ii):red, (iii):cyan]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_3C_cri.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_3C_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_3C_cond.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_3C_W_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_3C_W_cond.pdf}}
+}
+\caption{Observability Measure: CASE3C (red,solid:HCW, \quad blue,dashed:two-body solution)}
+\end{figure}
+
+\clearpage\newpage
+\begin{figure}
+\centerline{
+\subfigure[True trajectory]{
+	\includegraphics[width=0.4\textwidth]{OM_IOD_4A_traj.pdf}}
+\hspace*{0.15\textwidth}
+\subfigure[Observability criteria (ia):blue, (ib):green, (ii):red, (iii):cyan]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_4A_cri.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_4A_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_4A_cond.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_4A_W_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_4A_W_cond.pdf}}
+}
+\caption{Observability Measure: CASE4A (red,solid:HCW, \quad blue,dashed:two-body solution)}
+\end{figure}
+
+\clearpage\newpage
+\begin{figure}
+\centerline{
+\subfigure[True trajectory]{
+	\includegraphics[width=0.4\textwidth]{OM_IOD_4B_traj.pdf}}
+\hspace*{0.15\textwidth}
+\subfigure[Observability criteria (ia):blue, (ib):green, (ii):red, (iii):cyan]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_4B_cri.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_4B_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_4B_cond.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_4B_W_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_4B_W_cond.pdf}}
+}
+\caption{Observability Measure: CASE4B (red,solid:HCW, \quad blue,dashed:two-body solution)}
+\end{figure}
+
+\clearpage\newpage
+\begin{figure}
+\centerline{
+\subfigure[True trajectory]{
+	\includegraphics[width=0.4\textwidth]{OM_IOD_4C_traj.pdf}}
+\hspace*{0.15\textwidth}
+\subfigure[Observability criteria (ia):blue, (ib):green, (ii):red, (iii):cyan]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_4C_cri.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_4C_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{O}$ and $\mathcal{O}^H_3$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_4C_cond.pdf}}
+}
+\centerline{
+\subfigure[Min. singular value of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_4C_W_svd.pdf}}
+\hspace*{0.12\textwidth}
+\subfigure[Condition number of $\mathcal{W}$ and $\mathcal{W}^H$]{
+	\includegraphics[width=0.45\textwidth]{OM_IOD_4C_W_cond.pdf}}
+}
+\caption{Observability Measure: CASE4C (red,solid:HCW, \quad blue,dashed:two-body solution)}
+\end{figure}
+
+\end{document}

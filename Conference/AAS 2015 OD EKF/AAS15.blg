@@ -1,0 +1,10 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: AAS15.aux
+The style file: AAS_publication.bst
+Database file #1: references.bib
+Warning--string name "january" is undefined
+--line 14 of file references.bib
+Warning--string name "january" is undefined
+--line 21 of file references.bib
+Name 2 in "S. Lall and J. Marsden, and S. Glavaski" has a comma at the end for entry LalMarIJRNC02
+while executing---line 1005 of file AAS_publication.bst
+(There was 1 error message)

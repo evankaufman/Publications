@@ -1,0 +1,87 @@
+\begin{thebibliography}{10}
+
+\bibitem{KauLovLee14}
+E.~Kaufman, T.~A. Lovell, and T.~Lee, ``Optimal Joint Probabilistic Data
+  Association Filter Avoiding Coalescence in Close Proximity,''  {\em
+  Proceedings of the IEEE European Control Conference}, 2014.
+
+\bibitem{MHT1}
+S.~S. Blackman, ``Multiple Hypothesis Tracking For Multiple Target Tracking,''
+  {\em IEEE Aerospace and Electronic Systems Magazine}, Vol.~19, No.~1, 2004.
+
+\bibitem{PHD1}
+L.~Lin, Y.~Bar-Shalom, and T.~Kirubarajan, ``Track Labeling and {PHD} Filter
+  for Multitarget Tracking,''  {\em IEEE Transactions on Aerospace and
+  Electronic Systems}, Vol.~42, No.~3, 2006, pp.~778--794.
+
+\bibitem{PHD2}
+H.~Sidenbladh, ``Development of Practical {PDA} Logic for Multitarget Tracking
+  by Microprocessor,''  {\em Proceedings of the American Control Conference},
+  1986.
+
+\bibitem{JPDAF1}
+Y.~Bar-Shalom, F.~Daum, and J.~Huang, ``The Probabilistic Data Association
+  Filter,''  2009.
+
+\bibitem{NN2}
+X.~R. Li and Y.~Bar-Shalom, ``Tracking in Clutter With Nearest Neighbor
+  Filters: Analysis and Performance,''  {\em IEEE Transactions on Aerospace and
+  Electronic Systems}, Vol.~32, No.~3, 1996, pp.~995--1010.
+
+\bibitem{TrackDataAssoc}
+Y.~Bar-Shalom and T.~E. Fortmann, {\em Tracking and Data Association}.
+\newblock San Diego, CA: Elsevier, Inc, 1988.
+
+\bibitem{Coal1}
+H.~A.~P. Blom and E.~Bloem, ``Probabilistic data association avoiding track
+  coalescence,''  {\em IEEE Transactions on Automatic Control}, Vol.~45,
+  No.~17, 2000, pp.~247--259.
+
+\bibitem{Fitzgerald}
+R.~J. Fitzgerald, ``Development of Practical {PDA} Logic for Multitarget
+  Tracking by Microprocessor,''  tech. rep.
+\newblock {B}edford, Massachusetts.
+
+\bibitem{Coal_d}
+E.~A. Bloem and H.~A. Blom, ``Joint Probabilistic Data Association Methods
+  Avoiding Track Coalescence,''  {\em Proceedings of the IEEE Conference on
+  Decision and Control}, 1995.
+
+\bibitem{Coal_e}
+H.~A. Blom and E.~A. Bloem, ``Combining {IMM} and {JPDA} for tracking multiple
+  maneuvering targets in clutter,''  tech. rep.
+
+\bibitem{Coal_c}
+S.~Chen and Y.~Xu, ``A New Joint Probabilistic Data Association Algorithm
+  Avoiding Track Coalescence,''  {\em International Journal of Intelligent
+  Systems and Applications}, Vol.~2, 2011, pp.~45--51.
+
+\bibitem{Bar1990}
+Y.~Bar-Shalom, {\em Multitarget-Multisensor Tracking}.
+\newblock Norwood, MA: Artech House, Inc.
+
+\bibitem{OptEst1}
+A.~Gelb, {\em Applied Optimal Estimation}.
+\newblock Cambridge, Massachusetts and London, England: The Analytic Sciences
+  Corporation, 1974.
+
+\bibitem{Val01}
+D.~A. Vallado, {\em Fundamentals of Astrodynamics and Applications}.
+\newblock El Segundo, CA: Microcosm Press and Kluwer Academic Publishers.
+
+\bibitem{VerSauSco04}
+P.~Vergez, L.~Sauter, and S.~Dahlke {\em The Journal of the Astronautical
+  Sciences}.
+
+\bibitem{KurAriAriEfe10}
+F.~Kural, F.~Arikan, O.~Arikan, and M.~Efe, ``Performance Evaluation of Track
+  Association and Maintenance for a MFPAR with Doppler Velocity Measurements,''
+   {\em Progress In Electromagnetics Research}, Vol.~108, 2010,
+  pp.~249–--275.
+
+\bibitem{ShaRonThi2001}
+Y.~Bar-Shalom, X.~R. Li, and T.~Kirubarajan, {\em Estimation with Applications
+  to Tracking and Navagation}.
+\newblock New York: A Wiley-Interscience Publication.
+
+\end{thebibliography}

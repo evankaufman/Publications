@@ -1,0 +1,119 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{#1}
+\csname url@rmstyle\endcsname
+\providecommand{\newblock}{\relax}
+\providecommand{\bibinfo}[2]{#2}
+\providecommand\BIBentrySTDinterwordspacing{\spaceskip=0pt\relax}
+\providecommand\BIBentryALTinterwordstretchfactor{4}
+\providecommand\BIBentryALTinterwordspacing{\spaceskip=\fontdimen2\font plus
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
+\providecommand\BIBforeignlanguage[2]{{%
+\expandafter\ifx\csname l@#1\endcsname\relax
+\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
+\typeout{** loaded for the language `#1'. Using the pattern for}%
+\typeout{** the default language instead.}%
+\else
+\language=\csname l@#1\endcsname
+\fi
+#2}}
+
+\bibitem{CicKanJAHS95}
+L.~Cicolani, G.~Kanning, and R.~Synnestvedt, ``Simulation of the dynamics of
+  helicopter slung load systems,'' \emph{Journal of the American Helicopter
+  Society}, vol.~40, no.~4, pp. 44--61, 1995.
+
+\bibitem{BerPICRA09}
+M.~Bernard, ``Generic slung load transportation system using small size
+  helicopters,'' in \emph{Proceedings of the International Conference on
+  Robotics and Automation}, 2009, pp. 3258--3264.
+
+\bibitem{PalCruIRAM12}
+I.~Palunko, P.~Cruz, and R.~Fierro, ``Agile load transportation,'' \emph{IEEE
+  Robotics and Automation Magazine}, vol.~19, no.~3, pp. 69--79, 2012.
+
+\bibitem{MicFinAR11}
+N.~Michael, J.~Fink, and V.~Kumar, ``Cooperative manipulation and
+  transportation with aerial robots,'' \emph{Autonomous Robots}, vol.~30, pp.
+  73--86, 2011.
+
+\bibitem{MazKonJIRS10}
+I.~Maza, K.~Kondak, M.~Bernard, and A.~Ollero, ``Multi-{UAV} cooperation and
+  control for load transportation and deployment,'' \emph{Journal of
+  Intelligent and Robotic Systems}, vol.~57, pp. 417--449, 2010.
+
+\bibitem{LeeSrePICDC13}
+T.~Lee, K.~Sreenath, and V.~Kumar, ``Geometric control of cooperating multiple
+  quadrotor {UAV}s with a suspended load,'' in \emph{Proceedings of the IEEE
+  Conference on Decision and Control}, Florence, Italy, Dec. 2013, pp.
+  5510--5515.
+
+\bibitem{GooLeePACC14}
+F.~Goodarzi, D.~Lee, and T.~Lee, ``Geometric stabilization of a quadrotor {UAV}
+  with a payload connected by flexible cable,'' in \emph{Proceedings of the
+  American Control Conference}, June 2014, pp. 4925--4930.
+
+\bibitem{LeePICDC14}
+T.~Lee, ``Geometric control of multiple quadrotor {UAVs} transporting a
+  cable-suspended rigid body,'' in \emph{Proceedings of the IEEE Conference on
+  Decision and Control}, 2014, accepted.
+
+\bibitem{LeeLeoPICDC10}
+T.~Lee, M.~Leok, and N.~McClamroch, ``Geometric tracking control of a quadrotor
+  aerial vehicle on {$\SE$},'' in \emph{Proceedings of the IEEE Conference on
+  Decision and Control}, Atlanta, GA, Dec. 2010, pp. 5420--5425, (Acceptance
+  Rate: 62\%).
+
+\bibitem{ShuJAS93}
+M.~{Shuster}, ``{Survey of attitude representations},'' \emph{Journal of the
+  Astronautical Sciences}, vol.~41, pp. 439--517, 1993.
+
+\bibitem{Lee08}
+T.~Lee, ``Computational geometric mechanics and control of rigid bodies,''
+  Ph.D. dissertation, University of Michigan, 2008.
+
+\bibitem{LeeLeoIJNME09}
+T.~Lee, M.~Leok, and N.~McClamroch, ``Lagrangian mechanics and variational
+  integrators on two-spheres,'' \emph{International Journal for Numerical
+  Methods in Engineering}, vol.~79, no.~9, pp. 1147--1174, 2009.
+
+\bibitem{GooLeePECC13}
+F.~Goodarzi, D.~Lee, and T.~Lee, ``Geometric nonlinear {PID} control of a
+  quadrotor {UAV} on {$\SE$},'' in \emph{Proceedings of the European Control
+  Conference}, Zurich, July 2013, pp. 3845--3850.
+
+\bibitem{BulLew05}
+F.~Bullo and A.~Lewis, \emph{Geometric control of mechanical systems}, ser.
+  Texts in Applied Mathematics.\hskip 1em plus 0.5em minus 0.4em\relax New
+  York: Springer-Verlag, 2005, vol.~49, modeling, analysis, and design for
+  simple mechanical control systems.
+
+\bibitem{Wu12}
+T.~Wu, ``Spacecraft relative attitude formation tracking on {SO(3)} based on
+  line-of-sight measurements,'' Master's thesis, The George Washington
+  University, 2012.
+
+\bibitem{Kha96}
+H.~Khalil, \emph{Nonlinear Systems}, 2nd Edition, Ed.\hskip 1em plus 0.5em
+  minus 0.4em\relax Prentice Hall, 1996.
+
+\bibitem{BhaBerSJCO00}
+S.~Bhat and D.~Bernstein, ``Finite-time stability of continuous autonomous
+  systems,'' \emph{SIAM Journal of Control and Optimization}, vol.~38, no.~3,
+  pp. 751--766, 2000.
+
+\bibitem{YuYuA05}
+S.~Yu, X.~Yu, B.~Shirinzadeh, and Z.~Man, ``Continuous finite-time control for
+  robotic manipulators with terminal slideing mode,'' \emph{Automatica},
+  vol.~41, pp. 1957--1964, 2005.
+
+\bibitem{WuRadAA11}
+S.~Wu, G.~Radice, Y.~Gao, and Z.~Sun, ``Quaternion-based finite time control
+  for spacecraft attitude tracking,'' \emph{Acta Astronautica}, vol.~69, pp.
+  48--58, 2011.
+
+\bibitem{IoaSun95}
+P.~Ioannou and J.~Sung, \emph{Robust Adaptive Control}.\hskip 1em plus 0.5em
+  minus 0.4em\relax Prentice Hall, 1995.
+
+\end{thebibliography}

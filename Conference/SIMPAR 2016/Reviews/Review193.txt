@@ -1,0 +1,75 @@
+Reviewer 2 of SIMPAR 2016 submission 48
+
+Comments to the author
+======================
+
+This article presents an autonomous exploration concept,
+which minimizes the entropy of an occupancy grid map, based
+on a measure of Shannon entropy. It assumes that the
+trajectory of the robot is known, and addresses the
+computational issues of computing the full Shannon entropy
+by calculating instead the expected ray (meaning ray
+tracing) entropy based on range bearing (e.g. ladar) type
+sensors.
+
+The article is, in general, well written and interesting,
+although the following important points should be noted.
+
+General Comments:
+
+1. A main weakness of the article is the assumption that
+the trajectory is known - which clearly makes the article a
+"mapping only" article, limiting its impact somewhat.
+
+2. There are many very relevant references missing in the
+literature review, which do not just use "Frontiers of
+predicted measurements", which the authors say are the
+state of the art in this area. These should also be
+discussed and compared in the introduction - e.g.:
+
+F. Bourgault, A. Makarenko, S. Williams, B. Grocholsky, and
+H. Durrant-Whyte, “Information based adaptive robotic
+exploration,” in IEEE/RSJ International Conference on
+Intelligent Robots and Systems (IROS 2002), 2002. 
+
+R. Sim and N. Roy, "Global A-Optimal Robot Exploration in
+SLAM", in IEEE International Conference on Robotics &
+Automation, 2005.
+
+3. The main result in Fig. 3 is not very convincing, and
+rather preliminary. It is not very clear that the robot
+returns to the initial part of the map to improve the
+information gain here. Maybe more convincing results could
+be included?
+
+Particular Comments: 
+
+1. Introduction, page 1, paragraph 1, the text is confusing
+as the authors state "Several SLAM approaches are applied
+to a variety of problems when mobile robots traverse
+through an environment to generate a map, but the
+trajectories are assumed given." Although I think I
+understand what the authors mean, in that the concepts of
+parts of SLAM algorithms are applied to mapping, SLAM
+clearly means the concept of estimating BOTH the trajectory
+and map - so I think this text should be re-worded.
+
+2. Page 3, column 2, just after Eq. (11), the authors state
+that "Conveniently, this density corresponds to the inverse
+normalizer defined in (2)". Some explanation would be
+useful here, as Eq. (11) does not appear to correspond to
+the normalizer in Eq. (2).
+
+3. Page 5, column 2, Section IV-B, "where the probabilistic
+properties of the sensor are taken from [10]" - it would be
+useful if the authors at least summarized these.
+
+Typos:
+
+1. Introduction, paragraph 1 "when mobile robots traverse
+through an" -> "when mobile robots traverse an" ("through"
+is redundant).
+
+2. Section IV-B, page 6, last paragraph, "…not frontiers a
+predicted measurement scans" -> "…not frontiers of
+predicted measurement scans"?

@@ -1,0 +1,17 @@
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdftex 2012.10.10)  7 AUG 2014 11:35
+entering extended mode
+**C:/Users/evankaufman/Dropbox/Dr.*Lee*Research*Group/Evan/Publications/AAS*201
+5/AAS.cls
+
+("C:/Users/evankaufman/Dropbox/Dr. Lee Research Group/Evan/Publications/AAS 201
+5/AAS.cls"
+! Undefined control sequence.
+l.11 \NeedsTeXFormat
+                    {LaTeX2e}[1995/12/01]
+? 
+! Emergency stop.
+l.11 \NeedsTeXFormat
+                    {LaTeX2e}[1995/12/01]
+End of file on the terminal!
+
+!  ==> Fatal error occurred, no output PDF file produced!

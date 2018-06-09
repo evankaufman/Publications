@@ -1,0 +1,87 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{#1}
+\csname url@rmstyle\endcsname
+\providecommand{\newblock}{\relax}
+\providecommand{\bibinfo}[2]{#2}
+\providecommand\BIBentrySTDinterwordspacing{\spaceskip=0pt\relax}
+\providecommand\BIBentryALTinterwordstretchfactor{4}
+\providecommand\BIBentryALTinterwordspacing{\spaceskip=\fontdimen2\font plus
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
+\providecommand\BIBforeignlanguage[2]{{%
+\expandafter\ifx\csname l@#1\endcsname\relax
+\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
+\typeout{** loaded for the language `#1'. Using the pattern for}%
+\typeout{** the default language instead.}%
+\else
+\language=\csname l@#1\endcsname
+\fi
+#2}}
+
+\bibitem{WolSuk05}
+D.~Wolf and G.~Sukhatme, ``Mobile robot simultaneous localization and mapping
+  in dynamic environments,'' \emph{Autonomous Robots}, vol.~1, no.~19, pp.
+  53--65, 2005.
+
+\bibitem{WurHorBenStaBur10}
+K.~Wurm, A.~Hornung, M.~Bennewitz, C.~Stachniss, and W.~Burgard, ``Octomap: A
+  probabilistic, flexible, and compact 3d map representation for robotic
+  systems,'' in \emph{Proceeding of the ICRA 2010 Workshop on Best Practice in
+  3D Perception and Modeling for Mobile Manipulation}, 2010.
+
+\bibitem{MonThrKolWeg02}
+M.~Montemerlo, S.~Thrun, D.~Koller, and B.~Wegbreit, ``Fastslam: A factored
+  solution to the simultaneous localization and mapping problem,'' in
+  \emph{Proceeding of the National Conference on Artificial Intelligence
+  (AAAI)}, Edmonton, Canada, 2002, pp. 593--598.
+
+\bibitem{ThrBurFox05}
+S.~Thrun, W.~Burgard, and D.~Fox, \emph{Probabilistic Robotics}, ser.
+  Intelligent Robotics and Autonomous Agents.\hskip 1em plus 0.5em minus
+  0.4em\relax Cambridge, Massachusetts: Massachusetts Institute of Technology,
+  2005.
+
+\bibitem{MorElf85}
+H.~P. Moravec and A.~Elfes, ``High resolution maps from wide angle sonar,'' in
+  \emph{IEEE Conference on Robotics and Automation}, 1985.
+
+\bibitem{Elf89}
+A.~Elfes, ``Using occupancy grids for mobile robot perception and navigation,''
+  \emph{IEEE Computer}, pp. 46--57, 1989.
+
+\bibitem{ChoLynHutKanBurKavThr05}
+H.~Choset, K.~Lynch, S.~Hutchinson, G.~Kantor, W.~Burgard, L.~Kavraki, and
+  S.~Thrun, \emph{Principles of Robot Motion: Theory, Algorithms, and
+  Implementations}, ser. Intelligent Robotics and Autonomous Agents.\hskip 1em
+  plus 0.5em minus 0.4em\relax Cambridge, Massachusetts: Massachusetts
+  Institute of Technology, 2005.
+
+\bibitem{And09}
+F.~Adert, ``Drawing stereo disparity images into occupancy grids: Measurement
+  model and fast implementation,'' in \emph{Proceedings of the 2009 IEEE/RSJ
+  International Conference on Intelligent Robots and Systems}, 2009.
+
+\bibitem{PirRutBisSch11}
+K.~Pirker, M.~Ruther, H.~Bischof, and G.~Schweighofer, ``Fast and accurate
+  environment modeling using three-dimensional occupancy grids,'' in
+  \emph{Proceedings of the 2011 IEEE International Conference on Computer
+  Vision Workshops}, 2011.
+
+\bibitem{Thr01}
+S.~Thrun, ``Learning occupancy grids with forward models,'' in
+  \emph{Proceedings of the 2001 IEEE/RSU International Conference on
+  Intelligent Robots and Systems}, 2001.
+
+\bibitem{Thr03}
+------, ``Learning occupancy grid maps with forward sensor models,''
+  \emph{Autonomous Robots}, vol.~15, no.~2, pp. 111--127, 2003.
+
+\bibitem{KhoElb12}
+K.~Khoshelham and S.~O. Elberink, ``Accuracy and resolution of kinect depth
+  data for indoor mapping applications,'' \emph{Sensors}, pp. 1437--1454, 2012.
+
+\bibitem{DevBK86}
+L.~Devroye, \emph{Non-Uniform Random Variate Generation}.\hskip 1em plus 0.5em
+  minus 0.4em\relax New York: Springer-Verlag, 1986.
+
+\end{thebibliography}

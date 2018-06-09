@@ -1,0 +1,14 @@
+Reviewer 6 of 2015 ACC submission 1089
+
+Comments to the author
+======================
+
+The paper is rather hard to read. There are a lot of
+engineering slogans and lack of detailed problem
+formulation.
+The problem should be formulated better in part II. I have
+a feeling that the authors are trying to say to much,
+forgeting about potential readers. The problems with
+uncertainty are rather important and this is in fact the
+reason I'm forward accepting (weakly) the talk. The paper
+should be carefully rewritten before any publication.  

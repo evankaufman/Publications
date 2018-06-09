@@ -1,0 +1,329 @@
+% use paper, or submit
+% use 11 pt (preferred), 12 pt, or 10 pt only
+
+\documentclass[letterpaper, preprint, paper,11pt]{AAS}	% for preprint proceedings
+%\documentclass[letterpaper, paper,11pt]{AAS}		% for final proceedings (20-page limit)
+%\documentclass[letterpaper, paper,12pt]{AAS}		% for final proceedings (20-page limit)
+%\documentclass[letterpaper, paper,10pt]{AAS}		% for final proceedings (20-page limit)
+%\documentclass[letterpaper, submit]{AAS}			% to submit to JAS
+
+\usepackage{bm}
+\usepackage{amssymb,amsmath,amsthm,times,graphicx,subfigure,tabularx,booktabs,colortbl,multirow,threeparttable}
+
+\usepackage{subfigure}
+%\usepackage[notref,notcite]{showkeys}  % use this to temporarily show labels
+\usepackage[colorlinks=true, pdfstartview=FitV, linkcolor=black, citecolor= black, urlcolor= black]{hyperref}
+\usepackage{overcite}
+\usepackage{footnpag}			      	% make footnote symbols restart on each page
+
+
+\newcommand{\norm}[1]{\ensuremath{\left\| #1 \right\|}}
+\newcommand{\bracket}[1]{\ensuremath{\left[ #1 \right]}}
+\newcommand{\braces}[1]{\ensuremath{\left\{ #1 \right\}}}
+\newcommand{\parenth}[1]{\ensuremath{\left( #1 \right)}}
+\newcommand{\pair}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\met}[1]{\ensuremath{\langle\langle #1 \rangle\rangle}}
+\newcommand{\refeqn}[1]{(\ref{eqn:#1})}
+\newcommand{\reffig}[1]{Fig. \ref{fig:#1}}
+\newcommand{\tr}[1]{\mathrm{tr}\ensuremath{\negthickspace\bracket{#1}}}
+\newcommand{\trs}[1]{\mathrm{tr}\ensuremath{[#1]}}
+\newcommand{\ave}[1]{\mathrm{E}\ensuremath{[#1]}}
+\newcommand{\deriv}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+\newcommand{\SO}{\ensuremath{\mathsf{SO(3)}}}
+\newcommand{\T}{\ensuremath{\mathsf{T}}}
+\renewcommand{\L}{\ensuremath{\mathsf{L}}}
+\newcommand{\so}{\ensuremath{\mathfrak{so}(3)}}
+\newcommand{\SE}{\ensuremath{\mathsf{SE(3)}}}
+\newcommand{\se}{\ensuremath{\mathfrak{se}(3)}}
+\renewcommand{\Re}{\ensuremath{\mathbb{R}}}
+\newcommand{\aSE}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&1\end{bmatrix}}}
+\newcommand{\ase}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&0\end{bmatrix}}}
+\newcommand{\D}{\ensuremath{\mathbf{D}}}
+\renewcommand{\d}{\ensuremath{\mathfrak{d}}}
+\newcommand{\Sph}{\ensuremath{\mathsf{S}}}
+\renewcommand{\S}{\Sph}
+\newcommand{\J}{\ensuremath{\mathbf{J}}}
+\newcommand{\Ad}{\ensuremath{\mathrm{Ad}}}
+\newcommand{\intp}{\ensuremath{\mathbf{i}}}
+\newcommand{\extd}{\ensuremath{\mathbf{d}}}
+\newcommand{\hor}{\ensuremath{\mathrm{hor}}}
+\newcommand{\ver}{\ensuremath{\mathrm{ver}}}
+\newcommand{\dyn}{\ensuremath{\mathrm{dyn}}}
+\newcommand{\geo}{\ensuremath{\mathrm{geo}}}
+\newcommand{\Q}{\ensuremath{\mathsf{Q}}}
+\newcommand{\G}{\ensuremath{\mathsf{G}}}
+\newcommand{\g}{\ensuremath{\mathfrak{g}}}
+\newcommand{\Hess}{\ensuremath{\mathrm{Hess}}}
+
+\newcommand{\x}{\ensuremath{\mathbf{x}}}
+\renewcommand{\r}{\mathbf{r}}
+\renewcommand{\u}{\mathbf{u}}
+\newcommand{\y}{\mathbf{y}}
+
+\newcommand{\bfi}{\bfseries\itshape\selectfont}
+
+%\renewcommand{\baselinestretch}{1.2}
+
+
+\PaperNumber{XX-XXX}
+
+
+
+\begin{document}
+
+\title{Nonlinear Observability Measure for Relative Orbit Determination with Angles-Only Measurements}
+
+\author{Evan Kaufman\thanks{Doctoral Student, Mechanical and Aerospace Engineering, George Washington University, 801 22nd St NW, Washington, DC 20052, Email: evankaufman@gwu.edu.},  
+T. Alan Lovell\thanks{Research Aerospace Engineer, Air Force Research Laboratory, Space Vehicles Directorate, Kirtland AFB, NM.},
+\ and Taeyoung Lee\thanks{Assistant Professor, Mechanical and Aerospace Engineering, George Washington University, 801 22nd St NW, Washington, DC 20052, Tel: 202-994-8710, Email: tylee@gwu.edu.}
+}
+
+
+\maketitle{} 		
+
+
+\begin{abstract}
+%An angles-only extended Kalman filter (EKF), based off of two-body motion, is developed to estimate the position of a Deputy satellite relative to a chief satellite.
+A new nonlinear observability measure is proposed for relative orbit determination when lines-of-sight between satellites are measured only. It corresponds to a generalization of the observability Gramian in linear dynamic systems to the nonlinear relative orbit dynamics represented by the two-body problems. An extended Kalman filter (EKF) is adapted to this problem and is evaluated with various gravitational harmonics, initial orbital determination (IOD) predictions, and time step sizes. Preliminary results illustrate correspondence between the proposed observability measure with filtering errors. An extensive numerical analysis in realistic scenarios includes satellite propagation of the two-body problem the $J_2$ perturbation effects.
+\end{abstract}
+
+
+\section{Introduction}
+
+Space-based surveillance or relative navigation is desirable for many spacecraft missions, such as formation control and rendezvous. Spacecraft maneuvers based only on on-board measurements reduce the total operating cost significantly, and it improves safety against communication interruptions with ground stations.  Relative navigation between spacecraft in close-proximity essentially corresponds to space-based orbit determination.  In particular, vision-based navigation and estimation of relative orbit have received attention recently, since optical sensors have desirable properties of low cost and minimal maintenance, while providing accurate line-of-sight measurements, or angles from a chief to a deputy.
+
+Relative navigation based on angles-only measurements has been investigated in~\cite{WofGelITAES09,Tom11,PatLovPASFMM12}.  The problem is to determine the relative orbit between a chief spacecraft and a deputy spacecraft by using the line-of-sight between the two objects, assuming that the orbit of the chief is prescribed exactly.  Reference \cite{WofGelITAES09} shows that the relative orbit is unobservable from angles-only measurements when linear relative orbital dynamics are assumed, unless there are thrusting maneuvers. Reference \cite{Tom11} investigates observability by using a relative orbit model linearized in terms of spherical coordinates.  Reference~\cite{PatLovPASFMM12} introduces the concept of partial observability to determine a basis vector representing a family of relative orbits, and an initial orbit determination technique is developed for this method.
+
+All of these results are based on linear relative orbital dynamics. It is straightforward to see that the relative orbit is not observable with angles-only measurements through its linearized dynamics. In other words, there are an infinite number of relative orbits that yield the identical line-of-sight measurements, and the orbital distance between a deputy and a chief cannot be determined by angles-only measurements. As such, it is required to study the nonlinear relative orbital dynamics to determine observability with angles-only measurements. Linear observability analysis is performed numerically for a particular case in~\cite{YimCraPASMM04}. 
+
+Recently, observability criteria have been derived for the nonlinear relative orbital dynamics represented by the solutions of the two-body problem without linearization~\cite{LovLeePISSFD14}.  Assuming that a chief is on a circular orbit with a prescribed orbital radius, nonlinear equations of motion for the relative orbital motion of a deputy with respect to the chief are presented.  A differential geometric method, based on the Lie derivatives of the line-of-sight from the chief to the deputy, is applied to obtain sufficient conditions for observability.  It is shown that under certain geometric conditions on the relative configuration between the chief and the deputy, the nonlinear relative motion is observable from angles-only measurements.  
+
+However, this result does not provide any information of the degree of observability. The main contribution of this paper is proposing a new  measure of observability for relative orbit determination with angles-only measurement. For a given initial condition of relative orbits, the proposed observability measure determines how much the corresponding relative orbits are easy or difficult to estimate, thereby providing a quantitative measure for relative orbit determination.
+
+Furthermore, this paper serves as a feasibility study of an extended Kalman filter (EKF) for orbit determination using angles-only measurements in realistic scenarios. The filter is subject to measurement uncertainty and perturbation forces not considered with the two-body problem, on which the filter is based.
+%The EKF is simulated with various time steps to show how the filter performs on a wide range of systems with different sample rates.
+Then, the performance of the EKF is compared with the proposed observability measure to show the correspondence. 
+
+
+
+ 
+% General background (very similar to the first two paragraphs of the last abstract)
+%Relative navigation is desirable for many spacecraft missions, such as formation control and rendezvous, since spacecraft maneuvers based only on on-board measurements can reduce the total operating cost significantly, and it improves safety against communication interruptions with ground stations. For these close proximity missions, relative navigation essentially reduces to space-based orbit determination. Vision-based navigation and estimation problems have received attention, since optical sensors have desirable properties of having low cost and minimal maintenance, while providing accurate line-of-sight measurements.
+
+%Relative navigation based on angles-only measurements has been the subject of much recent investigation~\cite{WofGel09,Tom11,PatLovAllRusSin12}. The problem is to determine the relative orbit between a chief spacecraft and a deputy spacecraft by using the line-of-sight measurements between the two objects, assuming that the orbit of the chief is known.
+
+%A common problem in relative navigation with angles-only measurements is range ambiguity. Without range information, the deputy states becomes less observable. We propose a generalized observability Gramian to nonlinear systems.
+
+
+%Reference 1 shows that the relative orbit is unobservable from angles-only measurements when linear relative orbital dynamics are assumed, unless there are thrusting maneuvers.
+%Reference 2 investigates observability by using a relative orbit model linearized about spherical coordinates.
+%Reference 3 introduces the concept of partial observability to determine a basis vector representing a family of relative orbits, and an initial orbit determination technique for this method.
+%However, all of these results are based on linear relative orbital dynamics.
+
+
+
+% Motivation: the performance of relative OD EKF is largely untested for various scenarios, including higher-fidelity gravitational models and time between measurements, for various initial predictions from IOD techniques
+
+% Assumptions:
+% 	The chief orbit initial conditions (initially circular) assumed to be well-known.
+%	Measurements: a unit vector representing the direction between the chief and deputy is subject to Gaussian white noise
+%		the measurements are always available (nothing blocking line-of-sight)
+%		the measurements always originate from the deputy satellite
+%	Initial conditions: an initial state estimate and uncertainty are assumed well-known
+
+\section{Observability Measure of Nonlinear Systems}
+
+The measure of observability has been generalized to nonlinear dynamic systems, in order to obtain balanced realizations.
+An energy-like observability function is introduced~\cite{SchSCL93,Sch94,NewKriPICDC98} to measure the degree of contribution of an initial state to the output, and it is applied to a pendulum system. But, this approach is only applicable to asymptotically stable equilibrium states. An empirical observability Gramian is introduced~\cite{LalMarPIWC99,LalMarIJRNC02}, which is essentially a covariance matrix of the output computed by a number of sample trajectories.
+It has been applied to a balanced realization of chemical processes~\cite{HahEdgJPC03,HahEdgCCE02}. However, this approach is based on the assumption that the output converges to a steady-state value, and it is not clear how  sample trajectories are selected. 
+
+A similar observability Gramian is introduced~\cite{KreIdePICDC09}, which is basically the Gramian for the sensitivity of the output with respect to the initial condition:
+\begin{align}
+\mathcal{W} (\x_0,t_0,t_f) = \int_{t_0}^{t_f} \parenth{\deriv{\y(\tau)}{\x_0}}^T\deriv{\y(\tau)}{\x_0}\,d\tau,\label{eqn:Wo_NL}
+\end{align}
+where $\y(t)$ denotes the output for the initial condition given by $\x(t_0)=\x_0$, and $\deriv{\y}{\x_0}\in\Re^{p\times n}$ is defined such that its $i,j$-th element is $\deriv{\y_i}{\x_{0_j}}$. 
+
+In general, the Gramian of a set of time-dependent functions represents the degree of linear independence of those functions over a given period of time. Therefore, the observability Gramian defined at \refeqn{Wo_NL} measures how much the sensitivities of the output with respect to the initial condition are linearly independent of each other. This represents the degree of observability, since for example, if $\deriv{\y}{\x_{0_i}}$ is linearly dependent to $\deriv{\y}{\x_{0_j}}$, then it is difficult to distinguish the effects on $\delta \x_{0_i}$ to the output $\y$ from the effects of $\delta \x_{0_j}$ on $\y$. Therefore, the condition number of $\mathcal{W} (\x_0,t_0,t_f)$ can be used as a measure of observability. 
+
+%Furthermore, we can easily show that \refeqn{Wo_NL} reduces to the observability Gramian for linear dynamic systems
+%\begin{align}
+%\mathcal{W}(t_0,t_f) = \int_{t_0}^{t_f}\Phi(\tau,t_0)^T C^T(\tau)  C(\tau) \Phi(\tau,t_0) d\tau,\label{eqn:Wo_Lin}
+%\end{align}
+%where $\Phi(t,\tau)$ is the state transition matrix, since the output is given by $\y(t) = \Phi(t,t_0)\x_0$. 
+
+A numerical approach is proposed as follows. The $i,j$--th element of $\mathcal{W}_o$ can be approximated by
+\begin{align}
+[\mathcal{W}]_{ij} = \frac{1}{4\epsilon^2}\sum_{k=0}^N (\y^{i+}_k-\y^{i-}_k)(\y^{j+}_k-\y^{j-}_k) \Delta t_k,
+\end{align}
+where $\y^{i\pm}_k$ denotes the value of $\y^i$ at $t=t_k$ with the initial condition of $\x(t_0)=\x_0\pm \epsilon \mathbf{e}_i $ for a positive constant $\epsilon$, and the standard basis $\mathbf{e}_i$ of $\Re^n$.  The above expression can be computed numerically.
+
+
+\section{Nonlinear Observability Measure for Relative Orbits}
+
+
+
+%Preliminary results between the filter performance of an extended Kalman filter and the nonlinear observability Gramian are shown. 
+
+We consider the relative orbital dynamics between two satellites, referred to as a chief and a deputy, where the chief satellite is on a prescribed circular orbit. The dynamics of the deputy are defined by the two-body problem. The relative position of the deputy from the chief is denoted by $\mathbf{r}\in\Re^3$, and the line-of-sight from the chief to the deputy, namely $\mathbf{y}=\frac{\mathbf{r}}{\|\mathbf{r}\|}\in\Re^3$ is assumed to be measured. An extended Kalman filter is developed for numerical analysis. 
+
+The initial conditions of the deputy satellite are chosen as
+\begin{align*}
+\mathbf{r}_0=[r_{x_0},\, 0,\, 0]^T\,\mathrm{km},\quad \mathbf{v}_0=[0,\, -2r_{x_0}n,\, 0]^T\,\mathrm{km/s},
+\end{align*}
+for a varying $r_{x_0}$. These yield a series of elliptic orbits around the chief when applied to the linearized relative orbital dynamics. The state estimation error is represented by a time averaged normalized magnitude error, $e_{mag} = \frac{\|\mathbf{x}-\hat{\mathbf{x}}\|}{\|\mathbf{x}\|}$, where $\mathbf{x}=[\mathbf{r}^T,\dot{\mathbf{r}}^T]^T\in\Re^6$ denotes the true state and $\hat{\mathbf{x}}$ denotes the estimated state. 
+
+The normalized magnitude error $e_{mag}$ and the condition number of the proposed observability measure $\mathrm{cond}\braces{\mathcal{W}}$ are computed among various values for $r_{x_0}$, tabulated below.
+
+\hspace*{0.1cm}\centerline{
+\begin{tabular}{ccc}\hline
+$r_{x_0}$ & $e_{mag}$ & $\mathrm{cond}\braces{\mathcal{W}}$\\\hline
+\vspace*{-0.02\columnwidth}\\
+$1$ & $11.5962$ &  $10^{16.6653}$\\
+$2$ & $9.6374$ & $10^{16.8323}$\\
+$5$ & $4.0041$ & $10^{16.3535}$\\
+$10$ & $2.6318$ &  $10^{15.8194}$\\
+$20$ & $0.9250$ &  $10^{15.2832}$\\
+$50$ & $0.5315$ &  $10^{14.4052}$\\
+$100$ & $0.1675$ &  $10^{12.9884}$\\
+\hline
+\end{tabular}
+}
+
+These preliminary results illustrate that there exists a certain correspondence between the filter error and the proposed observability measure, and therefore, it can be used as a quantitative measure for strength of observability.
+
+
+\section{Expected Results and Significance}
+
+%It is expected that the given results are generalized to realistic scenarios that include orbital perturbations.  We will choose numerous cases of relative motion between chief and deputy satellite orbits, and with each case, we plan to evaluate the observability measure and process angles-only measurements and evaluate the performance of an EKF based on the perturbed two-body equations of motion.
+%
+%In particular, the $J_2$ gravitational harmonics will be included in the satellite propagation, so the EKF must handle simulated process uncertainty. Then, we will consider various time steps between measurements. Finally, we will consider various initial orbit determination (IOD) predictions to show when and how the filter converges. The following figure illustrates preliminary results for angles-only relative orbit estimation with $J_2$ perturbation.
+
+For the final paper, we will choose numerous cases of relative motion between chief and deputy satellite orbits, and with each case, we plan to both evaluate the observability measure and process angles-only measurements with an EKF, using the perturbed two-body equations of motion as a truth model.
+In particular, the $J_2$ gravitational harmonics will be included in the satellite propagation, so the EKF must handle simulated process uncertainty.
+The figure below illustrates preliminary results for angles-only relative orbit estimation with $J_2$ perturbation in the measurements.
+Note that the EKF performs well in this particular case, as evidenced by the close agreement between the true and estimated trajectory (Figure 1a) and the decrease in the maximum eigenvalue of the covariance matrix over time (Figure 1b).
+For the various cases to be chosen, we will evaluate the performance of the EKF (using metrics such as those illustrated in Figure 1) and seek a consistent correlation between the filter performance and the new observability measure proposed above.
+
+\begin{center}
+\begin{threeparttable}[h]
+\caption{Error variables for EKF with varying $Q_k$ Considering Only Two-Body Problem Forces}
+\begin{tabularx}{0.7\textwidth}{>{\centering $}X<{$}*{2}|*{5}{>{$}c<{$}}}\toprule
+\multirow{2}{*}{Case} & \multirow{2}{*}{IOD} & \multicolumn{4}{c}{$\bar e_{mag}$} \\
+& & q=-1 & q=0 & q=1 & q=2 \\\midrule
+0A & IOD 1  & 0.1129  & 0.1405  & 0.2859  & 0.4726 \\
+0A & IOD 2  & 0.0400  & 0.1470  & 0.2559  & 0.5269 \\
+0B & IOD 1  & 0.0153  & 0.0553  & 0.2734  & 0.7942 \\
+0B & IOD 2  & 0.0330  & 0.0531  & 0.2286  & 0.9262 \\
+0C & IOD 1 & 0.0441   & 0.0286  & 0.1191  & 0.6596 \\
+0C & IOD 2 & 0.0292   & 0.0290  & 0.2174  & 0.8249 \\\midrule
+\bottomrule
+\end{tabularx}
+{\small
+\begin{tablenotes}
+    \item[$(\cdot )$] Filter diverges. 
+  \end{tablenotes}}
+\end{threeparttable}
+\end{center}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{center}
+\begin{threeparttable}[h]
+\caption{Error variables for EKF with varying $Q_k$ with $J_2$ Perturbations Included}
+\begin{tabularx}{0.7\textwidth}{>{\centering $}X<{$}*{2}{>{$}c<{$}}|*{5}{>{$}c<{$}}}\toprule
+\multirow{2}{*}{Case} & \multirow{2}{*}{IOD} & \multirow{2}{*}{$e_{mag}(0)$} & \multicolumn{4}{c}{$\bar e_{mag}$} \\
+& & & q=-1 & q=0 & q=1 & q=2 \\\midrule
+0A & IOD 1 & 0.9997  & 0.1129   & 0.1405  & 0.2859  & 0.4726 \\
+0A & IOD 2 & 1.0012  & 0.0400   & 0.1470  & 0.2559  & 0.5269 \\
+0B & IOD 1 & 0.9767  & 0.0153   & 0.0553  & 0.2734  & 0.7942 \\
+0B & IOD 2 & 1.0088  & 0.0330   & 0.0531  & 0.2286  & 0.9262 \\
+0C & IOD 1 & 1.0152  & 0.0441   & 0.0286  & 0.1191  & 0.6596 \\
+0C & IOD 2 & 1.0139  & 0.0292   & 0.0290  & 0.2174  & 0.8249 \\\midrule
+\mathbf{1} & IOD 1 & 0.9999  & (4.9960)   & (20.6584)  & (52.8485)  & (159.8720) \\
+\mathbf{1} & IOD 2 & 1.0000  & (12.0855)   & (16.9126)  & (54.0381)  & (168.9124) \\\midrule
+2A & IOD 1 & 1.0550  & 0.1925   & 0.1262  & 0.1677  & 0.6115 \\
+2A & IOD 2 & 1.0238  & 0.1444   & 0.0283  & 0.1975  & 0.5445 \\
+2B & IOD 1 & \mathbf{0.0429}  & (0.9810)   & (0.9494)  & (0.9120)  & (0.7438) \\
+2B & IOD 2 & \mathbf{0.0429}  & (0.9813)   & (0.9506)  & (0.9069)  & (0.7565) \\
+2C & IOD 1 & 0.9781  & 0.0313   & 0.0205  & 0.0284  & 0.0792 \\
+2C & IOD 2 & 0.9935  & 0.0221   & 0.0230  & 0.0257  & 0.0842 \\\midrule
+3A & IOD 1 & 1.0191  & 0.0841   & 0.0180  & 0.1445  & 0.3300 \\
+3A & IOD 2 & 0.8170  & 0.0864   & 0.0416  & 0.1936  & 0.2913 \\
+3B & IOD 1 & 1.0612  & (0.9761)   & (0.9785)  & 0.0283  & 0.0985 \\
+3B & IOD 2 & 0.7685  & 0.0128   & 0.0275  & 0.0206  & 0.0864 \\
+3C & IOD 1 & 7.8962  & (1.5927)   & (2.2080)  & 0.8156  & 0.7897 \\
+3C & IOD 2 & 6.4921  & 0.9330   & 0.7311  & 0.6269  & 0.6311 \\\midrule
+4A & IOD 1 & \mathbf{9.7347}  & (6.2650)   & (6.1141)  & (8.8398)  & (10.0667) \\
+4A & IOD 2 & 0.8425  & 0.0212   & 0.0506  & 0.0228  & 0.0268 \\
+4B & IOD 1 & 1.9276  & (0.2523)   & 0.2016  & 0.1417  & 0.1669 \\
+4B & IOD 2 & 0.9379  & 0.0068   & 0.0147  & 0.0483  & 0.0157 \\
+4C & IOD 1 & 1.1161  & 0.0347   & 0.0713  & 0.0187  & 0.0352 \\
+4C & IOD 2 & 0.9646  & 0.0185   & 0.0191  & 0.0094  & (0.9824) \\
+\bottomrule
+\end{tabularx}
+{\small
+\begin{tablenotes}
+    \item[$(\cdot )$] Filter diverges. 
+  \end{tablenotes}}
+\end{threeparttable}
+\end{center}
+
+
+%An example is shown in Figure \ref{ODEKF} where the IOD prediction is not exactly the true state vector and $J_2$ gravitational forces affect the satellite propagation. The time step is fixed at $1$ second.
+\begin{figure}[h]
+\centerline{
+	\subfigure[Magnitude Error (true:red, estimated:blue)]{
+		\includegraphics[width=0.48\textwidth]{normX.pdf}}
+	\hfill
+	\subfigure[Uncertainty in estimation]{
+	\includegraphics[width=0.48\textwidth]{eigP.pdf}}
+}
+\caption{Relative orbits determination with $J_2$ perturbation}\label{ODEKF}
+\end{figure}
+
+
+\bibliographystyle{AAS_publication}   % Number the references.
+\bibliography{references}   % Use references.bib to resolve the labels.
+
+
+
+\end{document}

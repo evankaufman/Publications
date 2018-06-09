@@ -1,0 +1,151 @@
+\documentclass[10pt]{article}
+\usepackage[letterpaper,text={6.5in,8.7in},centering]{geometry}
+\usepackage{epic,eepic}
+\usepackage{amssymb,amsmath,times,subfigure,graphicx,theorem}
+%\usepackage{warmread}
+%\usepackage[all,import]{xy}
+%\usepackage{eepic}
+\usepackage{subfigure}
+\usepackage[]{algorithm2e}
+\usepackage{amsmath}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+
+\newcommand{\norm}[1]{\ensuremath{\left\| #1 \right\|}}
+\newcommand{\bracket}[1]{\ensuremath{\left[ #1 \right]}}
+\newcommand{\braces}[1]{\ensuremath{\left\{ #1 \right\}}}
+\newcommand{\parenth}[1]{\ensuremath{\left( #1 \right)}}
+\newcommand{\pair}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\met}[1]{\ensuremath{\langle\langle #1 \rangle\rangle}}
+\newcommand{\refeqn}[1]{(\ref{eqn:#1})}
+\newcommand{\reffig}[1]{Figure \ref{fig:#1}}
+\newcommand{\tr}[1]{\mathrm{tr}\ensuremath{\negthickspace\bracket{#1}}}
+\newcommand{\trs}[1]{\mathrm{tr}\ensuremath{[#1]}}
+\newcommand{\deriv}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+\newcommand{\SO}{\ensuremath{\mathsf{SO(3)}}}
+\newcommand{\T}{\ensuremath{\mathsf{T}}}
+\renewcommand{\L}{\ensuremath{\mathsf{L}}}
+\newcommand{\so}{\ensuremath{\mathfrak{so}(3)}}
+\newcommand{\SE}{\ensuremath{\mathsf{SE(3)}}}
+\newcommand{\se}{\ensuremath{\mathfrak{se}(3)}}
+\renewcommand{\Re}{\ensuremath{\mathbb{R}}}
+\newcommand{\aSE}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&1\end{bmatrix}}}
+\newcommand{\ase}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&0\end{bmatrix}}}
+\newcommand{\D}{\ensuremath{\mathbf{D}}}
+\newcommand{\Sph}{\ensuremath{\mathsf{S}}}
+\renewcommand{\S}{\Sph}
+\newcommand{\J}{\ensuremath{\mathbf{J}}}
+\newcommand{\Ad}{\ensuremath{\mathrm{Ad}}}
+\newcommand{\intp}{\ensuremath{\mathbf{i}}}
+\newcommand{\extd}{\ensuremath{\mathbf{d}}}
+\newcommand{\hor}{\ensuremath{\mathrm{hor}}}
+\newcommand{\ver}{\ensuremath{\mathrm{ver}}}
+\newcommand{\dyn}{\ensuremath{\mathrm{dyn}}}
+\newcommand{\geo}{\ensuremath{\mathrm{geo}}}
+\newcommand{\Q}{\ensuremath{\mathsf{Q}}}
+\newcommand{\G}{\ensuremath{\mathsf{G}}}
+\newcommand{\g}{\ensuremath{\mathfrak{g}}}
+\newcommand{\Hess}{\ensuremath{\mathrm{Hess}}}
+
+\renewcommand{\baselinestretch}{1.2}
+\date{}
+
+\renewcommand{\thesubsection}{\arabic{subsection}. }
+\renewcommand{\thesubsubsection}{\arabic{subsection}.\arabic{subsubsection} }
+
+\theoremstyle{plain}\theorembodyfont{\normalfont}
+\newtheorem{prob}{Question}[section]
+%\renewcommand{\theprob}{\arabic{section}.\arabic{prob}}
+\renewcommand{\theprob}{\arabic{prob}}
+
+\newenvironment{subprob}%
+{\renewcommand{\theenumi}{\alph{enumi}}\renewcommand{\labelenumi}{(\theenumi)}\begin{enumerate}}%
+{\end{enumerate}}%
+
+
+\begin{document}
+
+\section*{Background Reasearch for CDC 2016}
+
+\subsection*{Summary Points}
+\begin{itemize}
+	\item Autonomous exploration governed by entropy:
+	\begin{itemize}
+		\item Frontier-based: move toward uncertain grid cells
+		\item Expected entropy based on expected measurements: unclear how those are chosen
+	\end{itemize}
+	\item Other common problem: choosing movements based on map uncertainty AND localization uncertainty
+\end{itemize}
+
+\subsection*{Reference Information}
+\begin{itemize}
+	\item Autonomous Robotic Exploration Using Occupancy Grid Maps and Graph SLAM Based on Shannon and Renyi Entropy (CarDamKumCas15)
+	\begin{itemize}
+		\item Graph-based SLAM, occupancy grid
+		\item tradeoff: localization and mapping
+		\item The 
+		\item Contribution: information-theoretic utility function: fuse uncertainties without manual tuning
+		\item When identifying pose candidates, frontier-based exploration is typically used (Yam98, [2] in this paper)
+		\item How do we get ``hallucinated'' measurements $\hat z$? Commonly through approximate ray-casting (no explanation)
+		\item $\hat z$ obtained through ray casting ``This reduces the computational complexity by not considering all possible combinations of measurements for an action a.'' See (BurMooStaSch05, [1] in this paper) and (StaGriBur05, [3] in this paper) below.
+	\end{itemize}
+	\item A Frontier-Based Approach for Autonomous Exploration (Yam97)
+	\begin{itemize}
+		\item Define exploration: act of moving through an unknown environment while building a map that can be used for subsequent navigation
+		\item Defined open, occupied, and unknown cells vaguely (no focus on the probability values)
+		\item Process analogous to edge detection and region extraction in computer vision to find boundaries
+		\item Any frontier above a minimum size is considered a frontier
+		\item Robot goes to nearest accessible available frontier
+		\item Then the robot does a $360^\text{o}$ sweep
+	\end{itemize}
+	\item Frontier-based Exploration Using Multiple Robots (Yam98)
+	\begin{itemize}
+		\item Central idea is a false assumption: ``To gain the most new information about the world, move to the boundary between open space and uncharted territory.''
+		\item Paper is just about finding frontiers
+	\end{itemize}
+	\item Coordinated Multi-Robot Exploration (BurMooStaSch05)
+	\begin{itemize}
+		\item About optimizing multi-robot exploration with simultaneous coverage
+		\item Moving toward frontiers: ``When exploring an unknown environment we are especially interested in frontier cells [63]. As a frontier cell we denote each already explored cell that is an immediate neighbor of an unknown, unexplored cell. If we direct a robot to such a cell, we can expect that it gains information about the unexplored area when it arrives at its target location." and "However, if there already is a robot that moves to a particular frontier cell, the utility of that cell can be expected to be lower for other robots."
+		\item Not much on how we get expected measurements; only that ray-casting may be used to find where obstacles exist between frontier cells
+	\end{itemize}	
+	\item Information Gain-based Exploration Using Rao-Blackwellized Particle Filters (StaGriBur05)
+	\begin{itemize}
+		\item Rao-Blackwellized particle filter to simultaneously consider map and pose uncertainy to choose actions
+		\item Consider uncertainty about the map (in paper: [2], [14], [23], [26], check: [27], [29])
+		\item Not too useful because we don't use partical filters and $\hat z$ is based on that.
+	\end{itemize}	
+	\item Autonomous Exploration for 3D Map Learning (JohStaPfaBur07)
+	\begin{itemize}
+		\item About the tradeoff between poser uncertainty and expected information gain
+		\item Again they look at the difference in entropy with expected measurements, but fail to explain how such expectations are calculated
+	\end{itemize}	
+	\item Dense Entropy Decrease Estimation for Mobile Robot Exploration (ValAnd14)
+	\begin{itemize}
+		\item Not very helpful
+	\end{itemize}	
+	\item Mapping and Exploration with Mobile Robots using Coverage Maps (StaBur03)
+	\begin{itemize}
+		\item ``we apply a ray-tracing technique similar to Moravec and Elfes [13] using the current maximum likelihood coverage map.''
+	\end{itemize}
+	\item  Probabilisitic Robotics (ThrBurFox05)
+	\begin{itemize}
+		\item Says that expected entropy is needed, but does not detail how this is done
+		\item Totally based on particle filters
+	\end{itemize}
+	\item Principles of Robotic Motion (ChoLynHutKanBurKavThr05)
+	\begin{itemize}
+		\item Motion planning makes reference to the speed of execution (or some objective function along the way), whereas path planning does not
+		\item Not one mention of entropy or information gain of the map
+		\item Well-known, but not a great resource
+	\end{itemize}	
+	\item  ()
+	\begin{itemize}
+		\item 
+	\end{itemize}
+\end{itemize}
+
+
+\end{document}
+
+
+
