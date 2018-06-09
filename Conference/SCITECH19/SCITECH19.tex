@@ -345,11 +345,61 @@ The mapping, exploration, and visualization processes communicate over the Robot
 
 \subsection{Results}
 
+A 3D environment of Mars is simulated in Gazebo. A height map~\cite{THATwebsite} is used to generate a contoured surface, and the corresponding picture of Mars is draped over this contour, shown in Fig. \ref{fig:MarsGazebo}. A laser scanner was also simulated in Gazebo. In the horizontal direction, the sensor has limits $\Psi=$ with a total of $640$ measurement rays inside, the sensor is fixed at angle $\tilde{\psi}=45$, and $n_\psi=16$ sample measurements are used. In the vertical direction, the sensor has limits $\Theta=$ with a total of $480$ measurement rays inside, the sensor is fixed at angle $\tilde{\theta}=15$, and $n_\psi=7$ sample measurements are used. These ray samples are taken from candidate locations separated $2$m apart.
+
+% trim={<left> <lower> <right> <upper>}
+
+
+\begin{figure}[!t]
+	\centering
+	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[height=0.9\textwidth]{mars_heightmap.png}
+        		\caption{Height Map}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[height=0.9\textwidth]{mars_colormap.png}
+        		\caption{Color Map}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering{
+          	\includegraphics[height=0.9\textwidth]{mars_gazebo_sqr.png}}
+        		\caption{Gazebo Environment}
+    	\end{subfigure}
+%	\begin{subfigure}[t]{0.3\columnwidth}
+%           	\centering
+%          	\includegraphics[trim = {23cm 4cm 17cm 6cm}, clip, height=1.0\textwidth]{mars_theta.png}
+%        		\caption{$\theta$ Rotation}
+%    	\end{subfigure}
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+\caption{The height map (a) and color map (b) are used in Gazebo (c) to simulate a Mars environment.}
+\label{fig:MarsGazebo}
+\end{figure}
+
+The map parameters are also important to the success of the exploration. The full map has dimensions $100$m$\times$$100$m$10$m in the Mars-fixed frame, with cell edge length $\alpha=0.075$m. The reduced map for collision-avoidance and motion planning has cells $k=3$ times the size ($0.225$m), so $k^3=27$ cells are considered in \refeqn{Proj3DMapComb}. The pose candidates are spaced $2$m apart in each dimension, and the bump functions use $f_\text{max}=$, $f_\text{min}=$, and $\beta=$ to account for travel costs with \refeqn{BumpFunRecedingHorizon}. The receding horizon optimal time $d_\text{opt}$ is based on a fixed robot velocity of $0.5$m/sec and the expected computation time varies from $0.25$sec to $1.0$sec.
+
+The simulation is run twice. Case 1 is as described in this paper. Case 2 is identical, except the reduced map $m_\text{reduced}$ is used when computing \refeqn{Iscan}. Case 2 is largely inspired by the promising results of~\cite{KauTakAiLee18}, where a projected map based on the same criteria as \refeqn{Proj3DMapComb} provided useful effective information during level flight. The resulting occupancy grid maps and complete map entropy are shown in Figs. \refeqn{mars3Dogm} and \ref{fig:mars3Dentropy}, respectively.
+
+
+
+In both cases, the ...
+
+However, the choice of occupancy grid map introduced an interesting tradeoff.
+
+
+In short,
+
+
 \begin{itemize}
 	\item Mars Environment: simulation environment generation, depth sensor facing slightly downward
-	\item Software structure: ROS nodes, full map/reduced map for entropy options
+	\item Full map/reduced map for entropy options
 	\item Numerical Results: reduced map used for entropy, full map used for entropy, Figs: RGB/heightmap/Gazebo, 3D colored grid cells with candidates (both full and reduced maps), entropy over time (full and reduced on same plot)
 \end{itemize}
+
 % software structure
 % Numerical Result
   % reduced map used for entropy
