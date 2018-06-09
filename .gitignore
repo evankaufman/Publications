@@ -8,6 +8,10 @@
 *.mpeg
 *.mov
 
+# Powerpoints
+*.ppt
+*.pptx
+
 # Don't save PDFs created by LaTeX
 *.pdf
 

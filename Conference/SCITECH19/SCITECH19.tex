@@ -307,6 +307,7 @@ where $d$ is a travel distance along the cost map, $f_\text{max}>f_\text{far}>0$
 
 Finally, we incorporate expected information gain and travel costs into a unified optimization. Given $d(x_c)$ from Dijkstra's cost map, the optimal candidate location is
 \begin{align}
+\label{eqn:CandidateLocationOptimization}
 x_c^*=\argmax_{x_c}\mathcal{I}_\text{scan}(x_c,R_c^*)\mathcal B(d(x_c)),
 \end{align}
 and therefore the optimal pose is $X_c^*=\braces{x_c^*,R_c^*}$.
@@ -331,8 +332,16 @@ In this section, we demonstrate the efficacy of the proposed 3D mapping and auto
 
 \subsection{Software}
 
-The mapping, exploration, and visualization processes communicate over the Robot Operating System (ROS) framework, and Gazebo 8 serves as the simulator for the physical objects and measurements.
+The mapping, exploration, and visualization processes communicate over the Robot Operating System (ROS) framework, and Gazebo 8 serves as the simulator for the physical objects and measurements. There are two major programs, referred to as \emph{nodes} in ROS, used during the simulation: mapping and exploration. The mapping node takes measurements from a 3D laser scanner and pairs those with the sensor transformation relative to Mars using the ROS Transform Message Filters package. Then, it builds a 3D probabilistic map using \refeqn{RayISMAnswer}-\refeqn{Unnormalized}. The mapping node sends updates from the probabilistic map to the exploration node, which decomposes the map into $m_\text{reduced}$ according to \refeqn{Proj3DMapComb}, and builds a cost map based on Dijkstra's search to determine collision-free trajectory costs for all pose candidates. Finally, it applies \refeqn{RcStar}, \refeqn{BumpFunRecedingHorizon}, and \refeqn{CandidateLocationOptimization} to update the desired robot trajectory on a receding-horizon. An overview of the process is illustrated in Fig. \ref{fig:NodesDiagram}.
 
+	\begin{figure}
+		\centerline{
+			\includegraphics[width=0.6\columnwidth]{node_diagram_3D_mars.png}
+		}
+		\caption{The diagram of the 3D probabilistic mapping and autonomous exploration nodes shows the primary processes and communication lines.}
+		\label{fig:NodesDiagram}
+	\end{figure}
+	
 
 \subsection{Results}
 
