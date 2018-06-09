@@ -8,6 +8,13 @@ Conference/SIMPAR\ 2016/JIRS16_simulation_speedup10x_then_speedup100x.mov
 *.pdf
 *.PDF
 
+# Don't track changes of aux LaTeX files
+*.aux
+*.bbl
+*.log
+*.out
+*.synctex.gz
+
 # Keep PDFs inside the Fig directory
 !Fig/*.pdf
 !Fig/*.PDF
