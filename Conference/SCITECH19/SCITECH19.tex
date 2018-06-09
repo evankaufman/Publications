@@ -9,7 +9,7 @@
 \usepackage{longtable,tabularx}
 \setlength\LTleft{0pt} 
 
-\usepackage{amssymb,url,times}%,subfigure}% amsthm is the one!
+\usepackage{amssymb,url,times,gensymb}%,subfigure}% amsthm is the one!
 \usepackage{caption,subcaption,hyperref}
 \usepackage{color,comment}
 
@@ -246,7 +246,7 @@ H(P(r))-\text{E}[H(P(r|x_c,z(\psi+\tilde{\psi},\theta+\tilde{\theta})))], & \mbo
 0,                                                                                    & \mbox{otherwise},
 \end{cases}
 \end{align}
-where the mounting yaw $\tilde{\psi}$ and pitch $\tilde{\theta}$ of the sensor is a fixed rotation in the horizontal and vertical directions, respectively in that order, such that $-\pi<\tilde{\psi}\leq\pi$ and $-\frac{\pi}{2}+\frac\Theta2\leq\tilde{\theta}\leq\frac{\pi}{2}-\frac\Theta2$. A positive $\tilde{\theta}$ corresponds to rotating the depth sensor from forward to downward toward the surface of Mars. The expected information gain for the full scan is the summation of expected information gains for individual rays
+where the mounting yaw $\tilde{\psi}$ and pitch $\tilde{\theta}$ of the sensor is a fixed rotation in the horizontal and vertical directions, respectively in that order, such that $-\pi<\tilde{\psi}\leq\pi$ and $-\frac{\pi}{2}\leq\tilde{\theta}\leq\frac{\pi}{2}$. A positive $\tilde{\theta}$ corresponds to rotating the depth sensor from forward to downward toward the surface of Mars. The expected information gain for the full scan is the summation of expected information gains for individual rays
 \begin{align}
 \label{eqn:Iscan}
 \mathcal{I}_\text{scan}(x_c,R_c)=\sum_{i_\psi=0}^{n_\psi-1}\sum_{i_\theta=0}^{n_\psi-1}\mathcal{I}_\text{ray}\left(x_c,R_c,\frac{\Psi i_\psi}{n_\psi},\frac{\Theta i_\theta}{n_\theta}\right).
@@ -345,7 +345,7 @@ The mapping, exploration, and visualization processes communicate over the Robot
 
 \subsection{Results}
 
-A 3D environment of Mars is simulated in Gazebo. A height map~\cite{THATwebsite} is used to generate a contoured surface, and the corresponding picture of Mars is draped over this contour, shown in Fig. \ref{fig:MarsGazebo}. A laser scanner was also simulated in Gazebo. In the horizontal direction, the sensor has limits $\Psi=$ with a total of $640$ measurement rays inside, the sensor is fixed at angle $\tilde{\psi}=45$, and $n_\psi=16$ sample measurements are used. In the vertical direction, the sensor has limits $\Theta=$ with a total of $480$ measurement rays inside, the sensor is fixed at angle $\tilde{\theta}=15$, and $n_\psi=7$ sample measurements are used. These ray samples are taken from candidate locations separated $2$m apart.
+A 3D environment of Mars is simulated in Gazebo. A height map~\cite{THATwebsite} is used to generate a contoured surface, and the corresponding picture of Mars is draped over this contour, shown in Fig. \ref{fig:MarsGazebo}. A laser scanner was also simulated in Gazebo. In the horizontal direction, the sensor has limits $\Psi=120\degree$ with a total of $1000$ measurement rays inside, the sensor is fixed at angle $\tilde{\psi}=45\degree$, and $n_\psi=16$ sample measurements are used. In the vertical direction, the sensor also has limits $\Theta=120\degree$ with a total of $1000$ measurement rays inside, but the sensor is fixed at angle $\tilde{\theta}=30\degree$, and $n_\psi=7$ sample measurements are used. These ray samples are taken from candidate locations separated $1$m apart in each dimension.
 
 % trim={<left> <lower> <right> <upper>}
 
@@ -380,9 +380,9 @@ A 3D environment of Mars is simulated in Gazebo. A height map~\cite{THATwebsite}
 \label{fig:MarsGazebo}
 \end{figure}
 
-The map parameters are also important to the success of the exploration. The full map has dimensions $100$m$\times$$100$m$10$m in the Mars-fixed frame, with cell edge length $\alpha=0.075$m. The reduced map for collision-avoidance and motion planning has cells $k=3$ times the size ($0.225$m), so $k^3=27$ cells are considered in \refeqn{Proj3DMapComb}. The pose candidates are spaced $2$m apart in each dimension, and the bump functions use $f_\text{max}=$, $f_\text{min}=$, and $\beta=$ to account for travel costs with \refeqn{BumpFunRecedingHorizon}. The receding horizon optimal time $d_\text{opt}$ is based on a fixed robot velocity of $0.5$m/sec and the expected computation time varies from $0.25$sec to $1.0$sec.
+The map parameters are also important to the success of the exploration. The full map has dimensions $20$m$\times20$m$\times5$m in the Mars-fixed frame, with cell edge length $\alpha=0.075$m. The reduced map for collision-avoidance and motion planning has cells $k=3$ times the size ($0.225$m), so $k^3=27$ cells are considered in \refeqn{Proj3DMapComb}. The bump functions use $f_\text{max}=1.0$, $f_\text{far}=0.1$, and $\beta=0.1$ to account for travel costs with \refeqn{BumpFunRecedingHorizon}. The receding horizon optimal time $d_\text{opt}$ is based on a fixed robot velocity of $0.5$m/sec and the computation time varies from $0.6$sec to $1.0$sec.
 
-The simulation is run twice. Case 1 is as described in this paper. Case 2 is identical, except the reduced map $m_\text{reduced}$ is used when computing \refeqn{Iscan}. Case 2 is largely inspired by the promising results of~\cite{KauTakAiLee18}, where a projected map based on the same criteria as \refeqn{Proj3DMapComb} provided useful effective information during level flight. The resulting occupancy grid maps and complete map entropy are shown in Figs. \refeqn{mars3Dogm} and \ref{fig:mars3Dentropy}, respectively.
+The simulation is run twice. Case 1 is as described in this paper. Case 2 is identical, except the reduced map $m_\text{reduced}$ is used when computing \refeqn{Iscan}. Case 2 is largely inspired by the promising results of~\cite{KauTakAiLee18}, where a projected map based on the same criteria as \refeqn{Proj3DMapComb} provided useful effective information during level flight. The resulting occupancy grid maps and complete map entropy are shown in Figs. \ref{mars3Dogm} and \ref{fig:mars3Dentropy}, respectively.
 
 
 
