@@ -24,6 +24,7 @@
 
 # Misc
 .DS_Store
+*.DS_Store
 
 # Keep PDFs inside the Fig & Referenced Papers directory
 !Fig/*.pdf
