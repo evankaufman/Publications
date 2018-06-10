@@ -332,7 +332,7 @@ In this section, we demonstrate the efficacy of the proposed 3D mapping and auto
 
 \subsection{Software}
 
-The mapping, exploration, and visualization processes communicate over the Robot Operating System (ROS) framework, and Gazebo 8 serves as the simulator for the physical objects and measurements. There are two major programs, referred to as \emph{nodes} in ROS, used during the simulation: mapping and exploration. The mapping node takes measurements from a 3D laser scanner and pairs those with the sensor transformation relative to Mars using the ROS Transform Message Filters package. Then, it builds a 3D probabilistic map using \refeqn{RayISMAnswer}-\refeqn{Unnormalized}. The mapping node sends updates from the probabilistic map to the exploration node, which decomposes the map into $ m_\text{reduced}$ according to \refeqn{Proj3DMapComb}, and builds a cost map based on Dijkstra's search to determine collision-free trajectory costs for all pose candidates. Finally, it applies \refeqn{RcStar}, \refeqn{BumpFunRecedingHorizon}, and \refeqn{CandidateLocationOptimization} to update the desired robot trajectory on a receding-horizon. An overview of the process is illustrated in Fig. \ref{fig:NodesDiagram}.
+The mapping, exploration, and visualization processes communicate over the Robot Operating System (ROS) framework, and Gazebo 8 serves as the simulator for the physical objects and measurements. There are two major programs, referred to as \emph{nodes} in ROS, used during the simulation: mapping and exploration. The mapping node takes measurements from a 3D laser scanner and pairs those with the sensor transformation relative to Mars using the ROS Transform Message Filters package. Then, it builds a 3D probabilistic map using \refeqn{RayISMAnswer}-\refeqn{Unnormalized}. The mapping node sends updates from the probabilistic map to the exploration node, which decomposes the full map $m$ into $ m_\text{reduced}$ according to \refeqn{Proj3DMapComb}, and builds a cost map based on Dijkstra's search to determine collision-free trajectory costs for all pose candidates. Finally, it applies \refeqn{RcStar}, \refeqn{BumpFunRecedingHorizon}, and \refeqn{CandidateLocationOptimization} to update the desired robot trajectory on a receding-horizon. An overview of the process is illustrated in Fig. \ref{fig:NodesDiagram}.
 
 	\begin{figure}
 		\centerline{
@@ -454,22 +454,17 @@ The simulation is run twice. Case 1 is as described in this paper. Case 2 is ide
 		\label{fig:mars3Dentropy}
 	\end{figure}
 
-NEXT: ADD 3 PARAGRAPHS
 
-In both cases, the ...
+In both cases, the robot built the 3D probabilistic map of the $2000$ cubic meter space composed of $4.74\times10^6$ grid cells. The maps were mostly complete within $10$ minutes. The $\tilde{\theta}=30\degree$ downward viewing angle proved effective, as candidate attitudes tended to direct the onboard sensor toward uncertain regions on the surface of Mars. The proposed approach provided collision-free mapping and autonomous exploration in real-time.
 
-However, the choice of occupancy grid map introduced an interesting tradeoff.
+However, the choice of occupancy grid map used for entropy predictions introduced an interesting tradeoff. In Case 1, when the full probabilistic map $m$ is used in \refeqn{Iscan}, regions where the grid cells are mostly-known are frequently reconsidered until the space is well-known. Conversely in Case 2, when $m_\text{reduced}$ is used instead, the robot will leave a space that is missing a few grid cells to visit new terrain. This is because cells of $m_\text{reduced}$ with large occupancy probabilities are based on \refeqn{Proj3DMapComb}, which can allow some grid cells of $m$ enclosed within a cell of $m_\text{reduced}$ to be uncertain. Ironically, this false assumption can actually lead to greater information gains at certain times if the vehicle leaves this mostly-known space. Here, the expected information gains after about $10$ minutes were insignificant, so exploration was complete. However with Case $1$, which used $m$ for entropy, the exploration continued for an additional $10$ minutes, overall decreasing total map entropy further, and getting a more complete occupancy grid of the surface of Mars. 
 
-In short,
-
-
-% software structure
-% Numerical Result
-  % reduced map used for entropy
-  % full map used for entropy
+In short, the proposed 3D probabilistic occupancy grid mapping and autonomous exploration were simulated successfully in real-time over the surface of Mars. Using $m$ for entropy predictions produced a more-complete map, but using $m_\text{reduced}$ was sometimes beneficial for exploring new terrain faster, while forgoing map completeness.
   
 
 \section{Conclusions}
+
+In this paper, we proposed an approach to autonomously explore the complex and uncertain terrain of Mars. The exploration strategy is based on flying vehicles near the surface of Mars, where their exploration policy is based on expected information gain from Shannon's entropy of a probabilistic map, and travel costs from Dijkstra's algorithm. The autonomous exploration scheme was applied in real-time, following a receding-horizon framework, so the map could be generated as quickly as possible. Numerical simulations demonstrated the efficacy of the approach, and two possible versions of the 3D exploration, depending on the accuracy requirements of the probabilistic map.
 
 \bibliography{../../BibSources}% master source for all publications
 
