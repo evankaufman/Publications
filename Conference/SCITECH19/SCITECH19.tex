@@ -47,10 +47,15 @@
 \newcommand{\argmax}{\operatornamewithlimits{argmax}}
 \graphicspath{{../../Fig/}}
 
-\title{Autonomous Aerial for Topological Mapping of Mars Environments}
+\newcommand{\todo}[1]{\vspace{5 mm}\par \noindent
+\marginpar{\textsc{ToDo}} \framebox{\begin{minipage}[c]{0.95
+\textwidth} \tt #1 \end{minipage}}\vspace{5 mm}\par}
+%\newcommand{\todo}[1]{}
 
-\author{Evan Kaufman\footnote{Graduate Research Assistant} and Taeyoung Lee\footnote{Associate Professor, AIAA Member Grade (if any)}}% TODO: update if AIAA member
-\affil{Department of Mechanical and Aerospace Engineering, The George Washington University, Washington, DC, 20052}
+\title{Autonomous Aerial Exploration for Topological Mapping of Mars Environments}
+
+\author{Evan Kaufman\footnote{Graduate Research Assistant, Department of Mechanical and Aerospace Engineering, The George Washington University, 800 22nd St NW, Washington, DC, 20052} and Taeyoung Lee\footnote{Associate Professor, Department of Mechanical and Aerospace Engineering, The George Washington University, 800 22nd St NW, Washington, DC, 20052}}% TODO: update if AIAA member
+\affil{The George Washington University, Washington, DC, 20052}
 % TODO: funding source
 
 \begin{document}
@@ -58,7 +63,9 @@
 \maketitle
 
 \begin{abstract}
-This paper proposes a 3D autonomous exploration approach designed for a flying vehicle while mapping the complex environment of the surface of Mars. Shannon's entropy serves as a measure of map uncertainty, where the robot goal is to minimize entropy, thereby maximizing map information. We propose a novel technique to predict future map entropy from depth sensors capable of scanning 3D spaces, and formulate autonomous exploration as an optimization problem based on map information gain and collision-free travel costs. The proposed approach is demonstrated with numerical simulations using contour data from the surface of Mars.
+This paper proposes a 3D autonomous exploration scheme designed for a flying vehicle to build a topological mapping the complex environment of the surface of Mars. 
+The environment is modeled as a uniform grid, and the measurements from depth scans are utilized to determine the probability of occupancy at every cell within the scanned area. 
+Shannon's entropy serves as a measure of map uncertainty, where the motion of the aerial vehicle is guided to minimize entropy, thereby maximizing map information. We propose a novel technique to predict future map entropy from depth sensors capable of scanning 3D spaces, and formulate autonomous exploration as an optimization problem based on map information gain subject to inequality constraints to void collision. The proposed approach is demonstrated with numerical simulations using contour data from the surface of Mars.
 \end{abstract}
 
 %\section{Nomenclature}
@@ -93,7 +100,7 @@ Next, the robot must determine motions based on how much mapping knowledge it ex
 
 In contrast, entropy-based autonomous exploration approaches seek to minimize future map uncertainty. Shannon's entropy is a measure of map uncertainty; since minimizing future map uncertainty is equivalent to maximizing map information gain, these approaches select robotic actions to minimize entropy~\cite{StaGriBur05}. In~\cite{KauAiLee16}, an exact solution to expected entropy was developed, and in~\cite{KauTakAiLee18}, this concept is extended to 3D office-like environments assuming the environment can be approximated as vertically-uniform. Similarly, \cite{MauDakPet14} simplifies tasks by decomposing the 3D space into rooms. While these approaches can be effective for buildings, they are incompatible with the surface of Mars, which has complicated geological features that require careful consideration.
 
-In this paper, we propose a 3D autonomous exploration algorithm that considers the 3D probabilistic occupancy grid map and sensor properties explicitly. The complicated and uncertain geometry of the surface of Mars is captured by aerial mapping because this approach can cover a large area effectively. An onboard depth sensor, such as a 3D laser scanner, gathers range measurements to determine the occupancy probabilities of 3D grid cells. Then, collision-free future pose candidates are considered. The predicted negative entropy changes from measurements passing through 3D space are maximized while also considering travel costs. The robot then uses Dijkstra's search in 3D for collision-free motion planning, and the complete process follows a receding-horizon framework for consistently using updated information. The proposed optimal approach is designed specifically for real-time exploration of the surface of Mars, where the flying robot mostly maps occupied space below the vehicle, but is also capable of looking ahead to capture steep and quickly-changing terrain. In short, the proposed autonomous exploration approach predicts future map uncertainty in 3D space to determine optimal actions that maximize map information gain while avoiding collisions.
+In this paper, we propose a 3D autonomous exploration algorithm that considers the 3D probabilistic occupancy grid map and sensor properties explicitly. The complicated and uncertain geometry of the surface of Mars is captured by aerial mapping because this approach can cover a large area effectively. An onboard depth sensor, such as a 3D laser scanner, gathers range measurements to determine the occupancy probabilities of 3D grid cells. Then, collision-free future pose candidates are considered. The predicted negative entropy changes from measurements passing through 3D space are maximized while also considering travel costs. The aerial vehicle then uses Dijkstra's search in 3D for collision-free motion planning, and the complete process follows a receding-horizon framework for consistently using updated information. The proposed optimal approach is designed specifically for real-time exploration of the surface of Mars, where the flying robot mostly maps occupied space below the vehicle, but is also capable of looking ahead to capture steep and quickly-changing terrain. In short, the proposed autonomous exploration approach predicts future map uncertainty in 3D space to determine optimal actions that maximize map information gain while avoiding collisions.
 
 The paper is organized as follows. The mapping probability and expected entropy calculation are defined in Section \ref{sec:ProbDef}. The proposed 3D exploration for information gain maximization is covered in Section \ref{sec:Explore3D}. Numerical simulations are shown in Section \ref{sec:NumExamples}, followed by conclusions.
 
@@ -336,7 +343,7 @@ The mapping, exploration, and visualization processes communicate over the Robot
 
 	\begin{figure}
 		\centerline{
-			\includegraphics[width=0.6\columnwidth]{node_diagram_3D_mars.png}
+			\includegraphics[width=0.8\columnwidth]{node_diagram_3D_mars.png}
 		}
 		\caption{The diagram of the 3D probabilistic mapping and autonomous exploration nodes shows the primary processes and communication lines.}
 		\label{fig:NodesDiagram}
@@ -461,10 +468,15 @@ However, the choice of occupancy grid map used for entropy predictions introduce
 
 In short, the proposed 3D probabilistic occupancy grid mapping and autonomous exploration were simulated successfully in real-time over the surface of Mars using ROS and Gazebo. Choosing $m$ for entropy predictions produced a more-complete map, but choosing $m_\text{reduced}$ was sometimes beneficial for exploring new terrain faster, while forgoing map completeness.
   
+\todo{I wish we have a little more pages. Let's split Figure 5 into two, one for Case 1 and another for Case 2, where each case has more time instances. (Also, check the caption for (j)).
+We can have another zoomed-in figure hat shows the aerial vehicle with the simulated measurements of the point clouds and the candidate poses more clearly}
 
 \section{Conclusions}
 
 In this paper, we proposed an approach to autonomously explore the complex and uncertain terrain of Mars. The exploration strategy is based on flying vehicles near the surface of Mars, where their exploration policy is based on expected information gain from Shannon's entropy of a probabilistic map, and travel costs from Dijkstra's algorithm. The autonomous exploration scheme was applied in real-time, following a receding-horizon framework, so the map could be generated as quickly as possible. Numerical simulations demonstrated the efficacy of the approach, showing two possible versions of the 3D exploration with differing behavior in probabilistic map accuracy and exploration speed.
+
+\section*{Acknowledgments}
+This research has been supported in parts by the 2018 NASA Innovative Advanced Concepts (NIAC) award, and NSF under the grants CMMI-1243000, CMMI-1335008, CNS-1337722, and CMMI-1760928.
 
 \bibliography{../../BibSources}% master source for all publications
 
