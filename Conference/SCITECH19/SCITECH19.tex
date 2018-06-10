@@ -9,7 +9,7 @@
 \usepackage{longtable,tabularx}
 \setlength\LTleft{0pt} 
 
-\usepackage{amssymb,url,times}%,subfigure}% amsthm is the one!
+\usepackage{amssymb,url,times,gensymb}%,subfigure}% amsthm is the one!
 \usepackage{caption,subcaption,hyperref}
 \usepackage{color,comment}
 
@@ -49,7 +49,7 @@
 
 \title{Autonomous Aerial for Topological Mapping of Mars Environments}
 
-\author{Evan Kaufman\footnote{Graduate Research Assistant} and Taeyoung Lee\footnote{Associate Professor, AIAA Member Grade (if any)}}
+\author{Evan Kaufman\footnote{Graduate Research Assistant} and Taeyoung Lee\footnote{Associate Professor, AIAA Member Grade (if any)}}% TODO: update if AIAA member
 \affil{Department of Mechanical and Aerospace Engineering, The George Washington University, Washington, DC, 20052}
 % TODO: funding source
 
@@ -104,7 +104,7 @@ In this section, we define the 3D occupancy grid map probability and expected ma
 
 \subsection{Probabilistic Occupancy Grid Mapping in 3D}
 
-First we define the map, measurements, and poses as follows. Let 3D map $m$ be composed of $n_m$ evenly-spaced cubic grid cells with edge length $\alpha$. For index $i\in\braces{1,2,\ldots,n_m}$, let $\mathbf{m}_i$ and $\bar{\mathbf{m}}_i$ be the events that the $i$-th grid cell are occupied and free, respectively, where each cell occupancy is assumed static, binary, and independent of other cells. At the $t$-th time step, we assume a known current pose $X_t=\braces{x_t,R_t}$ such that $x_t\in\Re^3$ is a 3D location and $R_t\in\SO$ is the 3D attitude, and history of poses $X_{1:t-1}$ is assumed known as well. Considering that most modern sensors return scans with multiple measurement rays, let measurement ray $z\in\Sph^2$ belong the the most recent scan $Z_t$, and let $Z_{1:t-1}$ be the history of measurement scans.
+First we define the map, measurements, and poses as follows. Let 3D map $ m$ be composed of $n_m$ evenly-spaced cubic grid cells with edge length $\alpha$. For index $i\in\braces{1,2,\ldots,n_m}$, let $\mathbf{m}_i$ and $\bar{\mathbf{m}}_i$ be the events that the $i$-th grid cell are occupied and free, respectively, where each cell occupancy is assumed static, binary, and independent of other cells. At the $t$-th time step, we assume a known current pose $X_t=\braces{x_t,R_t}$ such that $x_t\in\Re^3$ is a 3D location and $R_t\in\SO$ is the 3D attitude, and history of poses $X_{1:t-1}$ is assumed known as well. Considering that most modern sensors return scans with multiple measurement rays, let measurement ray $z\in\Sph^2$ belong the the most recent scan $Z_t$, and let $Z_{1:t-1}$ be the history of measurement scans.
 
 Next, we present recent contributions to occupancy probability determination from~\cite{KauLeeAiMos16,KauTakAiLee17}, which uses a simplified result of a complicated Bayesian probability. Let a temporary reduced map $r\subset m$ be composed of $n_r$ cells along measurement $z$, indexed by increasing distance from the current pose $X_t$. The cells of $r$ are easily acquired through 3D ray casting: the measurement ray vector from $x_t$ intersects 3D grid cells, and the associated depths are calculated with Euclidean distance. Let $\mathbf{r}_{k+}$ be the event that the $k$-th cell of reduced map $r$ is the closest occupied space, and the \emph{forward sensor model} $p(z|\mathbf{r}_{k+},X_t)$ is known from the stochastic properties of the depth sensor (e.g. a Gaussian distribution). Then, the probability of $\mathbf{r}_k$ based on $z$ is commonly referred to as the \emph{inverse sensor model}, which can be written compactly as
 \begin{align}
@@ -246,7 +246,7 @@ H(P(r))-\text{E}[H(P(r|x_c,z(\psi+\tilde{\psi},\theta+\tilde{\theta})))], & \mbo
 0,                                                                                    & \mbox{otherwise},
 \end{cases}
 \end{align}
-where the mounting yaw $\tilde{\psi}$ and pitch $\tilde{\theta}$ of the sensor is a fixed rotation in the horizontal and vertical directions, respectively in that order, such that $-\pi<\tilde{\psi}\leq\pi$ and $-\frac{\pi}{2}+\frac\Theta2\leq\tilde{\theta}\leq\frac{\pi}{2}-\frac\Theta2$. A positive $\tilde{\theta}$ corresponds to rotating the depth sensor from forward to downward toward the surface of Mars. The expected information gain for the full scan is the summation of expected information gains for individual rays
+where the mounting yaw $\tilde{\psi}$ and pitch $\tilde{\theta}$ of the sensor is a fixed rotation in the horizontal and vertical directions, respectively in that order, such that $-\pi<\tilde{\psi}\leq\pi$ and $-\frac{\pi}{2}\leq\tilde{\theta}\leq\frac{\pi}{2}$. A positive $\tilde{\theta}$ corresponds to rotating the depth sensor from forward to downward toward the surface of Mars. The expected information gain for the full scan is the summation of expected information gains for individual rays
 \begin{align}
 \label{eqn:Iscan}
 \mathcal{I}_\text{scan}(x_c,R_c)=\sum_{i_\psi=0}^{n_\psi-1}\sum_{i_\theta=0}^{n_\psi-1}\mathcal{I}_\text{ray}\left(x_c,R_c,\frac{\Psi i_\psi}{n_\psi},\frac{\Theta i_\theta}{n_\theta}\right).
@@ -264,7 +264,7 @@ In short, the expected information gain from each possible measurement ray is ob
 
 Next, we present a fairly straightforward application of Dijkstra's search to 3D occupancy grid mapping. First we reduced the number of grid cells to cubic blocks large enough for a robot to fit completely inside. Based on the occupancy probability of these blocks and their neighbors, we determine which cells are reachable, and what are their travel costs by building a cost map based on Dijkstra's algorithm.
 
-Here we describe how a reduced map is generated for collision avoidance and motion planning. If the largest edge-to-edge distance of the robot, namely $\rho$, is not larger than the 3D grid cell size $\alpha$, this step is unnecessary. Let $k\geq1$ be an integer such that $k\alpha\geq\rho$ and $(k-1)\alpha<\rho$, i.e., $k$ is the minimum number of grid cells in each dimension capable of fully-enclosing the robot inside this cube. Then, we decompose the complete probabilistic 3D into map $m_\text{reduced}$, which is composed of larger cubic cells that encompass $k^3$ cells from map $m$. Let $\mathbf{m}_{\text{reduced},k}$ denote the $k$-th cell of $m_\text{reduced}$ being occupied, and let $a_k\subset m$ be those $k^3$ cells from $m$ composing this larger cell. Then, we apply an effective rule for collision-avoidance from~\cite{KauTakAiLee18} to obtain the probability of $\mathbf{m}_{\text{reduced},k}$,
+Here we describe how a reduced map is generated for collision avoidance and motion planning. If the largest edge-to-edge distance of the robot, namely $\rho$, is not larger than the 3D grid cell size $\alpha$, this step is unnecessary. Let $k\geq1$ be an integer such that $k\alpha\geq\rho$ and $(k-1)\alpha<\rho$, i.e., $k$ is the minimum number of grid cells in each dimension capable of fully-enclosing the robot inside this cube. Then, we decompose the complete probabilistic 3D into map $ m_\text{reduced}$, which is composed of larger cubic cells that encompass $k^3$ cells from map $ m$. Let $\mathbf{m}_{\text{reduced},k}$ denote the $k$-th cell of $ m_\text{reduced}$ being occupied, and let $a_k\subset m$ be those $k^3$ cells from $ m$ composing this larger cell. Then, we apply an effective rule for collision-avoidance from~\cite{KauTakAiLee18} to obtain the probability of $\mathbf{m}_{\text{reduced},k}$,
 
 \begin{align}
 \label{eqn:Proj3DMapComb}
@@ -276,7 +276,7 @@ P(\mathbf{m}_{\text{reduced},k})=
 \end{align}
 where initial probability is $0<P_\text{init}<1$ and threshold the threshold probability is constrained to $P_\text{init}<P_\text{thresh}<1$. This approach uses probabilities that have changed from $P_\text{init}$, and favors occupied cells to avoid risking collisions.
 
-Next, we show how $\mathbf{m}_{\text{reduced},k}$ is used in Dijkstra's search~\cite{Dij59}. Defining $0<P_\text{coll}<1$ as the acceptable probability of collision, every grid cell of $m_\text{reduced}$ is considered a safe and unvisited node if its occupancy probability, and the occupancy probabilities of its neighbors (sharing a face, edge, or corner), are below $P_\text{coll}$. A cost map is built from the starting robot location by neighboring nodes, where the cost to travel to another node is based on Euclidian distance: a cell sharing a face is $\alpha$ away, a cell sharing an edge is $\sqrt2\alpha$ away, and a cell sharing a corner is $\sqrt3\alpha$ away. Generating a cost map for all reachable cells in $\mathbf{m}_{\text{reduced},k}$ provides a collision-free travel cost for all reachable candidate pose locations. Once an optimal pose is selected, the path is easily found from the cost map using steepest descent.
+Next, we show how $\mathbf{m}_{\text{reduced},k}$ is used in Dijkstra's search~\cite{Dij59}. Defining $0<P_\text{coll}<1$ as the acceptable probability of collision, every grid cell of $ m_\text{reduced}$ is considered a safe and unvisited node if its occupancy probability, and the occupancy probabilities of its neighbors (sharing a face, edge, or corner), are below $P_\text{coll}$. A cost map is built from the starting robot location by neighboring nodes, where the cost to travel to another node is based on Euclidian distance: a cell sharing a face is $\alpha$ away, a cell sharing an edge is $\sqrt2\alpha$ away, and a cell sharing a corner is $\sqrt3\alpha$ away. Generating a cost map for all reachable cells in $\mathbf{m}_{\text{reduced},k}$ provides a collision-free travel cost for all reachable candidate pose locations. Once an optimal pose is selected, the path is easily found from the cost map using steepest descent.
 
 
 \subsection{Optimal 3D Pose}
@@ -307,6 +307,7 @@ where $d$ is a travel distance along the cost map, $f_\text{max}>f_\text{far}>0$
 
 Finally, we incorporate expected information gain and travel costs into a unified optimization. Given $d(x_c)$ from Dijkstra's cost map, the optimal candidate location is
 \begin{align}
+\label{eqn:CandidateLocationOptimization}
 x_c^*=\argmax_{x_c}\mathcal{I}_\text{scan}(x_c,R_c^*)\mathcal B(d(x_c)),
 \end{align}
 and therefore the optimal pose is $X_c^*=\braces{x_c^*,R_c^*}$.
@@ -331,23 +332,139 @@ In this section, we demonstrate the efficacy of the proposed 3D mapping and auto
 
 \subsection{Software}
 
-The mapping, exploration, and visualization processes communicate over the Robot Operating System (ROS) framework, and Gazebo 8 serves as the simulator for the physical objects and measurements.
+The mapping, exploration, and visualization processes communicate over the Robot Operating System (ROS) framework (Kinetic distribution), and Gazebo 8 serves as the simulator for the physical objects and measurements. There are two major programs, referred to as \emph{nodes} in ROS, used during the simulation: mapping and exploration. The mapping node takes measurements from a 3D laser scanner and pairs those with the sensor transformation relative to Mars using the ROS Transform Message Filters package. Then, it builds a 3D probabilistic map using \refeqn{RayISMAnswer}-\refeqn{Unnormalized}. The mapping node sends updates from the probabilistic map to the exploration node, which decomposes the full map $m$ into $ m_\text{reduced}$ according to \refeqn{Proj3DMapComb}, and builds a cost map based on Dijkstra's search to determine collision-free trajectory costs for all pose candidates. Finally, it applies \refeqn{RcStar}, \refeqn{BumpFunRecedingHorizon}, and \refeqn{CandidateLocationOptimization} to update the desired robot trajectory on a receding-horizon. An overview of the process is illustrated in Fig. \ref{fig:NodesDiagram}.
 
+	\begin{figure}
+		\centerline{
+			\includegraphics[width=0.6\columnwidth]{node_diagram_3D_mars.png}
+		}
+		\caption{The diagram of the 3D probabilistic mapping and autonomous exploration nodes shows the primary processes and communication lines.}
+		\label{fig:NodesDiagram}
+	\end{figure}
+	
 
 \subsection{Results}
 
-\begin{itemize}
-	\item Mars Environment: simulation environment generation, depth sensor facing slightly downward
-	\item Software structure: ROS nodes, full map/reduced map for entropy options
-	\item Numerical Results: reduced map used for entropy, full map used for entropy, Figs: RGB/heightmap/Gazebo, 3D colored grid cells with candidates (both full and reduced maps), entropy over time (full and reduced on same plot)
-\end{itemize}
-% software structure
-% Numerical Result
-  % reduced map used for entropy
-  % full map used for entropy
+A 3D environment of Mars is simulated in Gazebo. A height map~\cite{mapaplanet} is used to generate a contoured surface, and the corresponding picture of Mars is draped over this contour, shown in Fig. \ref{fig:MarsGazebo}. A 3D laser scanner is also simulated in Gazebo. In the horizontal direction, the sensor has limits $\Psi=120\degree$ with a total of $1000$ measurement rays inside, the sensor is fixed at angle $\tilde{\psi}=45\degree$, and $n_\psi=16$ sample measurements are used. In the vertical direction, the sensor also has limits $\Theta=120\degree$ with a total of $1000$ measurement rays inside, but the sensor is fixed at angle $\tilde{\theta}=30\degree$, and $n_\psi=7$ sample measurements are used. These ray samples are taken from each candidate location, which are separated $1$ m apart in each of the $3$ dimensions.
+
+% trim={<left> <lower> <right> <upper>}
+
+
+\begin{figure}[!t]
+	\centering
+	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[height=0.9\textwidth]{mars_heightmap.png}
+        		\caption{Height Map}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[height=0.9\textwidth]{mars_colormap.png}
+        		\caption{Color Map}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering{
+          	\includegraphics[height=0.9\textwidth]{mars_gazebo_sqr.png}}
+        		\caption{Gazebo Environment}
+    	\end{subfigure}
+\caption{The height map (a) and color map (b) are used in Gazebo (c) to simulate a Mars environment.}
+\label{fig:MarsGazebo}
+\end{figure}
+
+The map parameters are also important to the success of the exploration. The full map has dimensions $20$ m $\times$ $20$ m $\times$ $5$ m in the Mars-fixed frame, with cell edge length $\alpha=0.075$ m. The reduced map for collision-avoidance and motion planning has cells $k=3$ times the size ($0.225$ m), so $k^3=27$ cells are considered in \refeqn{Proj3DMapComb}. The bump functions use $f_\text{max}=1.0$, $f_\text{far}=0.1$, and $\beta=0.1$ to account for travel costs with \refeqn{BumpFunRecedingHorizon}. The receding horizon optimal time $d_\text{opt}$ is based on a fixed robot velocity of $0.25$ m/sec and the computation time varies from $0.6$ sec to $1.0$ sec.
+
+The simulation was run twice. Case 1 was as described in this paper. Case 2 was identical to Case 1, except the reduced map $ m_\text{reduced}$ is used when computing \refeqn{Iscan}. Case 2 is largely inspired by the promising results of~\cite{KauTakAiLee18}, where a projected map based on the same criteria as \refeqn{Proj3DMapComb} proved effective for level flight. The resulting occupancy grid maps and complete map entropy are shown in Figs. \ref{fig:mars3Dogm} and \ref{fig:mars3Dentropy}, respectively.
+
+\begin{figure}[!t]
+	\centering
+	\begin{subfigure}[t]{0.4\columnwidth}
+           	\centering
+          	\includegraphics[height=0.5\textwidth]{MarsFullMap1min.jpg}
+        		\caption{Case 1: $1$ min}
+		\vspace*{0.025\textwidth}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.4\columnwidth}
+           	\centering
+          	\includegraphics[height=0.5\textwidth]{MarsRdcdMap1min.jpg}
+        		\caption{Case 2: $1$ min}
+		\vspace*{0.025\textwidth}
+    	\end{subfigure}
+	\centering
+	\begin{subfigure}[t]{0.4\columnwidth}
+           	\centering
+          	\includegraphics[height=0.5\textwidth]{MarsFullMap2min.jpg}
+        		\caption{Case 1: $2$ min}
+		\vspace*{0.025\textwidth}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.4\columnwidth}
+           	\centering
+          	\includegraphics[height=0.5\textwidth]{MarsRdcdMap2min.jpg}
+        		\caption{Case 2: $2$ min}
+		\vspace*{0.025\textwidth}
+    	\end{subfigure}
+	\centering
+	\begin{subfigure}[t]{0.4\columnwidth}
+           	\centering
+          	\includegraphics[height=0.5\textwidth]{MarsFullMap5min.jpg}
+        		\caption{Case 1: $5$ min}
+		\vspace*{0.025\textwidth}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.4\columnwidth}
+           	\centering
+          	\includegraphics[height=0.5\textwidth]{MarsRdcdMap5min.jpg}
+        		\caption{Case 2: $5$ min}
+		\vspace*{0.025\textwidth}
+    	\end{subfigure}
+	\centering
+	\begin{subfigure}[t]{0.4\columnwidth}
+           	\centering
+          	\includegraphics[height=0.5\textwidth]{MarsFullMap10min.jpg}
+        		\caption{Case 1: $10$ min}
+		\vspace*{0.025\textwidth}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.4\columnwidth}
+           	\centering
+          	\includegraphics[height=0.5\textwidth]{MarsRdcdMap10min.jpg}
+        		\caption{Case 2: $10$ min}
+		\vspace*{0.025\textwidth}
+    	\end{subfigure}
+	\centering
+	\begin{subfigure}[t]{0.4\columnwidth}
+           	\centering
+          	\includegraphics[height=0.5\textwidth]{MarsFullMap15min.jpg}
+        		\caption{Case 1: $15$ min}
+		\vspace*{0.025\textwidth}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.4\columnwidth}
+           	\centering
+          	\includegraphics[height=0.5\textwidth]{MarsFullMap20min.jpg}
+        		\caption{Case 1: $20$ min}
+		\vspace*{0.025\textwidth}
+    	\end{subfigure}
+\caption{The robot (red disk with arrow indicating laser direction) moves toward candidate poses (red arrows, more opaque for greater reward) while generating a 3D probabilistic occupancy grid map (cubes: greater opacity for greater occupancy probability) of the surface of Mars.}
+\label{fig:mars3Dogm}
+\end{figure}
+
+
+	\begin{figure}
+		\centerline{
+			\includegraphics[width=0.6\columnwidth]{mars_H_comparison_flat.pdf}
+		}
+		\caption{The complete map entropy for Case 1 (red solid line) decreases at roughly the same rate as the reduced map entropy for Case 2 (dashed blue line), but the complete map entropy highlights a few locations where entropy can decrease further, shown by lower entropy over the subsequent $10$ min.}
+		\label{fig:mars3Dentropy}
+	\end{figure}
+
+
+In both cases, the robot built the 3D probabilistic map of the $2000$ cubic meter space composed of $4.74\times10^6$ grid cells. The maps were mostly complete within $10$ minutes. The $\tilde{\theta}=30\degree$ downward viewing angle captured the ground nicely, as candidate attitudes tended to direct the onboard sensor toward uncertain regions on the surface of Mars. The proposed approach provided collision-free mapping and autonomous exploration in real-time.
+
+However, the choice of occupancy grid map used for entropy predictions introduced an interesting tradeoff. In Case 1, when the full probabilistic map $m$ was used in \refeqn{Iscan}, regions where the grid cells were partially-known were frequently reconsidered until the space was well-known. Conversely in Case 2, when $m_\text{reduced}$ was used instead, the robot repeatedly left spaces that were missing a few grid cells to visit new terrain. This is because $m_\text{reduced}$ had some cells with large occupancy probabilities based on \refeqn{Proj3DMapComb}, which allowed some grid cells of $m$ enclosed within a cell of $m_\text{reduced}$ to be uncertain. The exploration policy of Case 2 incorrectly assumed these regions were well-known. Ironically, this false assumption sometimes actually led to greater information gains when the vehicle moved on to unvisited terrain. Here, the exploration policy of Case 2 suspended operations once expected information gains were insignificant, which happened after about $10$ minutes. However with Case $1$, which used $m$ for computing expected entropy, the exploration continued for an additional $10$ minutes, overall decreasing total map entropy further, generating a more complete occupancy grid of the surface of Mars. 
+
+In short, the proposed 3D probabilistic occupancy grid mapping and autonomous exploration were simulated successfully in real-time over the surface of Mars using ROS and Gazebo. Choosing $m$ for entropy predictions produced a more-complete map, but choosing $m_\text{reduced}$ was sometimes beneficial for exploring new terrain faster, while forgoing map completeness.
   
 
 \section{Conclusions}
+
+In this paper, we proposed an approach to autonomously explore the complex and uncertain terrain of Mars. The exploration strategy is based on flying vehicles near the surface of Mars, where their exploration policy is based on expected information gain from Shannon's entropy of a probabilistic map, and travel costs from Dijkstra's algorithm. The autonomous exploration scheme was applied in real-time, following a receding-horizon framework, so the map could be generated as quickly as possible. Numerical simulations demonstrated the efficacy of the approach, showing two possible versions of the 3D exploration with differing behavior in probabilistic map accuracy and exploration speed.
 
 \bibliography{../../BibSources}% master source for all publications
 
