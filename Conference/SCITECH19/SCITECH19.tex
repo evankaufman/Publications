@@ -63,30 +63,11 @@
 \maketitle
 
 \begin{abstract}
-This paper proposes a 3D autonomous exploration scheme designed for a flying vehicle to build a topological mapping the complex environment of the surface of Mars. 
+This paper proposes a 3D autonomous exploration scheme designed for a flying vehicle to build a topological map representing the complex environment of the surface of Mars. 
 The environment is modeled as a uniform grid, and the measurements from depth scans are utilized to determine the probability of occupancy at every cell within the scanned area. 
-Shannon's entropy serves as a measure of map uncertainty, where the motion of the aerial vehicle is guided to minimize entropy, thereby maximizing map information. We propose a novel technique to predict future map entropy from depth sensors capable of scanning 3D spaces, and formulate autonomous exploration as an optimization problem based on map information gain subject to inequality constraints to void collision. The proposed approach is demonstrated with numerical simulations using contour data from the surface of Mars.
+Shannon's entropy serves as a measure of map uncertainty, where the motion of the aerial vehicle is guided to minimize entropy, thereby maximizing map information. We propose a novel technique to predict future map entropy from depth sensors capable of scanning 3D spaces, and formulate autonomous exploration as an optimization problem based on map information gain subject to inequality constraints to avoid collision. The proposed approach is demonstrated with numerical simulations using contour data from the surface of Mars.
 \end{abstract}
 
-%\section{Nomenclature}
-%
-%{\renewcommand\arraystretch{1.0}
-%\noindent\begin{longtable*}{@{}l @{\quad=\quad} l@{}}
-%$A$  & amplitude of oscillation \\
-%$a$ &    cylinder diameter \\
-%$C_p$& pressure coefficient \\
-%$Cx$ & force coefficient in the \textit{x} direction \\
-%$Cy$ & force coefficient in the \textit{y} direction \\
-%c   & chord \\
-%d$t$ & time step \\
-%$Fx$ & $X$ component of the resultant pressure force acting on the vehicle \\
-%$Fy$ & $Y$ component of the resultant pressure force acting on the vehicle \\
-%$f, g$   & generic functions \\
-%$h$  & height \\
-%$i$  & time index during navigation \\
-%$j$  & waypoint index \\
-%$K$  & trailing-edge (TE) nondimensional angular deflection rate
-%\end{longtable*}}
 
 \section{Introduction}
 
@@ -476,7 +457,7 @@ We can have another zoomed-in figure hat shows the aerial vehicle with the simul
 In this paper, we proposed an approach to autonomously explore the complex and uncertain terrain of Mars. The exploration strategy is based on flying vehicles near the surface of Mars, where their exploration policy is based on expected information gain from Shannon's entropy of a probabilistic map, and travel costs from Dijkstra's algorithm. The autonomous exploration scheme was applied in real-time, following a receding-horizon framework, so the map could be generated as quickly as possible. Numerical simulations demonstrated the efficacy of the approach, showing two possible versions of the 3D exploration with differing behavior in probabilistic map accuracy and exploration speed.
 
 \section*{Acknowledgments}
-This research has been supported in parts by the 2018 NASA Innovative Advanced Concepts (NIAC) award, and NSF under the grants CMMI-1243000, CMMI-1335008, CNS-1337722, and CMMI-1760928.
+This research has been supported by the 2018 NASA Innovative Advanced Concepts (NIAC) award and NSF under the grants CMMI-1243000, CMMI-1335008, CNS-1337722, and CMMI-1760928.
 
 \bibliography{../../BibSources}% master source for all publications
 
