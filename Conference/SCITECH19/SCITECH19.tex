@@ -173,9 +173,9 @@ R_{c,\text{sensor}}=\begin{bmatrix}
 0 & 1 & 0
 \\
 -\sin\theta & 0 & \cos\theta
-\end{bmatrix}, \quad -\frac{\pi}{2}\leq\theta\leq\frac{\pi}{2},
+\end{bmatrix}, \quad -\frac{\pi}{2}\leq\theta\leq\frac{\pi}{2}.
 \end{align*}
-where $\Theta$ is the angular range for sensor field-of-view in the vertical direction. Combining these two rotation matrices, the measurement $z$ with depth $\norm{z}$ is expressed with respect to a frame fixed to Mars as
+Combining these two rotation matrices, the measurement $z$ with depth $\norm{z}$ is expressed with respect to a frame fixed to Mars as
 \begin{align}
 z(\psi,\theta)=\begin{bmatrix}\cos\theta\cos\psi & -\sin\psi & \cos\psi\sin\theta
 \\
@@ -234,7 +234,7 @@ H(P(r))-\text{E}[H(P(r|x_c,z(\psi+\tilde{\psi},\theta+\tilde{\theta})))], & \mbo
 0,                                                                                    & \mbox{otherwise},
 \end{cases}
 \end{align}
-where the mounting yaw $\tilde{\psi}$ and pitch $\tilde{\theta}$ of the sensor is a fixed rotation in the horizontal and vertical directions, respectively in that order, such that $-\pi<\tilde{\psi}\leq\pi$ and $-\frac{\pi}{2}\leq\tilde{\theta}\leq\frac{\pi}{2}$. A positive $\tilde{\theta}$ corresponds to rotating the depth sensor from forward to downward toward the surface of Mars. The expected information gain for the full scan is the summation of expected information gains for individual rays
+where the mounting yaw $\tilde{\psi}$ and pitch $\tilde{\theta}$ of the sensor is a fixed rotation in the horizontal and vertical directions, respectively in that order, such that $-\pi<\tilde{\psi}\leq\pi$ and $-\frac{\pi}{2}+\frac\Theta2\leq\tilde{\theta}\leq\frac{\pi}{2}-\frac\Theta2$. A positive $\tilde{\theta}$ corresponds to rotating the depth sensor from a forward direction to a downward direction toward the surface of Mars. The expected information gain for the full scan is the summation of expected information gains for individual rays
 \begin{align}
 \label{eqn:Iscan}
 \mathcal{I}_\text{scan}(x_c,R_c)=\sum_{i_\psi=0}^{n_\psi-1}\sum_{i_\theta=0}^{n_\psi-1}\mathcal{I}_\text{ray}\left(x_c,R_c,\frac{\Psi i_\psi}{n_\psi},\frac{\Theta i_\theta}{n_\theta}\right).
@@ -262,9 +262,9 @@ P(\mathbf{m}_{\text{reduced},k})=
     \min_{i\in a_k}{P(\mathbf{m}_i)},	& \text{otherwise},
 \end{cases}
 \end{align}
-where initial probability is $0<P_\text{init}<1$ and threshold the threshold probability is constrained to $P_\text{init}<P_\text{thresh}<1$. This approach uses probabilities that have changed from $P_\text{init}$, and favors occupied cells to avoid risking collisions.
+where initial probability is $0<P_\text{init}<1$ and the threshold probability is constrained to $P_\text{init}<P_\text{thresh}<1$. This approach uses probabilities that have changed from $P_\text{init}$, and favors occupied cells to avoid risking collisions.
 
-Next, we show how $\mathbf{m}_{\text{reduced},k}$ is used in Dijkstra's search~\cite{Dij59}. Defining $0<P_\text{coll}<1$ as the acceptable probability of collision, every grid cell of $ m_\text{reduced}$ is considered a safe and unvisited node if its occupancy probability, and the occupancy probabilities of its neighbors (sharing a face, edge, or corner), are below $P_\text{coll}$. A cost map is built from the starting robot location by neighboring nodes, where the cost to travel to another node is based on Euclidian distance: a cell sharing a face is $\alpha$ away, a cell sharing an edge is $\sqrt2\alpha$ away, and a cell sharing a corner is $\sqrt3\alpha$ away. Generating a cost map for all reachable cells in $\mathbf{m}_{\text{reduced},k}$ provides a collision-free travel cost for all reachable candidate pose locations. Once an optimal pose is selected, the path is easily found from the cost map using steepest descent.
+Next, we show how $\mathbf{m}_{\text{reduced},k}$ is used in Dijkstra's search~\cite{Dij59} for collision avoidance and motion planning. Defining $0<P_\text{coll}<1$ as the acceptable probability of collision, every grid cell of $ m_\text{reduced}$ is considered a safe and unvisited node if its occupancy probability, and the occupancy probabilities of its neighbors (sharing a face, edge, or corner), are below $P_\text{coll}$. A cost map is built from the starting robot location by neighboring nodes, where the cost to travel to another node is based on Euclidian distance: a cell sharing a face is $\alpha$ away, a cell sharing an edge is $\sqrt2\alpha$ away, and a cell sharing a corner is $\sqrt3\alpha$ away. Generating a cost map for all reachable cells in $\mathbf{m}_{\text{reduced},k}$ provides a collision-free travel cost for all reachable candidate pose locations. Once an optimal pose is selected, the path is easily found from the cost map using steepest descent.
 
 
 \subsection{Optimal 3D Pose}
