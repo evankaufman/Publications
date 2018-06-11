@@ -361,76 +361,179 @@ A 3D environment of Mars is simulated in Gazebo. A height map~\cite{mapaplanet} 
 
 The map parameters are also important to the success of the exploration. The full map has dimensions $20$ m $\times$ $20$ m $\times$ $5$ m in the Mars-fixed frame, with cell edge length $\alpha=0.075$ m. The reduced map for collision-avoidance and motion planning has cells $k=3$ times the size ($0.225$ m), so $k^3=27$ cells are considered in \refeqn{Proj3DMapComb}. The bump functions use $f_\text{max}=1.0$, $f_\text{far}=0.1$, and $\beta=0.1$ to account for travel costs with \refeqn{BumpFunRecedingHorizon}. The receding horizon optimal time $d_\text{opt}$ is based on a fixed robot velocity of $0.25$ m/sec and the computation time varies from $0.6$ sec to $1.0$ sec.
 
-The simulation was run twice. Case 1 was as described in this paper. Case 2 was identical to Case 1, except the reduced map $ m_\text{reduced}$ is used when computing \refeqn{Iscan}. Case 2 is largely inspired by the promising results of~\cite{KauTakAiLee18}, where a projected map based on the same criteria as \refeqn{Proj3DMapComb} proved effective for level flight. The resulting occupancy grid maps and complete map entropy are shown in Figs. \ref{fig:mars3Dogm} and \ref{fig:mars3Dentropy}, respectively.
+The simulation was run twice. Case 1 was as described in this paper. Case 2 was identical to Case 1, except the reduced map $ m_\text{reduced}$ is used when computing \refeqn{Iscan}. Case 2 is largely inspired by the promising results of~\cite{KauTakAiLee18}, where a projected map based on the same criteria as \refeqn{Proj3DMapComb} proved effective for level flight. The resulting occupancy grid maps for Case 1 and 2 are shown in Figs. \ref{fig:mars3DogmCase1} and \ref{fig:mars3DogmCase2}, respectively, and complete map entropy is illustrated in Fig. \ref{fig:mars3Dentropy}.
+
+%\begin{figure}[!t]
+%	\centering
+%	\begin{subfigure}[t]{0.4\columnwidth}
+%           	\centering
+%          	\includegraphics[height=0.5\textwidth]{MarsFullMap1min.jpg}
+%        		\caption{Case 1: $1$ min}
+%		\vspace*{0.025\textwidth}
+%    	\end{subfigure}
+%    	\begin{subfigure}[t]{0.4\columnwidth}
+%           	\centering
+%          	\includegraphics[height=0.5\textwidth]{MarsRdcdMap1min.jpg}
+%        		\caption{Case 2: $1$ min}
+%		\vspace*{0.025\textwidth}
+%    	\end{subfigure}
+%	\centering
+%	\begin{subfigure}[t]{0.4\columnwidth}
+%           	\centering
+%          	\includegraphics[height=0.5\textwidth]{MarsFullMap2min.jpg}
+%        		\caption{Case 1: $2$ min}
+%		\vspace*{0.025\textwidth}
+%    	\end{subfigure}
+%    	\begin{subfigure}[t]{0.4\columnwidth}
+%           	\centering
+%          	\includegraphics[height=0.5\textwidth]{MarsRdcdMap2min.jpg}
+%        		\caption{Case 2: $2$ min}
+%		\vspace*{0.025\textwidth}
+%    	\end{subfigure}
+%	\centering
+%	\begin{subfigure}[t]{0.4\columnwidth}
+%           	\centering
+%          	\includegraphics[height=0.5\textwidth]{MarsFullMap5min.jpg}
+%        		\caption{Case 1: $5$ min}
+%		\vspace*{0.025\textwidth}
+%    	\end{subfigure}
+%    	\begin{subfigure}[t]{0.4\columnwidth}
+%           	\centering
+%          	\includegraphics[height=0.5\textwidth]{MarsRdcdMap5min.jpg}
+%        		\caption{Case 2: $5$ min}
+%		\vspace*{0.025\textwidth}
+%    	\end{subfigure}
+%	\centering
+%	\begin{subfigure}[t]{0.4\columnwidth}
+%           	\centering
+%          	\includegraphics[height=0.5\textwidth]{MarsFullMap10min.jpg}
+%        		\caption{Case 1: $10$ min}
+%		\vspace*{0.025\textwidth}
+%    	\end{subfigure}
+%    	\begin{subfigure}[t]{0.4\columnwidth}
+%           	\centering
+%          	\includegraphics[height=0.5\textwidth]{MarsRdcdMap10min.jpg}
+%        		\caption{Case 2: $10$ min}
+%		\vspace*{0.025\textwidth}
+%    	\end{subfigure}
+%	\centering
+%	\begin{subfigure}[t]{0.4\columnwidth}
+%           	\centering
+%          	\includegraphics[height=0.5\textwidth]{MarsFullMap15min.jpg}
+%        		\caption{Case 1: $15$ min}
+%		\vspace*{0.025\textwidth}
+%    	\end{subfigure}
+%    	\begin{subfigure}[t]{0.4\columnwidth}
+%           	\centering
+%          	\includegraphics[height=0.5\textwidth]{MarsFullMap20min.jpg}
+%        		\caption{Case 1: $20$ min}
+%		\vspace*{0.025\textwidth}
+%    	\end{subfigure}
+%\caption{The robot (red disk with arrow indicating laser direction) moves toward candidate poses (red arrows, more opaque for greater reward) while generating a 3D probabilistic occupancy grid map (cubes: greater opacity for greater occupancy probability) of the surface of Mars.}
+%\label{fig:mars3Dogm}
+%\end{figure}
+
 
 \begin{figure}[!t]
 	\centering
-	\begin{subfigure}[t]{0.4\columnwidth}
+	\begin{subfigure}[t]{0.49\columnwidth}
            	\centering
           	\includegraphics[height=0.5\textwidth]{MarsFullMap1min.jpg}
-        		\caption{Case 1: $1$ min}
+        		\caption{$1$ min}
 		\vspace*{0.025\textwidth}
     	\end{subfigure}
-    	\begin{subfigure}[t]{0.4\columnwidth}
-           	\centering
-          	\includegraphics[height=0.5\textwidth]{MarsRdcdMap1min.jpg}
-        		\caption{Case 2: $1$ min}
-		\vspace*{0.025\textwidth}
-    	\end{subfigure}
-	\centering
-	\begin{subfigure}[t]{0.4\columnwidth}
+    	\begin{subfigure}[t]{0.49\columnwidth}
            	\centering
           	\includegraphics[height=0.5\textwidth]{MarsFullMap2min.jpg}
-        		\caption{Case 1: $2$ min}
-		\vspace*{0.025\textwidth}
-    	\end{subfigure}
-    	\begin{subfigure}[t]{0.4\columnwidth}
-           	\centering
-          	\includegraphics[height=0.5\textwidth]{MarsRdcdMap2min.jpg}
-        		\caption{Case 2: $2$ min}
+        		\caption{$2$ min}
 		\vspace*{0.025\textwidth}
     	\end{subfigure}
 	\centering
-	\begin{subfigure}[t]{0.4\columnwidth}
+	\begin{subfigure}[t]{0.49\columnwidth}
+           	\centering
+          	\includegraphics[height=0.5\textwidth]{MarsFullMap3min.jpg}
+        		\caption{$3$ min}
+		\vspace*{0.025\textwidth}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.49\columnwidth}
+           	\centering
+          	\includegraphics[height=0.5\textwidth]{MarsFullMap4min.jpg}
+        		\caption{$4$ min}
+		\vspace*{0.025\textwidth}
+    	\end{subfigure}
+	\centering
+	\begin{subfigure}[t]{0.49\columnwidth}
            	\centering
           	\includegraphics[height=0.5\textwidth]{MarsFullMap5min.jpg}
-        		\caption{Case 1: $5$ min}
+        		\caption{$5$ min}
 		\vspace*{0.025\textwidth}
     	\end{subfigure}
-    	\begin{subfigure}[t]{0.4\columnwidth}
-           	\centering
-          	\includegraphics[height=0.5\textwidth]{MarsRdcdMap5min.jpg}
-        		\caption{Case 2: $5$ min}
-		\vspace*{0.025\textwidth}
-    	\end{subfigure}
-	\centering
-	\begin{subfigure}[t]{0.4\columnwidth}
+    	\begin{subfigure}[t]{0.49\columnwidth}
            	\centering
           	\includegraphics[height=0.5\textwidth]{MarsFullMap10min.jpg}
-        		\caption{Case 1: $10$ min}
-		\vspace*{0.025\textwidth}
-    	\end{subfigure}
-    	\begin{subfigure}[t]{0.4\columnwidth}
-           	\centering
-          	\includegraphics[height=0.5\textwidth]{MarsRdcdMap10min.jpg}
-        		\caption{Case 2: $10$ min}
+        		\caption{$10$ min}
 		\vspace*{0.025\textwidth}
     	\end{subfigure}
 	\centering
-	\begin{subfigure}[t]{0.4\columnwidth}
+	\begin{subfigure}[t]{0.49\columnwidth}
            	\centering
           	\includegraphics[height=0.5\textwidth]{MarsFullMap15min.jpg}
-        		\caption{Case 1: $15$ min}
+        		\caption{$15$ min}
 		\vspace*{0.025\textwidth}
     	\end{subfigure}
-    	\begin{subfigure}[t]{0.4\columnwidth}
+    	\begin{subfigure}[t]{0.49\columnwidth}
            	\centering
           	\includegraphics[height=0.5\textwidth]{MarsFullMap20min.jpg}
-        		\caption{Case 1: $20$ min}
+        		\caption{$20$ min}
 		\vspace*{0.025\textwidth}
     	\end{subfigure}
-\caption{The robot (red disk with arrow indicating laser direction) moves toward candidate poses (red arrows, more opaque for greater reward) while generating a 3D probabilistic occupancy grid map (cubes: greater opacity for greater occupancy probability) of the surface of Mars.}
-\label{fig:mars3Dogm}
+\caption{In Case 1, the robot (red disk with arrow indicating laser direction) moves toward candidate poses (red arrows, more opaque for greater reward) based on expected entropy change of the 3D probabilistic occupancy grid map $m$ (cubes: greater opacity for greater occupancy probability) of the surface of Mars.}
+\label{fig:mars3DogmCase1}
+\end{figure}
+
+
+\begin{figure}[!t]
+	\centering
+	\begin{subfigure}[t]{0.49\columnwidth}
+           	\centering
+          	\includegraphics[height=0.5\textwidth]{MarsRdcdMap1min.jpg}
+        		\caption{$1$ min}
+		\vspace*{0.025\textwidth}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.49\columnwidth}
+           	\centering
+          	\includegraphics[height=0.5\textwidth]{MarsRdcdMap2min.jpg}
+        		\caption{$2$ min}
+		\vspace*{0.025\textwidth}
+    	\end{subfigure}
+	\centering
+	\begin{subfigure}[t]{0.49\columnwidth}
+           	\centering
+          	\includegraphics[height=0.5\textwidth]{MarsRdcdMap3min.jpg}
+        		\caption{$3$ min}
+		\vspace*{0.025\textwidth}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.49\columnwidth}
+           	\centering
+          	\includegraphics[height=0.5\textwidth]{MarsRdcdMap4min.jpg}
+        		\caption{$4$ min}
+		\vspace*{0.025\textwidth}
+    	\end{subfigure}
+	\centering
+	\begin{subfigure}[t]{0.49\columnwidth}
+           	\centering
+          	\includegraphics[height=0.5\textwidth]{MarsRdcdMap5min.jpg}
+        		\caption{$5$ min}
+		\vspace*{0.025\textwidth}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.49\columnwidth}
+           	\centering
+          	\includegraphics[height=0.5\textwidth]{MarsRdcdMap10min.jpg}
+        		\caption{$10$ min}
+		\vspace*{0.025\textwidth}
+    	\end{subfigure}
+\caption{In Case 2, the robot (red disk with arrow indicating laser direction) generates a 3D probabilistic occupancy grid map $m$ (cubes: greater opacity for greater occupancy probability), which is used to generate a reduced map $m_\text{reduced}$ based on \refeqn{Proj3DMapComb}. The robot moves toward candidate poses (red arrows, more opaque for greater reward) based on expected entropy change of $m_\text{reduced}$.}
+\label{fig:mars3DogmCase2}
 \end{figure}
 
 
@@ -449,8 +552,7 @@ However, the choice of occupancy grid map used for entropy predictions introduce
 
 In short, the proposed 3D probabilistic occupancy grid mapping and autonomous exploration were simulated successfully in real-time over the surface of Mars using ROS and Gazebo. Choosing $m$ for entropy predictions produced a more-complete map, but choosing $m_\text{reduced}$ was sometimes beneficial for exploring new terrain faster, while forgoing map completeness.
   
-\todo{I wish we have a little more pages. Let's split Figure 5 into two, one for Case 1 and another for Case 2, where each case has more time instances. (Also, check the caption for (j)).
-We can have another zoomed-in figure hat shows the aerial vehicle with the simulated measurements of the point clouds and the candidate poses more clearly}
+\todo{I wish we have a little more pages. We can have another zoomed-in figure hat shows the aerial vehicle with the simulated measurements of the point clouds and the candidate poses more clearly}
 
 \section{Conclusions}
 
