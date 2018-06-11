@@ -352,14 +352,14 @@ A 3D environment of Mars is simulated in Gazebo. A height map~\cite{mapaplanet} 
     	\end{subfigure}
     	\begin{subfigure}[t]{0.3\columnwidth}
            	\centering{
-          	\includegraphics[height=0.9\textwidth]{mars_gazebo_sqr.png}}
+          	\includegraphics[height=0.9\textwidth]{mars_gazebo_full_lighting.png}}
         		\caption{Gazebo Environment}
     	\end{subfigure}
 \caption{The height map (a) and color map (b) are used in Gazebo (c) to simulate a Mars environment.}
 \label{fig:MarsGazebo}
 \end{figure}
 
-The map parameters are also important to the success of the exploration. The full map has dimensions $20$ m $\times$ $20$ m $\times$ $5$ m in the Mars-fixed frame, with cell edge length $\alpha=0.075$ m. The reduced map for collision-avoidance and motion planning has cells $k=3$ times the size ($0.225$ m), so $k^3=27$ cells are considered in \refeqn{Proj3DMapComb}. The bump functions use $f_\text{max}=1.0$, $f_\text{far}=0.1$, and $\beta=0.1$ to account for travel costs with \refeqn{BumpFunRecedingHorizon}. The receding horizon optimal time $d_\text{opt}$ is based on a fixed robot velocity of $0.25$ m/sec and the computation time varies from $0.6$ sec to $1.0$ sec.
+The map parameters are also important to the success of the exploration. The full map has dimensions $20$ m $\times$ $20$ m $\times$ $5$ m in the Mars-fixed frame, with cell edge length $\alpha=0.075$ m. The reduced map for collision-avoidance and motion planning has cells $k=3$ times the size ($0.225$ m), so $k^3=27$ cells are considered in \refeqn{Proj3DMapComb}. The bump functions use $f_\text{max}=1.0$, $f_\text{far}=0.1$, and $\beta=0.1$ to account for travel costs with \refeqn{BumpFunRecedingHorizon}. The receding horizon optimal time $d_\text{opt}$ is based on a fixed robot velocity of $0.25$ m/sec and the computation time varies from $0.6$ sec to $1.9$ sec.
 
 The simulation was run twice. Case 1 was as described in this paper. Case 2 was identical to Case 1, except the reduced map $ m_\text{reduced}$ is used when computing \refeqn{Iscan}. Case 2 is largely inspired by the promising results of~\cite{KauTakAiLee18}, where a projected map based on the same criteria as \refeqn{Proj3DMapComb} proved effective for level flight. The resulting occupancy grid maps for Case 1 and 2 are shown in Figs. \ref{fig:mars3DogmCase1} and \ref{fig:mars3DogmCase2}, respectively, and complete map entropy is illustrated in Fig. \ref{fig:mars3Dentropy}.
 
@@ -438,53 +438,53 @@ The simulation was run twice. Case 1 was as described in this paper. Case 2 was 
 	\centering
 	\begin{subfigure}[t]{0.49\columnwidth}
            	\centering
-          	\includegraphics[height=0.5\textwidth]{MarsFullMap1min.jpg}
+          	\includegraphics[height=0.5\textwidth]{FullMarsMap30sec.jpg}
+        		\caption{$30$ sec}
+		\vspace*{0.025\textwidth}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.49\columnwidth}
+           	\centering
+          	\includegraphics[height=0.5\textwidth]{FullMarsMap1min.jpg}
         		\caption{$1$ min}
 		\vspace*{0.025\textwidth}
     	\end{subfigure}
-    	\begin{subfigure}[t]{0.49\columnwidth}
+	\centering
+	\begin{subfigure}[t]{0.49\columnwidth}
            	\centering
-          	\includegraphics[height=0.5\textwidth]{MarsFullMap2min.jpg}
+          	\includegraphics[height=0.5\textwidth]{FullMarsMap2min.jpg}
         		\caption{$2$ min}
 		\vspace*{0.025\textwidth}
     	\end{subfigure}
-	\centering
-	\begin{subfigure}[t]{0.49\columnwidth}
+    	\begin{subfigure}[t]{0.49\columnwidth}
            	\centering
-          	\includegraphics[height=0.5\textwidth]{MarsFullMap3min.jpg}
+          	\includegraphics[height=0.5\textwidth]{FullMarsMap3min.jpg}
         		\caption{$3$ min}
 		\vspace*{0.025\textwidth}
     	\end{subfigure}
-    	\begin{subfigure}[t]{0.49\columnwidth}
+	\centering
+	\begin{subfigure}[t]{0.49\columnwidth}
            	\centering
-          	\includegraphics[height=0.5\textwidth]{MarsFullMap4min.jpg}
+          	\includegraphics[height=0.5\textwidth]{FullMarsMap4min.jpg}
         		\caption{$4$ min}
 		\vspace*{0.025\textwidth}
     	\end{subfigure}
-	\centering
-	\begin{subfigure}[t]{0.49\columnwidth}
+    	\begin{subfigure}[t]{0.49\columnwidth}
            	\centering
-          	\includegraphics[height=0.5\textwidth]{MarsFullMap5min.jpg}
+          	\includegraphics[height=0.5\textwidth]{FullMarsMap5min.jpg}
         		\caption{$5$ min}
 		\vspace*{0.025\textwidth}
     	\end{subfigure}
-    	\begin{subfigure}[t]{0.49\columnwidth}
-           	\centering
-          	\includegraphics[height=0.5\textwidth]{MarsFullMap10min.jpg}
-        		\caption{$10$ min}
-		\vspace*{0.025\textwidth}
-    	\end{subfigure}
 	\centering
 	\begin{subfigure}[t]{0.49\columnwidth}
            	\centering
-          	\includegraphics[height=0.5\textwidth]{MarsFullMap15min.jpg}
-        		\caption{$15$ min}
+          	\includegraphics[height=0.5\textwidth]{FullMarsMap10min.jpg}
+        		\caption{$10$ min}
 		\vspace*{0.025\textwidth}
     	\end{subfigure}
     	\begin{subfigure}[t]{0.49\columnwidth}
            	\centering
-          	\includegraphics[height=0.5\textwidth]{MarsFullMap20min.jpg}
-        		\caption{$20$ min}
+          	\includegraphics[height=0.5\textwidth]{FullMarsMap15min.jpg}
+        		\caption{$15$ min}
 		\vspace*{0.025\textwidth}
     	\end{subfigure}
 \caption{In Case 1, the robot (red disk with arrow indicating laser direction) moves toward candidate poses (red arrows, more opaque for greater reward) based on expected entropy change of the 3D probabilistic occupancy grid map $m$ (cubes: greater opacity for greater occupancy probability) of the surface of Mars.}
@@ -496,40 +496,53 @@ The simulation was run twice. Case 1 was as described in this paper. Case 2 was 
 	\centering
 	\begin{subfigure}[t]{0.49\columnwidth}
            	\centering
-          	\includegraphics[height=0.5\textwidth]{MarsRdcdMap1min.jpg}
+          	\includegraphics[height=0.5\textwidth]{RdcdMarsMap30sec.jpg}
+        		\caption{$30$ sec}
+		\vspace*{0.025\textwidth}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.49\columnwidth}
+           	\centering
+          	\includegraphics[height=0.5\textwidth]{RdcdMarsMap1min.jpg}
         		\caption{$1$ min}
 		\vspace*{0.025\textwidth}
     	\end{subfigure}
-    	\begin{subfigure}[t]{0.49\columnwidth}
+	\centering
+	\begin{subfigure}[t]{0.49\columnwidth}
            	\centering
-          	\includegraphics[height=0.5\textwidth]{MarsRdcdMap2min.jpg}
+          	\includegraphics[height=0.5\textwidth]{RdcdMarsMap2min.jpg}
         		\caption{$2$ min}
 		\vspace*{0.025\textwidth}
     	\end{subfigure}
-	\centering
-	\begin{subfigure}[t]{0.49\columnwidth}
+    	\begin{subfigure}[t]{0.49\columnwidth}
            	\centering
-          	\includegraphics[height=0.5\textwidth]{MarsRdcdMap3min.jpg}
+          	\includegraphics[height=0.5\textwidth]{RdcdMarsMap3min.jpg}
         		\caption{$3$ min}
 		\vspace*{0.025\textwidth}
     	\end{subfigure}
+	\centering
+	\begin{subfigure}[t]{0.49\columnwidth}
+           	\centering
+          	\includegraphics[height=0.5\textwidth]{RdcdMarsMap4min.jpg}
+        		\caption{$4$ min}
+		\vspace*{0.025\textwidth}
+    	\end{subfigure}
     	\begin{subfigure}[t]{0.49\columnwidth}
            	\centering
-          	\includegraphics[height=0.5\textwidth]{MarsRdcdMap4min.jpg}
-        		\caption{$4$ min}
+          	\includegraphics[height=0.5\textwidth]{RdcdMarsMap5min.jpg}
+        		\caption{$5$ min}
 		\vspace*{0.025\textwidth}
     	\end{subfigure}
 	\centering
 	\begin{subfigure}[t]{0.49\columnwidth}
            	\centering
-          	\includegraphics[height=0.5\textwidth]{MarsRdcdMap5min.jpg}
-        		\caption{$5$ min}
+          	\includegraphics[height=0.5\textwidth]{RdcdMarsMap10min.jpg}
+        		\caption{$10$ min}
 		\vspace*{0.025\textwidth}
     	\end{subfigure}
     	\begin{subfigure}[t]{0.49\columnwidth}
            	\centering
-          	\includegraphics[height=0.5\textwidth]{MarsRdcdMap10min.jpg}
-        		\caption{$10$ min}
+          	\includegraphics[height=0.5\textwidth]{RdcdMarsMap15min.jpg}
+        		\caption{$15$ min}
 		\vspace*{0.025\textwidth}
     	\end{subfigure}
 \caption{In Case 2, the robot (red disk with arrow indicating laser direction) generates a 3D probabilistic occupancy grid map $m$ (cubes: greater opacity for greater occupancy probability), which is used to generate a reduced map $m_\text{reduced}$ based on \refeqn{Proj3DMapComb}. The robot moves toward candidate poses (red arrows, more opaque for greater reward) based on expected entropy change of $m_\text{reduced}$.}
@@ -539,16 +552,16 @@ The simulation was run twice. Case 1 was as described in this paper. Case 2 was 
 
 	\begin{figure}
 		\centerline{
-			\includegraphics[width=0.6\columnwidth]{mars_H_comparison_flat.pdf}
+			\includegraphics[width=0.6\columnwidth]{scitech_entropy_comparison_flat.pdf}
 		}
-		\caption{The complete map entropy for Case 1 (red solid line) decreases at roughly the same rate as the reduced map entropy for Case 2 (dashed blue line), but the complete map entropy highlights a few locations where entropy can decrease further, shown by lower entropy over the subsequent $10$ min.}
+		\caption{The complete map entropy for Case 1 (red solid line) decreases at roughly the same rate as the reduced map entropy for Case 2 (dashed blue line) toward the beginning. However, the expected entropy in Case 2 promotes actions toward unexplored territory, while the policy of Case 1 yields a more complete map before moving forward.}
 		\label{fig:mars3Dentropy}
 	\end{figure}
 
 
 In both cases, the robot built the 3D probabilistic map of the $2000$ cubic meter space composed of $4.74\times10^6$ grid cells. The maps were mostly complete within $10$ minutes. The $\tilde{\theta}=30\degree$ downward viewing angle captured the ground nicely, as candidate attitudes tended to direct the onboard sensor toward uncertain regions on the surface of Mars. The proposed approach provided collision-free mapping and autonomous exploration in real-time.
 
-However, the choice of occupancy grid map used for entropy predictions introduced an interesting tradeoff. In Case 1, when the full probabilistic map $m$ was used in \refeqn{Iscan}, regions where the grid cells were partially-known were frequently reconsidered until the space was well-known. Conversely in Case 2, when $m_\text{reduced}$ was used instead, the robot repeatedly left spaces that were missing a few grid cells to visit new terrain. This is because $m_\text{reduced}$ had some cells with large occupancy probabilities based on \refeqn{Proj3DMapComb}, which allowed some grid cells of $m$ enclosed within a cell of $m_\text{reduced}$ to be uncertain. The exploration policy of Case 2 incorrectly assumed these regions were well-known. Ironically, this false assumption sometimes actually led to greater information gains when the vehicle moved on to unvisited terrain. Here, the exploration policy of Case 2 suspended operations once expected information gains were insignificant, which happened after about $10$ minutes. However with Case $1$, which used $m$ for computing expected entropy, the exploration continued for an additional $10$ minutes, overall decreasing total map entropy further, generating a more complete occupancy grid of the surface of Mars. 
+However, the choice of occupancy grid map used for entropy predictions introduced an interesting tradeoff. In Case 1, when the full probabilistic map $m$ was used in \refeqn{Iscan}, regions where the grid cells were partially-known were frequently reconsidered until the space was well-known. Conversely in Case 2, when $m_\text{reduced}$ was used instead, the robot repeatedly left spaces that were missing a few grid cells to visit new terrain. This is because $m_\text{reduced}$ had some cells with large occupancy probabilities based on \refeqn{Proj3DMapComb}, which allowed some grid cells of $m$ enclosed within a cell of $m_\text{reduced}$ to be uncertain. The exploration policy of Case 2 incorrectly assumed these regions were well-known. Ironically, this false assumption actually led to greater information gains when the vehicle moved on to unvisited terrain. Conversely with Case $1$, which used $m$ for computing expected entropy, the total map entropy decreased more steadily and generated a more-complete 3D occupancy grid of the surface of Mars.
 
 In short, the proposed 3D probabilistic occupancy grid mapping and autonomous exploration were simulated successfully in real-time over the surface of Mars using ROS and Gazebo. Choosing $m$ for entropy predictions produced a more-complete map, but choosing $m_\text{reduced}$ was sometimes beneficial for exploring new terrain faster, while forgoing map completeness.
   
