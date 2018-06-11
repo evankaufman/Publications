@@ -361,7 +361,7 @@ A 3D environment of Mars is simulated in Gazebo. A height map~\cite{mapaplanet} 
 
 The map parameters are also important to the success of the exploration. The full map has dimensions $20$ m $\times$ $20$ m $\times$ $5$ m in the Mars-fixed frame, with cell edge length $\alpha=0.075$ m. The reduced map for collision-avoidance and motion planning has cells $k=3$ times the size ($0.225$ m), so $k^3=27$ cells are considered in \refeqn{Proj3DMapComb}. The bump functions use $f_\text{max}=1.0$, $f_\text{far}=0.1$, and $\beta=0.1$ to account for travel costs with \refeqn{BumpFunRecedingHorizon}. The receding horizon optimal time $d_\text{opt}$ is based on a fixed robot velocity of $0.25$ m/sec and the computation time varies from $0.6$ sec to $1.9$ sec.
 
-The simulation was run twice. Case 1 was as described in this paper. Case 2 was identical to Case 1, except the reduced map $ m_\text{reduced}$ is used when computing \refeqn{Iscan}. Case 2 is largely inspired by the promising results of~\cite{KauTakAiLee18}, where a projected map based on the same criteria as \refeqn{Proj3DMapComb} proved effective for level flight. The resulting occupancy grid maps for Case 1 and 2 are shown in Figs. \ref{fig:mars3DogmCase1} and \ref{fig:mars3DogmCase2}, respectively, and complete map entropy is illustrated in Fig. \ref{fig:mars3Dentropy}.
+The simulation was run twice. Case 1 was as described in this paper. Case 2 was identical to Case 1, except the reduced map $ m_\text{reduced}$ is used when computing \refeqn{Iscan}. Case 2 is largely inspired by the promising results of~\cite{KauTakAiLee18}, where a projected map based on the same criteria as \refeqn{Proj3DMapComb} proved effective for level flight. The resulting occupancy grid maps for Case 1 and 2 are shown in Figs. \ref{fig:mars3DogmCase1} and \ref{fig:mars3DogmCase2}, respectively, and close-up pictures from Case 2 are shown in \ref{fig:marsZoomedIn}. The complete map entropy is illustrated in Fig. \ref{fig:mars3Dentropy}.
 
 %\begin{figure}[!t]
 %	\centering
@@ -549,6 +549,25 @@ The simulation was run twice. Case 1 was as described in this paper. Case 2 was 
 \label{fig:mars3DogmCase2}
 \end{figure}
 
+\begin{figure}[!t]
+	\centering
+	\begin{subfigure}[t]{0.95\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{mars_closeup.png}
+        		\caption{Full Map Cells and Sensor Scan}
+		\vspace*{0.025\textwidth}
+    	\end{subfigure}
+	\centering
+	\begin{subfigure}[t]{0.95\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{scitech_reducedCells.png}
+        		\caption{Full Map and Reduced Map Cells}
+		\vspace*{0.025\textwidth}
+    	\end{subfigure}
+\caption{The close-up images from the Case 2 trial show the candidate future poses (red arrows), where greater opacity represents a larger objective function of \refeqn{CandidateLocationOptimization}. In (a), we show the 3D scan with color corresponding to the surface of Mars. In (b), we overlay the full map $m$ (colored) with the reduced map $m_\text{reduced}$ (gray).}
+\label{fig:marsZoomedIn}
+\end{figure}
+
 
 	\begin{figure}
 		\centerline{
@@ -564,8 +583,7 @@ In both cases, the robot built the 3D probabilistic map of the $2000$ cubic mete
 However, the choice of occupancy grid map used for entropy predictions introduced an interesting tradeoff. In Case 1, when the full probabilistic map $m$ was used in \refeqn{Iscan}, regions where the grid cells were partially-known were frequently reconsidered until the space was well-known. Conversely in Case 2, when $m_\text{reduced}$ was used instead, the robot repeatedly left spaces that were missing a few grid cells to visit new terrain. This is because $m_\text{reduced}$ had some cells with large occupancy probabilities based on \refeqn{Proj3DMapComb}, which allowed some grid cells of $m$ enclosed within a cell of $m_\text{reduced}$ to be uncertain. The exploration policy of Case 2 incorrectly assumed these regions were well-known. Ironically, this false assumption actually led to greater information gains when the vehicle moved on to unvisited terrain. Conversely with Case $1$, which used $m$ for computing expected entropy, the total map entropy decreased more steadily and generated a more-complete 3D occupancy grid of the surface of Mars.
 
 In short, the proposed 3D probabilistic occupancy grid mapping and autonomous exploration were simulated successfully in real-time over the surface of Mars using ROS and Gazebo. Choosing $m$ for entropy predictions produced a more-complete map, but choosing $m_\text{reduced}$ was sometimes beneficial for exploring new terrain faster, while forgoing map completeness.
-  
-\todo{I wish we have a little more pages. We can have another zoomed-in figure hat shows the aerial vehicle with the simulated measurements of the point clouds and the candidate poses more clearly}
+
 
 \section{Conclusions}
 
