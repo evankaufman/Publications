@@ -54,9 +54,8 @@
 
 \title{Autonomous Aerial Exploration for Topological Mapping of Mars Environments}
 
-\author{Evan Kaufman\footnote{Graduate Research Assistant, Department of Mechanical and Aerospace Engineering, The George Washington University, 800 22nd St NW, Washington, DC, 20052} and Taeyoung Lee\footnote{Associate Professor, Department of Mechanical and Aerospace Engineering, The George Washington University, 800 22nd St NW, Washington, DC, 20052}}% TODO: update if AIAA member
+\author{Evan Kaufman\footnote{Graduate Research Assistant, Department of Mechanical and Aerospace Engineering, The George Washington University, 800 22nd St NW, Washington, DC, 20052} and Taeyoung Lee\footnote{Associate Professor, Department of Mechanical and Aerospace Engineering, The George Washington University, 800 22nd St NW, Washington, DC, 20052}}
 \affil{The George Washington University, Washington, DC, 20052}
-% TODO: funding source
 
 \begin{document}
 
@@ -361,7 +360,7 @@ A 3D environment of Mars is simulated in Gazebo. A height map~\cite{mapaplanet} 
 
 The map parameters are also important to the success of the exploration. The full map has dimensions $20$ m $\times$ $20$ m $\times$ $5$ m in the Mars-fixed frame, with cell edge length $\alpha=0.075$ m. The reduced map for collision-avoidance and motion planning has cells $k=3$ times the size ($0.225$ m), so $k^3=27$ cells are considered in \refeqn{Proj3DMapComb}. The bump functions use $f_\text{max}=1.0$, $f_\text{far}=0.1$, and $\beta=0.1$ to account for travel costs with \refeqn{BumpFunRecedingHorizon}. The receding horizon optimal time $d_\text{opt}$ is based on a fixed robot velocity of $0.25$ m/sec and the computation time varies from $1.8$ sec to $2.5$ sec.
 
-The simulation was run twice. Case 1 was as described in this paper. Case 2 was identical to Case 1, except the reduced map $ m_\text{reduced}$ is used when computing \refeqn{Iscan}. Case 2 is largely inspired by the promising results of~\cite{KauTakAiLee18}, where a projected map based on the same criteria as \refeqn{Proj3DMapComb} proved effective for level flight. The resulting occupancy grid maps for Cases 1 and 2 are shown in Figs. \ref{fig:mars3DogmCase1} and \ref{fig:mars3DogmCase2}, respectively, and close-up pictures from Case 2 are shown in Fig. \ref{fig:marsZoomedIn}. The complete map entropy is illustrated in Fig. \ref{fig:mars3Dentropy}.
+The simulation was run twice. Case 1 was as described in this paper. Case 2 was identical to Case 1, except the reduced map $ m_\text{reduced}$ is used when computing \refeqn{Iscan}. Case 2 is largely inspired by the promising results of~\cite{KauTakAiLee18}, where a projected map based on the same criteria as \refeqn{Proj3DMapComb} proved effective for level flight. The resulting occupancy grid maps for Cases 1 and 2 are shown in Figs. \ref{fig:mars3DogmCase1} and \ref{fig:mars3DogmCase2}, respectively. A video of Case 1 can be found at \href{https://youtu.be/FrBcL2UMW9w}{https://youtu.be/FrBcL2UMW9w} and close-up pictures from Case 2 are shown in Fig. \ref{fig:marsZoomedIn}. The complete map entropy is illustrated in Fig. \ref{fig:mars3Dentropy}.
 
 %\begin{figure}[!t]
 %	\centering
