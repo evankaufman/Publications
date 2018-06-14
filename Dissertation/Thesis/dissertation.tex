@@ -44,12 +44,27 @@ In this section, we discuss the existing approaches to occupancy grid mapping, a
 
 \subsection{Occupancy Grid Mapping}
 
+Here we describe the existing approaches to building probabilistic occupancy grid maps. Though several variations have been proposed, no approach uses the stochastic properties of depth sensors directly to obtain an exact Bayesian solution that can be computed in real-time.
+
+% First proposed in 80s 
+% Log-odds ratio solution
+% simplified function - lines, patched Gaussians
+
+% Learning
+% Hill-climbing
+
+In short, other existing solutions to occupancy probability are inexact, and involve a potentially-harmful log-odds ratio assumption. These shortcomings motivate an exact solution to occupancy grid mapping that can be computed in real-time.
+
+%It was previously-believed that the exact solution to occupancy grid mapping was impossible in real-time.
 
 
 
 \subsection{Autonomous Exploration}
 
+
+
 \subsection{Multi-Vehicle Cooperation}
+
 
 \section{Outline of Dissertation}
 
@@ -57,12 +72,22 @@ ADD ONCE COMPLETE
 
 \section{Contributions}
 
-
+There are three key contributions in this dissertation. The first two are novel solutions that find exact occupancy probabilities and predicted entropies, respectively. These contributions improve the quality and efficiency of autonomous mapping and exploration of uncertain environments for single-vehicle missions. The third contribution extends these concepts to multi-vehicle scenarios, where multiple members of a team work together to autonomously explore and patrol large environments.
 
 
 \subsection{Summary of Contributions}
+
+The first contribution is an exact Bayesian solution to occupancy grid mapping. The proposed approach considers that occupied spaces occlude measurement behind them, which allows certain mapping outcomes to be systematically grouped together. The exact solution to occupancy grid cell probability, which was previously-believed to have exponential complexity, is now possible to solve in real-time. Numerous numerical simulations and experiments demonstrate that the proposed mapping approach in effective and inexpensive in 2D and 3D scenarios.
+
+The second contribution is a new approach to autonomous exploration, where the robot predicts future occupancy grid map uncertainty, using a measure known as Shannon's entropy. This approach computes the expected values of grid cell entropies from potential future measurement rays with a novel approach to predict future measurement probabilities. These predictions are used to evaluate the benefit of possible robot actions to maximize map information gain. Then, we formulate autonomous exploration as an optimization problem to maximize an objective function that includes map uncertainty and travel costs. The probabilistic map is used for collision-avoidance and motion planning. These processes are designed for real-time applications, where the robot makes decisions as it learns information about the surrounding environment.
+
+The final contribution coordinates the mapping and exploration efforts of multiple robots together. The mapping process is multi-threaded such that multiple members update the same occupancy grid. The exploration algorithm follows a bidding-based structure. Robots compete for tasks in a series of auctions, where the winning bid of one auction affects the bids of subsequent auctions, thereby coordinating the robot efforts. This cooperative approach is computationally-efficient in large environments, and follows a receding-horizon framework, such that map expected information gains are updated as quickly as possible. The proposed coordination is extended to autonomous patrol, where occupancy grid map probabilities are degraded over time, which promotes the robots to revisit areas periodically.
+
 \subsection{List of Publications}
 
+The following is a list of publications. These include research included in this dissertation, as well as contributions in control, data association, and estimation.
+
+ADD LIST
 
 \include{tex/pogm}
 \include{tex/ae2D}
