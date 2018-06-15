@@ -3,6 +3,7 @@
 % this package is only used to generate some random text. 
 % it is not needed in a true document
 \usepackage{lipsum}
+
 \graphicspath{{../../Fig/}}
 
 \input{tex/frontmatter}
@@ -87,7 +88,24 @@ The final contribution coordinates the mapping and exploration efforts of multip
 
 The following is a list of publications. These include research included in this dissertation, as well as contributions in control, data association, and estimation.
 
-ADD LIST
+% TODO: update this list
+
+\begin{itemize}
+	\item E. Kaufman, K. Takami, T. Lee, and Z. Ai, ``Autonomous Exploration with Exact Inverse Sensor Models,'' \textit{Journal of Intelligent }\&\textit{ Robotic Systems}, 2016, submitted.
+	\item E. Kaufman, T. Lee, and Z. Ai, ``Autonomous Exploration by Expected Information Gain from Probabilistic Occupancy Grid Mapping,'' \textit{IEEE International Conference on Simulation, Modeling, and Programming for Autonomous Robots}, San Francisco, December 2016, accepted.
+	\item E. Kaufman, T. Lee, Z. Ai, and I. S. Moskowitz, ``Bayesian Occupancy Grid Mapping via an Exact Inverse Sensor Model,'' \textit{Proceedings of the American Control Conference}, Boston, July 2016, pp. 5709-5715.
+	\item E. Kaufman, T. A. Lovell, and T. Lee, ``Nonlinear Observability Measure for Relative Orbit Determination with Angles-Only Measurements,'' \textit{The Journal of the Astronautical Sciences}, 63(1): pp. 60-80, 2016, doi: 10.1007/s40295-015-0082-9.
+	\item E. Kaufman, T. A. Lovell, and T. Lee, ``Minimum Uncertainty JPDA Filters and Coalescence Avoidance for Multiple Object Tracking,'' \textit{The Journal of the Astronautical Sciences}, 63(4): pp. 308-334, 2016, doi: 10.1007/s40295-016-0092-2.
+	\item T. Wu, E. Kaufman, and T. Lee, ``Globally Asymptotically Stable Attitude Observer on SO(3),'' \textit{Proceedings of the 54th IEEE Conference on Decision and Control}, pp. 2164-2168, Osaka, Japan, December 2015.
+	\item E. Kaufman, T. A. Lovell, and T. Lee, ``Nonlinear Observability Measure for Relative Orbit Determination with Angles-Only Measurements,'' \textit{Proceedings of the 25th AAS/AIAA Space Flight Mechanics Meeting}, Williamsburg, VA, Jan. 2015, AAS 15-451.
+	\item E. Kaufman, T. A. Lovell, and T. Lee, ``Minimum Uncertainty JPDA Filter and Coalescence Avoidance Performance Evaluations,'' \textit{Proceedings of the 25th AAS/AIAA Space Flight Mechanics Meeting, Williamsburg}, VA, Jan. 2015, AAS 15-432.
+	\item E. Kaufman, K. Caldwell, D. Lee, and T. Lee, ``Design and Development of a Free-Floating Hexrotor UAV for 6-DOF Maneuvers,'' \textit{Proceedings of the IEEE Aerospace Conference}, Mar. 2014, ASC 14-2527.
+	\item E. Kaufman, T. A. Lovell, and T. Lee, ``Optimal Joint Probabilistic Data Association Filter Avoiding Coalescence in Close Proximity,'' \textit{Proceedings of the European Control Conference}, pp. 2709-2714, June 2014.
+	\vspace*{0.5cm}
+\end{itemize}
+
+
+
 
 \include{tex/pogm}
 \include{tex/ae2D}
@@ -95,8 +113,8 @@ ADD LIST
 \include{tex/ae3Dcomplex}
 \include{tex/multivehicle}
 
-\bibliographystyle{plain}
-\bibliography{thesis-bib}
+%\bibliographystyle{plain}
+%\bibliography{../../BibSources.bib}
 
 % appendices must appear after
 \include{tex/appendix}
