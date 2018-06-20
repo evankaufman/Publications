@@ -47,6 +47,12 @@ In this section, we discuss the existing approaches to occupancy grid mapping, a
 
 Here we describe the existing approaches to building probabilistic occupancy grid maps. Though several variations have been proposed, no approach uses the stochastic properties of depth sensors directly to obtain an exact Bayesian solution that can be computed in real-time.
 
+\paragraph{Inverse Sensor Model} The key to generating a probabilistic occupancy grid map is known as the \emph{inverse sensor model}~\cite{ThrBurFox05}. The main idea is that a depth sensor has a probability density (e.g. Gaussian) that describes the stochastic properties of a sensor reading (e.g. a LIDAR range) with respect to the expected value of a reading (e.g. distance to a wall). This probability density is referred to as the \emph{forward sensor model}, as it relates a depth measurement conditioned on the occupancy of the map. 
+
+In contrast, the inverse sensor model relates the occupancy of the map conditioned on the depth measurement. This problem is solved using Bayes' theorem. However, the occupancy grid map properties yield a complicated Bayesian probability; the computational cost has exponential complexity with respect to the number of grid cells captured within the depth sensor limits. It was previously-believed that this restriction makes solving the inverse sensor model in real-time impossible. This motivated approximate or estimated solutions, described next.
+
+\paragraph{Approximated Function for the Inverse Sensor Model} Elfs et al originally proposed occupancy grid mapping in 1988...
+
 % First proposed in 80s 
 % Log-odds ratio solution
 % simplified function - lines, patched Gaussians
