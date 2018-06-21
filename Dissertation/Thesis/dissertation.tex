@@ -69,21 +69,33 @@ In short, other existing solutions to occupancy probability are inexact, and inv
 
 \subsection{Autonomous Exploration}
 
-The next topic this dissertation addresses is autonomous exploration. This topic is important for planning the trajectories of a robot to generate a complete and accurate map. Frontier-based and entropy-based approaches are commonly used to achieve this goal, described next.
+The next topic this dissertation addresses is autonomous exploration. The vast majority of work in simultaneous localization and mapping (SLAM) deals only with the aspect of estimating the environment and the poses of vehicles. These approaches are passive in the sense that SLAM is performed on incoming sensor measurements from vehicles following an arbitrary path. As such, human teleoperation and monitoring are often essential to guide the vehicles safely through unknown surroundings. Therefore, it is desirable that an active motion planning scheme is developed and integrated with SLAM such that vehicles are able to determine their path without human intervention, and explore unknown areas autonomously. The two approaches used to solve this problem are described next.
 
 \paragraph{Frontier-Based Autonomous Exploration}
 
+The most popular approach to solve the autonomous exploration problem is known as frontier-based exploration, originally-proposed in~\cite{Yam97,Yam98} for 2D applications, and was later extended to 3D with a visibility metric in~\cite{SawKriSri09} and~\cite{ZhuDinLinWu15,SenWan16,KleDor13} using the popular Octomap representation (a variation on occupancy grid mapping). The main idea is that robots toward the border between certain and uncertain space, referred to as a frontier. Then the robot takes depth measurement at this frontier, thus pushing back the boundary. This process is repeated until the map is well-known. Frontier-based exploration assumes that repeatedly moving toward the closest frontier and taking measurements are the best actions to gain new information about the map. However, these systematic actions, based on ad-hoc rules for what constitutes a frontier, do not consider the future uncertainty of the probabilistic map. Frontier-based approaches provide an intuitive solution, but lack optimality in map uncertainty or exploration time.
 
 \paragraph{Entropy-Based Autonomous Exploration}
+Entropy-based approaches address the suboptimal nature of frontier-based approaches by selecting robotic actions designed to decrease minimize map uncertainty~\cite{StaGriBur05,BurMooStaSch05}. These approaches use a measure of uncertainty known as Shannon's entropy, which becomes smaller as cell probabilities approach $0$ or $1$ (becoming more certain). Existing entropy-based approaches simulate possible future measurements from various locations with so-called ``hallucination measurements,'' which typically corresponds to expected depth measurements from the robot to the closest grid cell that is possibly occupied. Then, the robot analyzes how this measurement would affect the map uncertainty. However, this approach assumes that expected map entropy is equivalent to map entropy from expected measurements. This is not the case in general, however, as there is typically a nonzero probability that the hallucination measurement and true future measurement are not the same. Entropy-based approaches seek to optimize map uncertainty, but require large approximations which can decrease the accuracy of predictions.
 
-\
+In conclusion, existing autonomous exploration approaches are effective for eliminating the need for humans to control the robot. However, optimality remains quite difficult, so these approaches apply suboptimal or approximated solutions to achieve autonomous motions.
 
-In short, existing autonomous exploration approaches are effective for eliminating the need for humans to control the robot. However, optimality remains quite difficult, so these approaches apply suboptimal solutions to achieve autonomous motions.
-
-% JINT17: However, there are certain issues with the current SLAM techniques. First, the vast majority of work deals only with the aspect of estimating the environment and the poses of vehicles. They are passive in the sense that SLAM is per- formed on incoming sensor measurements from vehicles following an arbitrary path. As such, human teleopera- tion and monitoring are often essential to guide the vehi- cles safely through unknown surroundings. Therefore, it is desired that an active motion planning scheme is devel- oped and integrated with SLAM such that vehicles are able to determine their path without human intervention, and explore unknown areas autonomously.
 
 \subsection{Multi-Vehicle Cooperation}
 
+The final topic relates to coordinating robotic efforts to build occupancy grid maps together. These concepts are further extended to autonomous cooperative patrol, where robots periodically revisit regions to monitor a large environment.
+
+\paragraph{Cooperative Autonomous Exploration}
+
+
+
+\paragraph{Autonomous Patrol}
+
+
+
+\
+
+In short, ...
 
 \section{Outline of Dissertation}
 
@@ -92,6 +104,8 @@ ADD ONCE COMPLETE
 \section{Contributions}
 
 There are three key contributions in this dissertation. The first two are novel solutions that find exact occupancy probabilities and predicted entropies, respectively. These contributions improve the quality and efficiency of autonomous mapping and exploration of uncertain environments for single-vehicle missions. The third contribution extends these concepts to multi-vehicle scenarios, where multiple members of a team work together to autonomously explore and patrol large environments.
+
+
 
 
 \subsection{Summary of Contributions}
