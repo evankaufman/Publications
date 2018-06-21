@@ -14,68 +14,72 @@
 \contentsline {subsection}{\numberline {1.2.1}Occupancy Grid Mapping}{2}{subsection.1.2.1}
 \contentsline {paragraph}{Inverse Sensor Model}{3}{paragraph*.9}
 \contentsline {paragraph}{Approximated Function for the Inverse Sensor Model}{3}{paragraph*.10}
-\contentsline {subsection}{\numberline {1.2.2}Autonomous Exploration}{3}{subsection.1.2.2}
-\contentsline {subsection}{\numberline {1.2.3}Multi-Vehicle Cooperation}{3}{subsection.1.2.3}
-\contentsline {section}{\numberline {1.3}Outline of Dissertation}{3}{section.1.3}
-\contentsline {section}{\numberline {1.4}Contributions}{4}{section.1.4}
-\contentsline {subsection}{\numberline {1.4.1}Summary of Contributions}{4}{subsection.1.4.1}
-\contentsline {subsection}{\numberline {1.4.2}List of Publications}{5}{subsection.1.4.2}
-\contentsline {chapter}{\numberline {2}Probabilistic Occupancy Grid Mapping}{8}{chapter.2}
-\contentsline {section}{\numberline {2.1}Inverse Sensor Model}{8}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Bayesian Probability}{8}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Computationally-Efficient Solution}{8}{subsection.2.1.2}
-\contentsline {section}{\numberline {2.2}Multi-Dimensional Maps}{8}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Ray Casting}{8}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Combining Measurements from a Single Scan}{8}{subsection.2.2.2}
-\contentsline {paragraph}{Ray-By-Ray Approach}{8}{paragraph*.11}
-\contentsline {paragraph}{Synergistic Update Approach}{8}{paragraph*.12}
-\contentsline {subsection}{\numberline {2.2.3}Multi-Sensor Fusion}{8}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Practical Implications}{8}{subsection.2.2.4}
-\contentsline {section}{\numberline {2.3}Numerical and Experimental Examples}{8}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Mapping a Room}{8}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Kinect Measurement Scan Analysis}{8}{subsection.2.3.2}
-\contentsline {section}{\numberline {2.4}Conclusions}{8}{section.2.4}
-\contentsline {chapter}{\numberline {3}Autonomous Exploration in 2D Space}{9}{chapter.3}
-\contentsline {section}{\numberline {3.1}Entropy-Based Exploration}{9}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Shannon's Entropy}{9}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Expected Information Gain}{9}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}Computational Limitations and Approximations}{9}{subsection.3.1.3}
-\contentsline {section}{\numberline {3.2}Future Pose Optimization}{9}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Optimal Attitude from Sample Rays}{9}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Travel Cost with Obstacles}{9}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Optimal Pose Selection}{9}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Collision-Free Motion Planning}{9}{subsection.3.2.4}
-\contentsline {section}{\numberline {3.3}Numerical Examples}{9}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Exploring a Simple Environment}{9}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Exploring a Complicated Benchmark Environment}{9}{subsection.3.3.2}
-\contentsline {section}{\numberline {3.4}Experimental Result}{9}{section.3.4}
-\contentsline {section}{\numberline {3.5}Conclusions}{9}{section.3.5}
-\contentsline {chapter}{\numberline {4}Autonomous Exploration in Vertically-Uniform 3D Space}{10}{chapter.4}
-\contentsline {section}{\numberline {4.1}Occupancy Grid Mapping in 3D}{10}{section.4.1}
-\contentsline {section}{\numberline {4.2}Exploration in Simple Environments }{10}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Map Projections}{10}{subsection.4.2.1}
-\contentsline {section}{\numberline {4.3}Exploring a Large Room}{10}{section.4.3}
-\contentsline {section}{\numberline {4.4}Conclusions}{10}{section.4.4}
-\contentsline {chapter}{\numberline {5}Autonomous Exploration in Complex 3D Space}{11}{chapter.5}
-\contentsline {section}{\numberline {5.1}Exploration with Full 3D Maps}{11}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Collision Mapping in 3D}{11}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Future Pose Optimization in 3D}{11}{subsection.5.1.2}
-\contentsline {section}{\numberline {5.2}Numerical Simulation}{11}{section.5.2}
-\contentsline {section}{\numberline {5.3}Experiment}{11}{section.5.3}
-\contentsline {section}{\numberline {5.4}Conclusions}{11}{section.5.4}
-\contentsline {chapter}{\numberline {6}Multi-Vehicle Autonomous Exploration and Patrol}{12}{chapter.6}
-\contentsline {section}{\numberline {6.1}Bidding-Based Autonomous Exploration}{12}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Objective Function for the First Auction}{12}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Objective Function for Subsequent Auctions}{12}{subsection.6.1.2}
-\contentsline {subsection}{\numberline {6.1.3}Receding Horizon Framework}{12}{subsection.6.1.3}
-\contentsline {subsection}{\numberline {6.1.4}Multi-Vehicle Exploration Numerical Simulation}{12}{subsection.6.1.4}
-\contentsline {section}{\numberline {6.2}Multi-Vehicle Cooperative Patrol}{12}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Continuous-Time Markov Process for Cell Degradation}{12}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Multi-Vehicle Patrol Numerical Simulation}{12}{subsection.6.2.2}
-\contentsline {section}{\numberline {6.3}Conclusions}{12}{section.6.3}
-\contentsline {chapter}{\numberline {A}Appendix}{13}{appendix.A}
-\contentsline {section}{\numberline {A.1}A section}{13}{section.A.1}
-\contentsline {section}{\numberline {A.2}False Position}{13}{section.A.2}
-\contentsline {section}{\numberline {A.3}Starting the Appendices}{13}{section.A.3}
-\contentsline {chapter}{\numberline {B}Another Appendix}{15}{appendix.B}
-\contentsline {chapter}{Bibliography}{13}{section*.13}
+\contentsline {paragraph}{Learning the Inverse Sensor Model}{4}{paragraph*.11}
+\contentsline {paragraph}{Log-Odds Ratio}{4}{paragraph*.12}
+\contentsline {subsection}{\numberline {1.2.2}Autonomous Exploration}{5}{subsection.1.2.2}
+\contentsline {paragraph}{Frontier-Based Autonomous Exploration}{5}{paragraph*.13}
+\contentsline {paragraph}{Entropy-Based Autonomous Exploration}{5}{paragraph*.14}
+\contentsline {subsection}{\numberline {1.2.3}Multi-Vehicle Cooperation}{5}{subsection.1.2.3}
+\contentsline {section}{\numberline {1.3}Outline of Dissertation}{5}{section.1.3}
+\contentsline {section}{\numberline {1.4}Contributions}{6}{section.1.4}
+\contentsline {subsection}{\numberline {1.4.1}Summary of Contributions}{6}{subsection.1.4.1}
+\contentsline {subsection}{\numberline {1.4.2}List of Publications}{7}{subsection.1.4.2}
+\contentsline {chapter}{\numberline {2}Probabilistic Occupancy Grid Mapping}{10}{chapter.2}
+\contentsline {section}{\numberline {2.1}Inverse Sensor Model}{10}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Bayesian Probability}{10}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Computationally-Efficient Solution}{10}{subsection.2.1.2}
+\contentsline {section}{\numberline {2.2}Multi-Dimensional Maps}{10}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Ray Casting}{10}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Combining Measurements from a Single Scan}{10}{subsection.2.2.2}
+\contentsline {paragraph}{Ray-By-Ray Approach}{10}{paragraph*.15}
+\contentsline {paragraph}{Synergistic Update Approach}{10}{paragraph*.16}
+\contentsline {subsection}{\numberline {2.2.3}Multi-Sensor Fusion}{10}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Practical Implications}{10}{subsection.2.2.4}
+\contentsline {section}{\numberline {2.3}Numerical and Experimental Examples}{10}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Mapping a Room}{10}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Kinect Measurement Scan Analysis}{10}{subsection.2.3.2}
+\contentsline {section}{\numberline {2.4}Conclusions}{10}{section.2.4}
+\contentsline {chapter}{\numberline {3}Autonomous Exploration in 2D Space}{11}{chapter.3}
+\contentsline {section}{\numberline {3.1}Entropy-Based Exploration}{11}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Shannon's Entropy}{11}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Expected Information Gain}{11}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Computational Limitations and Approximations}{11}{subsection.3.1.3}
+\contentsline {section}{\numberline {3.2}Future Pose Optimization}{11}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Optimal Attitude from Sample Rays}{11}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Travel Cost with Obstacles}{11}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Optimal Pose Selection}{11}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Collision-Free Motion Planning}{11}{subsection.3.2.4}
+\contentsline {section}{\numberline {3.3}Numerical Examples}{11}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Exploring a Simple Environment}{11}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Exploring a Complicated Benchmark Environment}{11}{subsection.3.3.2}
+\contentsline {section}{\numberline {3.4}Experimental Result}{11}{section.3.4}
+\contentsline {section}{\numberline {3.5}Conclusions}{11}{section.3.5}
+\contentsline {chapter}{\numberline {4}Autonomous Exploration in Vertically-Uniform 3D Space}{12}{chapter.4}
+\contentsline {section}{\numberline {4.1}Occupancy Grid Mapping in 3D}{12}{section.4.1}
+\contentsline {section}{\numberline {4.2}Exploration in Simple Environments }{12}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Map Projections}{12}{subsection.4.2.1}
+\contentsline {section}{\numberline {4.3}Exploring a Large Room}{12}{section.4.3}
+\contentsline {section}{\numberline {4.4}Conclusions}{12}{section.4.4}
+\contentsline {chapter}{\numberline {5}Autonomous Exploration in Complex 3D Space}{13}{chapter.5}
+\contentsline {section}{\numberline {5.1}Exploration with Full 3D Maps}{13}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Collision Mapping in 3D}{13}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Future Pose Optimization in 3D}{13}{subsection.5.1.2}
+\contentsline {section}{\numberline {5.2}Numerical Simulation}{13}{section.5.2}
+\contentsline {section}{\numberline {5.3}Experiment}{13}{section.5.3}
+\contentsline {section}{\numberline {5.4}Conclusions}{13}{section.5.4}
+\contentsline {chapter}{\numberline {6}Multi-Vehicle Autonomous Exploration and Patrol}{14}{chapter.6}
+\contentsline {section}{\numberline {6.1}Bidding-Based Autonomous Exploration}{14}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Objective Function for the First Auction}{14}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Objective Function for Subsequent Auctions}{14}{subsection.6.1.2}
+\contentsline {subsection}{\numberline {6.1.3}Receding Horizon Framework}{14}{subsection.6.1.3}
+\contentsline {subsection}{\numberline {6.1.4}Multi-Vehicle Exploration Numerical Simulation}{14}{subsection.6.1.4}
+\contentsline {section}{\numberline {6.2}Multi-Vehicle Cooperative Patrol}{14}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Continuous-Time Markov Process for Cell Degradation}{14}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Multi-Vehicle Patrol Numerical Simulation}{14}{subsection.6.2.2}
+\contentsline {section}{\numberline {6.3}Conclusions}{14}{section.6.3}
+\contentsline {chapter}{Bibliography}{15}{section*.17}
+\contentsline {chapter}{\numberline {A}Appendix}{16}{appendix.A}
+\contentsline {section}{\numberline {A.1}A section}{16}{section.A.1}
+\contentsline {section}{\numberline {A.2}False Position}{16}{section.A.2}
+\contentsline {section}{\numberline {A.3}Starting the Appendices}{16}{section.A.3}
+\contentsline {chapter}{\numberline {B}Another Appendix}{18}{appendix.B}

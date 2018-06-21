@@ -51,14 +51,15 @@ Here we describe the existing approaches to building probabilistic occupancy gri
 
 In contrast, the inverse sensor model relates the occupancy of the map conditioned on the depth measurement. This problem is solved using Bayes' theorem. However, the occupancy grid map properties yield a complicated Bayesian probability; the computational cost has exponential complexity with respect to the number of grid cells captured within the depth sensor limits. It was previously-believed that this restriction makes solving the inverse sensor model in real-time impossible. This motivated approximate or estimated solutions, described next.
 
-\paragraph{Approximated Function for the Inverse Sensor Model} Elfs et al originally proposed occupancy grid mapping in 1988...
+\paragraph{Approximated Function for the Inverse Sensor Model} Moravec and Elfes originally proposed a grid cell-based mapping for sonar sensors in~\cite{MorElf85}, and the probabilistic properties of the occupancy grid were formalized in~\cite{MorElf85,Elf89}. This approach models measurements with Gaussian probability density, although the occupancy of grid cells is not exactly known. Instead, the probability of grid cells are estimated with a Gaussian-like \emph{approximate function}. The authors show that occupancy probability converges to a final value following a Bayesian framework, though there is no conclusive proof that this probability is accurate. Nevertheless, this approach garnered much attention because it could efficiently produce robotic maps that nicely-resembled the occupancy of spaces around a robot.
 
-% First proposed in 80s 
-% Log-odds ratio solution
-% simplified function - lines, patched Gaussians
+Several other research studies have applied approximate functions in place of the inverse sensor model. For example, \cite{ChoLynHutKanBurKavThr05} proposed a simplified continuous function composed of lines patched together near a measurement reading. Furthermore, variations of approximate smoother functions in~\cite{and09,PirRutBisSch11,KhoElb12} contain Gaussian-like terms to apply occupancy grid mapping to 3D environments with more modern sensors. Numerous research studies have used the proposed approximate functions with questionable accuracy.
 
-% Learning
-% Hill-climbing
+\paragraph{Learning the Inverse Sensor Model} The approximate nature of the inverse sensor model motivated a solution using machine learning. The main idea is to simulate maps, robot poses, and measurements with simulated noised based on the sensor stochastic properties. Then, an approximation the inverse sensor model is learned using an expectation maximization algorithm~\cite{Thr01,ThrBurFox05}. Unlike approximate functions based on intuition, the machine learning approach is based on the physical properties of sensors. However, this approach is undesirable in practice due to complexities associated to implementing a learning algorithm. For example, the accuracy of such inverse sensor models strongly depends on the samples selected for learning, but it is unclear how to select those samples, or how many samples are required to obtain a reasonable approximation. Furthermore, it is challenging to apply any learning algorithm over the large dimensional space composed of maps, poses, and measurements.
+
+\paragraph{Log-Odds Ratio} Both approaches described above use the log-odds ratio to update grid cell probabilities. The log-odds ratio formulation is a popular framework for updating binary random variables with static state within a Bayesian filter. The main idea is that instead of multiplying terms from prior and current time steps, the properties of logarithms allow these terms to be simply added, while avoiding some truncation issues associated with probabilities close to $0$ or $1$~\cite{ThrBurFox05}. This approach is also popular because the inverse sensor model needs not consider prior probabilities. Instead, these approaches typically consider fixed uniform initial probabilities of all grid cells, which makes the formulation simpler.
+
+However, the log-odds ratio formulation makes an assumption that is not consistent with the occupancy grid mapping problem. The approach yields a simplified solution by assuming that the probability of a measurement is independent of past measurements and robot poses. This assumption is frequently violated when past measurements and poses indicate the occupancy of other cells between the robot and the cell in question. As such, this approach neglects potentially important information when considering grid cell occupancy probability.
 
 In short, other existing solutions to occupancy probability are inexact, and involve a potentially-harmful log-odds ratio assumption. These shortcomings motivate an exact solution to occupancy grid mapping that can be computed in real-time.
 
@@ -68,7 +69,18 @@ In short, other existing solutions to occupancy probability are inexact, and inv
 
 \subsection{Autonomous Exploration}
 
+The next topic this dissertation addresses is autonomous exploration. This topic is important for planning the trajectories of a robot to generate a complete and accurate map. Frontier-based and entropy-based approaches are commonly used to achieve this goal, described next.
 
+\paragraph{Frontier-Based Autonomous Exploration}
+
+
+\paragraph{Entropy-Based Autonomous Exploration}
+
+\
+
+In short, existing autonomous exploration approaches are effective for eliminating the need for humans to control the robot. However, optimality remains quite difficult, so these approaches apply suboptimal solutions to achieve autonomous motions.
+
+% JINT17: However, there are certain issues with the current SLAM techniques. First, the vast majority of work deals only with the aspect of estimating the environment and the poses of vehicles. They are passive in the sense that SLAM is per- formed on incoming sensor measurements from vehicles following an arbitrary path. As such, human teleopera- tion and monitoring are often essential to guide the vehi- cles safely through unknown surroundings. Therefore, it is desired that an active motion planning scheme is devel- oped and integrated with SLAM such that vehicles are able to determine their path without human intervention, and explore unknown areas autonomously.
 
 \subsection{Multi-Vehicle Cooperation}
 
@@ -84,7 +96,10 @@ There are three key contributions in this dissertation. The first two are novel 
 
 \subsection{Summary of Contributions}
 
-The first contribution is an exact Bayesian solution to occupancy grid mapping. The proposed approach considers that occupied spaces occlude measurement behind them, which allows certain mapping outcomes to be systematically grouped together. The exact solution to occupancy grid cell probability, which was previously-believed to have exponential complexity, is now possible to solve in real-time. Numerous numerical simulations and experiments demonstrate that the proposed mapping approach in effective and inexpensive in 2D and 3D scenarios.
+The first contribution is an exact Bayesian solution to occupancy grid mapping. The proposed approach considers that occupied spaces occlude measurement behind them, which allows certain mapping outcomes to be systematically grouped together. The exact solution to occupancy grid cell probability, which was previously-believed to have exponential complexity, is now possible to solve in real-time. Numerous numerical simulations and experiments demonstrate that the proposed mapping approach is effective and inexpensive in 2D and 3D scenarios.
+
+% JINT17: This paper proposes a computationally efficient algo- rithm to construct the exact inverse sensor model. More explicitly, for a given forward sensor model defined by the probability distribution of range measurements, this algo- rithm yields the a posteriori probabilities of occupancy of all the cells within the area covered by the range sensor from the range measurements. The key idea is reducing the computational load by using the fact that if a cell is occu- pied, the occupancies of the other cells blocked by it is irrelevant to the forward sensor model, and this property is systematically utilized with various probabilistic prop- erties to derive a computationally-efficient solution to the inverse sensor model. Furthermore, the proposed approach integrates a priori probabilities of occupancy and multiple range measurements according to the Bayesian framework to obtain more accurate maps. As such, it contrasts from the existing framework based on log-odds ratios that impose an additional Markov assumption.
+
 
 The second contribution is a new approach to autonomous exploration, where the robot predicts future occupancy grid map uncertainty, using a measure known as Shannon's entropy. This approach computes the expected values of grid cell entropies from potential future measurement rays with a novel approach to predict future measurement probabilities. These predictions are used to evaluate the benefit of possible robot actions to maximize map information gain. Then, we formulate autonomous exploration as an optimization problem to maximize an objective function that includes map uncertainty and travel costs. The probabilistic map is used for collision-avoidance and motion planning. These processes are designed for real-time applications, where the robot makes decisions as it learns information about the surrounding environment.
 
