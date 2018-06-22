@@ -87,15 +87,14 @@ The final topic relates to coordinating robotic efforts to build occupancy grid 
 
 \paragraph{Cooperative Autonomous Exploration}
 
-
+Multi-vehicle cooperation is essential for robots to explore large spaces autonomously so that robots coordinate their efforts to improve map information and avoid collisions. However, optimizing map coverage simultaneously from multiple vehicles becomes very complicated and computationally intractable. Instead, an auction-based approach addresses the computational restrictions effectively. Bidding-based approaches were introduced with~\cite{SimApfBurFoxMooThrYou00,DiaSte00}, and extended to several other robotic problems~\cite{GerMaj02,ZloSteDiaTha02,SarBal05,ChoBruHow09} exploring decentralization and task allocation with varying robot capabilities. In~\cite{SimApfBurFoxMooThrYou00}, a central executive assigns tasks to robots for maximizing overall utility of the group. This is accomplished by minimizing a coverage overlap among the members. Robots submit bids based on expected coverage of uncertain spaces and travel distance. The robot winning the auction is awarded the task, and the remaining bids are discounted to prevent robots from covering the same area, thereby coordinating the mapping efforts. Bidding-based approaches simplify multi-vehicle cooperation in a computationally-efficient manner, and integrate effectively with the autonomous mapping and exploration approaches proposed in this dissertation. 
 
 \paragraph{Autonomous Patrol}
 
+Robotic surveillance and cleaning are examples of tasks that require periodic observations of the same regions. Several patrolling approaches have been proposed in recent years to address this need. A popular approach is decomposing the reachable space into Voronoi diagrams~\cite{KolCar08,PorRoc10,PipChrWei13}. In~\cite{KolCar08}, edges between nodes of the Voronoi graph are heavily sensed to track intruders. In~\cite{PorRoc10}, regions of the Voronoi diagram are assigned to different robots, and issues with robots having underperforming surveillance capabilities are addressed in~\cite{PipChrWei13}. These approaches assume the map is well-known in advance, and require a Voronoi graph be generated from the map.
 
+Other patrol approaches create new metrics about the environment. Cell periodicity is estimated in~\cite{KraFenCieDonDuc14,KraFenHanDuc16} by predicting and observing the long-term dynamics of objects at the same locations on an occupancy grid. This work is extended to exploring and navigating a human-populated environment for long-term autonomy. A bio-inspired approach is proposed in~\cite{ZhaXia11}, where robots cooperate by dropping digital pheromones based on the importance of events, where the pheromones weaken over time to prioritize future tasks. Another approach is formulating patrol as an optimization problem with respect to robot idleness in~\cite{YanZha16}. The prior work in autonomous patrol demonstrates that periodic actions can be incentivized with a metric to be optimized.
 
-\
-
-In short, ...
 
 \section{Outline of Dissertation}
 
