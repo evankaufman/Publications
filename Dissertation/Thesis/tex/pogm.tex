@@ -164,28 +164,29 @@ In short, the proposed scan inverse sensor model is computed by \refeqn{RayISMAn
 
 \vspace*{0.05\columnwidth}
 \begin{algorithm}[H]
-	Function: $P(\mathbf{r}_k|Z)=\text{InverseSensorModelRayByRay}(P(\mathbf{r}_k),Z)$\;
+	Function: $P(m|X,Z)=\text{InverseSensorModelRayByRay}(P(m),X,Z)$\;
 	% $\forall$ $l\in\braces{1,2,\ldots,n_{l}}$\;
 	
 	\For{$l=1,2,\ldots,n_{l}$}{
 		Find $n_{r,l}$ cells from $m$ corresponding to $z_l$\;
-		Initialize $\eta_l^{-1}=0$ and $P(\bar{\mathbf{r}}_{1:l,0})=1$\;
+		Initialize $\eta_l^{-1}=0$ and $P(\bar{\mathbf{r}}_{l,0}|X,z_{1:l-1})=1$ ($z_{1:0}$ is no condition)\;
 		\For{$k=1,2,\ldots,n_{r,l}$}{
-			$P(\mathbf{r}_{1:l,k+}) = P(\bar{\mathbf{r}}_{1:l,0:k-1})P(\mathbf{r}_{1:l,k})$\;
-			$P(\bar{\mathbf{r}}_{1:l,0:k})=P(\bar{\mathbf{r}}_{1:l,0:k-1})(1-P(\mathbf{r}_{1:l,k}))$\;
-    			$a_\text{temp}=P(\mathbf{r}_{1:l,k+})p(z_l|\mathbf{r}_{1:l,k+},X)$\;
-   			$\tilde P(\mathbf{r}_{l,k}|z_{1:l})=P(\mathbf{r}_{1:l,k})\eta^{-1}_{l}+a_\text{temp}$\;
+			$P(\mathbf{r}_{l,k+}|X,z_{1:l-1}) = P(\bar{\mathbf{r}}_{l,0:k-1}|X,z_{1:l-1})P(\mathbf{r}_{l,k}|X,z_{1:l-1})$\;
+			$P(\bar{\mathbf{r}}_{l,0:k}|X,z_{1:l-1})=P(\bar{\mathbf{r}}_{l,0:k-1}|X,z_{1:l-1})(1-P(\mathbf{r}_{l,k}|X,z_{1:l-1}))$\;
+    			$a_\text{temp}=P(\mathbf{r}_{l,k+}|X,z_{1:l-1})p(z_l|\mathbf{r}_{1:l,k+},X)$\;
+   			$\tilde P(\mathbf{r}_{l,k}|X,z_{1:l})=P(\mathbf{r}_{l,k}|X,z_{1:l-1})\eta^{-1}_{l}+a_\text{temp}$\;
    			$\eta_l^{-1}=\eta_l^{-1}+a_\text{temp}$\;
 		}
-	$\eta_l^{-1}=\eta_l^{-1}+P(\bar{\mathbf{r}}_{1:l,0:k})p(z_\text{max})$\;
-	$P(\mathbf{r}_{k}|z_{1:l})=\eta\tilde P(\mathbf{r}_{k}|z_{1:l})$ for all $k\in\braces{1,2,\ldots,n_{r,l}}$\;
-	Substitute $P(\mathbf{r}_{k}|z_{1:l})$ back into $P(m|z_{1:l})$\;
+	$\eta_l^{-1}=\eta_l^{-1}+P(\bar{\mathbf{r}}_{l,0:k}|X,z_{1:l})p(z_\text{max})$\;
+	$P(\mathbf{r}_{k}|z_{1:l})=\eta\tilde P(\mathbf{r}_{k}|X,z_{1:l})$ for all $k\in\braces{1,2,\ldots,n_{r,l}}$\;
+	Substitute $P(\mathbf{r}_{k}|X,z_{1:l})$ back into $P(m|X,z_{1:l})$\;
 	}
-	Return $P(m|Z)$\;
-\caption{Inverse Sensor Model of an Individual Measurement Ray}
+	Return $P(m|X,z_{1:n_{l}})=P(m|X,Z)$\;
+\caption{Inverse Sensor Model of a Scan Updated Ray-By-Ray}
 \label{alg:RayByRayISM}
 \end{algorithm}
 \vspace*{0.05\columnwidth}
+\newpage
 
 
 
@@ -279,49 +280,46 @@ c_k&=P(\bar{\mathbf{r}}_{l,k}|X_{1:t-1},Z_{1:t-1})^{-1}
 \nonumber\\&\quad\times 
 \sum_{i=k+1}^{n_{r,l}+1}\bigg\{\prod_{j=0}^{i-1}P(\bar{\mathbf{r}}_{l,j}|X_{1:t-1},Z_{1:t-1})\bigg\}\nonumber\\&\quad\times p(z_{t,l}|\mathbf{r}_{l,i+},X_t)P(\mathbf{r}_{l,i}|X_{1:t-1},Z_{1:t-1}),
 \end{align*}
-to compute \refeqn{ISM_Fusion}-\refeqn{xi}.
+to compute \refeqn{ISM_Fusion}-\refeqn{xi}. Once again, the history of poses and measurement scans are removed from the pseudocode for simplicity.
 
-\begin{table}
-\begin{tabular}{ l }
-  for $l = 1,2,...,n_z$\\
-   \ \ Obtain reduced map $r_{t,l}$\\
-   \ \ Define $P(\mathbf{r}_{l,0}|X_{1:t-1},Z_{1:t-1})=0$, $P(\bar{\mathbf{r}}_{l,0}|X_{1:t-1},Z_{1:t-1})=1$, \\  \ \ \ \ \ \ \ \ \ \   $P(\mathbf{r}_{l,n_r+1}|X_{1:t-1},Z_{1:t-1})=1$;\\
-   \ \ for $k = 1,2,...,n_r$\\
-   \ \ \ \ Obtain $p(z_{t,l}|X_t,\mathbf{r}_{l,k})$ from a forward sensor model\\
-   \ \ \ \ if $k=1$\\
-   \ \ \ \ \ \ $a_1=0$, $b_1=1$;\\
-   \ \ \ \ else\\
-   \ \ \ \ \ \ $a_k=a_{k-1}+b_{k-1}p(z_{t,l}|\mathbf{r}_{l,k-1},X_t)P(\mathbf{r}_{l,k-1}|X_{1:t-1},Z_{1:t-1})$;\\
-   \ \ \ \ \ \ $b_k=b_{k-1}P(\bar{\mathbf{r}}_{l,k-1}|X_{1:t-1},Z_{1:t-1})$;\\
-   \ \ \ \ end if\\
-   \ \ end for\\
-   \ \ $c_{n_{r,l}+1}=0$;\\
-   \ \ for $k = n_{r,l},n_{r,l}-1,...,1$\\
-   \ \ \ \ $c_k=\frac{P(\mathbf{r}_{l,k+1}|X_{1:t-1},Z_{1:t-1})}{P(\bar{\mathbf{r}}_{l,k}|X_{1:t-1},Z_{1:t-1})}c_{k+1}$\\
-   \ \ \ \ \ \ \ \ \ \ \ \ $+b_{k}p(z_{t,l}|\mathbf{r}_{l,k+1},X_t)P(\mathbf{r}_{l,k+1}|X_{1:t-1},Z_{1:t-1})$;\\
-   \ \ end for\\
-   \ \ for $k = 1,2,...,n_r$\\
-   \ \ \ \ $\hat P(\mathbf{r}_{l,k}|z_{t,l},X_{1:t},Z_{1:t-1})=a_k+b_kp(z_{t,l}|\mathbf{r}_{l,k},X_t)$;\\
-   \ \ \ \ $\hat P(\bar{\mathbf{r}}_{l,k}|z_{t,l},X_{1:t},Z_{1:t-1})=a_k+c_k$;\\
-   \ \ end for\\
-   end for\\
-   for all $i$ map cells inside the FOV\\
-   \ \ Obtain the set $\mathcal L_i$ of $l_i$ measurement rays intersecting this cell\\
-   \ \ if $l_i>0$\\
-   \ \ \ \ $d=P(\mathbf{m}_i|X_{1:t-1},Z_{1:t-1})\prod_{\mathcal L_i}\hat P(\mathbf{r}_{l,k}|z_{t,l},X_{1:t},Z_{1:t-1})$;\\
-   \ \ \ \ $e=P(\bar{\mathbf{m}}_i|X_{1:t-1},Z_{1:t-1})\prod_{\mathcal L_i}\hat P(\bar{\mathbf{r}}_{l,k}|z_{t,l},X_{1:t},Z_{1:t-1})$;\\
-   \ \ \ \ $P(\mathbf{m}_i|X_{1:t},Z_{1:t})=\frac{d}{d+e}$;\\
-   \ \ else\\
-   \ \ \ \ $P(\mathbf{m}_i|X_{1:t},Z_{1:t})=P(\mathbf{m}_i|X_{1:t-1},Z_{1:t-1});$\\
-   \ \ end if\\
-   \ \ Return: $P(\mathbf{m}_i|X_{1:t},Z_{1:t})$\\
-   end for\\
-
-\end{tabular}
-\caption{Fast Algorithm of the Exact Solution of the Inverse Sensor Model for $l$ Simultaneous Measurement Rays}
-\label{tab:Alg_ISM_2D}
-\end{table}
-
+% TODO: check spacing of algorithms once complete
+\vspace*{0.05\columnwidth}
+\begin{algorithm}[H]
+	Function: $P(m|X,Z)=\text{InverseSensorModelSynergistic}(P(m),X,Z)$\;
+	\For{$l=1,2,\ldots,n_{l}$}{
+		Find $n_{r,l}$ cells from $m$ corresponding to $z_l$\;
+		Define $P(\mathbf{r}_{l,0})=0$, $P(\bar{\mathbf{r}}_{l,0})=1$, $P(\mathbf{r}_{l,n_{r,l}+1})=1$, and $c_{n_{r,l}+1}=0$\;
+		\For{$k=1,2,\ldots,n_{r,l}$}{
+			\If{$k=1$}{
+				$a_1=0$, $b_1=1$\;
+			}
+			\Else{
+				$a_k=a_{k-1}+b_{k-1}p(z_{l}|\mathbf{r}_{l,k-1},X)P(\mathbf{r}_{l,k-1})$, $b_k=b_{k-1}P(\bar{\mathbf{r}}_{l,k-1})$\;
+			}
+		}
+		\For{$k = n_{r,l},n_{r,l}-1,...,1$}{
+			$c_k=\frac{P(\mathbf{r}_{l,k+1})}{P(\bar{\mathbf{r}}_{l,k})}c_{k+1}+b_{k}p(z_{t,l}|\mathbf{r}_{l,k+1},X)P(\mathbf{r}_{l,k+1})$\;
+		}
+		\For{$k = 1,2,...,n_{r,l}$}{
+			$\hat P(\mathbf{r}_{l,k}|z_{t,l},X)=a_k+b_kp(z_{t,l}|\mathbf{r}_{l,k},X)$, $\hat P(\bar{\mathbf{r}}_{l,k}|z_{t,l},X,)=a_k+c_k$\;
+		}
+	}
+	\For{$i\in m_\text{FOV}$ \text{(map cells inside FOV)}}{
+		Obtain the set $\mathcal L_i$ of $l_i$ measurement rays intersecting this cell\;
+		\If{$l_i>0$}{
+			$d=P(\mathbf{m}_i)\prod_{\mathcal L_i}\hat P(\mathbf{r}_{l,k}|z_{t,l},X)$\;
+			$e=P(\bar{\mathbf{m}}_i)\prod_{\mathcal L_i}\hat P(\bar{\mathbf{r}}_{l,k}|z_{t,l},X)$\;
+			$P(\mathbf{m}_i|X,Z)=\frac{d}{d+e}$\;
+		}
+		\Else{
+			$P(\mathbf{m}_i|X,Z)=P(\mathbf{m}_i)$\;
+		}
+	}
+	Return $P(m|X,Z)$\;
+\caption{Inverse Sensor Model of a Scan Updated Synergistically}
+\label{alg:SynergisticScanISM}
+\end{algorithm}
+\vspace*{0.05\columnwidth}
 
 
 
