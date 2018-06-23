@@ -106,18 +106,24 @@ and it is independent of the cell index $k$.
 See Appendix.
 \end{proof}
 
-Note that the a priori estimate, $P(\mathbf{r}_{l,k}|X_{1:t-1},Z_{1:t-1})$ and its compliment $\\P(\bar{\mathbf{r}}_{l,k}|X_{1:t-1},Z_{1:t-1})=1-P(\mathbf{r}_{l,k}|X_{1:t-1},Z_{1:t-1})$ are available at the $t$-th step. Then, \refeqn{RayISMAnswer} yields a sequential occupancy grid mapping that can be applied whenever new measurements are available. 
+%Note that the a priori estimate, $P(\mathbf{r}_{l,k}|X_{1:t-1},Z_{1:t-1})$ and its compliment $\\P(\bar{\mathbf{r}}_{l,k}|X_{1:t-1},Z_{1:t-1})=1-P(\mathbf{r}_{l,k}|X_{1:t-1},Z_{1:t-1})$ are available at the $t$-th step. Then, \refeqn{RayISMAnswer} yields a sequential occupancy grid mapping that can be applied whenever new measurements are available. 
 
+%where a priori probability is $\mathbf{P}_k^-=P(\mathbf{r}_{k}|X_{1:t-1},Z_{1:t-1})$, its complement is $\bar{\mathbf{P}}_k^-=1-\mathbf{P}_k^-$, $P(\bar{\mathbf{r}}_{0}|X_{1:t-1},Z_{1:t-1})=P(\mathbf{r}_{n_{r,l}+1}|X_{1:t-1},Z_{1:t-1})=1$ for convenience, and $p(z_{t,l}|\mathbf{r}_{(n_{r,l}+1)+},X_t)$ represents the forward sensor model of a maximum sensor reading. 
+%The proofs of \refeqn{RayISMAnswer}--\refeqn{Unnormalized} are given in~\cite{KauLeeAiMos16}. 
+
+Since $\tilde P(\mathbf{r}_{l,k}|z_{t,l},X_{1:t},Z_{1:t-1})$ from \refeqn{Unnormalized} uses several repeated terms from the prior $\tilde P(\mathbf{r}_{l,k-1}|z_{t,l},X_{1:t},Z_{1:t-1})$, and $\eta_{t,l}$ is easily obtained from these as well, the computational cost of \refeqn{RayISMAnswer} is linear with respect to the number of cells along a measurement ray, amortized to $\mathcal{O}(1)$ for each cell, so the exact inverse sensor model can be applied in real-time. The process of updating each cell along a measurement ray is repeated for all rays composing scan $Z_t$.
 
 % TODO: add update paragraph from JINT18
 
 %Compared with \refeqn{InvSenModWithProbDens}, where the terms of the summation should be repeated $2^{n_{r,l}}$ times \emph{per each cell of the reduced map}, the proposed expressions \refeqn{RayISMAnswer} and \refeqn{allEta} are \textit{substantially} simpler. In fact, if \refeqn{Unnormalized} and \refeqn{allEta} are obtained recursively, requiring the summation of $O(n_{r,l}+1)$ rather than $O(n_{r,l}\times2^{n_{r,l}})$ as previously thought for \emph{all cells of the reduced map}, this yields an algorithm that is $\mathbf{n_{r,l}\times2^{n_{r,l}}/(n_{r,l}+1)}$ \textbf{times faster}.
 
-\section{Multi-Dimensional Maps}
+\section{Mapping in 2D Space}
 
 The above formulations describe how a single ray updates grid cells along its 1D path. Next we describe how measurement rays can update 2D maps, and how large scans of measurement rays are handled together.
 
 \subsection{Ray Casting}
+
+Ray casting is the process of determining which cells a measurement ray might intersect, and the distances to these cells.
 
 \subsection{Combining Measurements from a Single Scan}
 
