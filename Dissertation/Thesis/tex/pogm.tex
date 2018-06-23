@@ -152,15 +152,192 @@ Next, we describe two approaches to combine the inverse sensor models of numerou
 
 \paragraph{Ray-By-Ray Approach}
 
+At the $t$-th time step, consider the measurement scan $Z_t=\{z_{t,1},z_{t,2},...,z_{t,n_z}\}$. One may apply the results of Proposition 1 repeatedly for each ray to obtain a two-dimensional inverse sensor model because
+\begin{align}
+\label{eqn:RayByRayScanISM}
+P(\mathbf{m}_i|X_{1:t},Z_{1:t})&%=P(\mathbf{m}_i|X_{1:t},Z_{1:t-1}|z_{t,1},z_{t,2},...,z_{t,n_z})\nonumber\\&
+=P(\mathbf{m}_i|X_{1:t},Z_{1:t-1}|z_{t,1}|z_{t,2}|...|z_{t,n_z}).
+\end{align}
+In this approach, each ray is considered individually such that the inverse sensor model updates the probabilities of grid cells from one ray before subsequent rays of $Z_t$ are considered. Therefore, we assume $z_{t,1}$ is independent of $z_{t,2:n_z}$. For the second ray, namely $z_{t,2}$, this may depend on $z_{t,1}$, but not subsequent rays $z_{t,3:n_z}$. By the time $z_{t,n_z}$ is considered, it may depend on all prior rays $z_{t,1:n_z-1}$. Therefore, the ray-by-ray approach considers rays within a single scan as partially dependent on each other.
+
+In short, the proposed scan inverse sensor model is computed by \refeqn{RayISMAnswer}-\refeqn{RayByRayScanISM}. These are summarized in Algorithm \ref{alg:RayByRayISM} as a computationally efficient, recursive algorithm that avoids several repeated calculations of the same quantity. This algorithm utilizes temporary variables, where the required computational resources are minimized by computing the updated occupancy probabilities of all grid cells along a measurement ray together. Note that this function is only considering $l$-th ray at the $t$-th time step, where probabilities are subject to conditions on $X_{1:t},Z_{1:t-1},z_{t,1:l-1}$, so these are removed from the algorithm for simplicity.
+
+\vspace*{0.05\columnwidth}
+\begin{algorithm}[H]
+	Function: $P(\mathbf{r}_k|Z)=\text{InverseSensorModelRayByRay}(P(\mathbf{r}_k),Z)$\;
+	% $\forall$ $l\in\braces{1,2,\ldots,n_{l}}$\;
+	
+	\For{$l=1,2,\ldots,n_{l}$}{
+		Find $n_{r,l}$ cells from $m$ corresponding to $z_l$\;
+		Initialize $\eta_l^{-1}=0$ and $P(\bar{\mathbf{r}}_{1:l,0})=1$\;
+		\For{$k=1,2,\ldots,n_{r,l}$}{
+			$P(\mathbf{r}_{1:l,k+}) = P(\bar{\mathbf{r}}_{1:l,0:k-1})P(\mathbf{r}_{1:l,k})$\;
+			$P(\bar{\mathbf{r}}_{1:l,0:k})=P(\bar{\mathbf{r}}_{1:l,0:k-1})(1-P(\mathbf{r}_{1:l,k}))$\;
+    			$a_\text{temp}=P(\mathbf{r}_{1:l,k+})p(z_l|\mathbf{r}_{1:l,k+},X)$\;
+   			$\tilde P(\mathbf{r}_{l,k}|z_{1:l})=P(\mathbf{r}_{1:l,k})\eta^{-1}_{l}+a_\text{temp}$\;
+   			$\eta_l^{-1}=\eta_l^{-1}+a_\text{temp}$\;
+		}
+	$\eta_l^{-1}=\eta_l^{-1}+P(\bar{\mathbf{r}}_{1:l,0:k})p(z_\text{max})$\;
+	$P(\mathbf{r}_{k}|z_{1:l})=\eta\tilde P(\mathbf{r}_{k}|z_{1:l})$ for all $k\in\braces{1,2,\ldots,n_{r,l}}$\;
+	Substitute $P(\mathbf{r}_{k}|z_{1:l})$ back into $P(m|z_{1:l})$\;
+	}
+	Return $P(m|Z)$\;
+\caption{Inverse Sensor Model of an Individual Measurement Ray}
+\label{alg:RayByRayISM}
+\end{algorithm}
+\vspace*{0.05\columnwidth}
+
+
+
 
 
 \paragraph{Synergistic Update Approach}
 
-\subsection{Multi-Sensor Fusion}
+In this approach, all rays from a single scan are considered simultaneously for a synergistic update of all grid cells falling inside the scan FOV. However, the subsequent formulations require the assumption that all measurement rays within the scan are mutually independent.
+Here, we construct such two-dimensional inverse sensor model, referred to as the synergistic scan inverse sensor model.
+Let $\mathcal L_i\subset\{1,\ldots, n_z\}$ be the set of rays that pass through the $i$-th cell, $\mathbf{m}_i$. Applying Bayes' rule repeatedly, we obtain
+\begin{align}
+&P(\mathbf{m}_i|X_{1:t},Z_{1:t})\nonumber\\
+&=\tilde\zeta_i\braces{\prod_{l\in\mathcal{L}_i}p(z_{t,l}|\mathbf{m}_i,X_{1:t},Z_{1:t-1})}P(\mathbf{m}_i|X_{1:t-1},Z_{1:t-1})\nonumber\\
+&=
+\zeta_i P(\mathbf{m}_i|X_{1:t-1},Z_{1:t-1})%\nonumber\\&\quad\times
+\prod_{l\in\mathcal{L}_i}\frac{P(\mathbf{m}_i|z_{t,l},X_{1:t},Z_{1:t-1})}{P(\mathbf{m}_i|X_{1:t-1},Z_{1:t-1})},
+\label{eqn:ThirdBayesRule}
+\end{align}
+where $\tilde\zeta_i,\zeta_i\in\Re$ correspond to normalizing constants independent of $\mathbf{m}_i$. 
 
-\subsection{Practical Implications}
+Suppose the $l$-th measurement ray intersects with the cell $\mathbf{m}_i$, and it is the $k$-th cell of the corresponding reduced map, i.e., $\mathbf{r}_{l,k}$ corresponds to the cell $\mathbf{m}_i$ in the $l$-th reduced map, and $\mathbf{r}_{l,k}=\mathbf{m}_i$ since they represent the same cell.  Then, we have $P(\mathbf{m}_i|z_{t,l},X_{1:t},Z_{1:t-1})=P(\mathbf{r}_{l,k}|z_{t,l},X_{1:t},Z_{1:t-1})=\eta_{t,l}\tilde P(\mathbf{r}_{l,k}|z_{t,l},X_{1:t},Z_{1:t-1})$. 
 
-\section{Numerical and Experimental Examples}
+Using this, \refeqn{ThirdBayesRule} is rewritten as
+\begin{align}
+P(\mathbf{m}_i|X_{1:t},Z_{1:t})
+&=\xi_i P(\mathbf{m}_i|{X_{1:t-1}},Z_{1:t-1})
+\prod_{l\in\mathcal L_i}
+\hat P(\mathbf{r}_{l,k}|z_{t,l},X_{1:t},Z_{1:t-1})
+,
+\label{eqn:ISM_Fusion}
+\end{align}
+where the normalizer $\xi_i$ is composed of the product of normalizers $\zeta_i$, and $\eta_i$. Here, we introduce a new term $\hat P(\mathbf{r}_{l,k}|z_{t,l},X_{1:t},Z_{1:t-1})$ for computational efficiency as
+\begin{align}
+&\hat P(\mathbf{r}_{l,k}|z_{t,l},X_{1:t},Z_{1:t-1})
+\triangleq \frac{\tilde P(\mathbf{r}_{l,k}|z_{t,l},X_{1:t},Z_{1:t-1})}{P(\mathbf{m}_i|X_{1:t-1},Z_{1:t-1})}
+\nonumber\\&=
+\sum_{i=1}^{k-1}\bigg\{\prod_{j=0}^{i-1}P(\bar{\mathbf{r}}_{l,j}|X_{1:t-1},Z_{1:t-1})\bigg\}p(z_{t,l}|\mathbf{r}_{l,i+},X_t)P(\mathbf{r}_{l,i}|X_{1:t-1},Z_{1:t-1})
+\nonumber\\&\quad
++
+\bigg\{\prod_{j=0}^{k-1}P(\bar{\mathbf{r}}_{l,j}|X_{1:t-1},Z_{1:t-1})\bigg\}p(z_{t,l}|\mathbf{r}_{l,k+},X_t),
+\end{align}
+where we have used \refeqn{Unnormalized}. Similarly, its complement is
+\begin{align}
+P(\bar{\mathbf{m}}_i|{{X_{1:t}}},Z_{1:t})
+&=\xi_i P(\bar{\mathbf{m}}_i|{X_{1:t-1}},Z_{1:t-1})
+\prod_{l\in\mathcal L_i}
+\hat P(\bar{\mathbf{r}}_{l,k}|z_{t,l},X_{1:t},Z_{1:t-1})
+,
+\label{eqn:ISM_Bar_Fusion}
+\end{align}
+where $\hat P(\bar{\mathbf{r}}_{l,k}|z_{t,l},X_{1:t},Z_{1:t-1})$ is defined as
+\begin{align}
+&\hat P(\bar{\mathbf{r}}_{l,k}|z_{t,l},X_{1:t},Z_{1:t-1})
+\triangleq\frac{\tilde P(\bar{\mathbf{r}}_{l,k}|z_{t,l},X_{1:t},Z_{1:t-1})}{P(\bar{\mathbf{m}}_i|X_{1:t},Z_{1:t-1})}
+\nonumber\\
+&=\sum_{i=1}^{k-1}\bigg\{\prod_{j=0}^{i-1}P(\bar{\mathbf{r}}_{l,j}|X_{1:t-1},Z_{1:t-1})\bigg\} p(z_{t,l}|\mathbf{r}_{l,i+},X_t)P(\mathbf{r}_{l,i}|X_{1:t-1},Z_{1:t-1})
+\nonumber
+\\
+&\quad
++\frac{
+\sum_{i=k+1}^{n_{r,l}+1}\bigg\{\prod_{j=0}^{i-1}P(\bar{\mathbf{r}}_{l,j}|X_{1:t-1},Z_{1:t-1})\bigg\}p(z_{t,l}|\mathbf{r}_{l,i+},X_t)P(\mathbf{r}_{l,i}|X_{1:t-1},Z_{1:t-1})}{P(\bar{\mathbf{r}}_{l,k}|X_{1:t-1},Z_{1:t-1})},
+\end{align}
+which is obtained from \refeqn{tildePbar}. Since % TODO: ref in appendix
+\begin{align*}
+P(\mathbf{m}_i|X_{1:t},Z_{1:t})+P(\bar{\mathbf{m}}_i|X_{1:t},Z_{1:t})=1,
+\end{align*}
+the normalizer $\xi_i$ is obtained using \refeqn{ISM_Fusion} and \refeqn{ISM_Bar_Fusion} as,
+\begin{align}
+&\xi_i=
+\bigg[
+P(\mathbf{m}_i|{X_{1:t-1}},Z_{1:t-1})
+\prod_{\mathcal L_i}
+\hat P(\mathbf{r}_{l,k}|z_{t,l},{X_{1:t}},Z_{1:t-1})
+\nonumber\\&\quad
++
+P(\bar{\mathbf{m}}_i|{X_{1:t-1}},Z_{1:t-1})
+\prod_{\mathcal L_i}
+\hat P(\bar{\mathbf{r}}_{l,k}|z_{t,l},X_{1:t},Z_{1:t-1})
+\bigg]^{-1},\label{eqn:xi}
+\end{align}
+which is substituted into \refeqn{ISM_Fusion} to obtain the complete scan inverse sensor model $P(\mathbf{m}_i|X_{1:t},Z_{1:t})$. 
+
+
+The synergistic scan inverse sensor model algorithm is summarized with the pseudocode of Algorithm \ref{alg:SynergisticScanISM} as a computationally efficient, recursive algorithm that avoids repeated calculations of the same quantity. This algorithm utilizes the following temporary variables to develop the algorithm in an efficient recursive form, defined as
+\begin{align*}
+a_k&=\sum_{i=1}^{k-1}\bigg\{\prod_{j=0}^{i-1}P(\bar{\mathbf{r}}_{l,j}|X_{1:t-1},Z_{1:t-1})\bigg\}\nonumber\\&\quad\times p(z_{t,l}|\mathbf{r}_{l,i},X_t)P(\mathbf{r}_{l,i}|X_{1:t-1},Z_{1:t-1}),
+\\
+b_k&=\prod_{j=0}^{k-1}P(\bar{\mathbf{r}}_{l,j}|X_{1:t-1},Z_{1:t-1}),
+\nonumber\\
+c_k&=P(\bar{\mathbf{r}}_{l,k}|X_{1:t-1},Z_{1:t-1})^{-1}
+\nonumber\\&\quad\times 
+\sum_{i=k+1}^{n_{r,l}+1}\bigg\{\prod_{j=0}^{i-1}P(\bar{\mathbf{r}}_{l,j}|X_{1:t-1},Z_{1:t-1})\bigg\}\nonumber\\&\quad\times p(z_{t,l}|\mathbf{r}_{l,i+},X_t)P(\mathbf{r}_{l,i}|X_{1:t-1},Z_{1:t-1}),
+\end{align*}
+to compute \refeqn{ISM_Fusion}-\refeqn{xi}.
+
+\begin{table}
+\begin{tabular}{ l }
+  for $l = 1,2,...,n_z$\\
+   \ \ Obtain reduced map $r_{t,l}$\\
+   \ \ Define $P(\mathbf{r}_{l,0}|X_{1:t-1},Z_{1:t-1})=0$, $P(\bar{\mathbf{r}}_{l,0}|X_{1:t-1},Z_{1:t-1})=1$, \\  \ \ \ \ \ \ \ \ \ \   $P(\mathbf{r}_{l,n_r+1}|X_{1:t-1},Z_{1:t-1})=1$;\\
+   \ \ for $k = 1,2,...,n_r$\\
+   \ \ \ \ Obtain $p(z_{t,l}|X_t,\mathbf{r}_{l,k})$ from a forward sensor model\\
+   \ \ \ \ if $k=1$\\
+   \ \ \ \ \ \ $a_1=0$, $b_1=1$;\\
+   \ \ \ \ else\\
+   \ \ \ \ \ \ $a_k=a_{k-1}+b_{k-1}p(z_{t,l}|\mathbf{r}_{l,k-1},X_t)P(\mathbf{r}_{l,k-1}|X_{1:t-1},Z_{1:t-1})$;\\
+   \ \ \ \ \ \ $b_k=b_{k-1}P(\bar{\mathbf{r}}_{l,k-1}|X_{1:t-1},Z_{1:t-1})$;\\
+   \ \ \ \ end if\\
+   \ \ end for\\
+   \ \ $c_{n_{r,l}+1}=0$;\\
+   \ \ for $k = n_{r,l},n_{r,l}-1,...,1$\\
+   \ \ \ \ $c_k=\frac{P(\mathbf{r}_{l,k+1}|X_{1:t-1},Z_{1:t-1})}{P(\bar{\mathbf{r}}_{l,k}|X_{1:t-1},Z_{1:t-1})}c_{k+1}$\\
+   \ \ \ \ \ \ \ \ \ \ \ \ $+b_{k}p(z_{t,l}|\mathbf{r}_{l,k+1},X_t)P(\mathbf{r}_{l,k+1}|X_{1:t-1},Z_{1:t-1})$;\\
+   \ \ end for\\
+   \ \ for $k = 1,2,...,n_r$\\
+   \ \ \ \ $\hat P(\mathbf{r}_{l,k}|z_{t,l},X_{1:t},Z_{1:t-1})=a_k+b_kp(z_{t,l}|\mathbf{r}_{l,k},X_t)$;\\
+   \ \ \ \ $\hat P(\bar{\mathbf{r}}_{l,k}|z_{t,l},X_{1:t},Z_{1:t-1})=a_k+c_k$;\\
+   \ \ end for\\
+   end for\\
+   for all $i$ map cells inside the FOV\\
+   \ \ Obtain the set $\mathcal L_i$ of $l_i$ measurement rays intersecting this cell\\
+   \ \ if $l_i>0$\\
+   \ \ \ \ $d=P(\mathbf{m}_i|X_{1:t-1},Z_{1:t-1})\prod_{\mathcal L_i}\hat P(\mathbf{r}_{l,k}|z_{t,l},X_{1:t},Z_{1:t-1})$;\\
+   \ \ \ \ $e=P(\bar{\mathbf{m}}_i|X_{1:t-1},Z_{1:t-1})\prod_{\mathcal L_i}\hat P(\bar{\mathbf{r}}_{l,k}|z_{t,l},X_{1:t},Z_{1:t-1})$;\\
+   \ \ \ \ $P(\mathbf{m}_i|X_{1:t},Z_{1:t})=\frac{d}{d+e}$;\\
+   \ \ else\\
+   \ \ \ \ $P(\mathbf{m}_i|X_{1:t},Z_{1:t})=P(\mathbf{m}_i|X_{1:t-1},Z_{1:t-1});$\\
+   \ \ end if\\
+   \ \ Return: $P(\mathbf{m}_i|X_{1:t},Z_{1:t})$\\
+   end for\\
+
+\end{tabular}
+\caption{Fast Algorithm of the Exact Solution of the Inverse Sensor Model for $l$ Simultaneous Measurement Rays}
+\label{tab:Alg_ISM_2D}
+\end{table}
+
+
+
+
+
+In short, we propose two alternatives for combining inverse sensor models for multiple rays within a scan. The ray-by-ray approach updates the entire map one ray at a time with some dependancies among the rays, while the synergistic approach considers all rays together where rays are assumed mutually independent.
+
+
+
+
+% From ACC16: In contrast to the current approximate inverse sensor models, the proposed algorithm evaluates the exact inverse sensor model \refeqn{InvSenModWithProbDens} efficiently without relying on assumptions like \refeqn{AssumptionEarly}, while integrating multiple measurements synergistically. Therefore, it yields substantially more accurate maps for the same set of measurements. These are illustrated by numerical examples and experiments as follows.
+
+
+% TODO: move 2 below to 3D mapping part
+%\subsection{Multi-Sensor Fusion}
+%
+%\subsection{Practical Implications}
 
 \subsection{Mapping a Room}
 % ACC16 comparison of exact/approx. inverse sensor models
@@ -168,6 +345,8 @@ Next, we describe two approaches to combine the inverse sensor models of numerou
 \subsection{Kinect Measurement Scan Analysis}
 % ACC16 Single scan exact/approx. comparison
 
+
+% Upon further study, the ray-by-ray approach has proven more robust against localization errors and changing environments because the rays are not assumed completely independent.
 
 \section{Conclusions}
 
