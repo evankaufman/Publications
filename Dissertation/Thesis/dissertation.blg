@@ -1,6 +1,7 @@
 This is BibTeX, Version 0.99d (TeX Live 2016)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: dissertation.aux
+A level-1 auxiliary file: tex/intro.aux
 A level-1 auxiliary file: tex/pogm.aux
 A level-1 auxiliary file: tex/ae2D.aux
 A level-1 auxiliary file: tex/ae3Dsimple.aux
@@ -8,45 +9,47 @@ A level-1 auxiliary file: tex/ae3Dcomplex.aux
 A level-1 auxiliary file: tex/multivehicle.aux
 The style file: plain.bst
 A level-1 auxiliary file: tex/appendix.aux
+I found no \citation commands---while reading file dissertation.aux
 Database file #1: ../../BibSources.bib.bib
-You've used 29 entries,
+You've used 0 entries,
             2118 wiz_defined-function locations,
-            701 strings with 9951 characters,
-and the built_in function-call counts, 12037 in all, are:
-= -- 1218
-> -- 493
-< -- 18
-+ -- 197
-- -- 163
-* -- 757
-:= -- 1820
-add.period$ -- 94
-call.type$ -- 29
-change.case$ -- 165
+            504 strings with 4127 characters,
+and the built_in function-call counts, 18 in all, are:
+= -- 0
+> -- 0
+< -- 0
++ -- 0
+- -- 0
+* -- 2
+:= -- 7
+add.period$ -- 0
+call.type$ -- 0
+change.case$ -- 0
 chr.to.int$ -- 0
-cite$ -- 29
-duplicate$ -- 539
-empty$ -- 992
-format.name$ -- 163
-if$ -- 2678
+cite$ -- 0
+duplicate$ -- 0
+empty$ -- 1
+format.name$ -- 0
+if$ -- 1
 int.to.chr$ -- 0
-int.to.str$ -- 29
-missing$ -- 31
-newline$ -- 148
-num.names$ -- 64
-pop$ -- 221
+int.to.str$ -- 0
+missing$ -- 0
+newline$ -- 3
+num.names$ -- 0
+pop$ -- 0
 preamble$ -- 1
-purify$ -- 138
+purify$ -- 0
 quote$ -- 0
-skip$ -- 423
+skip$ -- 1
 stack$ -- 0
-substring$ -- 813
-swap$ -- 202
-text.length$ -- 18
+substring$ -- 0
+swap$ -- 0
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 112
+type$ -- 0
 warning$ -- 0
-while$ -- 123
-width$ -- 31
-write$ -- 328
+while$ -- 0
+width$ -- 0
+write$ -- 2
+(There was 1 error message)
