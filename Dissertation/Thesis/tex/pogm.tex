@@ -56,7 +56,7 @@ Furthermore, to determine the normalizing constant $\eta_{t,l}$, the complement 
 We propose a computational algorithm to evaluate \refeqn{InvSenModWithProbDens} efficiently. 
 Since the cells outside of the sensor field of view (FOV) are not affected, we focus on a reduced map $r_l$ in the FOV of the $l$-th ray. This reduced map is chosen such that each cell of $r_l$ corresponds to a grid cell of map $m$ that the $l$-th ray intersects, ordered by increasing distance. Let $\mathbf{r}_{l,k}$ be the binary random variable representing the occupancy of the $k$-th cell of the $l$-th ray. The number of cells in the reduced map is denoted by $n_{r,l}\leq n_m$.
 
-Next, let $\mathbf{r}_{l,k+}$ correspond to the event that the $k$-th cell of the $l$-th ray is occupied, cells with lower index (closer cells) are free, and cells with greater index (farther cells) may or may not be occupied, i.e., event $\mathbf{r}_{l,k+}$ occurs when \\$r\in\braces{r\in\{0,1\}^{{n_{r,l}}}\,|\mathbf{r}_{l,1}=0,\mathbf{r}_{l,2}=0,\ldots,\mathbf{r}_{l,k-1}=0,\mathbf{r}_{l,k}=1}$. Put differently, the $k$-th cell $\mathbf{r}_{l,k}$ is the closest occupied cell to current pose $X_t$ along the $l$-th ray. For example, see Figure \ref{fig:show_rkplus} that illustrates the event of $\mathbf{r}_{l,k+}$ when $l=1$ and $k=4$ for an one-dimensional cell array. This concept of grouping map outcomes can be easily extended to 2D using ray casting, where a 1D ray is spanning 2D space, which is easily determined from geometry, described in further detail in Section \ref{sec:RayCasting}. Then, the forward sensor model is identical for all maps defined by $\mathbf{r}_{l,k+}$, regardless of the occupancy of the cells beyond the $k$-th cell, and the corresponding forward sensor model $p(z_{t,l}|\mathbf{r}_{l,k+},X_{t})$ depends on the distance from $X_t$ to the $k$-th cell. Based on this, we present the mathematical expressions for the exact inverse sensor model, as summarized by \refeqn{RayISMAnswer} in Proposition 1. Later in Sections \ref{sec:RayByRay} and \ref{sec:Synergistic}, these are also rearranged in computational algorithms. 
+Next, let $\mathbf{r}_{l,k+}$ correspond to the event that the $k$-th cell of the $l$-th ray is occupied, cells with lower index (closer cells) are free, and cells with greater index (farther cells) may or may not be occupied, i.e., event $\mathbf{r}_{l,k+}$ occurs when \\$r\in\braces{r\in\{0,1\}^{{n_{r,l}}}\,|\mathbf{r}_{l,1}=0,\mathbf{r}_{l,2}=0,\ldots,\mathbf{r}_{l,k-1}=0,\mathbf{r}_{l,k}=1}$. Put differently, the $k$-th cell $\mathbf{r}_{l,k}$ is the closest occupied cell to current pose $X_t$ along the $l$-th ray. For example, see Figure \ref{fig:show_rkplus} that illustrates the event of $\mathbf{r}_{l,k+}$ when $l=1$ and $k=4$ for an one-dimensional cell array. This concept of grouping map outcomes can be easily extended to 2D using ray casting, where a 1D ray is spanning 2D space, which is easily determined from geometry, described in further detail in Section \ref{sec:RayCasting}. Then, the forward sensor model is identical for all maps defined by $\mathbf{r}_{l,k+}$, regardless of the occupancy of the cells beyond the $k$-th cell, and the corresponding forward sensor model $p(z_{t,l}|\mathbf{r}_{l,k+},X_{t})$ depends on the distance from $X_t$ to the $k$-th cell. Based on this, we present the mathematical expressions for the exact inverse sensor model, as summarized by \refeqn{RayISMAnswer} in Proposition 1. Later in Section \ref{sec:RayScanComb}, these are also rearranged in computational algorithms. 
 
 
 
@@ -124,17 +124,37 @@ The above formulations describe how a single ray updates grid cells along its 1D
 \subsection{Ray Casting}
 \label{sec:RayCasting}
 
-Ray casting is the process of determining which cells a measurement ray might intersect, and the distances to these cells.
+Ray casting is the process of determining which cells a measurement ray might intersect, and the distances to these cells. The process is straightforward: follow a measurement unit vector from its minimum range $z_\text{min}$ to maximum range $z_\text{max}$, and identify the edges of all grid cells that it intersects. Save the cell index and Cartesian distance from the robot, and re-order the cells by increasing distance. An illustration of a simple example is shown in Figure \ref{fig:RayCastingIllustration}.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[t]{0.4\columnwidth}
+        \centering
+        \includegraphics[width=\textwidth]{RayCastingIllustration.png}
+        \caption{Ray Casting on a 2D Grid}
+%        \label{fig:penn_map_total}
+    \end{subfigure}
+    \hspace*{0.05\columnwidth}
+    \begin{subfigure}[t]{0.4\columnwidth}
+        \centering
+        \includegraphics[width=\textwidth]{RayCastIllustrationReducedMapOnly.png}
+        \caption{Reduced Map Only}
+%        \label{fig:penn_map_zoom}
+    \end{subfigure}
+    \caption{This simple 2D example illustrates how ray casting determines the cells that compose the reduced map for the inverse sensor model. The closest edges are used to determine which cells should be considered, and in what order. The complete map cell indices are temporarily saved as well, which are used to associate probabilities to cells of the reduced map.}
+    \label{fig:RayCastingIllustration}
+\end{figure}
 
 \subsection{Combining Measurements from a Single Scan}
-
-Next, we describe two approaches to combine the solutions to the inverse sensor model for a single measurement ray...
+\label{sec:RayScanComb}
+Typically, many measurement rays are provided from a single scan from modern sensors.
+Next, we describe two approaches to combine the inverse sensor models of numerous measurement rays.
 
 \paragraph{Ray-By-Ray Approach}
-\label{sec:RayByRay}
+
+
 
 \paragraph{Synergistic Update Approach}
-\label{sec:Synergistic}
 
 \subsection{Multi-Sensor Fusion}
 

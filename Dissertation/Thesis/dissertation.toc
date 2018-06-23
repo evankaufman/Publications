@@ -31,8 +31,8 @@
 \contentsline {section}{\numberline {2.3}Mapping in 2D Space}{18}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Ray Casting}{18}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}Combining Measurements from a Single Scan}{18}{subsection.2.3.2}
-\contentsline {paragraph}{Ray-By-Ray Approach}{18}{paragraph*.15}
-\contentsline {paragraph}{Synergistic Update Approach}{18}{paragraph*.16}
+\contentsline {paragraph}{Ray-By-Ray Approach}{18}{paragraph*.16}
+\contentsline {paragraph}{Synergistic Update Approach}{18}{paragraph*.17}
 \contentsline {subsection}{\numberline {2.3.3}Multi-Sensor Fusion}{19}{subsection.2.3.3}
 \contentsline {subsection}{\numberline {2.3.4}Practical Implications}{19}{subsection.2.3.4}
 \contentsline {section}{\numberline {2.4}Numerical and Experimental Examples}{19}{section.2.4}
@@ -77,7 +77,7 @@
 \contentsline {subsection}{\numberline {6.2.1}Continuous-Time Markov Process for Cell Degradation}{23}{subsection.6.2.1}
 \contentsline {subsection}{\numberline {6.2.2}Multi-Vehicle Patrol Numerical Simulation}{23}{subsection.6.2.2}
 \contentsline {section}{\numberline {6.3}Conclusions}{23}{section.6.3}
-\contentsline {chapter}{Bibliography}{24}{section*.17}
+\contentsline {chapter}{Bibliography}{24}{section*.18}
 \contentsline {chapter}{\numberline {A}Appendix}{27}{appendix.A}
 \contentsline {section}{\numberline {A.1}A section}{27}{section.A.1}
 \contentsline {section}{\numberline {A.2}False Position}{27}{section.A.2}
