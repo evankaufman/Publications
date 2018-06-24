@@ -40,10 +40,10 @@ where $z_{c,k}$ refers to the distance from $x_c$ to the $k$-th grid cell along 
 P(z_{c,k}|x_c)&=\frac{p(z_{c,k}|x_c)}{\sum_{i=1}^{n_{r}+1}p(z_{c,i}|x_c)}=\frac{\eta_{c,k}^{-1}}{\sum_{i=1}^{n_{r}+1}\eta_{c,i}^{-1}},
 \end{align}
 where $\eta_{c,k}$ refers to the normalizer based on the measurement $z_{c,k}$.
-The expected negative entropy change for candidate pose $X_c$ is equivalently the expected information gain,
+The expected negative entropy change for candidate pose $X_c$ is equivalently the expected information gain from ray $z_c$,
 \begin{align}
 \label{eqn:expectedInfoGainRay}
-\mathcal I(X_c)&=H(P(m))-\text{E}\left[H(P(m|X_c,Z_c))\right].
+\mathcal I(X_c,z_c)&=H(P(m))-\text{E}\left[H(P(m|X_c,z_c))\right].
 \end{align}
 \end{prop}
 \begin{proof}% TODO: add ref?
@@ -114,7 +114,40 @@ Since this algorithm operates as a function, fixed indices and condition variabl
 \label{alg:RayExpectedEntropyGain}
 \end{algorithm}
 
-% SIMPAR figure on entropy/computation time relationship
+
+
+\paragraph{Numerical Justification for the Approximation}
+
+The purpose of this numerical example is to provide evidence that the approximations are reasonable and increase the algorithm speed substantially.
+Since a measurement ray produces a depth measurement in a single direction, we only consider a 1D map where the grid cells have spacing $\alpha=0.2$ m, and the properties of the range sensor are based on the Microsoft Kinect~\cite{PirRutBisSch11,KhoElb12} with maximum reading depth $z_\text{max}=4$ m ($20$ grid cells inside the sensor FOV). The goal is to compare the expected entropy $\text{E}[H(P(m|x_c,z_{c}))]$ from \refeqn{DiscExpEntropyRay} and with an approximation $\text{E}[H_\text{approx}(P(m|x_c,z_{c}))]$, which only considers $\hat n$ grid cells with highest detection probability \refeqn{ProbOfFirstCell}.
+
+We consider $100$ probabilistic maps to obtain Monte Carlo results to evaluate the approximate entropy. In every Monte Carlo trial, each grid cell has an $80\%$ chance of being free and a $20\%$ chance of receiving an a priori probability uniformly distributed between $0$ and $1$. 
+Several metrics serve to evaluate $\text{E}[H(P(m|x_c,z_{c}))]$ with $\text{E}[H_\text{approx}(P(m|x_c,z_{c}))]$. The median expected entropy change is $\text{E}[H(P(m|x_c,z_{c}))]-H(P(m|X_{1:t},Z_{1:t}))=-0.83792$. The error for the $100$ Monte Carlo cases is defined simply as
+\begin{align}
+e_{H}&=\frac1{100}\sum_{i=1}^{100}\text{abs}\bigg(\text{E}[H(P(m|x_c,z_{c}))]-\text{E}[H_\text{approx}(P(m|x_c,z_{c}))]\bigg).
+\end{align}
+The Monte Carlo trials are repeated for $\hat n=\braces{1,2,\ldots,10}$ and the results are plotted in Figure \ref{fig:ApproxJust}.
+This example shows a typical case when the summation limits generated from \refeqn{ProbOfFirstCell} have only small effects on \refeqn{DiscExpEntropyRay}, while providing very large improvements in reducing computation.
+
+\begin{figure}
+	\centering
+    	\begin{subfigure}[b]{0.45\textwidth}
+        		\includegraphics[width=\textwidth]{JustifyApprox_eH.pdf}
+        		\caption{Entropy Error}
+        		\label{fig:H_err}
+    	\end{subfigure}
+	\begin{subfigure}[b]{0.45\textwidth}
+        		\includegraphics[width=\textwidth]{JustifyApprox_t.pdf}
+        		\caption{Computation Ratio}
+        		\label{fig:H_comp_ratio}
+    	\end{subfigure}
+\caption{The entropy error is decreased at the cost of increasing computation time in this Monte Carlo 1D measurement ray expected entropy case.}
+\label{fig:ApproxJust}
+\end{figure}
+
+
+
+
 
 \section{Future Pose Optimization}
 

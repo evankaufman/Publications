@@ -8,6 +8,7 @@
 \contentsline {figure}{\numberline {2.6}{\ignorespaces A robot (green crossed circle, green curve of its previous $13$ seconds) measures a room with a Kinect depth sensor. The exact inverse sensor model is compared with an approximate algorithm designed for the Kinect depth sensor. Grid cells are either known as free (white) or occupied (black), or uncertain with a grayscale color. \relax }}{31}{figure.caption.24}
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Entropy serves as a measure of uncertainty of the occupancy grid, where more blue regions are more certain, and red regions are more uncertain. The uncertainty is always less when the exact solution is applied.\relax }}{32}{figure.caption.25}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces The entropy error is decreased at the cost of increasing computation time in this Monte Carlo 1D measurement ray expected entropy case.\relax }}{39}{figure.caption.28}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
