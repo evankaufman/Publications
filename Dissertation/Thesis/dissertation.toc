@@ -77,8 +77,7 @@
 \contentsline {subsection}{\numberline {6.2.2}Multi-Vehicle Patrol Numerical Simulation}{36}{subsection.6.2.2}
 \contentsline {section}{\numberline {6.3}Conclusions}{36}{section.6.3}
 \contentsline {chapter}{Bibliography}{37}{section*.26}
-\contentsline {chapter}{\numberline {A}Appendix}{40}{appendix.A}
-\contentsline {section}{\numberline {A.1}A section}{40}{section.A.1}
-\contentsline {section}{\numberline {A.2}False Position}{40}{section.A.2}
-\contentsline {section}{\numberline {A.3}Starting the Appendices}{40}{section.A.3}
-\contentsline {chapter}{\numberline {B}Another Appendix}{42}{appendix.B}
+\contentsline {chapter}{\numberline {A}Proof of Proposition 1}{40}{appendix.A}
+\contentsline {paragraph}{Unnormalized Reduced Map Inverse Sensor Model}{40}{paragraph*.28}
+\contentsline {paragraph}{Complement of the Unnormalized Reduced Map Inverse Sensor Model}{41}{paragraph*.29}
+\contentsline {paragraph}{Normalizer}{42}{paragraph*.30}
