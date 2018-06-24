@@ -2,13 +2,62 @@
 
 \chapter{Autonomous Exploration in 2D Space} \label{chap:ae2D}
 
+The goal of autonomous exploration is to select robotic actions designed to minimize map uncertainty, thereby maximizing map information gain. We formulate autonomous exploration as an optimization problem to determine a policy that accounts for map uncertainty and travel cost.
+
 \section{Entropy-Based Exploration}
 
+In this section, we define Shannon's entropy as a measure of map uncertainty, and present a novel approach to predict future entropy from an arbitrary ray. Then we discuss computational modifications for real-time implementation.
+
 \subsection{Shannon's Entropy}
-% Description, figure
+
+Here we present how the probabilistic properties of an occupancy grid map provide key information about the uncertainty of the space for motion planning. Shannon's entropy commonly serves as an uncertainty measure~\cite{StaGriBur05}. Provided grid cell probabilities of map $m$, Shannon's entropy is defined as
+\begin{align}
+\label{eqn:ShannonsEntropyCell}
+H(P(\mathbf{m}_i))&=-P(\mathbf{m}_i)\log{P(\mathbf{m}_i})-P(\bar{\mathbf{m}}_i)\log{P(\bar{\mathbf{m}}_i}),
+\\
+\label{eqn:ShannonsEntropyMap}
+H(P(m))&=\sum_{i=1}^{n_m}H(P(\mathbf{m}_i)),
+\end{align}
+for an individual cell and the entire map, respectively.
+Thus, entropy is maximized when $P(\mathbf{m}_i)=0.5$, which corresponds to the largest uncertainty; similarly, entropy is minimized as $P(\mathbf{m}_i)$ approaches $0$ or $1$, which corresponds to the smallest uncertainty. %; thus Shannon's entropy is a measure of uncertainty.
+
+
 
 \subsection{Expected Information Gain}
-% Derivation and link to Appendix
+
+Suppose a future pose candidate and its associated future measurement scan is $X_c=\braces{x_c,R_c}$ and $Z_c$, respectively, where $c\in\mathcal C$ such that $\mathcal C=\braces{1,2,...,n_c}$ accounts for all $n_c$ candidates under consideration for the next robot pose. The current pose of the robot is \emph{not} $X_c$ in general, so any change to the probabilistic map from $X_c$ must be predicted. Much like the probabilistic mapping, this is achieved ray-by-ray~\cite{KauAiLee16,KauTakAiLee17}. Considering that all grid cell probabilities are conditioned on the history of poses $X_{1:t}$ and measurement scans $Z_{1:t}$, these terms are removed from the remaining equations for simplicity. 
+
+\begin{prop}
+\label{prop:ExpectedH}
+For candidate ray $z_c$, the expected entropy is
+\begin{align}
+\label{eqn:DiscExpEntropyRay}
+&\text{E}[H(P(m|x_c,z_{c}))]=\sum_{k=1}^{n_{r}+1}\bigg\{H(P(m|x_c,z_{c,k}))P(z_{c,k}|x_c)\bigg\},
+\end{align}
+where $z_{c,k}$ refers to the distance from $x_c$ to the $k$-th grid cell along the measurement ray. The first term of the summation of \refeqn{DiscExpEntropyRay}, namely $H(P(m|x_c,z_{c,k}))$, is obtained with entropy definitions \refeqn{ShannonsEntropyCell}, \refeqn{ShannonsEntropyMap} and the inverse sensor model \refeqn{RayISMAnswer}--\refeqn{Unnormalized}. The second term is derived from \refeqn{allEta} with
+\begin{align}
+\label{eqn:ProbMeas}
+P(z_{c,k}|x_c)&=\frac{p(z_{c,k}|x_c)}{\sum_{i=1}^{n_{r}+1}p(z_{c,i}|x_c)}=\frac{\eta_{c,k}^{-1}}{\sum_{i=1}^{n_{r}+1}\eta_{c,i}^{-1}},
+\end{align}
+where $\eta_{c,k}$ refers to the normalizer based on the measurement $z_{c,k}$.
+The expected negative entropy change for candidate pose $X_c$ is equivalently the expected information gain,
+\begin{align}
+\label{eqn:expectedInfoGainRay}
+\mathcal I(X_c)&=H(P(m))-\text{E}\left[H(P(m|X_c,Z_c))\right].
+\end{align}
+\end{prop}
+\begin{proof}% TODO: add ref?
+See Appendix B.
+\end{proof}
+
+The proposed approach discretizes the measurement according to assumptions of occupancy grid mapping, and exploits the probabilistic properties uncovered by the proposed inverse sensor model. These are used to directly calculate the expected value of map entropy for a single measurement ray.
+
+
+
+
+
+
+
 
 \subsection{Computational Limitations and Approximations}
 % SIMPAR figure on entropy/computation time relationship
@@ -17,6 +66,8 @@
 
 \subsection{Optimal Attitude from Sample Rays}
 % SIMPAR figure on optimal pose
+
+%Then, \refeqn{DiscExpEntropyRay} is applied repeatedly over several sample measurement rays that compose scan $Z_c$ as shown in~\cite{KauAiLee16}.
 
 \subsection{Travel Cost with Obstacles}
 % Dijkstra's cost map
