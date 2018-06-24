@@ -82,3 +82,4 @@
 \contentsline {paragraph}{Complement of the Unnormalized Reduced Map Inverse Sensor Model}{43}{paragraph*.29}
 \contentsline {paragraph}{Normalizer}{44}{paragraph*.30}
 \contentsline {chapter}{\numberline {A}Proof of Proposition \ref {prop:ExpectedH}}{46}{appendix.A}
+\contentsline {subsection}{\numberline {A.0.1}Single Ray Expected Value of Entropy}{46}{subsection.A.0.1}
