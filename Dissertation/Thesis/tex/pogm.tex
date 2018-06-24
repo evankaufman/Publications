@@ -272,15 +272,14 @@ which is substituted into \refeqn{ISM_Fusion} to obtain the complete scan invers
 
 The synergistic scan inverse sensor model algorithm is summarized with the pseudocode of Algorithm \ref{alg:SynergisticScanISM} as a computationally efficient, recursive algorithm that avoids repeated calculations of the same quantity. This algorithm utilizes the following temporary variables to develop the algorithm in an efficient recursive form, defined as
 \begin{align*}
-a_k&=\sum_{i=1}^{k-1}\bigg\{\prod_{j=0}^{i-1}P(\bar{\mathbf{r}}_{l,j}|X_{1:t-1},Z_{1:t-1})\bigg\}\nonumber\\&\quad\times p(z_{t,l}|\mathbf{r}_{l,i},X_t)P(\mathbf{r}_{l,i}|X_{1:t-1},Z_{1:t-1}),
+a_k&=\sum_{i=1}^{k-1}\bigg\{\prod_{j=0}^{i-1}P(\bar{\mathbf{r}}_{l,j}|X_{1:t-1},Z_{1:t-1})\bigg\}p(z_{t,l}|\mathbf{r}_{l,i},X_t)P(\mathbf{r}_{l,i}|X_{1:t-1},Z_{1:t-1}),
 \\
 b_k&=\prod_{j=0}^{k-1}P(\bar{\mathbf{r}}_{l,j}|X_{1:t-1},Z_{1:t-1}),
 \nonumber\\
-c_k&=P(\bar{\mathbf{r}}_{l,k}|X_{1:t-1},Z_{1:t-1})^{-1}
-\nonumber\\&\quad\times 
-\sum_{i=k+1}^{n_{r,l}+1}\bigg\{\prod_{j=0}^{i-1}P(\bar{\mathbf{r}}_{l,j}|X_{1:t-1},Z_{1:t-1})\bigg\}\nonumber\\&\quad\times p(z_{t,l}|\mathbf{r}_{l,i+},X_t)P(\mathbf{r}_{l,i}|X_{1:t-1},Z_{1:t-1}),
+c_k&=\frac{
+\sum_{i=k+1}^{n_{r,l}+1}\bigg\{\prod_{j=0}^{i-1}P(\bar{\mathbf{r}}_{l,j}|X_{1:t-1},Z_{1:t-1})\bigg\}p(z_{t,l}|\mathbf{r}_{l,i+},X_t)P(\mathbf{r}_{l,i}|X_{1:t-1},Z_{1:t-1})}{P(\bar{\mathbf{r}}_{l,k}|X_{1:t-1},Z_{1:t-1})},
 \end{align*}
-to compute \refeqn{ISM_Fusion}-\refeqn{xi}. Once again, the history of poses and measurement scans are removed from the pseudocode for simplicity.
+as well as $d$ and $e$ as the two terms composing \refeqn{xi}. Once again, the history of poses and measurement scans are removed from the pseudocode for simplicity.
 
 % TODO: check spacing of algorithms once complete
 \vspace*{0.05\columnwidth}
@@ -327,24 +326,252 @@ to compute \refeqn{ISM_Fusion}-\refeqn{xi}. Once again, the history of poses and
 In short, we propose two alternatives for combining inverse sensor models for multiple rays within a scan. The ray-by-ray approach updates the entire map one ray at a time with some dependancies among the rays, while the synergistic approach considers all rays together where rays are assumed mutually independent.
 
 
-
-
-% From ACC16: In contrast to the current approximate inverse sensor models, the proposed algorithm evaluates the exact inverse sensor model \refeqn{InvSenModWithProbDens} efficiently without relying on assumptions like \refeqn{AssumptionEarly}, while integrating multiple measurements synergistically. Therefore, it yields substantially more accurate maps for the same set of measurements. These are illustrated by numerical examples and experiments as follows.
-
-
-% TODO: move 2 below to 3D mapping part
+% TODO: move to 3D mapping part
 %\subsection{Multi-Sensor Fusion}
-%
+
+% TODO: move to experiment part
 %\subsection{Practical Implications}
 
-\subsection{Mapping a Room}
-% ACC16 comparison of exact/approx. inverse sensor models
+\subsection{Numerical Examples}
 
-\subsection{Kinect Measurement Scan Analysis}
-% ACC16 Single scan exact/approx. comparison
+In contrast to the current approximate inverse sensor models, the proposed algorithms evaluates the exact inverse sensor model efficiently without relying on approximations, learned solutions, or log-odds ratio assumptions. The following simulations show two examples comparing an approximate inverse sensor model with the proposed exact inverse sensor model, either with integrating multiple measurements ray-by-ray or synergistically. The proposed algorithms yield substantially more accurate maps for the same set of measurements.
 
 
-% Upon further study, the ray-by-ray approach has proven more robust against localization errors and changing environments because the rays are not assumed completely independent.
+\paragraph{Approximate Inverse Sensor Model}
+
+We compare the proposed exact solution to the inverse sensor model with an approximate algorithm developed for a Microsoft Kinect sensor~\cite{PirRutBisSch11,KhoElb12}, summarized as follows. The probability that the $i$-th grid cell $\mathbf{m}_i$ is occupied conditioned on the measurement ray $z_{t,l}$ (the $l$-th ray at the $t$-th time step) at the pose $X_t$ is the continuous function
+\begin{align*}
+%\label{eqn:ISM_Approx_1}
+&P(\mathbf{m}_i|z_{t,l},X_t)\nonumber\\&=\begin{cases}
+0.3+(\frac{k}{\sigma\sqrt{2\pi}}+0.2)e^{-\frac12\left(\frac{\hat z_{l,i}-z_{t,l}}{\sigma}\right)^2}\ &\text{if}\ z_{t,l}\leq \hat z_{l,i},
+\\
+0.5+\frac{k}{\sigma\sqrt{2\pi}}e^{-\frac12\left(\frac{\hat z_{l,i}-z_{t,l}}{\sigma}\right)^2}\ &\text{if}\ z_{t,l}>\hat z_{l,i},
+\end{cases}
+\end{align*}
+which is based on the expected distance to the cell $\hat z_{l,i}$ with parameters $k=\sigma=0.6$. This follows the structure of the approximate inverse sensor model proposed in~\cite{And09}. The main idea of this approach is that the probability of a cell being occupied (i) near a measurement is high (measurement likely hits this cell), (ii) between the robot and the measurement is low (measurement passes through this cell), and (iii) beyond the measurement is unchanged (the robot cannot measure through a wall/object). 
+
+Then, these probabilities are combined in a weighted fashion such that all measurements rays of scan $Z_t$ simultaneously update the same grid cell in a log-odds format,
+\begin{align*}
+%\label{eqn:ISM_Approx_2}
+&\log\left(\frac{P(\mathbf{m}_i|Z_{t},X_t)}{1-P(\mathbf{m}_i|Z_{t},X_t)}\right)
+\nonumber\\&=
+\frac1{\sum_{z_{t,l}\in\mathbf{m}_i}\hat z_{l,i}}\sum_{z_{t,l}\in\mathbf{m}_i}\log\left(\frac{P(\mathbf{m}_i|z_{t,l},X_t)}{1-P(\mathbf{m}_i|z_{t,l},X_t)}\hat z_{l,i}\right).
+\end{align*}
+
+
+\paragraph{Mapping a Hallway with the Ray-By-Ray Approach}
+
+First, we compare the proposed exact solution to the inverse sensor model summarized in Algorithm \ref{alg:RayByRayISM} with an approximate algorithm presented in~\cite{PirRutBisSch11,KhoElb12}, summarized as follows. The probability that the $i$-th grid cell $\mathbf{m}_i$ is occupied conditioned on the measurement ray $z_{t,l}$ at the pose $X_t$ is the continuous function
+\begin{align*}
+%\label{eqn:ISM_Approx_1}
+&P(\mathbf{m}_i|z_{t,l},X_t)%\nonumber\\&
+=\begin{cases}
+0.3+(\frac{k}{\sigma\sqrt{2\pi}}+0.2)e^{-\frac12\left(\frac{\hat z_{l,i}-z_{t,l}}{\sigma}\right)^2}\ &\text{if}\ \hat z_{l,i} \leq z_{t,l},%z_{t,l}\leq \hat z_{l,i},
+\\
+0.5+\frac{k}{\sigma\sqrt{2\pi}}e^{-\frac12\left(\frac{\hat z_{l,i}-z_{t,l}}{\sigma}\right)^2}\ &\text{otherwise},
+\end{cases}
+\end{align*}
+which is based on the expected distance to the cell $\hat z_{l,i}$ with parameters $k=\sigma=0.6$. This follows the structure of the approximate inverse sensor model proposed in~\cite{And09}. The main idea of this approach is that the probability of a cell being occupied (i) near a measurement is high (measurement likely hits this cell), (ii) between the robot and the measurement is low (measurement passes through this cell), and (iii) beyond the measurement is unchanged (the robot cannot measure through a wall/object). 
+Then, these probabilities are combined in a weighted fashion such that all measurements rays of scan $Z_t$ simultaneously update the same grid cell in a log-odds format,
+\begin{align*}
+%\label{eqn:ISM_Approx_2}
+&\log\left(\frac{P(\mathbf{m}_i|Z_{t},X_t)}{1-P(\mathbf{m}_i|Z_{t},X_t)}\right)
+%\nonumber\\&
+=
+\frac1{\sum_{z_{t,l}\in\mathbf{m}_i}\hat z_{l,i}}\sum_{z_{t,l}\in\mathbf{m}_i}\log\left(\frac{P(\mathbf{m}_i|z_{t,l},X_t)}{1-P(\mathbf{m}_i|z_{t,l},X_t)}\hat z_{l,i}\right).
+\end{align*}
+
+Table~\ref{tab:penn} shows the mapping parameters and data specifications for the actual odometry and lidar measurements from University of Pennsylvania through Coursera open course~\cite{coursera}. Among these parameters, cell resolution and the number of rays have the greatest impact on computation. In general, the finer the grid, the greater the memory and computational requirements are because the computational order of \refeqn{RayISMAnswer} grows linearly with the number of grid cells inside the sensor range limits. Since the inverse sensor models are combined sequentially as shown in \refeqn{RayByRayScanISM}, the number of rays considered are proportional to the computation order as well.
+Figure~\ref{fig:penn_map} shows the direct comparison of the resulting map based on the approximate and proposed inverse sensor model.
+As shown in the figure, both approaches capture the structure of the environment. However, the significant differences can be seen in the certain area of the map such as in Figure~\ref{fig:penn_map_zoom}.
+The differences can be clearly depicted in Figure~\ref{fig:entropy_comp} where entropy of maps are compared at frame 2280.
+The red part of the map shows the maximum  entropy whereas blue shows lowest entropy for the cell.
+Finally, overall improvement was demonstrated in Figure~\ref{fig:entropy} resulting improved entropy value per grid cell throughout the mapping process.
+In short, the proposed exact occupancy grid mapping produced a cleaner map with lower entropy from the same set of measurements.
+
+\begin{center}
+\captionof{table}{Experimental parameters provided from dataset}
+\label{tab:penn}
+    \begin{tabular}{r | c}
+        Parameters & Value\\ \hline\hline
+        Map dimension & 576x448 [pixel]\\
+        Resolution & 1/16 [m]\\
+        Scan angle & [-2.36, 2.36]\\
+        Ray number & 1081\\
+        Total frame & Every 120 scans out of 3701\\
+    \end{tabular}
+\end{center}
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[t]{0.8\columnwidth}
+        \centering
+        \includegraphics[trim={1.5cm 3.5cm 1.5cm 1.5cm},clip,width=\textwidth]{map_comparison.png}
+        \caption{Comparison of the total mapped environment based on the approximate (left) and proposed (right) inverse sensor model.}
+        \label{fig:penn_map_total}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.8\columnwidth}
+        \centering
+        \includegraphics[trim={1.5cm 3.5cm 1.5cm 1.5cm},clip,width=\textwidth]{map_zoom.png}
+        \caption{Evidence of significant improvement at certain area of the map.}
+        \label{fig:penn_map_zoom}
+    \end{subfigure}
+    \caption{Using experimental sensor data, the map was generated using an approximate and the proposed exact inverse sensor models. The laser sensor and odometry data used for the experiment was provided by University of Pennsylvania open course robotics estimation and learning on Coursera~\cite{coursera}.}
+    \label{fig:penn_map}
+\end{figure}
+
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[t]{0.35\columnwidth}
+        \centering
+        \includegraphics[width=\textwidth]{AISM_Image_inf_19.pdf}
+        \caption{Approximate inverse sensor model}
+        \label{fig:AISM}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.35\columnwidth}
+        \centering
+        \includegraphics[width=\textwidth]{EISM_Image_inf_19.pdf}
+        \caption{Exact inverse sensor model}
+        \label{fig:EISM}
+    \end{subfigure}
+    \caption{The entropy is compared between the approximate and proposed exact inverse sensor models at step 2280. The blue areas show the lowest entropy while red shows highest.}
+    \label{fig:entropy_comp}
+\end{figure}
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\textwidth]{entropy_frame.png}
+  \caption{The map entropies of the approximate inverse sensor model (blue) and the proposed exact inverse sensor model (red) show that the exact version yields a more certain occupancy grid map.}
+  \label{fig:entropy}
+\end{figure}
+
+
+
+\paragraph{Mapping a Room with the Synergistic Approach}
+
+Next, we compare the same approximate inverse sensor model against the synergistic exact inverse sensor model.
+Here, the robot maps in a two-dimensional environment composed of ten wall edges, and the robot follows a figure-eight curve, then turns around and completes the same curve in the reverse direction. Like the prior example, the same set of measurements updated each second are used with both occupancy grid mapping algorithms to construct the map.
+
+The resulting maps are illustrated in Figure \ref{fig:NumResOccProbs} for both algorithms, where it is shown that the proposed algorithm yields a substantially more accurate and clear map with less uncertainty. To quantify the degree of map uncertainty, we define the entropy of the map as 
+\begin{align*}
+H(P(m|X_{1:t},Z_{1:t}))&=-\sum_{i=1}^n\big\{P(\mathbf{m}_i|X_{1:t},Z_{1:t})\log P(\mathbf{m}_i|X_{1:t},Z_{1:t})\nonumber\\
+&\qquad+(1-P(\mathbf{m}_i|X_{1:t},Z_{1:t}))\log(1-P(\mathbf{m}_i|X_{1:t},Z_{1:t}))\big\},
+\end{align*}
+which is maximized when the probability of occupancy is $0.5$ for all cells (more uncertain), and it is minimized when they are either $0$ or $1$ (less uncertain). 
+
+\begin{figure}
+%    \centering{
+%    \begin{subfigure}[t]{0.4\columnwidth}
+%        \centering
+%        \includegraphics[width=0.7\columnwidth]{Compare_ISM_1.png}
+%        \caption{Map at $t=0$ sec (exact)}
+%    \end{subfigure}
+%    \begin{subfigure}[t]{0.4\columnwidth}
+%        \centering
+%        \includegraphics[width=0.7\columnwidth]{Compare_Approx_1.png}
+%        \caption{Map at $t=0$ sec (approx.)}
+%    \end{subfigure}
+%    }
+    \centering{
+    \begin{subfigure}[t]{0.4\columnwidth}
+        \centering
+        \includegraphics[width=0.7\columnwidth]{Compare_ISM_2.png}
+        \caption{Map at $t=13$ sec (exact)}
+    \end{subfigure}
+    \hspace*{-0.05\columnwidth}
+    \begin{subfigure}[t]{0.4\columnwidth}
+        \centering
+        \includegraphics[width=0.7\columnwidth]{Compare_Approx_2.png}
+        \caption{Map at $t=13$ sec (approx.)}
+    \end{subfigure}
+    }
+    \centering{
+    \begin{subfigure}[t]{0.4\columnwidth}
+        \centering
+        \includegraphics[width=0.7\columnwidth]{Compare_ISM_3.png}
+        \caption{Map at $t=25$ sec (exact)}
+    \end{subfigure}
+    \hspace*{-0.05\columnwidth}
+    \begin{subfigure}[t]{0.4\columnwidth}
+        \centering
+        \includegraphics[width=0.7\columnwidth]{Compare_Approx_3.png}
+        \caption{Map at $t=25$ sec (approx.)}
+    \end{subfigure}
+    }
+    \centering{
+    \begin{subfigure}[t]{0.4\columnwidth}
+        \centering
+        \includegraphics[width=0.7\columnwidth]{Compare_ISM_4.png}
+        \caption{Map at $t=38$ sec (exact)}
+    \end{subfigure}
+    \hspace*{-0.05\columnwidth}
+    \begin{subfigure}[t]{0.4\columnwidth}
+        \centering
+        \includegraphics[width=0.7\columnwidth]{Compare_Approx_4.png}
+        \caption{Map at $t=38$ sec (approx.)}
+    \end{subfigure}
+    }
+    \centering{
+    \begin{subfigure}[t]{0.4\columnwidth}
+        \centering
+        \includegraphics[width=0.7\columnwidth]{Compare_ISM_5.png}
+        \caption{Map at $t=50$ sec (exact)}
+    \end{subfigure}
+    \hspace*{-0.05\columnwidth}
+    \begin{subfigure}[t]{0.4\columnwidth}
+        \centering
+        \includegraphics[width=0.7\columnwidth]{Compare_Approx_5.png}
+        \caption{Map at $t=50$ sec (approx.)}
+    \end{subfigure}
+    }
+\caption{A robot (green crossed circle, green curve of its previous $13$ seconds) measures a room with a Kinect depth sensor. The exact inverse sensor model is compared with an approximate algorithm designed for the Kinect depth sensor. Grid cells are either known as free (white) or occupied (black), or uncertain with a grayscale color.
+%The exact inverse sensor model approach generates a more accurate result.
+}
+\label{fig:NumResOccProbs}
+\end{figure}
+
+
+The change of the map entropy over time, and the entropy of the completed maps, for both methods are depicted in Figure \ref{fig:NumResOccH}. The subfigure (a) illustrates that the proposed exact inverse sensor model exhibits rapid decreases of entropies, and smaller entropies always. The resulting terminal map obtained from the proposed approach, shown in the subfigure (b), has less uncertainty than (c) constructed by the approximate model. In short, the proposed approach is more efficient at extracting information about the environment from the same set of set measurements. 
+
+
+\begin{figure}
+    \centering{
+    \begin{subfigure}[t]{0.8\columnwidth}
+        \centering
+        \includegraphics[width=0.7\columnwidth]{EntropyEvolution.png}
+        \caption{Entropy (black: exact model, green: approx.)}
+    \end{subfigure}
+}
+    \centering{
+    \begin{subfigure}[t]{0.4\columnwidth}
+        \centering
+        \includegraphics[width=0.7\columnwidth]{Compare_ISM_H.png}
+        \caption{Entropy map at $t=50$ (exact)}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.4\columnwidth}
+        \centering
+        \includegraphics[width=0.7\columnwidth]{Compare_Approx_H.png}
+        \caption{Entropy map at $t=50$  (approx.)}
+    \end{subfigure}
+    }
+\caption{Entropy serves as a measure of uncertainty of the occupancy grid, where more blue regions are more certain, and red regions are more uncertain. The uncertainty is always less when the exact solution is applied.}\label{fig:NumResOccH}
+\end{figure}
+
+
+% I think I'll skip this trivial result:
+%\subsection{Kinect Measurement Scan Analysis}
+%% ACC16 Single scan exact/approx. comparison
+
+
+
 
 \section{Conclusions}
+
+In this chapter, we presented the exact solution to the inverse sensor model for a single measurement ray, then extended this result to measurement scans with two techniques, namely ray-by-ray and synergistic combinations. Then, numerical results show how both proposed solutions outperform existing approximate solutions. Upon further study, the ray-by-ray approach has proven more robust against localization errors and changing environments because the rays are not assumed completely independent. Therefore, the ray-by-ray approach is applied to the subsequent proposals, numerical simulations, and experimental results.
+
+
+
+
 
