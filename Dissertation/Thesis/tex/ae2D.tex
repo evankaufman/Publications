@@ -50,16 +50,70 @@ The expected negative entropy change for candidate pose $X_c$ is equivalently th
 See Appendix B.
 \end{proof}
 
-The proposed approach discretizes the measurement according to assumptions of occupancy grid mapping, and exploits the probabilistic properties uncovered by the proposed inverse sensor model. These are used to directly calculate the expected value of map entropy for a single measurement ray.
-
-
-
+The proposed approach discretizes the measurement according to assumptions of occupancy grid mapping, and exploits the probabilistic properties uncovered by the proposed inverse sensor model. These are used to directly calculate the expected value of map entropy for a single measurement ray. 
 
 
 
 
 
 \subsection{Computational Limitations and Approximations}
+
+The computational order for each measurement ray is $\mathcal O(n_{r}^2)$ since the summations of \refeqn{ProbMeas} are embedded in \refeqn{DiscExpEntropyRay}. However, several of those intersections provide negligible information since the probability of the measurement ray capturing certain cell depths is close to zero.
+
+The approximation of expected ray entropy provides a method to reduce the computation of \refeqn{expectedInfoGainRay} substantially. This goal is achieved by systematically selecting a smaller set of grid cells to consider over the summations of \refeqn{DiscExpEntropyRay} and \refeqn{ProbMeas}.
+The smaller set is determined by the probability that each cell is captured by the measurement ray, known as the detection probability. This can be found recursively as
+\begin{align}
+\label{eqn:ProbOfFirstCell}
+P(\mathbf{r}_{k+})%\nonumber\\&
+=\bigg\{\prod_{j=0}^{k-1}P(\bar{\mathbf{r}}_{j})\bigg\}P(\mathbf{r}_{k}),
+\end{align}
+which is the probability that $\mathbf{r}_{k}$ is the closest occupied grid cell based on past poses and measurement scans, independent of cells beyond the $k$-th cell from $x_c$.
+Let $\hat n>0$ be a fixed number of grid cells for all rays such that $\hat n\leq n_{r}+1$ for all $l$.
+Let $\hat{r}$ correspond to the grid cells that yield the $\hat{n}$ maximum values of \refeqn{ProbOfFirstCell} (the $\hat n$ most likely ray detections), indexed by increasing distance from candidate location $x_c$.
+By replacing the reduced map $r$ with $\hat{r}$ and changing the summation limits to $\braces{1,2,...,\hat n}$ in \refeqn{DiscExpEntropyRay} and \refeqn{ProbMeas}, the order of computation is reduced to $\mathcal O({\hat{n}}^2)$.
+Even though the value of $n_{r}$ is different among various rays in general, $\hat n$ is fixed, so the computational order is fixed as well.
+In short, this method reduces the required computation substantially by systematically neglecting those grid cells with little effect. It can be noted that if $\hat n=n_{r}+1$, the ray objective function is computed without approximation.
+
+
+\paragraph{Algorithm} We present an algorithm pseudocode providing the necessary steps to obtain the objective function for a single measurement ray (Algorithm \ref{alg:RayExpectedEntropyGain}). Much like the algorithm pseudocode for the ray-by-ray inverse sensor model (Algorithm \ref{alg:RayByRayISM}), the variable $a_\text{temp}$ serves as an intermediate variable designed to avoid repeated calculations.
+Since this algorithm operates as a function, fixed indices and condition variables are removed for simplification. 
+
+\vspace*{0.05\columnwidth}
+\begin{algorithm}[H]
+	Function: $\mathcal I_\text{ray}=\text{RayExpInfoGain}(x,P(r),z_{1:n_{r}})$\;
+	Initialize $P(\bar{\mathbf{r}}_{0})=P(\hat{\bar{\mathbf{r}}}_{0})=P(\bar{\mathbf{r}}_{n_{r}+1})=1$\;
+	\For{$k = 1,2,\ldots,n_{r}+1$}{
+		$P(\mathbf{r}_{k+}) = P(\bar{\mathbf{r}}_{0:k-1})P(\mathbf{r}_{k})$\;
+		$P(\bar{\mathbf{r}}_{0:k})=P(\bar{\mathbf{r}}_{0:k-1})(1-P(\mathbf{r}_{k}))$\;
+	}
+	Find $\hat r\subset r$ of the $\hat n$ greatest values of 
+	$\braces{P(\mathbf{r}_{1+}),P(\mathbf{r}_{2+}),\ldots,P(\mathbf{r}_{(n_{r}+1)+})}$\;
+	\For{$k = 1,2,\ldots,\hat{n}$}{
+		$P(\hat{\mathbf{r}}_{k+}) = P(\hat{\bar{\mathbf{r}}}_{0:k-1})P(\hat{\mathbf{r}}_{k})$\;
+		$P(\hat{\bar{\mathbf{r}}}_{0:k})=P(\hat{\bar{\mathbf{r}}}_{0:k-1})P(\hat{\bar{\mathbf{r}}}_{k})$\;
+	}
+	\For{$k_\text{m}=1,2,\ldots,\hat n$}{
+		Initialize $\eta^{-1}_{k_\text{m}}=0$\;
+		\For{$k_\text{c}=1,2,\ldots,\hat n$}{
+			$a_\text{temp}=P(\hat{\mathbf{r}}_{k_\text{c}+})p(z_{k_\text{m}}|\hat{\mathbf{r}}_{k_\text{c}+},x)$\;
+			$\tilde P(\hat{\mathbf{r}}_{k_\text{c}}|x,z_{k_\text{m}})=P(\hat{\mathbf{r}}_{k_\text{c}})\eta^{-1}_{k_\text{m}}+a_\text{temp}$\;
+			$\eta^{-1}_{k_\text{m}}=\eta^{-1}_{k_\text{m}}+a_\text{temp}$\;
+		}
+		$P(\hat{\mathbf{r}}_{k_\text{c}}|x,z_{k_\text{m}})=\eta_{k_\text{m}}\tilde P(\hat{\mathbf{r}}_{k_\text{c}}|x,z_{k_\text{m}})$ for all $k_\text{c}=1,2,\ldots,\hat n$\;
+	}
+	$P(z_{k_\text{m}}|x)=\frac{\eta^{-1}_{k_\text{m}}}{\sum_{i=1}^{\hat n}\eta^{-1}_{i}}$ for $k_\text{m}=1,2,\ldots,\hat n$\;
+	Initialize $\mathcal I_\text{ray}=0$\;
+	\For{$k_\text{c}=1,2,\ldots,\hat n$}{
+		$\mathcal I_\text{ray}=\mathcal I_\text{ray}+H(P(\hat{\mathbf{r}}_{k_\text{c}}))$\;
+		\For{$k_\text{m}=1,2,\ldots,\hat n$}{
+			$\mathcal I_\text{ray} = \mathcal I_\text{ray}-H(P(\hat{\mathbf{r}}_{k_\text{c}}|x_c,z_{k_\text{m}}))P(z_{k_\text{m}}|x_{c})$\;
+		}
+	}
+	Return: $\mathcal I_\text{ray}$\\
+\caption{Expected Information Gain from a Measurement Ray}
+\label{alg:RayExpectedEntropyGain}
+\end{algorithm}
+
 % SIMPAR figure on entropy/computation time relationship
 
 \section{Future Pose Optimization}
