@@ -153,7 +153,8 @@ This example shows a typical case when the summation limits generated from \refe
 
 In this section, we show how expected entropy changes from single measurement rays can be integrated into predicting the expected information gain of measurement scans. This metric, and a cost associated with travel time, are integrated to determine an optimal future pose and collision-free path in a 2D environment.
 
-\subsection{Optimal Attitude from Sample Rays}
+\subsection{Optimal Pose from Sample Rays}
+\label{sec:OptimalPose2DMap}
 
 The objective is to choose a future pose that minimizes the map uncertainty, such that the robot can autonomously move toward this optimal goal. The robot pose is selected among various positions and attitudes. Since searching over all locations and attitudes would require infinite computational resources, these search spaces are discretized into a limited number of robot attitudes and positions.
 The procedure involves three steps. First, the attitude that maximizes the information gain objective function is selected at each candidate future pose location. Second, the location with the maximum objective function of all candidates is selected. Thus, the optimal attitude and the optimal location compose the optimal future pose. Finally, the robot determines and follows a collision-free path to the optimal future pose. This process is repeated, resulting in autonomous exploration.
@@ -162,7 +163,7 @@ The procedure involves three steps. First, the attitude that maximizes the infor
 Consider a collision-free pose candidate at an arbitrary location $x_c$. At this pose, consider $n_d$ evenly-spaced measurement rays oriented radially outward from the robot in a circular pattern (see red lines in Figure \ref{fig:OptProcess}). These rays are denoted $\braces{z_{c,1},z_{c,2},\ldots,z_{c,n_d}}$. Attitudes correspond to the rays such that the robot sensor is aligned with the ray direction, and these are denoted $\braces{R_{c,1},R_{c,2},\ldots,R_{c,n_d}}$, where the scan with attitude $R_{c,d}$ might cover several ray directions depending on the sensor field of view (FOV). We choose optimal attitude $R_c^*$ as the summation of the expected entropy changes covered by the scan,
 \begin{align}
 \label{eqn:FindRc}
-&R_c^*=\argmax_{R_{c,d}}\sum_{z_{c,i}\in R_{c,d}\text{ FOV}}\bigg(H(P(m|X_{1:t},Z_{1:t}))\nonumber\\&\qquad\quad\quad\quad\quad
+&R_c^*=\argmax_{R_{c,d}}\sum_{z_{c,i}\in R_{c,d}\text{ FOV}}\bigg(H(P(m|X_{1:t},Z_{1:t}))
 -\text{E}[H(P(m|X_{1:t},Z_{1:t},x_c,z_{c,i}))]\bigg).
 %\mathcal I_\text{ray}(x_c,z_{c,i})\right).
 \end{align}
@@ -170,17 +171,27 @@ Consider a collision-free pose candidate at an arbitrary location $x_c$. At this
 This method provides the attitude that maximizes the information gain at an arbitrary location in 2D space. The set of candidate positions that warrant consideration is determined with one of two methods, namely \emph{expanding ring} and \emph{complete Cartesian}, described next.
 
 \paragraph{Expanding Ring}
-The expanding ring technique is advantageous for searching local solutions quickly, only considering distant future poses when necessary. The key idea is that future candidate locations lie on a circular ``ring'' centered around the robot, evenly spaced around the ring (see red circles in Figure \ref{fig:OptProcess}), and the ring is expanded if certain criteria are not met. More explicitly, consider $n_c$ candidate locations denoted by $x_c\in\braces{x_1,x_2,\ldots,x_{n_c}}$ located with the distance $\delta$ away from the robot. Any location that violates inequality constraint \refeqn{CollisionInequalityConstraint} is excluded to avoid collisions. The set of optimal attitudes at each candidate location is $\braces{R^*_{1},R^*_{2},\ldots,R^*_{n_c}}$, obtained from \refeqn{FindRc}. The objective function \refeqn{ObjFun} is computed by a summation about the $n_d$ rays as %\refeqn{Objective},
+The expanding ring technique is advantageous for searching local solutions quickly, only considering distant future poses when necessary. The key idea is that future candidate locations lie on a circular ``ring'' centered around the robot, evenly spaced around the ring (see red circles in Figure \ref{fig:OptProcess}), and the ring is expanded if certain criteria are not met. More explicitly, consider $n_c$ candidate locations denoted by $x_c\in\braces{x_1,x_2,\ldots,x_{n_c}}$ located with the distance $\delta$ away from the robot. All candidates must satisfy the inequality constraint,
+\begin{align}
+\label{eqn:CollisionInequalityConstraint}
+P_\text{collision}(X)=1-\prod_{i\in\mathcal C_X}(P(\bar{\mathbf{m}}_i)\leq\beta,
+\end{align}
+where $\mathcal C_X$ is the set of grid cells falling inside a volume of preselected size around $X$ that may cause collision and $\beta>0$ is a small acceptable probability of collision. Any location that violates an inequality constraint \refeqn{CollisionInequalityConstraint} is excluded to avoid collisions. The set of optimal attitudes at each candidate location is $\braces{R^*_{1},R^*_{2},\ldots,R^*_{n_c}}$, obtained from \refeqn{FindRc}. The information gain objective function,
+\begin{align}
+\label{eqn:ObjFun}
+\mathcal I(X_c)=H(P(m))-\text{E}\left[H(P(m|X_c,Z_c))\right],
+\end{align}
+is computed by a summation about the $n_d$ rays as %\refeqn{Objective},
 \begin{align}
 \label{eqn:ObjFunApprox}
-\mathcal I(x_c,R_c^*)&\approx \sum_{z_{c,i}\in R_{c}^*\text{ FOV}}\bigg(H(P(m|X_{1:t},Z_{1:t}))\nonumber\\&\qquad-\text{E}\left[H(P(m|X_{1:t},Z_{1:t},x_c,R_c^*,z_{c,i}))\right]\bigg),
+\mathcal I(x_c,R_c^*)&\approx \sum_{z_{c,i}\in R_{c}^*\text{ FOV}}\bigg(H(P(m|X_{1:t},Z_{1:t}))-\text{E}\left[H(P(m|X_{1:t},Z_{1:t},x_c,R_c^*,z_{c,i}))\right]\bigg),
 \\
 x_c^*&=\argmax_{x_c}\mathcal I(x_c,R_c^*).
 \end{align}
-At the optimal pose $X^*_c=(x^*_c,R^*_c)$, the resulting information gain must satisfy $\mathcal I(X_c^*)\geq\mathcal I_\text{min}$, where $\mathcal I_\text{min}$ is some minimum threshold for expected information gain; robot motion is only justified when the expected information gain is significantly large. If the minimum threshold is not met, the ring of candidate pose locations is increased such that $n_c$ and $\delta$ are multiplied by a scale function $\lambda>1$.
+At the optimal pose $X^*_c=(x^*_c,R^*_c)$, the resulting information gain must satisfy $\mathcal I(X_c^*)\geq\mathcal I_\text{min}$, where $\mathcal I_\text{min}$ is a minimum threshold for expected information gain; robot motion is only justified when the expected information gain is significantly large. If the minimum threshold is not met, the ring of candidate pose locations is increased such that $n_c$ and $\delta$ are multiplied by a scale function $\lambda>1$.
 This process is repeated until the expected information gain of the optimal pose is at least $\mathcal I_\text{min}$, or all candidates lie in collision zones or outside map limits. %A pseudocode of the process is found in Table \ref{tab:Alg_AutomousExploration}.
 
-The primary advantage of the expanding ring approach to search the 2D space is that the number of pose candidates need not be proportional to the map area, and that local maxima tend to fall within short distances of the current robot pose. The main drawback is that poses outside a small local region of the robot are frequently neglected, and the robot frequently executes repeated short motions, often without large information gains.
+The primary advantage of the expanding ring approach to search the 2D space is that the number of pose candidates need not be proportional to the map area, and that local maxima tend to fall within short distances of the current robot pose. Additionally, the distance to these poses need not be explicitly considered in the pose determination optimization because the distance costs are identical to each candidate, assuming objects do not occlude the trajectories. The main drawback is that poses outside a small local region of the robot are frequently neglected, and the robot frequently executes repeated short motions, often without large information gains.
 
 \paragraph{Complete Cartesian}
 The complete Cartesian method to search the 2D space provides candidates located fixed distance $d$ apart in each Cartesian direction. This approach is advantageous for capturing expected information gains in regions outside of the immediate vicinity of the robot, but must be applied carefully to avoid issues with computational bottlenecks due to the potentially-large search space.
@@ -219,27 +230,38 @@ where weighting function $k_\text{dist}$ represents the sensitivity to avoiding 
 \put(6.5,2.5){\color{red}$z_{2,8}$}
 \put(6.1,2.9){$X_c^*$}
 \end{picture}
-\caption{This figure illustrates the expanding ring method. Initially, a robot (blue circle) views down and left (blue sector). Then, the robot considers $n_c=8$ poses (red circles) as possible candidates for where to move next. For each candidate, $n_d=8$ directions are considered (red lines, only displayed on candidate location $c=2$). Then, the expected entropy of each ray is calculated. The scan (red sector) covering those rays with the largest expected entropy decreases is chosen for each candidate, and the best candidate $X_c^*$ (black circle: location, black sector: scan) is chosen to maximize information gain. Finally, Dijkstra's algorithm provides the collision-free motion between $X_t$ and $X_c^*$, and the process is repeated.
+\caption{This figure illustrates the expanding ring method. Initially, a robot (blue circle) views down and left (blue sector). Then, the robot considers $n_c=8$ poses (red circles) as possible candidates for where to move next. For each candidate, $n_d=8$ directions are considered (red lines, only displayed on candidate location $c=2$). Then, the expected entropy of each ray is calculated. The scan (red sector) covering those rays with the largest expected entropy decrease is chosen for each candidate, and the best candidate $X_c^*$ (black circle: location, black sector: scan) is chosen to maximize information gain. Finally, Dijkstra's algorithm provides the collision-free motion between $X_t$ and $X_c^*$, and the process is repeated.
 }
 \label{fig:OptProcess}
 \end{figure}
 
-
-%Then, \refeqn{DiscExpEntropyRay} is applied repeatedly over several sample measurement rays that compose scan $Z_c$ as shown in~\cite{KauAiLee16}.
-
-\subsection{Travel Cost with Obstacles}
+% TODO: move these to 3D/multi-vehicle sections
+%\subsection{Travel Cost with Obstacles}
 % Dijkstra's cost map
-
-\subsection{Optimal Pose Selection}
+%\subsection{Optimal Pose Selection}
 % Single-Vehicle argmax
 
 \subsection{Collision-Free Motion Planning}
 % Dijkstra's algorithm (after cost map), no least squares yet
 
+There are two important steps to moving a robot on a collision-free trajectory to its optimal pose. First, Dijkstra's algorithm provides the cost map and optimal collision-free waypoints. Then, a constrained polynomial least squares trajectory serves as the desired path, which is followed by a controller.
+
+\paragraph{Dijkstra's Search}
+
+Dijkstra's search is naturally applied to this problem because the occupancy grid map serves nicely as a graph, and Dijkstra's algorithm provides an optimal collision-free trajectory along that graph. There are two steps to Dijkstra's algorithm. first, generate a cost map from the robot location to each grid cell on the 2D occupancy grid map. Only cells that satisfy \refeqn{CollisionInequalityConstraint} are considered to avoid possible collisions. The cost to travel to neighboring cells that share an edge are the cell edge length $\alpha$, and the cost to travel to cells that share a corner is $\sqrt{2}\alpha$. This provides the collision-free distances to all reachable locations on the map. Second, the waypoints from a candidate pose to the current robot pose are easily obtained along the cost map using steepest descent. 
+
+
+\paragraph{Constrained Polynomial Least Squares Trajectory} The trajectory to follow the path outlined by Dijkstra's algorithm is determined with a linear constrained least squares optimization, assuming the robot follows a polynomial trajectory with fixed speed. The starting and ending positions and attitudes may be constrained, and polynomials patched together for long trajectories share a common position and velocity with respect to time. Then, a controller on the robot tracks this trajectory until the robot falls within acceptable thresholds of the final optimal pose. Any control scheme for the motion of the robot can be integrated with the proposed exploration algorithm. Once the robot completes this motion, the entire process is repeated. 
+
 \section{Numerical Examples}
+
+Here we present two numerical examples. The first uses the expanding-ring technique in a small environment and the second considers a larger benchmark environment, so the complete Cartesian method is applied, as described in Section \ref{sec:OptimalPose2DMap}.
 
 \subsection{Exploring a Simple Environment}
 % SIMPAR numerical example (2 rooms, 1 hallway)
+
+
+
 
 \subsection{Exploring a Complicated Benchmark Environment}
 % JINT17 Fig. 7 & 8

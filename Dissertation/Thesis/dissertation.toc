@@ -46,45 +46,45 @@
 \contentsline {paragraph}{Algorithm}{36}{paragraph*.26}
 \contentsline {paragraph}{Numerical Justification for the Approximation}{38}{paragraph*.27}
 \contentsline {section}{\numberline {3.2}Future Pose Optimization}{38}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Optimal Attitude from Sample Rays}{39}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.1}Optimal Pose from Sample Rays}{39}{subsection.3.2.1}
 \contentsline {paragraph}{Attitude Optimization}{39}{paragraph*.29}
 \contentsline {paragraph}{Expanding Ring}{40}{paragraph*.30}
-\contentsline {paragraph}{Complete Cartesian}{41}{paragraph*.31}
-\contentsline {subsection}{\numberline {3.2.2}Travel Cost with Obstacles}{42}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Optimal Pose Selection}{42}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Collision-Free Motion Planning}{42}{subsection.3.2.4}
-\contentsline {section}{\numberline {3.3}Numerical Examples}{42}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Exploring a Simple Environment}{42}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Exploring a Complicated Benchmark Environment}{42}{subsection.3.3.2}
-\contentsline {section}{\numberline {3.4}Experimental Result}{42}{section.3.4}
-\contentsline {section}{\numberline {3.5}Conclusions}{42}{section.3.5}
-\contentsline {chapter}{\numberline {4}Autonomous Exploration in Vertically-Uniform 3D Space}{44}{chapter.4}
-\contentsline {section}{\numberline {4.1}Occupancy Grid Mapping in 3D}{44}{section.4.1}
-\contentsline {section}{\numberline {4.2}Exploration in Simple Environments }{44}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Map Projections}{44}{subsection.4.2.1}
-\contentsline {section}{\numberline {4.3}Exploring a Large Room}{44}{section.4.3}
-\contentsline {section}{\numberline {4.4}Conclusions}{44}{section.4.4}
-\contentsline {chapter}{\numberline {5}Autonomous Exploration in Complex 3D Space}{45}{chapter.5}
-\contentsline {section}{\numberline {5.1}Exploration with Full 3D Maps}{45}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Collision Mapping in 3D}{45}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Future Pose Optimization in 3D}{45}{subsection.5.1.2}
-\contentsline {section}{\numberline {5.2}Numerical Simulation}{45}{section.5.2}
-\contentsline {section}{\numberline {5.3}Experiment}{45}{section.5.3}
-\contentsline {section}{\numberline {5.4}Conclusions}{45}{section.5.4}
-\contentsline {chapter}{\numberline {6}Multi-Vehicle Autonomous Exploration and Patrol}{46}{chapter.6}
-\contentsline {section}{\numberline {6.1}Bidding-Based Autonomous Exploration}{46}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Objective Function for the First Auction}{46}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Objective Function for Subsequent Auctions}{46}{subsection.6.1.2}
-\contentsline {subsection}{\numberline {6.1.3}Receding Horizon Framework}{46}{subsection.6.1.3}
-\contentsline {subsection}{\numberline {6.1.4}Multi-Vehicle Exploration Numerical Simulation}{46}{subsection.6.1.4}
-\contentsline {section}{\numberline {6.2}Multi-Vehicle Cooperative Patrol}{46}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Continuous-Time Markov Process for Cell Degradation}{46}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Multi-Vehicle Patrol Numerical Simulation}{46}{subsection.6.2.2}
-\contentsline {section}{\numberline {6.3}Conclusions}{46}{section.6.3}
-\contentsline {chapter}{Bibliography}{47}{section*.33}
-\contentsline {chapter}{\numberline {A}Proof of Proposition \ref {prop:ISM}}{50}{appendix.A}
-\contentsline {paragraph}{Unnormalized Reduced Map Inverse Sensor Model}{50}{paragraph*.35}
-\contentsline {paragraph}{Complement of the Unnormalized Reduced Map Inverse Sensor Model}{51}{paragraph*.36}
-\contentsline {paragraph}{Normalizer}{52}{paragraph*.37}
-\contentsline {chapter}{\numberline {A}Proof of Proposition \ref {prop:ExpectedH}}{54}{appendix.A}
-\contentsline {subsection}{\numberline {A.0.1}Single Ray Expected Value of Entropy}{54}{subsection.A.0.1}
+\contentsline {paragraph}{Complete Cartesian}{42}{paragraph*.31}
+\contentsline {subsection}{\numberline {3.2.2}Collision-Free Motion Planning}{42}{subsection.3.2.2}
+\contentsline {paragraph}{Dijkstra's Search}{44}{paragraph*.33}
+\contentsline {paragraph}{Constrained Polynomial Least Squares Trajectory}{44}{paragraph*.34}
+\contentsline {section}{\numberline {3.3}Numerical Examples}{44}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Exploring a Simple Environment}{45}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Exploring a Complicated Benchmark Environment}{45}{subsection.3.3.2}
+\contentsline {section}{\numberline {3.4}Experimental Result}{45}{section.3.4}
+\contentsline {section}{\numberline {3.5}Conclusions}{45}{section.3.5}
+\contentsline {chapter}{\numberline {4}Autonomous Exploration in Vertically-Uniform 3D Space}{46}{chapter.4}
+\contentsline {section}{\numberline {4.1}Occupancy Grid Mapping in 3D}{46}{section.4.1}
+\contentsline {section}{\numberline {4.2}Exploration in Simple Environments }{46}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Map Projections}{46}{subsection.4.2.1}
+\contentsline {section}{\numberline {4.3}Exploring a Large Room}{46}{section.4.3}
+\contentsline {section}{\numberline {4.4}Conclusions}{46}{section.4.4}
+\contentsline {chapter}{\numberline {5}Autonomous Exploration in Complex 3D Space}{47}{chapter.5}
+\contentsline {section}{\numberline {5.1}Exploration with Full 3D Maps}{47}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Collision Mapping in 3D}{47}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Future Pose Optimization in 3D}{47}{subsection.5.1.2}
+\contentsline {section}{\numberline {5.2}Numerical Simulation}{47}{section.5.2}
+\contentsline {section}{\numberline {5.3}Experiment}{47}{section.5.3}
+\contentsline {section}{\numberline {5.4}Conclusions}{47}{section.5.4}
+\contentsline {chapter}{\numberline {6}Multi-Vehicle Autonomous Exploration and Patrol}{48}{chapter.6}
+\contentsline {section}{\numberline {6.1}Bidding-Based Autonomous Exploration}{48}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Objective Function for the First Auction}{48}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Objective Function for Subsequent Auctions}{48}{subsection.6.1.2}
+\contentsline {subsection}{\numberline {6.1.3}Receding Horizon Framework}{48}{subsection.6.1.3}
+\contentsline {subsection}{\numberline {6.1.4}Multi-Vehicle Exploration Numerical Simulation}{48}{subsection.6.1.4}
+\contentsline {section}{\numberline {6.2}Multi-Vehicle Cooperative Patrol}{48}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Continuous-Time Markov Process for Cell Degradation}{48}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Multi-Vehicle Patrol Numerical Simulation}{48}{subsection.6.2.2}
+\contentsline {section}{\numberline {6.3}Conclusions}{48}{section.6.3}
+\contentsline {chapter}{Bibliography}{49}{section*.35}
+\contentsline {chapter}{\numberline {A}Proof of Proposition \ref {prop:ISM}}{52}{appendix.A}
+\contentsline {paragraph}{Unnormalized Reduced Map Inverse Sensor Model}{52}{paragraph*.37}
+\contentsline {paragraph}{Complement of the Unnormalized Reduced Map Inverse Sensor Model}{53}{paragraph*.38}
+\contentsline {paragraph}{Normalizer}{54}{paragraph*.39}
+\contentsline {chapter}{\numberline {A}Proof of Proposition \ref {prop:ExpectedH}}{56}{appendix.A}
+\contentsline {subsection}{\numberline {A.0.1}Single Ray Expected Value of Entropy}{56}{subsection.A.0.1}
