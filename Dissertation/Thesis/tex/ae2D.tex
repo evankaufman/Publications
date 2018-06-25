@@ -260,15 +260,170 @@ Here we present two numerical examples. The first uses the expanding-ring techni
 \subsection{Exploring a Simple Environment}
 % SIMPAR numerical example (2 rooms, 1 hallway)
 
+Here, a robot autonomously maps and explores a 2D environment composed of two rooms and one hallway. The robot models its surroundings with an occupancy grid of $15000$ cells where grid cell edges have length $\alpha=0.2$m, composing a map with dimensions $30\text{m}\times20\text{m}$. The initial probability $P(\mathbf{m}_i)=1\times10^{-10}\approx0$ (minimum value for free space) for grid cells covered by the circular robot of radius $0.1$m and $P(\mathbf{m}_i)=0.5$ for all other cells.
+At each time step, the robot receives a measurement scan, where the probabilistic properties of the sensor are taken from~\cite{PirRutBisSch11,KhoElb12}. Then, the $n_c=8$ evenly-spaced candidate locations about a circle of radius $\delta=0.5$m around the current pose location are considered, where $n_d=32$ measurement rays are evenly-spaced about the candidate location.  When no current candidates yield expected information gains above $\mathcal I_\text{min}=2$, $\lambda=1.25$ is multiplied to $n_c$ and $\delta$. The motion of the robot is restricted to movement along cells satisfying \refeqn{CollisionInequalityConstraint} with $\beta=0.01$. Dijkstra's algorithm provides collision-free motion planning.
+The results are illustrated in Figure \ref{fig:AutonomousExploration}.
+
+
+\begin{figure}
+\centering{
+    	\begin{subfigure}[b]{0.3\textwidth}
+        		\includegraphics[width=\textwidth]{CDC16_t50.png}
+        		\caption{Map at $t=50$ sec}
+%        		\label{fig:}
+    	\end{subfigure}
+	\hspace*{0.01\columnwidth}
+	\begin{subfigure}[b]{0.3\textwidth}
+        		\includegraphics[width=\textwidth]{CDC16_t100.png}
+        		\caption{Map at $t=100$ sec}
+%        		\label{fig:}
+    	\end{subfigure}
+	\hspace*{0.01\columnwidth}
+	\begin{subfigure}[b]{0.3\textwidth}
+        		\includegraphics[width=\textwidth]{CDC16_t150.png}
+        		\caption{Map at $t=150$ sec}
+%        		\label{fig:}
+    	\end{subfigure}
+}
+\centering{
+    	\begin{subfigure}[b]{0.3\textwidth}
+        		\includegraphics[width=\textwidth]{CDC16_t200.png}
+        		\caption{Map at $t=100$ sec}
+%        		\label{fig:}
+    	\end{subfigure}
+	\hspace*{0.01\columnwidth}
+	\begin{subfigure}[b]{0.3\textwidth}
+        		\includegraphics[width=\textwidth]{CDC16_t250.png}
+        		\caption{Map at $t=250$ sec}
+%        		\label{fig:}
+    	\end{subfigure}
+	\hspace*{0.01\columnwidth}
+	\begin{subfigure}[b]{0.3\textwidth}
+        		\includegraphics[width=\textwidth]{CDC16_t300.png}
+        		\caption{Map at $t=300$ sec}
+%        		\label{fig:}
+    	\end{subfigure}
+}
+\centering{
+    	\begin{subfigure}[b]{0.3\textwidth}
+        		\includegraphics[width=\textwidth]{CDC16_t350.png}
+        		\caption{Map at $t=350$ sec}
+%        		\label{fig:}
+    	\end{subfigure}
+	\hspace*{0.01\columnwidth}
+	\begin{subfigure}[b]{0.3\textwidth}
+        		\includegraphics[width=\textwidth]{CDC16_t400.png}
+        		\caption{Map at $t=400$ sec}
+%        		\label{fig:}
+    	\end{subfigure}
+	\hspace*{0.01\columnwidth}
+	\begin{subfigure}[b]{0.3\textwidth}
+        		\includegraphics[width=\textwidth]{CDC16_t450.png}
+        		\caption{Map at $t=450$ sec}
+%        		\label{fig:}
+    	\end{subfigure}
+}
+\caption{A robot (green circle, green marker of previous path) measures a room with a Kinect depth sensor to maximize map information gain.}
+\label{fig:AutonomousExploration}
+\end{figure}
+
+Knowing only that the robot is inside free space at the beginning, the robot carefully navigates the environment while avoiding collisions. The robot motion is governed by a policy that maximizes the map information gain within its set of pose candidates, where the $\hat n=6$ is chosen to approximate the expected entropy of each ray. 
+When running the exploration algorithm in Robot Operating System (ROS), the mean computation time is $0.0194$ seconds to determine the optimal future pose and complete Dijkstra's algorithm on the occupancy grid.
+The computation times for this map reached roughly $1$ second at maximum, corresponding to rare cases when the robot is locally surrounded by a highly-certain environment; this task requires evaluating many more pose candidates and motion planning over a larger terrain.
+
+Throughout the numerical example, the robot chooses numerous actions, based directly on their expected information gains, not frontiers or predicted measurement scans. If the obstacles were known a priori, the motion planning problem would yield a simpler path; however, the autonomous exploration is based on only the information of the map that the robot generates, so the motion planning must be reevaluated repeatedly. Even with these limitations, the robot explores the vast majority of reachable space in the $450$ second period. 
+
+
 
 
 
 \subsection{Exploring a Complicated Benchmark Environment}
-% JINT17 Fig. 7 & 8
 
-\section{Experimental Result}
+Next, the proposed autonomous exploration approach is applied to the floor plan of Intel Research Lab, illustrated in Figure~\ref{fig:intel}.
+The robot explores its surroundings with an occupancy grid with $90,000$ cells where grid cell edges are $\alpha=0.1$m, composing a map with dimensions $30\text{m}\times30\text{m}$.
+Similar to the prior example, the initial probability $P(\mathbf{m}_i)=1\times10^{-10}\approx0$ (minimum value for free space) is chosen for grid cells covered by the circular robot of radius of $0.3$m and $P(\mathbf{m}_i)=0.5$ for all other cells.
+For added safety, cells falling within $0.6$m of the robot are considered inside the possible collision zone $\mathcal{C}_X$, from \refeqn{CollisionInequalityConstraint}, where $\beta=0.1$ is selected. 
+
+The robot follows the complete Cartesian candidate search method to determine future poses, with $k_\text{dist}=5$ to avoid large motions with little added expected information gains. Due to the large size of the map, candidates below the expected information gain of $1.25$ are neglected from future consideration.
+
+The time sequence of the exploration for every 5~minutes are simulated in ROS Stage 2D environment. The corresponding simulation results are illustrated in Figure \ref{fig:IRL} and a video is available at \href{https://www.youtube.com/watch?v=5VdzKHreB_s}{\WriteBlue{https://www.youtube.com/watch?v=5VdzKHreB\_s}}.
+Lighter red dots and darker blue dots in the explored area correlate to the level of information gain at those positions with low and high value, respectively. It is shown that the proposed autonomous exploration algorithm successfully mapped the complicated environment composed of a number of rooms, narrow hallways, and open spaces that are irregularly shaped.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.4\textwidth]{intel_clean.png}
+    \caption{Modified Intel Research Lab floor plan form the SLAM benchmark~\cite{kummerle2009measuring}.}
+\label{fig:intel}
+\end{figure}
+
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[t]{0.3\columnwidth}
+        \centering
+        \includegraphics[trim = {4.6cm 3.8cm 4.6cm 0}, clip, width=\textwidth]{0min.png}
+        \caption{$t=0$ min}
+        \label{fig:IRL0min}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.3\columnwidth}
+        \centering
+        \includegraphics[trim = {4.6cm 3.8cm 4.6cm 0}, clip, width=\textwidth]{5min.png}
+        \caption{$t=5$ min}
+        \label{fig:IRL5min}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.3\columnwidth}
+           \centering
+           \includegraphics[trim = {4.6cm 3.8cm 4.6cm 0}, clip, width=\textwidth]{10min.png}
+        \caption{$t=10$ min}
+        \label{fig:IRL10min}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.3\columnwidth}
+           \centering
+           \includegraphics[trim = {4.6cm 3.8cm 4.6cm 0}, clip, width=\textwidth]{15min.png}
+        \caption{$t=15$ min}
+        \label{fig:IRL15min}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.3\columnwidth}
+         \centering
+         \includegraphics[trim = {4.6cm 3.8cm 4.6cm 0}, clip, width=\textwidth]{20min.png}
+        \caption{$t=20$ min}
+        \label{fig:IRL20min}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.3\columnwidth}
+           \centering
+           \includegraphics[trim = {4.6cm 3.8cm 4.6cm 0}, clip, width=\textwidth]{25min.png}
+        \caption{$t=25$ min}
+        \label{fig:IRL25min}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.3\columnwidth}
+           \centering
+           \includegraphics[trim = {4.6cm 3.8cm 4.6cm 0}, clip, width=\textwidth]{30min.png}
+        \caption{$t=30$ min}
+        \label{fig:IRL30min}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.3\columnwidth}
+           \centering
+           \includegraphics[trim = {4.6cm 3.8cm 4.6cm 0}, clip, width=\textwidth]{35min.png}
+        \caption{$t=35$ min}
+        \label{fig:IRL35min}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.3\columnwidth}
+           \centering
+           \includegraphics[trim = {4.6cm 3.8cm 4.6cm 0}, clip, width=\textwidth]{40min.png}
+        \caption{$t=40$ min}
+        \label{fig:IRL40min}
+    \end{subfigure}
+    \caption{A robot (green) measures a room in ROS Stage simulator using the Intel Research Lab floor plan. The exact inverse sensor model is used for the autonomous exploration algorithm.}
+    \label{fig:IRL}
+\end{figure}
+
+
+
+% TODO: move these to final chapter
+%\section{Experimental Result}
 % JINT17 9, 10, 11 (ground experiment at the NRL)
 
 \section{Conclusions}
 
-
+The proposed autonomous exploration scheme determines the expected value of entropy for various potential robotic actions. The optimal policy maximizes an objective function that includes expected information gain and travel distance. Collision-free paths to optimal poses are determined with Dijkstra's search and a constrained polynomial least squares trajectory. These are demonstrated with two numerical examples, showing the expanding ring and complete Cartesian approaches. Due to superior scalability, the complete Cartesian approach is applied to subsequent exploration algorithms in this dissertation.
