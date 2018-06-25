@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  5 FEB 2018 14:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  24 JUN 2018 21:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1098,8 +1098,15 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 778.
  (./IRC18_final.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 778.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 778.
-Package rerunfilecheck Info: File `IRC18_final.out' has not changed.
-(rerunfilecheck)             Checksum: CB7E5C7260C3F6C1E58FE7675D8D71D4;1242.
+
+
+Package rerunfilecheck Warning: File `IRC18_final.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `IRC18_final.out':
+(rerunfilecheck)             Before: CB7E5C7260C3F6C1E58FE7675D8D71D4;1242
+(rerunfilecheck)             After:  EFFFDD3EC9ADAE1820228171ADAAB2F2;1242.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 778.
  )
 (\end occurred inside a group at level 1)
@@ -1137,7 +1144,7 @@ xmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2016/texmf-dist/f
 onts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type
 1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/time
 s/utmri8a.pfb>
-Output written on IRC18_final.pdf (7 pages, 3579046 bytes).
+Output written on IRC18_final.pdf (7 pages, 3579042 bytes).
 PDF statistics:
  377 PDF objects out of 1000 (max. 8388607)
  309 compressed objects within 4 object streams

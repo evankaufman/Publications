@@ -14,6 +14,10 @@
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Modified Intel Research Lab floor plan form the SLAM benchmark\nobreakspace {}\cite {kummerle2009measuring}.\relax }}{48}{figure.caption.36}
 \contentsline {figure}{\numberline {3.5}{\ignorespaces A robot (green) measures a room in ROS Stage simulator using the Intel Research Lab floor plan. The exact inverse sensor model is used for the autonomous exploration algorithm.\relax }}{49}{figure.caption.37}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Simulated 3D Occupancy Grid Map\relax }}{57}{figure.caption.38}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Simulated Environment and 2D Projected Maps at $4$min\relax }}{58}{figure.caption.39}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Simulated Environment Map Entropy\relax }}{58}{figure.caption.40}
+\addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
