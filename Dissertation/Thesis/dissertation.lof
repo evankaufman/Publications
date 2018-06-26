@@ -18,6 +18,7 @@
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Simulated Environment and 2D Projected Maps at $4$ min\relax }}{58}{figure.caption.43}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Simulated Environment Map Entropy\relax }}{58}{figure.caption.44}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces The bump function is designed to promote travel distances close to $d_\text {opt}$ by multiplying this function by the expected information gain objective. Travel distances less than $d_\text {opt}$ are below the robot capabilities. Travel distances beyond $d_\text {opt}$ are beyond what the robot can reach within the minimum exploration computation time.\relax }}{62}{figure.caption.45}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
