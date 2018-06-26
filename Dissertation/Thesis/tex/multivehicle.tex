@@ -10,14 +10,22 @@ When exploring uncertain environments, robots can generate large maps much faste
 
 In this section, we formulate a cooperative and autonomous exploration scheme based on sequential auctions for maximizing map information gain. The first auction is based on the expected information gain presented in the prior section, scaled by travel distance. Once the winner of the first auction is determined, the map for bidding is updated based on the expected measurements of the first robot. The second auction for the remaining robots is determined by the information gain from the revised map that is further scaled by the travel distance and a penalty for collision-avoidance. This process is repeated until all robots are assigned tasks. 
 
+During this chapter, we assume a 3D vertically-uniform environment at a fixed exploration height as described in Chapter \ref{chap:ae3Dsimple} using the 2D projected combination map $m_\text{2D}$. Then information gain is based on \refeqn{ObjFun} and \refeqn{ObjFunApprox}, and depends on this reduced map only, i.e.,
+\begin{align}
+\label{eqn:expectedInfoGainMap2D}
+\mathcal I(X_c,m_\text{2D})&=H(P(m_\text{2D}))-\text{E}\left[H(P(m|X_c,Z_c))\right],
+\end{align}
+where the expected scan $Z$ is given from \refeqn{expectedInfoGainRay} and \refeqn{FindRc}.
+
+
 \subsection{Objective Function for the First Auction}
 
 
 Here, we describe how robots participate in the first auction for maximizing map information gain while accounting for travel time. The information gain \refeqn{ObjFunApproxCompleteCartesian} is computed for each candidate pose. Expected information gains may vary among the robots only if they have different sensor configurations. All expected information gains must be computed prior to the first auction.
 
-Next, we describe how travel time is integrated into exploration. Considering that distances from current robot poses to candidate poses may differ greatly, accounting for these varying travel times properly is essential for exploration time efficiency. Travel distances are computed using Dijkstra's search to provide collision-free waypoints for each robot. There are two steps: first, generate a cost map from the robot location to each location on the 2D projected map. This provides the collision-free distances to all reachable locations on the map. Second, the waypoints from a candidate pose to the current robot pose are easily obtained along the cost map using steepest descent. 
+Next, we describe how travel time is integrated into exploration. Considering that distances from current robot poses to candidate poses may differ greatly, accounting for these varying travel times properly is essential for exploration time efficiency. Travel distances are computed using Dijkstra's search to provide collision-free waypoints for each robot. There are two steps: first, generate a cost map from the robot location to each location on the 2D projected map. This provides the collision-free distances to all reachable locations on the map, which are different for each robot in general. Second, the waypoints from a candidate pose to the current robot pose are easily obtained along the cost map using steepest descent. 
 
-Here, we define a bump function to account for varying travel distances from Dijkstra's search. Let the distance along the collision-free path from the $k$-th robot pose, namely $X_k$, to the $c$-th candidate pose, namely $X_c$, be denoted $d(X_k,X_c,m_\text{2D})\geq0$, which is taken from the cost map belonging to $X_k$. A continuous bump function is defined to account for traveling costs, and is composed of two parts.  
+The travel time is integrated into the autonomous exploration optimization using a bump function similar to \refeqn{BumpFunRef}. Let the distance along the collision-free path from the $k$-th robot pose, namely $X_k$, to the $c$-th candidate pose, namely $X_c$, be denoted $d(X_k,X_c,m_\text{2D})\geq0$, which is taken from the cost map belonging to $X_k$. A continuous bump function is defined to account for traveling costs, and is composed of two parts.  
 
 The first part of the bump function corresponds to short trajectories. Consider $d_\text{opt}$, the time-optimal distance that a robot may travel at full speed during the time between exploration updates. Here, we consider the case when $d(X_k,X_c,m_\text{2D})\leq d_\text{opt}$, i.e., the robot can completely traverse this distance during the allotted travel time. If $d(X_k,X_c,m_\text{2D})\ll d_\text{opt}$, then the robot is not moving at its full potential. This can be wasteful, because the robot tends to capture larger regions while moving. Therefore, it is desirable for $d(X_k,X_c,m_\text{2D})\rightarrow d_\text{opt}$, which corresponds to maximizing map coverage without time cost. The first part of the bump function is sinusoidal and is optimized at $d_\text{opt}$ to maximize robotic movement as
 \begin{align}
@@ -50,7 +58,7 @@ which is illustrated in Fig. \ref{fig:nonzeroBumpFun}. % In short, the bump func
 		\label{fig:nonzeroBumpFun}
 	\end{figure}
 	
-Then, using the information gain from \refeqn{expectedInfoGainRay} and considering the impact from travel distance from \refeqn{BumpFun}, the objective function for a single agent with respect to $X_{c}$ is
+Then, using the information gain from \refeqn{expectedInfoGainMap2D} and considering the impact from travel distance from \refeqn{BumpFun}, the objective function for a single agent with respect to $X_{c}$ is
 \begin{align}
 \label{eqn:CandidateBidSingle}
 \text{Obj}_\text{single}(X_k,X_c,m_\text{2D})&=\mathcal B(d(X_k,X_c,m_\text{2D}))\mathcal I(X_{c},m_\text{2D}).
@@ -61,7 +69,7 @@ Then, the optimal pose selection for the $k$-th agent is
 \label{eqn:OptPoseSingle}
 X^*_{k}=\argmax_{X_c}\text{Obj}_\text{single}(X_k,X_c,m_\text{2D}).
 \end{align}
-Therefore, the bump function from \refeqn{BumpFun} prioritizes robotic movement within the local surrounding space before the robot moves across the map to distant regions, while still considering faraway pose candidates.
+Like \refeqn{BumpFunRef}, the bump function from \refeqn{BumpFun} prioritizes robotic movement within the local surrounding space before the robot moves across the map to distant regions, while still considering faraway pose candidates. Unlike \refeqn{BumpFunRef}, \refeqn{BumpFun} discourages the robot from staying motionless or near-motionless.
 
 The first auction includes bids from all robots, and proceeds as follows. Let the set of all $n_R$ robots be denoted $\mathcal R=\braces{R_1,R_2,\dots,R_{n_R}}$ such that the $k$-th robot, namely $R_k$, bids $\text{Obj}_\text{single}(X^*_k,X_c,m_\text{2D})$ from \refeqn{CandidateBidSingle} and \refeqn{OptPoseSingle}. This is repeated for all $k$ such that $R_k\in\mathcal R$. The robot with the largest bid wins the first auction at index $k^*$, and is assigned to travel to $X^*_{k^*}$. Then, the remaining robots must account for the planned trajectory of the robot that won the first auction in subsequent auctions, described next.
 

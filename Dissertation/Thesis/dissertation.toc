@@ -72,7 +72,7 @@
 \contentsline {section}{\numberline {4.4}Conclusions}{57}{section.4.4}
 \contentsline {chapter}{\numberline {5}Multi-Vehicle Autonomous Exploration and Patrol}{59}{chapter.5}
 \contentsline {section}{\numberline {5.1}Bidding-Based Autonomous Exploration}{59}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Objective Function for the First Auction}{59}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.1}Objective Function for the First Auction}{60}{subsection.5.1.1}
 \contentsline {subsection}{\numberline {5.1.2}Objective Function for Subsequent Auctions}{63}{subsection.5.1.2}
 \contentsline {subsection}{\numberline {5.1.3}Receding Horizon Framework}{63}{subsection.5.1.3}
 \contentsline {subsection}{\numberline {5.1.4}Multi-Vehicle Exploration Numerical Simulation}{63}{subsection.5.1.4}
