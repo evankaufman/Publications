@@ -77,7 +77,8 @@ The first auction includes bids from all robots, and proceeds as follows. Let th
 
 \subsection{Objective Function for Subsequent Auctions}
 
-The robots unable to win the first auction are updated to reflect the expected impact of $R_{k^*}$. This robot is expected to modify the probabilistic occupancy grid map, which may significantly change the expected information gains and collision properties of candidate poses nearby $X^*_{k^*}$. The process of auctioning and modifying bids is repeated, removing the winning robot from consideration after each auction, until no robots remain. Between auctions, updating the map with expected measurements from auction-winning robots discourages the remaining robots from entering the same regions and capturing the same cells. As such, there is no need to consider the coverage overlap explicitly: it is avoided in a systematic way as increased coverage overlap would reduce the overall information gain.
+The robots unable to win the first auction are updated to reflect the expected impact from the first robot traveling to optimal pose $X^*_{k^*}$.
+This robot is expected to modify the probabilistic occupancy grid map, which may significantly change the expected information gains and collision properties of candidate poses nearby. The process of auctioning and modifying bids is repeated, removing the winning robot from consideration after each auction, until no robots remain. Between auctions, updating the map with expected measurements from auction-winning robots discourages the remaining robots from entering the same regions and capturing the same cells. As such, there is no need to consider the coverage overlap explicitly as in~\cite{SimApfBurFoxMooThrYou00}; instead coverage overlap is avoided in a systematic way as increased coverage overlap would reduce the overall information gain.
 
 More specifically, we coordinate robotic efforts by modifying bids to prevent robots from updating the same grid cells and to avoid collisions among robots. The goal is to find the winning bids $\mathcal X^*=\braces{X^*_{1},X^*_{2},\dots,X^*_{n_R}}$ corresponding to each robot from $\mathcal R$. During the auctioning process, let $\mathcal W\subset\mathcal R$ be the set of robots that have already won auctions by producing the largest objective function bid. After the first auction described above, $\mathcal W=\braces{R_{k^*}}$; after all auctions are complete, $\mathcal W=\mathcal R$. Between auctions, the candidate poses are modified for information gain and collision-avoidance, coordinating the multi-vehicle exploration.
 
@@ -86,7 +87,11 @@ The first step between auctions is to modify the expected map information gain f
 \label{eqn:ExpectedMeasRay}
 \text{E}[z]=\sum_{k=1}^{n_{r}}\bigg\{\prod_{j=0}^{k-1}P(\bar{\mathbf{m}}_j)\bigg\}P(\mathbf{m}_k)z_k,
 \end{align}
-where $z_k$ denotes the distance from the robot sensor to the $k$-th cell along the measurement ray. Then $\text{E}[z]$ is substituted into \refeqn{RayISMAnswer}--\refeqn{Unnormalized} to modify $m_\text{2D,copy}$, and expected map information gains are recomputed with \refeqn{ProbMeas} and \refeqn{expectedInfoGainRay}, while the bump function \refeqn{BumpFun} remains the same. In short, the expected changes of $m_\text{2D}$ are integrated into $m_\text{2D,copy}$ for expected information gain estimation between multiple vehicles.
+where $z_k$ denotes the distance from the robot sensor to the $k$-th cell along the measurement ray. Then $\text{E}[z]$ is substituted into \refeqn{RayISMAnswer}--\refeqn{allEta} to modify $m_\text{2D,copy}$, and expected map information gains are recomputed with \refeqn{ProbMeas} and \refeqn{expectedInfoGainRay}, while the bump function \refeqn{BumpFun} remains the same. In short, the expected changes of $m_\text{2D}$ are integrated into $m_\text{2D,copy}$ for expected information gain estimation between multiple vehicles.
+
+% TODO: make sure find/replace of:
+% \refeqn{RayISMAnswer}--\refeqn{Unnormalized}
+%  \refeqn{RayISMAnswer}--\refeqn{allEta}
 
 The second step focusses on collision-avoidance between robots based on their proximity. Let $\rho_\text{max}>0$ be a fixed maximum radius to consider collision-avoidance and $\rho_{i,c}\geq0$ be the Euclidean distance from the $i$-th already-assigned pose $X^*_i$ to the $c$-th candidate pose $X_c$, i.e.,
 \begin{align}
@@ -112,8 +117,8 @@ where its optimal pose during this auction is
 \label{eqn:OptPoseMulti}
 X^*_{k}=\argmax_{X_c}\text{Obj}_\text{multi}&(X_k,X_c,m_\text{2D,copy}),
 \end{align}
-where $\text{Obj}_\text{multi}(X^*_k,X_c,m_\text{2D,copy})$ is the bid for the $k$-th robot.
-Optimal pose selection and bidding is repeated for all robots not belonging to $\mathcal W$. The largest bid among these wins the auction and is tasked with moving to the associated pose candidate, and then this robot is included with $\mathcal W$ to avoid further consideration. Completing $n_R$ auctions produces $\mathcal X^*$.
+such that $\text{Obj}_\text{multi}(X^*_k,X_c,m_\text{2D,copy})$ is the bid for the $k$-th robot.
+Optimal pose selection and bidding is repeated for all robots not belonging to $\mathcal W$. The largest bid among these wins the auction and is tasked with moving to the associated pose candidate, and then this robot is included with $\mathcal W$ to avoid further consideration. Completing $n_R$ auctions produces the set of coordinated poses $\mathcal X^*$.
 
 The proposed approach uses auctions and bid modifications based on total map expected information gain and collision-avoidance, promoting exploration of different spaces without explicit consideration of coverage overlaps. The pseudocode for the bidding process is shown with Algorithm \ref{alg:bidding}.
 
@@ -151,6 +156,10 @@ The proposed approach uses auctions and bid modifications based on total map exp
 
 
 \subsection{Receding Horizon Framework}
+
+This algorithm is further aided by following a receding horizon framework for improved information gain maximizations and collision-avoidance with dynamic obstacles and other robots. A receding horizon simply repeats the autonomous exploration steps as quickly as possible over a finite time period, frequently before a robot reaches its desired pose. Since exploration optimizations can only occur during exploration updates, a receding horizon maximizes the rate at which these updates occur. These updates require time for computation, over which the robot can move $d_\text{opt}$, used to optimize the robot travel distances with \refeqn{BumpFun}. Hence, the receding horizon framework serves to repeat optimizations as quickly as possible with maximal robotic movement while exploring a changing occupancy grid.
+
+Furthermore, a receding horizon framework enhances autonomous exploration in two other ways. First, the occupancy grid map is constantly updated while a robot traverses a trajectory, so the expected information gains change as well. Since the bids depend on the occupancy grid, $\mathcal X^*$ is updated accordingly. This prevents robots from completing trajectories that have become unnecessary as new terrain becomes captured. Second, the receding horizon prevents robots from colliding with each other when they become too close together (e.g., crossing paths, traversing a tight passage) or other moving obstacles (e.g., a human). The cost map for each robot is updated, and the location of other robots are considered as collision-prone space. Hence, the robot trajectories become better separated due to rapid updates of the cost maps with the receding horizon. 
 
 \subsection{Multi-Vehicle Exploration Numerical Simulation}
 % Multi-vehicle ICRA figs 3-6 (remake fig. 5 with larger contrast)
