@@ -25,7 +25,7 @@ Thus, entropy is maximized when $P(\mathbf{m}_i)=0.5$, which corresponds to the 
 
 \subsection{Expected Information Gain}
 
-Suppose a future pose candidate and its associated future measurement scan is $X_c=\braces{x_c,R_c}$ and $Z_c$, respectively, where $c\in\mathcal C$ such that $\mathcal C=\braces{1,2,...,n_c}$ accounts for all $n_c$ candidates under consideration for the next robot pose. The current pose of the robot is \emph{not} $X_c$ in general, so any change to the probabilistic map from $X_c$ must be predicted. Much like the probabilistic mapping, this is achieved ray-by-ray~\cite{KauAiLee16,KauTakAiLee17}. Considering that all grid cell probabilities are conditioned on the history of poses $X_{1:t}$ and measurement scans $Z_{1:t}$, these terms are removed from the remaining equations for simplicity. 
+Suppose a future pose candidate and its associated future measurement scan is $X_c=\braces{x_c,R_c}$ and $Z_c$, respectively, where $c\in\mathcal C$ such that $\mathcal C=\braces{1,2,...,n_c}$ accounts for all $n_c$ candidates under consideration for the next robot pose. The current pose of the robot is \emph{not} $X_c$ in general, so any change to the probabilistic map from $X_c$ must be predicted. Much like the probabilistic mapping, this is achieved ray-by-ray~\cite{KauAiLee16,KauTakAiLee17}. Considering that all grid cell probabilities are conditioned on the history of poses $X_{1:t}$ and measurement scans $Z_{1:t}$, these terms are removed from the remaining equations of this dissertation for simplicity (excluding Appendices). 
 
 \begin{prop}
 \label{prop:ExpectedH}
@@ -68,10 +68,10 @@ P(\mathbf{r}_{k+})%\nonumber\\&
 =\bigg\{\prod_{j=0}^{k-1}P(\bar{\mathbf{r}}_{j})\bigg\}P(\mathbf{r}_{k}),
 \end{align}
 which is the probability that $\mathbf{r}_{k}$ is the closest occupied grid cell based on past poses and measurement scans, independent of cells beyond the $k$-th cell from $x_c$.
-Let $\hat n>0$ be a fixed number of grid cells for all rays such that $\hat n\leq n_{r}+1$ for all $l$.
+Let $\hat n>0$ be a fixed number of grid cells such that $\hat n\leq n_{r}+1$.
 Let $\hat{r}$ correspond to the grid cells that yield the $\hat{n}$ maximum values of \refeqn{ProbOfFirstCell} (the $\hat n$ most likely ray detections), indexed by increasing distance from candidate location $x_c$.
 By replacing the reduced map $r$ with $\hat{r}$ and changing the summation limits to $\braces{1,2,...,\hat n}$ in \refeqn{DiscExpEntropyRay} and \refeqn{ProbMeas}, the order of computation is reduced to $\mathcal O({\hat{n}}^2)$.
-Even though the value of $n_{r}$ is different among various rays in general, $\hat n$ is fixed, so the computational order is fixed as well.
+Even though the value of $n_{r}$ is different among various measurement rays in general, $\hat n$ is fixed for all rays, so the computational order is fixed as well.
 In short, this method reduces the required computation substantially by systematically neglecting those grid cells with little effect. It can be noted that if $\hat n=n_{r}+1$, the ray objective function is computed without approximation.
 
 
@@ -119,7 +119,7 @@ Since this algorithm operates as a function, fixed indices and condition variabl
 \paragraph{Numerical Justification for the Approximation}
 
 The purpose of this numerical example is to provide evidence that the approximations are reasonable and increase the algorithm speed substantially.
-Since a measurement ray produces a depth measurement in a single direction, we only consider a 1D map where the grid cells have spacing $\alpha=0.2$ m, and the properties of the range sensor are based on the Microsoft Kinect~\cite{PirRutBisSch11,KhoElb12} with maximum reading depth $z_\text{max}=4$ m ($20$ grid cells inside the sensor FOV). The goal is to compare the expected entropy $\text{E}[H(P(m|x_c,z_{c}))]$ from \refeqn{DiscExpEntropyRay} and with an approximation $\text{E}[H_\text{approx}(P(m|x_c,z_{c}))]$, which only considers $\hat n$ grid cells with highest detection probability \refeqn{ProbOfFirstCell}.
+Since a measurement ray returns a range in a single direction, we only consider a 1D map where the grid cells have spacing $\alpha=0.2$ m, and the properties of the range sensor are based on the Microsoft Kinect~\cite{PirRutBisSch11,KhoElb12} with maximum reading depth $z_\text{max}=4$ m ($20$ grid cells inside the sensor FOV). The goal is to compare the expected entropy $\text{E}[H(P(m|x_c,z_{c}))]$ from \refeqn{DiscExpEntropyRay} and with an approximation $\text{E}[H_\text{approx}(P(m|x_c,z_{c}))]$, which only considers $\hat n$ grid cells with highest detection probability \refeqn{ProbOfFirstCell}.
 
 We consider $100$ probabilistic maps to obtain Monte Carlo results to evaluate the approximate entropy. In every Monte Carlo trial, each grid cell has an $80\%$ chance of being free and a $20\%$ chance of receiving an a priori probability uniformly distributed between $0$ and $1$. 
 Several metrics serve to evaluate $\text{E}[H(P(m|x_c,z_{c}))]$ with $\text{E}[H_\text{approx}(P(m|x_c,z_{c}))]$. The median expected entropy change is $\text{E}[H(P(m|x_c,z_{c}))]-H(P(m|X_{1:t},Z_{1:t}))=-0.83792$. The error for the $100$ Monte Carlo cases is defined simply as
@@ -151,7 +151,7 @@ This example shows a typical case when the summation limits generated from \refe
 
 \section{Future Pose Optimization}
 
-In this section, we show how expected entropy changes from single measurement rays can be integrated into predicting the expected information gain of measurement scans. This metric, and a cost associated with travel time, are integrated to determine an optimal future pose and collision-free path in a 2D environment.
+In this section, we show how expected entropy changes from single measurement rays can be integrated into predicting the expected information gain of measurement scans. This metric, and a cost associated with travel time, are combined to determine an optimal future pose and collision-free path in a 2D environment.
 
 \subsection{Optimal Pose from Sample Rays}
 \label{sec:OptimalPose2DMap}
@@ -160,11 +160,11 @@ The objective is to choose a future pose that minimizes the map uncertainty, suc
 The procedure involves three steps. First, the attitude that maximizes the information gain objective function is selected at each candidate future pose location. Second, the location with the maximum objective function of all candidates is selected. Thus, the optimal attitude and the optimal location compose the optimal future pose. Finally, the robot determines and follows a collision-free path to the optimal future pose. This process is repeated, resulting in autonomous exploration.
 
 \paragraph{Attitude Optimization}
-Consider a collision-free pose candidate at an arbitrary location $x_c$. At this pose, consider $n_d$ evenly-spaced measurement rays oriented radially outward from the robot in a circular pattern (see red lines in Figure \ref{fig:OptProcess}). These rays are denoted $\braces{z_{c,1},z_{c,2},\ldots,z_{c,n_d}}$. Attitudes correspond to the rays such that the robot sensor is aligned with the ray direction, and these are denoted $\braces{R_{c,1},R_{c,2},\ldots,R_{c,n_d}}$, where the scan with attitude $R_{c,d}$ might cover several ray directions depending on the sensor field of view (FOV). We choose optimal attitude $R_c^*$ as the summation of the expected entropy changes covered by the scan,
+Consider a collision-free pose candidate at an arbitrary location $x_c$. At this pose, consider $n_d$ evenly-spaced measurement rays oriented radially outward from the robot in a circular pattern (see red lines in Figure \ref{fig:OptProcess}). These rays are denoted $\braces{z_{c,1},z_{c,2},\ldots,z_{c,n_d}}$. Attitudes correspond to the rays such that the robot sensor is aligned with the ray direction, and these are denoted $\braces{R_{c,1},R_{c,2},\ldots,R_{c,n_d}}$, where the scan with attitude $R_{c,d}$ might cover several ray directions depending on the sensor FOV. We choose optimal attitude $R_c^*$ as the summation of the expected entropy changes covered by the scan,
 \begin{align}
 \label{eqn:FindRc}
-&R_c^*=\argmax_{R_{c,d}}\sum_{z_{c,i}\in R_{c,d}\text{ FOV}}\bigg(H(P(m|X_{1:t},Z_{1:t}))
--\text{E}[H(P(m|X_{1:t},Z_{1:t},x_c,z_{c,i}))]\bigg).
+&R_c^*=\argmax_{R_{c,d}}\sum_{z_{c,i}\in R_{c,d}\text{ FOV}}\bigg(H(P(m))
+-\text{E}[H(P(m|x_c,z_{c,i}))]\bigg).
 %\mathcal I_\text{ray}(x_c,z_{c,i})\right).
 \end{align}
 
@@ -176,7 +176,7 @@ The expanding ring technique is advantageous for searching local solutions quick
 \label{eqn:CollisionInequalityConstraint}
 P_\text{collision}(X)=1-\prod_{i\in\mathcal C_X}(P(\bar{\mathbf{m}}_i)\leq\beta,
 \end{align}
-where $\mathcal C_X$ is the set of grid cells falling inside a volume of preselected size around $X$ that may cause collision and $\beta>0$ is a small acceptable probability of collision. Any location that violates an inequality constraint \refeqn{CollisionInequalityConstraint} is excluded to avoid collisions. The set of optimal attitudes at each candidate location is $\braces{R^*_{1},R^*_{2},\ldots,R^*_{n_c}}$, obtained from \refeqn{FindRc}. The information gain objective function,
+where $\mathcal C_X$ is the set of grid cells falling inside a volume of preselected size around $X$ that may cause collision and $\beta>0$ is a small acceptable probability of collision. Any location that violates an inequality constraint \refeqn{CollisionInequalityConstraint} is excluded to avoid collisions. The set of optimal attitudes at each candidate location is $\braces{R^*_{1},R^*_{2},\ldots,R^*_{n_c}}$, obtained from \refeqn{FindRc}. The information gain objective function for a scan $Z_c$ captured from pose $X_c$ is
 \begin{align}
 \label{eqn:ObjFun}
 \mathcal I(X_c)=H(P(m))-\text{E}\left[H(P(m|X_c,Z_c))\right],
@@ -184,14 +184,14 @@ where $\mathcal C_X$ is the set of grid cells falling inside a volume of presele
 is computed by a summation about the $n_d$ rays as %\refeqn{Objective},
 \begin{align}
 \label{eqn:ObjFunApprox}
-\mathcal I(x_c,R_c^*)&\approx \sum_{z_{c,i}\in R_{c}^*\text{ FOV}}\bigg(H(P(m|X_{1:t},Z_{1:t}))-\text{E}\left[H(P(m|X_{1:t},Z_{1:t},x_c,R_c^*,z_{c,i}))\right]\bigg),
+\mathcal I(x_c,R_c^*)&\approx \sum_{z_{c,i}\in R_{c}^*\text{ FOV}}\bigg(H(P(m))-\text{E}\left[H(P(m|x_c,z_{c,i}))\right]\bigg),
 \\
 x_c^*&=\argmax_{x_c}\mathcal I(x_c,R_c^*).
 \end{align}
 At the optimal pose $X^*_c=(x^*_c,R^*_c)$, the resulting information gain must satisfy $\mathcal I(X_c^*)\geq\mathcal I_\text{min}$, where $\mathcal I_\text{min}$ is a minimum threshold for expected information gain; robot motion is only justified when the expected information gain is significantly large. If the minimum threshold is not met, the ring of candidate pose locations is increased such that $n_c$ and $\delta$ are multiplied by a scale function $\lambda>1$.
 This process is repeated until the expected information gain of the optimal pose is at least $\mathcal I_\text{min}$, or all candidates lie in collision zones or outside map limits. %A pseudocode of the process is found in Table \ref{tab:Alg_AutomousExploration}.
 
-The primary advantage of the expanding ring approach to search the 2D space is that the number of pose candidates need not be proportional to the map area, and that local maxima tend to fall within short distances of the current robot pose. Additionally, the distance to these poses need not be explicitly considered in the pose determination optimization because the distance costs are identical to each candidate, assuming objects do not occlude the trajectories. The main drawback is that poses outside a small local region of the robot are frequently neglected, and the robot frequently executes repeated short motions, often without large information gains.
+The primary advantage of the expanding ring approach to search the 2D space is that the number of pose candidates need not be proportional to the map area, and that local maxima tend to fall within short distances of the current robot pose. Additionally, the distance to these poses need not be explicitly considered in the pose determination optimization because the distance costs are identical to each candidate, assuming objects do not occlude the trajectories. The main drawback is that poses outside a small local region of the robot are frequently neglected, causing the robot to repeatedly execute short motions, often without large information gains.
 
 \paragraph{Complete Cartesian}
 The complete Cartesian method to search the 2D space provides candidates located fixed distance $d$ apart in each Cartesian direction. This approach is advantageous for capturing expected information gains in regions outside of the immediate vicinity of the robot, but must be applied carefully to avoid issues with computational bottlenecks due to the potentially-large search space.
@@ -199,9 +199,9 @@ The complete Cartesian method to search the 2D space provides candidates located
 Similar to the expanding ring approach, $n_c$ candidate pose locations are considered, where those violating \refeqn{CollisionInequalityConstraint} are neglected from further consideration. However, unlike the ring expanding approach, the candidates have different distances from the robot in general, so the objective function is modified to enforce a cost on the squared distance from the current pose location $x_t$ to the candidate location $x_c$, i.e.,
 \begin{align}
 \label{eqn:ObjFunApproxCompleteCartesian}
-\mathcal I&(x_c,R_c^*,x_t)\approx \sum_{z_{c,i}\in R_{c}^*\text{ FOV}}\bigg(H(P(m|X_{1:t},Z_{1:t}))\nonumber\\&-\text{E}\left[H(P(m|X_{1:t},Z_{1:t},x_c,R_c^*(x_c),z_{c,i}))\right]\bigg)-k_\text{dist}(x_t-x_c)^\T(x_t-x_c),
+\mathcal I(x_c,R_c^*,x_t)\approx \sum_{z_{c,i}\in R_{c}^*\text{ FOV}}\bigg(H(P(m))-\text{E}\left[H(P(m|x_c,z_{c,i}))\right]\bigg)-k_\text{dist}(x_t-x_c)^\T(x_t-x_c),
 \end{align}
-where weighting function $k_\text{dist}$ represents the sensitivity to avoiding large motions across the map. Furthermore, the same candidate locations are considered throughout the repeated processes of exploration, and the map cell occupancies are assumed static. Therefore, if candidate location $x_c$ fails to satisfy $\mathcal I(x_c,R_c^*,x_t)\geq\mathcal I_\text{min}$, then $x_c$ need \emph{never} be considered again. Avoiding these unnecessary calculations yields a greatly lowered computational burden, particularly late in exploration where several regions are collision-free but disadvantageous to revisit.
+where weighting function $k_\text{dist}$ represents the sensitivity to avoiding large motions across the map. Furthermore, the same candidate locations are considered throughout the repeated processes of exploration, and the map cell occupancies are assumed static. Therefore, if candidate location $x_c$ fails to satisfy $\mathcal I(x_c,R_c^*,x_t)+k_\text{dist}(x_t-x_c)^\T(x_t-x_c)\geq\mathcal I_\text{min}$, then $x_c$ need \emph{never} be considered again. Avoiding these unnecessary calculations yields a greatly lowered computational burden, particularly late in exploration where several regions are collision-free but disadvantageous to revisit.
 
 
 \begin{figure}
