@@ -77,6 +77,79 @@ The first auction includes bids from all robots, and proceeds as follows. Let th
 
 \subsection{Objective Function for Subsequent Auctions}
 
+The robots unable to win the first auction are updated to reflect the expected impact of $R_{k^*}$. This robot is expected to modify the probabilistic occupancy grid map, which may significantly change the expected information gains and collision properties of candidate poses nearby $X^*_{k^*}$. The process of auctioning and modifying bids is repeated, removing the winning robot from consideration after each auction, until no robots remain. Between auctions, updating the map with expected measurements from auction-winning robots discourages the remaining robots from entering the same regions and capturing the same cells. As such, there is no need to consider the coverage overlap explicitly: it is avoided in a systematic way as increased coverage overlap would reduce the overall information gain.
+
+More specifically, we coordinate robotic efforts by modifying bids to prevent robots from updating the same grid cells and to avoid collisions among robots. The goal is to find the winning bids $\mathcal X^*=\braces{X^*_{1},X^*_{2},\dots,X^*_{n_R}}$ corresponding to each robot from $\mathcal R$. During the auctioning process, let $\mathcal W\subset\mathcal R$ be the set of robots that have already won auctions by producing the largest objective function bid. After the first auction described above, $\mathcal W=\braces{R_{k^*}}$; after all auctions are complete, $\mathcal W=\mathcal R$. Between auctions, the candidate poses are modified for information gain and collision-avoidance, coordinating the multi-vehicle exploration.
+
+The first step between auctions is to modify the expected map information gain for efficient map coverage.  Once a robot wins a bid, the measurement ray expected values serve to update a temporary copy of $m_\text{2D}$, namely $m_\text{2D,copy}$, and those candidates located in a local neighborhood (twice the radius of a maximum sensor reading) of the winning candidate from the prior auction are recalculated, thereby coordinating total map information gain with auction-winning robots. Using the same local map notation from \refeqn{allEta} and \refeqn{Unnormalized} along a measurement ray, the expected measurement value is
+\begin{align}
+\label{eqn:ExpectedMeasRay}
+\text{E}[z]=\sum_{k=1}^{n_{r}}\bigg\{\prod_{j=0}^{k-1}P(\bar{\mathbf{m}}_j)\bigg\}P(\mathbf{m}_k)z_k,
+\end{align}
+where $z_k$ denotes the distance from the robot sensor to the $k$-th cell along the measurement ray. Then $\text{E}[z]$ is substituted into \refeqn{RayISMAnswer}--\refeqn{Unnormalized} to modify $m_\text{2D,copy}$, and expected map information gains are recomputed with \refeqn{ProbMeas} and \refeqn{expectedInfoGainRay}, while the bump function \refeqn{BumpFun} remains the same. In short, the expected changes of $m_\text{2D}$ are integrated into $m_\text{2D,copy}$ for expected information gain estimation between multiple vehicles.
+
+The second step focusses on collision-avoidance between robots based on their proximity. Let $\rho_\text{max}>0$ be a fixed maximum radius to consider collision-avoidance and $\rho_{i,c}\geq0$ be the Euclidean distance from the $i$-th already-assigned pose $X^*_i$ to the $c$-th candidate pose $X_c$, i.e.,
+\begin{align}
+\rho_{i,c}&=\norm{x^*_i-x_c},
+\end{align}
+where $x^*_i$ and $x_c$ are the pose locations of $X^*_i$ and $X_c$, respectively. Then the collision-avoidance factor for the $k$-th robot such that $R_k\notin\mathcal W$ is,
+\begin{align}
+\label{eqn:CollisionAvoidanceAmongRobots}
+\mathbf C(X_c)&=
+\begin{cases}
+    \prod_{i|\mathcal{R}_i\in\mathcal W} \left(\frac{\rho_{i,c}}{\rho_\text{max}}\right)^2,		& \text{if }\rho_{i,c}<\rho_\text{max},\\
+    1,              				& \text{otherwise},
+\end{cases}
+\end{align}
+where this product serves to decrease the value of bids for candidate poses in close proximity with already-assigned poses to avoid collisions between robots. The multi-vehicle objective function for the $k$-th robot accounting for collision-avoidance is
+\begin{align}
+\label{eqn:CandidateBidMulti}
+\text{Obj}_\text{multi}(X_k,X_c,m_\text{2D,copy})
+=\mathbf C(X_c)\mathcal B(d(X_k,X_c,m_\text{2D}))\mathcal I(X_{c},m_\text{2D,copy}),
+\end{align}
+where its optimal pose during this auction is
+\begin{align}
+\label{eqn:OptPoseMulti}
+X^*_{k}=\argmax_{X_c}\text{Obj}_\text{multi}&(X_k,X_c,m_\text{2D,copy}),
+\end{align}
+where $\text{Obj}_\text{multi}(X^*_k,X_c,m_\text{2D,copy})$ is the bid for the $k$-th robot.
+Optimal pose selection and bidding is repeated for all robots not belonging to $\mathcal W$. The largest bid among these wins the auction and is tasked with moving to the associated pose candidate, and then this robot is included with $\mathcal W$ to avoid further consideration. Completing $n_R$ auctions produces $\mathcal X^*$.
+
+The proposed approach uses auctions and bid modifications based on total map expected information gain and collision-avoidance, promoting exploration of different spaces without explicit consideration of coverage overlaps. The pseudocode for the bidding process is shown with Algorithm \ref{alg:bidding}.
+
+\begin{algorithm}
+	Function: $Bidding(\mathcal X_r,\mathcal I(X_c)\forall c\in\mathcal C,\rho_\text{max})$\;
+	Initialize $k=0$, $\mathcal W=0_{n_R\times1}$, $B=0_{n_R\times1}$\;
+	Update candidate expected information gains using \refeqn{DiscExpEntropyRay}\;
+	\For{$i=n_R,n_R-1,\ldots,1$}{
+		\For{$j=1,2,\ldots,n_R$}{
+			\If{$\mathcal W(j)==0$}{
+				\If{$i==n_R$}{
+					Maximize bid \refeqn{CandidateBidSingle} for $X^*_{j}$ from \refeqn{OptPoseSingle}\;
+				}
+				\Else{
+					Update $\mathcal I(X_c)$ close to $\mathcal X^*(k)$\;
+					\For{$c=1,2,\ldots,n_c$}{
+						Find Euclidean distance $\rho_{k,c}$\;
+					Get $\mathbf C(X_c)$ with \refeqn{CollisionAvoidanceAmongRobots}\;
+					}
+					Maximize bid \refeqn{CandidateBidMulti} for $X^*_{j}$ from \refeqn{OptPoseMulti}\;
+				}
+				Insert the $j$-th maximum bid into $B(j)$\;
+			}
+		}
+		$k$: index maximizing $B$ with corresponding $X^*_{k}$\;
+		$\mathcal X^*(k)=X^*_{k}$\;
+		$\mathcal W(k)=1$\;
+		$B(k)=0$\;
+	}
+
+	Return $\mathcal X^*$\;
+\caption{Robot Task Bidding}
+\label{alg:bidding}
+\end{algorithm}
+
+
 \subsection{Receding Horizon Framework}
 
 \subsection{Multi-Vehicle Exploration Numerical Simulation}
