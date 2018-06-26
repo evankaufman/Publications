@@ -1,0 +1,56 @@
+% !TEX root = ../thesis-sample.tex
+\appendix
+\doublespacing
+\chapter{Proof of Proposition \ref{prop:ExpectedH}}
+
+\subsection{Single Ray Expected Value of Entropy}
+
+In this appendix, we prove the expected value of entropy for a single measurement ray. We consider the expected entropy due to measurement ray $z$ at pose $X$,
+\begin{align}
+\label{eqn:HRayInt}
+\text{E}[H(P(m|&X,z))]
+=\int_{z_\text{min}}^{z_\text{max}}
+H(P(m|X,z))p(z|X)
+dz.
+\end{align}
+%where $z_\text{min}$ and $z_\text{max}$ are sensor limits. Considering the continuous space of possible measurements of $z$ would make \refeqn{HRayInt} intractable to calculate. Thus, w
+We discretize the measurement ray space such that $z$ falls on points along the measurement ray intersecting with grid cell edges.
+The discretized expected value of \refeqn{HRayInt} is
+\begin{align}
+\label{eqn:DiscExpEntropyRayAppendix}
+\text{E}[H(P(m|&X,z))]=\sum_{k=1}^{n_{r}+1}\bigg\{H(P(m|X,z_{k}))P(z_{k}|X)\bigg\},
+\end{align}
+where index $z_{k}$ is the distance from the location of pose $X$ to the $k$-th grid cell of the reduced map $r\subset m$ for this ray, known from geometry (see Figure \ref{fig:RayCastingIllustration}).
+
+Standing alone, the term $P(z_{k}|X)$ from \refeqn{DiscExpEntropyRayAppendix} has a convoluted meaning because the depth $z_{k}$ does not directly depend on the map. However, we present a method to obtain this discretized probability. %Despite how this term is replaced with a normalizer in ~\cite{ThrBurFox05} replaces
+Following the assumption that $z$ is discretized to known distances, the probabilities are proportional to their densities, as the area under the density curve is infinitesimal and fixed. Accounting for all cases, the probability is
+\begin{align}
+\label{eqn:ProbWithDelta}
+P(z_{k}|X)=\frac{p(z_{k}|X)}{\sum_{i=1}^{n_{r}+1}p(z_{i}|X)}.
+\end{align}
+Conveniently, this density corresponds to the inverse normalizer defined in \refeqn{BayesRuleRayISM} as the denominator from Bayes' rule,
+\begin{align}
+\label{eqn:DiscretizedProb}
+p(z_{k}|X)=\eta_{k}^{-1},
+\end{align}
+where $\eta_{k}^{-1}$ is defined in \refeqn{allEta} as the inverse sensor normalizer corresponding to a measurement of the $k$-th cell of reduced map $r$. Thus, the inverse normalizer is
+\begin{align}
+\label{eqn:allEtaAtCAppendix}
+\eta_{k}^{-1}
+&=
+\sum_{i=1}^{n_{r}+1}\bigg\{\prod_{j=0}^{i-1}P(\bar{\mathbf{r}}_{j})\bigg\} p(z_{k}|\mathbf{r}_{i+},X)P(\mathbf{r}_{i}).
+\end{align}
+By substituting \refeqn{ProbWithDelta} and \refeqn{DiscretizedProb} into \refeqn{DiscExpEntropyRayAppendix}, the expected entropy from individual measurement ray $z$ at $X$ is
+\begin{align}
+\label{eqn:HRayCompleteAppendix}
+&\text{E}[H(P(m|X,z))]=\left(\sum_{i=1}^{n_{r}+1}\eta_{i}^{-1}\right)^{-1}\sum_{k=1}^{n_{r}+1}\bigg\{H(P(m|X,z_{k}))\eta_{k}^{-1}\bigg\},
+\end{align}
+where $\eta_{k}^{-1}$ is taken from \refeqn{allEtaAtCAppendix}.
+Here, \refeqn{HRayCompleteAppendix} provides the expected entropies for cells inside the field of view of reduced map $r$. %; cells outside this reduced map are trivially changed by $0$ due to $z$.
+The entropies of cells outside the field of view remain unchanged.
+
+
+
+
+
+
