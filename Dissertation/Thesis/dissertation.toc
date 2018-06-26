@@ -75,25 +75,26 @@
 \contentsline {subsection}{\numberline {5.1.1}Objective Function for the First Auction}{60}{subsection.5.1.1}
 \contentsline {subsection}{\numberline {5.1.2}Objective Function for Subsequent Auctions}{63}{subsection.5.1.2}
 \contentsline {subsection}{\numberline {5.1.3}Receding Horizon Framework}{67}{subsection.5.1.3}
-\contentsline {subsection}{\numberline {5.1.4}Multi-Vehicle Exploration Numerical Simulation}{68}{subsection.5.1.4}
-\contentsline {section}{\numberline {5.2}Multi-Vehicle Cooperative Patrol}{68}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Continuous-Time Markov Process for Cell Degradation}{68}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Multi-Vehicle Patrol Numerical Simulation}{68}{subsection.5.2.2}
-\contentsline {section}{\numberline {5.3}Conclusions}{68}{section.5.3}
-\contentsline {chapter}{\numberline {6}Autonomous Exploration in Complex 3D Space}{69}{chapter.6}
-\contentsline {section}{\numberline {6.1}Exploration with Full 3D Maps}{69}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Collision Mapping in 3D}{69}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Future Pose Optimization in 3D}{69}{subsection.6.1.2}
-\contentsline {section}{\numberline {6.2}Numerical Simulation}{69}{section.6.2}
-\contentsline {section}{\numberline {6.3}Experiment}{69}{section.6.3}
-\contentsline {section}{\numberline {6.4}Conclusions}{69}{section.6.4}
-\contentsline {chapter}{\numberline {7}Experimental Results}{70}{chapter.7}
-\contentsline {section}{\numberline {7.1}A section}{70}{section.7.1}
-\contentsline {subsection}{\numberline {7.1.1}A subsection}{70}{subsection.7.1.1}
-\contentsline {chapter}{Bibliography}{71}{section*.47}
-\contentsline {chapter}{\numberline {A}Proof of Proposition \ref {prop:ISM}}{74}{appendix.A}
-\contentsline {paragraph}{Unnormalized Reduced Map Inverse Sensor Model}{74}{paragraph*.49}
-\contentsline {paragraph}{Complement of the Unnormalized Reduced Map Inverse Sensor Model}{75}{paragraph*.50}
-\contentsline {paragraph}{Normalizer}{76}{paragraph*.51}
-\contentsline {chapter}{\numberline {B}Proof of Proposition \ref {prop:ExpectedH}}{78}{appendix.B}
-\contentsline {subsection}{\numberline {B.0.1}Single Ray Expected Value of Entropy}{78}{subsection.B.0.1}
+\contentsline {subsection}{\numberline {5.1.4}Multi-Vehicle Exploration Numerical Simulation}{67}{subsection.5.1.4}
+\contentsline {paragraph}{Parameters and Resulting Maps}{69}{paragraph*.47}
+\contentsline {section}{\numberline {5.2}Multi-Vehicle Cooperative Patrol}{70}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Continuous-Time Markov Process for Cell Degradation}{72}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Multi-Vehicle Patrol Numerical Simulation}{76}{subsection.5.2.2}
+\contentsline {section}{\numberline {5.3}Conclusions}{76}{section.5.3}
+\contentsline {chapter}{\numberline {6}Autonomous Exploration in Complex 3D Space}{77}{chapter.6}
+\contentsline {section}{\numberline {6.1}Exploration with Full 3D Maps}{77}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Collision Mapping in 3D}{77}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Future Pose Optimization in 3D}{77}{subsection.6.1.2}
+\contentsline {section}{\numberline {6.2}Numerical Simulation}{77}{section.6.2}
+\contentsline {section}{\numberline {6.3}Experiment}{77}{section.6.3}
+\contentsline {section}{\numberline {6.4}Conclusions}{77}{section.6.4}
+\contentsline {chapter}{\numberline {7}Experimental Results}{78}{chapter.7}
+\contentsline {section}{\numberline {7.1}A section}{78}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}A subsection}{78}{subsection.7.1.1}
+\contentsline {chapter}{Bibliography}{79}{section*.54}
+\contentsline {chapter}{\numberline {A}Proof of Proposition \ref {prop:ISM}}{82}{appendix.A}
+\contentsline {paragraph}{Unnormalized Reduced Map Inverse Sensor Model}{82}{paragraph*.56}
+\contentsline {paragraph}{Complement of the Unnormalized Reduced Map Inverse Sensor Model}{83}{paragraph*.57}
+\contentsline {paragraph}{Normalizer}{84}{paragraph*.58}
+\contentsline {chapter}{\numberline {B}Proof of Proposition \ref {prop:ExpectedH}}{86}{appendix.B}
+\contentsline {subsection}{\numberline {B.0.1}Single Ray Expected Value of Entropy}{86}{subsection.B.0.1}

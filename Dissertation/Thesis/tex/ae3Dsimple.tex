@@ -50,6 +50,7 @@ where the first case corresponds to mostly open space and the second case corres
 \subsubsection{Collision and Entropy Combination Map}
 The second proposed technique combines the advantages of both the collision and entropy maps into a 2D projected occupancy grid map, which can be used for both tasks. Let the \emph{collision and entropy combination map} $ m_\text{2D}$ be a 2D projected map located at the exploration height with grid cell edges the same as the collision map, namely $\alpha_C$ from \refeqn{alphaC}, using the same subset of grid cells from the collision map, namely $ m_C$. Considering that the cells begin with uniform probability $P_\text{init}$ where $0<P_\text{init}<1$, define a threshold $P_\text{thresh}$ such that $P_\text{init}<P_\text{thresh}<1$. Then, the probability assigned to the $k$-th grid cell of $ m_\text{2D}$, namely $\mathbf{m}_{\text{2D},k}$ is
 \begin{align}
+\label{eqn:CombinationProjection2DMap}
 P(\mathbf{m}_{\text{2D},k})= 
 \begin{cases}
     P(\mathbf{C}_k),			& \text{if }P(\mathbf{C}_k)\geq P_\text{thresh}\\
@@ -60,6 +61,7 @@ P(\mathbf{m}_{\text{2D},k})=
 This approach has several advantages. First, measurements must enter the vicinity of the $k$-th cell for $P(\mathbf{m}_{\text{2D},k})$ to change from $P_\text{init}$. Without prior measurements, capturing $P(\mathbf{m}_{\text{2D},k})$ produces a large reward for the expected information gain in \refeqn{ObjFun}. Second, the value of $P_\text{thresh}$ can be modified based on how conservative the collision risk assessment for a robot should be. Additionally, when $P(\mathbf{m}_{\text{2D},k})<P_\text{thresh}$, this event tends to favor free cells such that expected information gains of cells beyond the $k$-th cell have greater impact on exploration. Furthermore, a single map is simpler, and since cell sizes satisfy $\alpha_C\geq\alpha$, it follows that $n_r$ can only be decreased with $\alpha_C$, thereby increasing computational speed.
 
 \section{Numerical Example}
+\label{sec:Compare2MapProjections}
 
 The following numerical example involves a simulated quadrotor taking measurements of a large room and generating a 3D occupancy grid map. Separate collision and entropy map projections are used for autonomous exploration.
 
