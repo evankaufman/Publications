@@ -7,6 +7,7 @@ A level-1 auxiliary file: tex/ae2D.aux
 A level-1 auxiliary file: tex/ae3Dsimple.aux
 A level-1 auxiliary file: tex/ae3Dcomplex.aux
 A level-1 auxiliary file: tex/multivehicle.aux
+A level-1 auxiliary file: tex/results.aux
 The style file: plain.bst
 A level-1 auxiliary file: tex/appendixA.aux
 A level-1 auxiliary file: tex/appendixB.aux
@@ -15,7 +16,7 @@ Warning--entry type for "coursera" isn't style-file defined
 --line 479 of file ../../BibSources.bib.bib
 You've used 35 entries,
             2118 wiz_defined-function locations,
-            739 strings with 11068 characters,
+            740 strings with 11083 characters,
 and the built_in function-call counts, 14003 in all, are:
 = -- 1405
 > -- 599

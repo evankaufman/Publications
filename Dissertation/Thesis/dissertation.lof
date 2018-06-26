@@ -1,7 +1,7 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces A robot located to the left of a 1D occupancy grid map $r_l$ composed of $n_{r,l}=6$ grid cells in four cases. In each case, cells the first three cells are free, the fourth cell is occupied, and the fifth and sixth cells may or may not be occupied. All above outcomes correspond to the event $\mathbf {r}_{l,4+}$.\relax }}{17}{figure.caption.14}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces This simple 2D example illustrates how ray casting determines the cells that compose the reduced map for the inverse sensor model. The closest edges are used to determine which cells should be considered, and in what order. The complete map cell indices are temporarily saved as well, which are used to associate probabilities to cells of the reduced map.\relax }}{18}{figure.caption.15}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces This simple 2D example illustrates how ray casting determines the cells that compose the reduced map for the inverse sensor model. The closest edges are used to determine which cells should be considered, and in what order. The complete map cell indices are temporarily saved as well, which are used to associate probabilities to cells of the reduced map.\relax }}{19}{figure.caption.15}
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Using experimental sensor data, the map was generated using an approximate and the proposed exact inverse sensor models. The laser sensor and odometry data used for the experiment was provided by University of Pennsylvania open course robotics estimation and learning on Coursera\nobreakspace {}\cite {coursera}.\relax }}{28}{figure.caption.20}
 \contentsline {figure}{\numberline {2.4}{\ignorespaces The entropy is compared between the approximate and proposed exact inverse sensor models at step 2280. The blue areas show the lowest entropy while red shows highest.\relax }}{29}{figure.caption.21}
 \contentsline {figure}{\numberline {2.5}{\ignorespaces The map entropies of the approximate inverse sensor model (blue) and the proposed exact inverse sensor model (red) show that the exact version yields a more certain occupancy grid map.\relax }}{30}{figure.caption.22}
@@ -14,9 +14,9 @@
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Intel Research Lab floor plan benchmark\nobreakspace {}\cite {kummerle2009measuring}.\relax }}{47}{figure.caption.36}
 \contentsline {figure}{\numberline {3.5}{\ignorespaces A robot (green) measures a room in the ROS Stage simulator using the Intel Research Lab floor plan. The exact inverse sensor model is used for the autonomous exploration algorithm.\relax }}{48}{figure.caption.37}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Simulated 3D Occupancy Grid Map\relax }}{56}{figure.caption.38}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Simulated Environment and 2D Projected Maps at $4$min\relax }}{57}{figure.caption.39}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Simulated Environment Map Entropy\relax }}{57}{figure.caption.40}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Simulated 3D Occupancy Grid Map\relax }}{57}{figure.caption.42}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Simulated Environment and 2D Projected Maps at $4$ min\relax }}{58}{figure.caption.43}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Simulated Environment Map Entropy\relax }}{58}{figure.caption.44}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

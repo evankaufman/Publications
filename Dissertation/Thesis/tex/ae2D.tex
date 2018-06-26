@@ -199,9 +199,9 @@ The complete Cartesian method to search the 2D space provides candidates located
 Similar to the expanding ring approach, $n_c$ candidate pose locations are considered, where those violating \refeqn{CollisionInequalityConstraint} are neglected from further consideration. However, unlike the ring expanding approach, the candidates have different distances from the robot in general, so the objective function is modified to enforce a cost on the squared distance from the current pose location $x_t$ to the candidate location $x_c$, i.e.,
 \begin{align}
 \label{eqn:ObjFunApproxCompleteCartesian}
-\mathcal I(x_c,R_c^*,x_t)\approx \sum_{z_{c,i}\in R_{c}^*\text{ FOV}}\bigg(H(P(m))-\text{E}\left[H(P(m|x_c,z_{c,i}))\right]\bigg)-k_\text{dist}(x_t-x_c)^\T(x_t-x_c),
+\mathcal I(x_c,R_c^*,x_t)\approx \sum_{z_{c,i}\in R_{c}^*\text{ FOV}}\bigg(H(P(m))-\text{E}\left[H(P(m|x_c,z_{c,i}))\right]\bigg)-k_\text{dist}\norm{x_t-x_c}^2,
 \end{align}
-where weighting function $k_\text{dist}$ represents the sensitivity to avoiding large motions across the map. Furthermore, the same candidate locations are considered throughout the repeated processes of exploration, and the map cell occupancies are assumed static. Therefore, if candidate location $x_c$ fails to satisfy $\mathcal I(x_c,R_c^*,x_t)+k_\text{dist}(x_t-x_c)^\T(x_t-x_c)\geq\mathcal I_\text{min}$, then $x_c$ need \emph{never} be considered again. Avoiding these unnecessary calculations yields a greatly lowered computational burden, particularly late in exploration where several regions are collision-free but disadvantageous to revisit.
+where weighting function $k_\text{dist}$ represents the sensitivity to avoiding large motions across the map. Furthermore, the same candidate locations are considered throughout the repeated processes of exploration, and the map cell occupancies are assumed static. Therefore, if candidate location $x_c$ fails to satisfy $\mathcal I(x_c,R_c^*,x_t)+k_\text{dist}\norm{x_t-x_c}^2\geq\mathcal I_\text{min}$, then $x_c$ need \emph{never} be considered again. Avoiding these unnecessary calculations yields a greatly lowered computational burden, particularly late in exploration where several regions are collision-free but disadvantageous to revisit.
 
 
 \begin{figure}
