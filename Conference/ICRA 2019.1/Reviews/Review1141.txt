@@ -1,0 +1,100 @@
+Reviewer 3 of ICUAS'18 submission 144
+
+Comments to the author
+======================
+
+This paper presents an algorithm to enable multi-robot
+mapping of complex, 3D environments.  The approach uses an
+auction to iterative select actions for each member of the
+team, greedily maximizing the objective at each step.  The
+objective function is a combination of information gain,
+collision avoidance, and a function of the distance
+traveled during each exploration step.	During each round
+of the auction, all remaining robots account for the
+previously selected robots' actions to avoid taking a
+redundant action.  The selected actions are fed into a
+receding horizon framework.  The approach is demonstrated
+in a numerical simulation with 3 UAVs exploring a large,
+single-story office building.
+
+Overall the paper is well written.  The problem is well
+motivated and the algorithm and results are clearly
+described.  It is a solid conference paper with just a few
+minor suggestions for the authors to improve their approach
+for future work.  There are also a number of references
+that the authors may find of interest.
+
+There are a few additional references that the authors
+should consider:
+1) Charrow, Benjamin, et al. "Information-Theoretic
+Planning with Trajectory Optimization for Dense 3D
+Mapping." Robotics: Science and Systems. 2015.
+This described another information-theoretic, multi-robot,
+3D mapping algorithm.  This paper utilizes a different
+definition of mutual information and looks at the SLAM
+problem rather than the mapping problem.  However, the
+algorithm will not scale as well in the size of the team.
+2) Atanasov, Nikolay, et al. "Decentralized active
+information acquisition: Theory and application to
+multi-robot SLAM." Robotics and Automation (ICRA), 2015
+IEEE International Conference on. IEEE, 2015.
+This describes a scalable approach to multi-vehicle SLAM
+using a similar iterative approach of greedily maximizing
+the objective at each round.  The approach is a
+2-approximation.  However, they only consider 2D
+environments.
+3) Dames, Philip, Pratap Tokekar, and Vijay Kumar.
+"Detecting, localizing, and tracking an unknown number of
+moving targets using a team of mobile robots." The
+International Journal of Robotics Research 36.13-14 (2017):
+1540-1553.
+This is another paper that considers information-theoretic,
+multi-UAV exploration using an iterative greedy
+2-approximation algorithm.  However, the application for
+this paper is multi-target tracking rather than mapping.
+4) Smith, Andrew J., and Geoffrey A. Hollinger.
+"Distributed inference-based multi-robot exploration."
+Autonomous Robots (2018): 1-18.
+This paper uses a library of laser scans to predict future
+map structure to improve multi-robot SLAM performance. 
+This seems especially relevant to section II.B where the
+predicted future scans are incorporated into the map.
+
+A few minor notes for future work:
+1) Equation 9 assumes that all of the rays in a scan are
+independent.  As Charrow points out in his paper (1 from
+above), this is not the case if multiple beams (from the
+same scan or different scans) pass through the same grid
+cell.  In practice, assuming independence often has little
+practical difference, but the authors should at least
+acknowledge this fact.
+2) In Section III.A, using the 2D projected map for
+distance computations seems unnecessary and possibly
+detrimental.  For fully 3D environments (not just 2.5D
+offices) such as a multi-level building, this approach will
+not work.  Also, it seems like there is the possibility of
+closing off potential paths.  For example, if the only way
+through is a narrow window then, then projecting the rest
+of the wall down into the 2D map may result in that area
+being labeled as not passable.	Furthermore, in fully 3D
+environments with significant elevation changes then 2D
+approximation will lead to underestimating the true
+distance.  To me, it seems that using the 3D occupancy grid
+for path planning, and thus for distance measurements,
+would not be a significant burden.  So the approach in the
+paper works well for the particular environment in the
+experiments, but would not work for general 3D mapping
+tasks.
+3) The use of the expected measurement to update the map in
+(15) is non-standard.  In my experience, the standard
+method is to use the maximum likelihood measurement.  See
+Stachniss, Cyrill. Robotic mapping and exploration. Vol.
+55. Springer, 2009.  This likely will not significantly
+impact the results in the paper, but could be useful for
+the authors to consider in future work.
+
+Comments on the Video Demonstration
+===================================
+
+The video is helpful to view the algorithm in progress
+beyond the still shots in the paper.
