@@ -1,7 +1,7 @@
 \contentsline {chapter}{Acknowledgments}{iv}{section*.1}
 \contentsline {chapter}{Abstract}{v}{section*.2}
 \contentsline {chapter}{List of Figures}{ix}{section*.4}
-\contentsline {chapter}{List of Tables}{xi}{section*.5}
+\contentsline {chapter}{List of Tables}{xii}{section*.5}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Motivation and Goals}{1}{section.1.1}
 \contentsline {subsection}{\numberline {1.1.1}Building Probabilistic Maps}{1}{subsection.1.1.1}
@@ -84,19 +84,20 @@
 \contentsline {paragraph}{Simulated Results}{77}{paragraph*.55}
 \contentsline {section}{\numberline {5.3}Conclusions}{77}{section.5.3}
 \contentsline {chapter}{\numberline {6}Autonomous Exploration in Complex 3D Space}{81}{chapter.6}
-\contentsline {section}{\numberline {6.1}Exploration with Full 3D Maps}{81}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Collision Mapping in 3D}{81}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Future Pose Optimization in 3D}{81}{subsection.6.1.2}
-\contentsline {section}{\numberline {6.2}Numerical Simulation}{81}{section.6.2}
-\contentsline {section}{\numberline {6.3}Experiment}{81}{section.6.3}
-\contentsline {section}{\numberline {6.4}Conclusions}{81}{section.6.4}
-\contentsline {chapter}{\numberline {7}Experimental Results}{82}{chapter.7}
-\contentsline {section}{\numberline {7.1}A section}{82}{section.7.1}
-\contentsline {subsection}{\numberline {7.1.1}A subsection}{82}{subsection.7.1.1}
-\contentsline {chapter}{Bibliography}{83}{section*.60}
-\contentsline {chapter}{\numberline {A}Proof of Proposition \ref {prop:ISM}}{86}{appendix.A}
-\contentsline {paragraph}{Unnormalized Reduced Map Inverse Sensor Model}{86}{paragraph*.62}
-\contentsline {paragraph}{Complement of the Unnormalized Reduced Map Inverse Sensor Model}{87}{paragraph*.63}
-\contentsline {paragraph}{Normalizer}{88}{paragraph*.64}
-\contentsline {chapter}{\numberline {B}Proof of Proposition \ref {prop:ExpectedH}}{90}{appendix.B}
-\contentsline {subsection}{\numberline {B.0.1}Single Ray Expected Value of Entropy}{90}{subsection.B.0.1}
+\contentsline {section}{\numberline {6.1}Exploration in 3D}{81}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Map Information Gain in 3D}{81}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Collision-Free Trajectory in 3D}{84}{subsection.6.1.2}
+\contentsline {subsection}{\numberline {6.1.3}Optimal 3D Pose}{85}{subsection.6.1.3}
+\contentsline {section}{\numberline {6.2}Numerical Simulation}{86}{section.6.2}
+\contentsline {section}{\numberline {6.3}Experiment}{86}{section.6.3}
+\contentsline {section}{\numberline {6.4}Conclusions}{86}{section.6.4}
+\contentsline {chapter}{\numberline {7}Experimental Results}{87}{chapter.7}
+\contentsline {section}{\numberline {7.1}A section}{87}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}A subsection}{87}{subsection.7.1.1}
+\contentsline {chapter}{Bibliography}{88}{section*.62}
+\contentsline {chapter}{\numberline {A}Proof of Proposition \ref {prop:ISM}}{91}{appendix.A}
+\contentsline {paragraph}{Unnormalized Reduced Map Inverse Sensor Model}{91}{paragraph*.64}
+\contentsline {paragraph}{Complement of the Unnormalized Reduced Map Inverse Sensor Model}{92}{paragraph*.65}
+\contentsline {paragraph}{Normalizer}{93}{paragraph*.66}
+\contentsline {chapter}{\numberline {B}Proof of Proposition \ref {prop:ExpectedH}}{95}{appendix.B}
+\contentsline {subsection}{\numberline {B.0.1}Single Ray Expected Value of Entropy}{95}{subsection.B.0.1}

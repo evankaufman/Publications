@@ -236,7 +236,7 @@ H(P(r))-\text{E}[H(P(r|x_c,z(\psi+\tilde{\psi},\theta+\tilde{\theta})))], & \mbo
 where the mounting yaw $\tilde{\psi}$ and pitch $\tilde{\theta}$ of the sensor is a fixed rotation in the horizontal and vertical directions, respectively in that order, such that $-\pi<\tilde{\psi}\leq\pi$ and $-\frac{\pi}{2}+\frac\Theta2\leq\tilde{\theta}\leq\frac{\pi}{2}-\frac\Theta2$. A positive $\tilde{\theta}$ corresponds to rotating the depth sensor from a forward direction to a downward direction toward the surface of Mars. The expected information gain for the full scan is the summation of expected information gains for individual rays
 \begin{align}
 \label{eqn:Iscan}
-\mathcal{I}_\text{scan}(x_c,R_c)=\sum_{i_\psi=0}^{n_\psi-1}\sum_{i_\theta=0}^{n_\psi-1}\mathcal{I}_\text{ray}\left(x_c,R_c,\frac{\Psi i_\psi}{n_\psi},\frac{\Theta i_\theta}{n_\theta}\right).
+\mathcal{I}_\text{scan}(x_c,R_c)=\sum_{i_\psi=1}^{n_\psi}\sum_{i_\theta=1}^{n_\theta}\mathcal{I}_\text{ray}\left(x_c,R_c,\frac{(2i_\psi-n_\psi-1)\Psi}{2n_\psi},\frac{(2i_\theta-n_\theta-1)\Theta}{2n_\theta}\right).
 \end{align}
 
 Finally, \refeqn{Iscan} is computed for $n_\psi$ possible attitudes when the robot is at location $x_c$, one corresponding to each yaw angle $\psi$. Then, the optimal attitude at $x_c$ is
