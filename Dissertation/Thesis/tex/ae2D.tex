@@ -254,6 +254,7 @@ Dijkstra's search is naturally applied to this problem because the occupancy gri
 \paragraph{Constrained Polynomial Least Squares Trajectory} The trajectory to follow the path outlined by Dijkstra's algorithm is determined with a linear constrained least squares optimization, assuming the robot follows a polynomial trajectory with fixed speed. The starting and ending positions and attitudes may be constrained, and polynomials patched together for long trajectories share a common position and velocity with respect to time. Then, a controller on the robot tracks this trajectory until the robot falls within acceptable thresholds of the final optimal pose. Any control scheme for the motion of the robot can be integrated with the proposed exploration algorithm. Once the robot completes this motion, the entire process is repeated. 
 
 \section{Numerical Examples}
+\label{sec:Ae2DNumExamples}
 
 Here we present two numerical examples. The first uses the expanding-ring technique in a small environment and the second considers a larger benchmark environment, so the complete Cartesian method is applied, as described in Section \ref{sec:OptimalPose2DMap}.
 
