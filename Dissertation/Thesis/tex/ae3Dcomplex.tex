@@ -12,7 +12,7 @@ In this section, we propose how multiple measurement rays in 3D can determine ma
 
 The expected entropy for an arbitrary 1D ray spanning 3D space can be calculated with \refeqn{DiscExpEntropyRay} and \refeqn{ProbMeas} in a computationally tractable manner. However, computing the expected entropy from multiple rays simultaneously has exponential complexity, and is therefore computationally intractable. Additionally, numerous rays of a single scan commonly intersect the same grid cells, making consideration of \emph{every} measurement ray unnecessary.
 
-Instead of considering expected entropy from a complete scan, we propose a real-time solution that selects sample measurements to determine an optimal attitude at each candidate pose and the associated map information gain, similar to how the scan information gain is found in Section \ref{sec:OptimalPose2DMap}. We assume the vehicle is capable of level flight, so the third axes of the world and body are aligned (Fig. \ref{fig:transforms}), so $R_c$ can be expressed as
+Instead of considering expected entropy from a complete scan, we propose a real-time solution that selects sample measurements to determine an optimal attitude at each candidate pose and the associated map information gain, similar to how the scan information gain is found in Section \ref{sec:OptimalPose2DMap}. We assume the vehicle is capable of level flight, so the third axes of the world and body are aligned (Figure \ref{fig:transforms}), so $R_c$ can be expressed as
 \begin{align*}
 R_c=\begin{bmatrix}
 \cos\psi & -\sin\psi & 0
@@ -155,7 +155,7 @@ In this section, we demonstrate the efficacy of the proposed 3D mapping and auto
 
 \subsection{Mars Parameters}
 
-A 3D environment of Mars is simulated in Gazebo. A height map~\cite{mapaplanet} is used to generate a contoured surface, and the corresponding picture of Mars is draped over this contour, shown in Fig. \ref{fig:MarsGazebo}. A 3D laser scanner is also simulated in Gazebo. In the horizontal direction, the sensor has limits $\Psi=120^{\circ}$ with a total of $1000$ measurement rays inside, the sensor is fixed at angle $\tilde{\psi}=45^{\circ}$, and $n_\psi=16$ sample measurements are used. In the vertical direction, the sensor also has limits $\Theta=120^{\circ}$ with a total of $1000$ measurement rays inside, but the sensor is fixed at angle $\tilde{\theta}=30^{\circ}$, and $n_\psi=7$ sample measurements are used. These ray samples are taken from each candidate location, which are separated $1$ m apart in each of the $3$ dimensions.
+A 3D environment of Mars is simulated in Gazebo. A height map~\cite{mapaplanet} is used to generate a contoured surface, and the corresponding picture of Mars is draped over this contour, shown in Figure \ref{fig:MarsGazebo}. A 3D laser scanner is also simulated in Gazebo. In the horizontal direction, the sensor has limits $\Psi=120^{\circ}$ with a total of $1000$ measurement rays inside, the sensor is fixed at angle $\tilde{\psi}=45^{\circ}$, and $n_\psi=16$ sample measurements are used. In the vertical direction, the sensor also has limits $\Theta=120^{\circ}$ with a total of $1000$ measurement rays inside, but the sensor is fixed at angle $\tilde{\theta}=30^{\circ}$, and $n_\psi=7$ sample measurements are used. These ray samples are taken from each candidate location, which are separated $1$ m apart in each of the $3$ dimensions.
 
 % trim={<left> <lower> <right> <upper>}
 
@@ -185,7 +185,7 @@ The map parameters are also important to the success of the exploration. The ful
 
 \subsection{Mars Results}
 
-The simulation was run twice. Case 1 was as described in this paper. Case 2 was identical to Case 1, except the reduced map $ m_\text{reduced}$ is used when computing \refeqn{Iscan}. Case 2 is largely inspired by the promising experimental results covered in Section \ref{sec:QuadrotorNRL}, where a projected map based on the same criteria as \refeqn{Proj3DMapComb} proved effective for level flight. The resulting occupancy grid maps for Cases 1 and 2 are shown in Figs. \ref{fig:mars3DogmCase1} and \ref{fig:mars3DogmCase2}, respectively. A video of Case 1 can be found at \href{https://youtu.be/FrBcL2UMW9w}{\WriteBlue{https://youtu.be/FrBcL2UMW9w}} and close-up pictures from Case 2 are shown in Fig. \ref{fig:marsZoomedIn}. The complete map entropy is illustrated in Fig. \ref{fig:mars3Dentropy}.
+The simulation was run twice. Case 1 was as described in this paper. Case 2 was identical to Case 1, except the reduced map $ m_\text{reduced}$ is used when computing \refeqn{Iscan}. Case 2 is largely inspired by the promising experimental results covered in Section \ref{sec:QuadrotorNRL}, where a projected map based on the same criteria as \refeqn{Proj3DMapComb} proved effective for level flight. The resulting occupancy grid maps for Cases 1 and 2 are shown in Figures \ref{fig:mars3DogmCase1} and \ref{fig:mars3DogmCase2}, respectively. A video of Case 1 can be found at \href{https://youtu.be/FrBcL2UMW9w}{\WriteBlue{https://youtu.be/FrBcL2UMW9w}}, and close-up pictures from Case 2 are shown in Figure \ref{fig:marsZoomedIn}. The complete map entropies for both cases are illustrated in Figure \ref{fig:mars3Dentropy}.
 
 
 \begin{figure}[!t]
@@ -307,14 +307,14 @@ The simulation was run twice. Case 1 was as described in this paper. Case 2 was 
 	\centering
 	\begin{subfigure}[t]{0.95\columnwidth}
            	\centering
-          	\includegraphics[width=\textwidth]{mars_closeup.png}
+          	\includegraphics[width=0.9\textwidth]{mars_closeup.png}
         		\caption{Full Map Cells and Sensor Scan}
 		\vspace*{0.025\textwidth}
     	\end{subfigure}
 	\centering
 	\begin{subfigure}[t]{0.95\columnwidth}
            	\centering
-          	\includegraphics[width=\textwidth]{scitech_reducedCells.png}
+          	\includegraphics[width=0.9\textwidth]{scitech_reducedCells.png}
         		\caption{Full Map and Reduced Map Cells}
 		\vspace*{0.025\textwidth}
     	\end{subfigure}
@@ -342,7 +342,7 @@ In short, the proposed 3D probabilistic occupancy grid mapping and autonomous ex
 
 \section{Conclusions}
 
-
+This chapter covers autonomous exploration through a 3D environment, such that the robot can account for complex geometries in all dimension and explore with upward and downward motions. The expected information gains are calculated with predicting the entropy changes from sample rays in 3D space, and the bump function is applied using the cost from Dijkstra's search. An example where a robot maps and explores the surface of Mars demonstrates the efficacy of the approach.
 
 
 
