@@ -116,10 +116,132 @@ In conclusion, this example shows how occupancy grid mapping and autonomous expl
 \end{figure}
 
 
+
+
 \section{Quadrotor Exploration of a Large Room}
 \label{sec:QuadrotorNRL}
 
-\section{Quadrotor 3D Exploration}
+
+In this section, we present results from a quadrotor as it autonomously explores a nearly vertically-uniform room. A robots builds a 3D map of its environment, which is projected onto a 2D map for exploration following the process described in Section~\ref{sec:MapProjections}. The software structure and sensor parameters are identical to those presented in Section~\ref{sec:Compare2MapProjections}.
+
+\subsection{Exploration Environment}
+
+The U.S. Naval Research Laboratory (NRL) has a large experimental space for testing known as the Laboratory for Autonomous Systems Research (LASR). Here, the experimental setup contains walls and objects to resemble a building floor plan. The perimeter walls are constructed with tan cardboard, which were suspended from $1$ m tall stanchions, and an internal wall is built with gray metal sheeting mounted to $80/20$ supports~\cite{url_8020}. Additionally, a hard flooring reflects some florescent lighting above. The objects inside the experimental environment include various trash cans, desks, and chairs in addition to a few miscellaneous objects. The map size is selected to slightly exceed the volume of the experiment such that the the x-direction (positive east) spans $0.5$ m to $10.3$ m, the y-direction (positive north) spans $-8.3$ m to $3.5$ m, and the z-direction (positive vertically up) spans $-0.15$ m to $1.5$ m. Two images of the experimental environment are displayed in Figure \ref{fig:exp3DEnvironment}.
+
+\begin{figure}[!t]
+\centering
+    	\begin{subfigure}[t]{0.95\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{experiment_north.jpg}
+        		\caption{North Region}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.95\columnwidth}
+	\vspace*{0.03\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{experiment_south.jpg}
+        		\caption{South Region}
+    	\end{subfigure}
+	\caption{The 3D experimental environment is designed to resemble a large room within an office building. The walls are build from from cardboard suspended from stanchions and gray sheeting with $80/20$ supports, and miscellaneous objects are placed around the room as well.}
+	\label{fig:exp3DEnvironment}
+\end{figure}
+
+
+\subsection{Hardware Structure}
+
+Several components are used for localization, sensing, and actuation. A Vicon motion capture system provides the transformation between a reference frame fixed to the world and the moving vehicle. This transformation, along with fixed transformations between the robot body and the sensors, provides sufficient information for the transformation from the world to each sensor frame. The sensor readings from the Xtion and Hokuyo are transmitted from an NVidia Jetson TX2 onboard the vehicle (Figure \ref{fig:QuadrotorHardware}). The sensor readings are received via WIFI on a host computer with an Intel Core i7-6800K CPU (12$\times$3.40GHz), which runs the mapping and exploration nodes. The host computer returns the exploration trajectories to the Jetson TX2 over WIFI. Then, the Jetson executes a nonlinear geometric flight controller~\cite{GooDaeLee13} onboard. With this configuration, large processing tasks are avoided onboard the robot.
+		
+\begin{figure}[!t]
+\centering
+    	\begin{subfigure}[t]{0.44\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{quad_top.png}
+        		\caption{Quadrotor Top}
+    	\end{subfigure}
+	\hspace*{0.05\columnwidth}
+    	\begin{subfigure}[t]{0.44\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{quad_bottom.png}
+        		\caption{Quadrotor Bottom}
+    	\end{subfigure}
+	\caption{A Jetson TX2 (quadrotor top) streams depth measurements via WIFI from an Asus Xtion and Hokuyo LIDAR (quadrotor bottom). The host computer builds a 3D probabilistic occupancy grid map from these measurements. For autonomous exploration, the host computer designs exploration trajectories, which an onboard flight controller can track in real-time.}
+	\label{fig:QuadrotorHardware}
+\end{figure}
+
+\subsection{Experimental Results}
+                
+The quadrotor takes off, completes a rotation to understand its immediate surroundings, then explores the space over $2$ minutes and $47$ seconds. Figure \ref{fig:exp3DMap} shows the probabilistic 3D map generated in real-time at four selected times, and the corresponding 2D projected maps (x-direction upward) are illustrated in Figure \ref{fig:exp2DMap}, where arrows represent pose candidates and a trajectory is shown to the optimal pose. Figure \ref{fig:expH} shows the total map entropy decreasing over the experiment duration. A video of the experiment can be found at \href{https://www.youtube.com/watch?v=I_1rXV2XRqk}{\WriteBlue{https://www.youtube.com/watch?v=I\_1rXV2XRqk}}.
+
+% trim={<left> <lower> <right> <upper>}
+
+\begin{figure}[!t]
+\centering
+    	\begin{subfigure}[t]{0.65\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{experiment_ogm3D_0min.jpg}
+        		\caption{$0$ min}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.65\columnwidth}
+		\vspace*{0.01\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{experiment_ogm3D_1min.jpg}
+        		\caption{$1$ min}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.65\columnwidth}
+	\vspace*{0.01\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{experiment_ogm3D_2min.jpg}
+        		\caption{$2$ min}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.65\columnwidth}
+	\vspace*{0.01\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{experiment_ogm3D_2min47sec.jpg}
+        		\caption{$2$ min $47$ sec (end)}
+    	\end{subfigure}
+	\caption{The 3D occupancy grid map is overlaid with point cloud measurements. The map probabilities directly rely on the Xtion and Hokuyo measurements and the sensor stochastic properties.}
+	\label{fig:exp3DMap}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+    	\begin{subfigure}[t]{0.44\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{experiment_0min_2D.jpg}
+        		\caption{$0$ min}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.44\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{experiment_1min_2D.jpg}
+        		\caption{$1$ min}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.44\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{experiment_2min_2D.jpg}
+        		\caption{$2$ min}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.44\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{experiment_2min47sec_2D_labeled.jpeg}
+        		\caption{$2$ min $47$ sec (end)}
+    	\end{subfigure}
+	\caption{The 2D projected map is easily produced in real-time. Candidate future poses, shown by arrows, have more blue color for larger objective functions, found with expected information gains and travel distances. Collision-free waypoints (blue line) serve as input to a constrained polynomial least-squares path (light green curve) for the robot controller to follow, where the desired pose (large axes) is tracked by the onboard controller from the current robot pose (small axes).}
+	\label{fig:exp2DMap}
+\end{figure}
+
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=0.85\textwidth]{entropy_experiment_aspect3by1.pdf}
+	\caption{Map entropy decreases as the robot explores and captures more of the experimental environment.}
+	\label{fig:expH}
+\end{figure}
+
+The robot is able to produce a 3D occupancy grid in under $3$ minutes without a human providing a trajectory. The 3D map can be easily interpreted by a human, and provides sufficient information in real-time for autonomous exploration. Optimal poses and collision-free exploration trajectories are calculated by the exploration node in under $1$ second. These quick decisions are vital to the autonomous exploration performance since the map is initially uncertain.
+
+The projected map used for both collision and exploration has several benefits. The robot measures walls and objects with the 3D map, and nicely represents these as occupied spaces with the 2D projected map. Additionally, the exploration computation is low, allowing only for brief hover periods (less than $1$ second) between trajectories. However, the robot exploration does not consider those cells far below the robot, particularly those near the ground. As a result, some floor regions are not captured by the 3D occupancy grid even though cells above the floor are well-known. These neglected cells on the floor motivate the full 3D exploration, shown in the next experiment.
+
+
+
+\section{Full 3D Exploration with a Quadrotor}
 \label{sec:QuadrotorSEH}
 
 

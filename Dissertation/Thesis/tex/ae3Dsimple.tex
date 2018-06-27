@@ -13,6 +13,7 @@ However, implementation in 3D requires several careful considerations. First, th
 Additionally, mobile robots, particularly aerial vehicles, are frequently subject to fast movements, and the time stamps for pose estimates and depth sensor readings are not guaranteed to align. For example, the most recent pose estimate and measurement scan may have significantly different time stamps while the robot is rapidly rotating. Using these together violates the assumption that the robot pose is well-known for every measurement scan, i.e., $X_t$ and $Z_t$ are given. Therefore, pose estimates and sensor readings must be paired according to their time stamps. A useful tool that easily satisfies this goal is the Message Filters package with the Robot Operating System (ROS), where stamped poses and measurement scans are synchronized using recently-received data.
 
 \section{Exploration in Vertically-Uniform Environments}
+\label{sec:MapProjections}
 
 Next, we describe two approaches to projecting the 3D probabilistic map onto a 2D map at the exploration height. Assuming projections are sufficient is consistent with rooms and hallways with non-complex geometries.
 

@@ -1,7 +1,7 @@
 \contentsline {chapter}{Acknowledgments}{iv}{section*.1}
 \contentsline {chapter}{Abstract}{v}{section*.2}
 \contentsline {chapter}{List of Figures}{ix}{section*.4}
-\contentsline {chapter}{List of Tables}{xii}{section*.5}
+\contentsline {chapter}{List of Tables}{xiii}{section*.5}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Motivation and Goals}{1}{section.1.1}
 \contentsline {subsection}{\numberline {1.1.1}Building Probabilistic Maps}{1}{subsection.1.1.1}
@@ -98,11 +98,14 @@
 \contentsline {paragraph}{Software Configuration}{94}{paragraph*.68}
 \contentsline {paragraph}{Exploring and Mapping a 2D Environment}{95}{paragraph*.69}
 \contentsline {section}{\numberline {7.2}Quadrotor Exploration of a Large Room}{97}{section.7.2}
-\contentsline {section}{\numberline {7.3}Quadrotor 3D Exploration}{97}{section.7.3}
-\contentsline {chapter}{Bibliography}{99}{section*.73}
-\contentsline {chapter}{\numberline {A}Proof of Proposition \ref {prop:ISM}}{102}{appendix.A}
-\contentsline {paragraph}{Unnormalized Reduced Map Inverse Sensor Model}{102}{paragraph*.75}
-\contentsline {paragraph}{Complement of the Unnormalized Reduced Map Inverse Sensor Model}{103}{paragraph*.76}
-\contentsline {paragraph}{Normalizer}{104}{paragraph*.77}
-\contentsline {chapter}{\numberline {B}Proof of Proposition \ref {prop:ExpectedH}}{106}{appendix.B}
-\contentsline {subsection}{\numberline {B.0.1}Single Ray Expected Value of Entropy}{106}{subsection.B.0.1}
+\contentsline {subsection}{\numberline {7.2.1}Exploration Environment}{99}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Hardware Structure}{99}{subsection.7.2.2}
+\contentsline {subsection}{\numberline {7.2.3}Experimental Results}{100}{subsection.7.2.3}
+\contentsline {section}{\numberline {7.3}Full 3D Exploration with a Quadrotor}{102}{section.7.3}
+\contentsline {chapter}{Bibliography}{106}{section*.78}
+\contentsline {chapter}{\numberline {A}Proof of Proposition \ref {prop:ISM}}{110}{appendix.A}
+\contentsline {paragraph}{Unnormalized Reduced Map Inverse Sensor Model}{110}{paragraph*.80}
+\contentsline {paragraph}{Complement of the Unnormalized Reduced Map Inverse Sensor Model}{111}{paragraph*.81}
+\contentsline {paragraph}{Normalizer}{112}{paragraph*.82}
+\contentsline {chapter}{\numberline {B}Proof of Proposition \ref {prop:ExpectedH}}{114}{appendix.B}
+\contentsline {subsection}{\numberline {B.0.1}Single Ray Expected Value of Entropy}{114}{subsection.B.0.1}

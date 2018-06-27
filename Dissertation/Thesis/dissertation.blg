@@ -1,5 +1,5 @@
-This is BibTeX, Version 0.99d (TeX Live 2016)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+This is BibTeX, Version 0.99d (TeX Live 2018)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: dissertation.aux
 A level-1 auxiliary file: tex/intro.aux
 A level-1 auxiliary file: tex/pogm.aux
@@ -11,49 +11,50 @@ A level-1 auxiliary file: tex/results.aux
 The style file: plain.bst
 A level-1 auxiliary file: tex/appendixA.aux
 A level-1 auxiliary file: tex/appendixB.aux
-Database file #1: ../../BibSources.bib.bib
+Database file #1: ../../BibSources.bib
 Warning--entry type for "coursera" isn't style-file defined
---line 479 of file ../../BibSources.bib.bib
+--line 479 of file ../../BibSources.bib
 Warning--to sort, need author or key in mapaplanet
-You've used 37 entries,
+Warning--to sort, need author or key in url_8020
+You've used 39 entries,
             2118 wiz_defined-function locations,
-            750 strings with 11254 characters,
-and the built_in function-call counts, 14467 in all, are:
-= -- 1453
-> -- 607
-< -- 19
-+ -- 244
-- -- 201
-* -- 915
-:= -- 2212
-add.period$ -- 117
-call.type$ -- 37
-change.case$ -- 208
+            760 strings with 11509 characters,
+and the built_in function-call counts, 15095 in all, are:
+= -- 1522
+> -- 615
+< -- 20
++ -- 248
+- -- 203
+* -- 945
+:= -- 2290
+add.period$ -- 123
+call.type$ -- 39
+change.case$ -- 215
 chr.to.int$ -- 0
-cite$ -- 38
-duplicate$ -- 629
-empty$ -- 1197
-format.name$ -- 201
-if$ -- 3194
+cite$ -- 41
+duplicate$ -- 661
+empty$ -- 1264
+format.name$ -- 203
+if$ -- 3348
 int.to.chr$ -- 0
-int.to.str$ -- 37
-missing$ -- 36
-newline$ -- 186
-num.names$ -- 78
-pop$ -- 280
+int.to.str$ -- 39
+missing$ -- 37
+newline$ -- 195
+num.names$ -- 80
+pop$ -- 294
 preamble$ -- 1
-purify$ -- 173
+purify$ -- 178
 quote$ -- 0
-skip$ -- 492
+skip$ -- 522
 stack$ -- 0
-substring$ -- 936
-swap$ -- 220
-text.length$ -- 19
+substring$ -- 986
+swap$ -- 234
+text.length$ -- 20
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 144
-warning$ -- 1
-while$ -- 144
-width$ -- 39
-write$ -- 409
-(There were 2 warnings)
+type$ -- 152
+warning$ -- 2
+while$ -- 149
+width$ -- 41
+write$ -- 428
+(There were 3 warnings)
