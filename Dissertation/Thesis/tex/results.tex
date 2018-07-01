@@ -244,6 +244,14 @@ The projected map used for both collision and exploration has several benefits. 
 \section{Full 3D Exploration with a Quadrotor}
 \label{sec:QuadrotorSEH}
 
+In this final experiment, we introduce the quadrotor to a space with complex 3D objects. The robot generates a 3D map of this space, and performs autonomous exploration while considering the expected information gains of sample measurement rays with nonzero vertical components. The robot unlike prior examples, the robot also moves vertically during exploration and tracks the ground below the vehicle.
+
+\subsection{3D Exploration Setup and Paramaters}
+The software follows the same structure as in Section \ref{sec:MarsSimulation}, except the Gazebo simulated environment is replaces with experimental equipment. This equipment is identical to the prior experimental example (Section \ref{sec:QuadrotorNRL}), except the experiment took place at The George Washington University's (GWU) Science and Engineering Hall (SEH). This environment is smaller, where the x-direction (positive east) spans $-2.0$ m to $2.0$ m, the y-direction (positive north) spans $-2.0$ m to $2.0$ m, and the z-direction (positive vertically up) spans $-0.15$ m to $1.5$ m.
+
+
+\subsection{3D Exploration Results}
+
 
 
 

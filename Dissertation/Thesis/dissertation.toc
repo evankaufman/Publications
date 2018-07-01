@@ -1,7 +1,7 @@
 \contentsline {chapter}{Acknowledgments}{iv}{section*.1}
 \contentsline {chapter}{Abstract}{v}{section*.2}
-\contentsline {chapter}{List of Figures}{ix}{section*.4}
-\contentsline {chapter}{List of Tables}{xiii}{section*.5}
+\contentsline {chapter}{List of Figures}{x}{section*.4}
+\contentsline {chapter}{List of Tables}{xiv}{section*.5}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Motivation and Goals}{1}{section.1.1}
 \contentsline {subsection}{\numberline {1.1.1}Building Probabilistic Maps}{1}{subsection.1.1.1}
@@ -30,14 +30,14 @@
 \contentsline {subsection}{\numberline {2.2.2}Computationally-Efficient Solution}{16}{subsection.2.2.2}
 \contentsline {section}{\numberline {2.3}Mapping in 2D Space}{18}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Ray Casting}{18}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Combining Measurements from a Single Scan}{19}{subsection.2.3.2}
-\contentsline {paragraph}{Ray-By-Ray Approach}{19}{paragraph*.16}
+\contentsline {subsection}{\numberline {2.3.2}Combining Measurements from a Single Scan}{18}{subsection.2.3.2}
+\contentsline {paragraph}{Ray-By-Ray Approach}{18}{paragraph*.16}
 \contentsline {paragraph}{Synergistic Update Approach}{21}{paragraph*.17}
 \contentsline {subsection}{\numberline {2.3.3}Numerical Examples}{25}{subsection.2.3.3}
 \contentsline {paragraph}{Approximate Inverse Sensor Model}{25}{paragraph*.18}
 \contentsline {paragraph}{Mapping a Hallway with the Ray-By-Ray Approach}{26}{paragraph*.19}
 \contentsline {paragraph}{Mapping a Room with the Synergistic Approach}{27}{paragraph*.23}
-\contentsline {section}{\numberline {2.4}Conclusions}{28}{section.2.4}
+\contentsline {section}{\numberline {2.4}Conclusions}{29}{section.2.4}
 \contentsline {chapter}{\numberline {3}Autonomous Exploration in 2D Space}{33}{chapter.3}
 \contentsline {section}{\numberline {3.1}Entropy-Based Exploration}{33}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Shannon's Entropy}{33}{subsection.3.1.1}
@@ -102,7 +102,10 @@
 \contentsline {subsection}{\numberline {7.2.2}Hardware Structure}{99}{subsection.7.2.2}
 \contentsline {subsection}{\numberline {7.2.3}Experimental Results}{100}{subsection.7.2.3}
 \contentsline {section}{\numberline {7.3}Full 3D Exploration with a Quadrotor}{102}{section.7.3}
-\contentsline {chapter}{Bibliography}{106}{section*.78}
+\contentsline {subsection}{\numberline {7.3.1}3D Exploration Setup and Paramaters}{102}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.2}3D Exploration Results}{102}{subsection.7.3.2}
+\contentsline {chapter}{\numberline {8}Conclusions}{106}{chapter.8}
+\contentsline {chapter}{Bibliography}{107}{section*.78}
 \contentsline {chapter}{\numberline {A}Proof of Proposition \ref {prop:ISM}}{110}{appendix.A}
 \contentsline {paragraph}{Unnormalized Reduced Map Inverse Sensor Model}{110}{paragraph*.80}
 \contentsline {paragraph}{Complement of the Unnormalized Reduced Map Inverse Sensor Model}{111}{paragraph*.81}
