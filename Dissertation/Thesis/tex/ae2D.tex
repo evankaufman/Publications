@@ -141,8 +141,11 @@ This example shows a typical case when the summation limits generated from \refe
         		\caption{Computation Ratio}
         		\label{fig:H_comp_ratio}
     	\end{subfigure}
-\caption{The entropy error is decreased at the cost of increasing computation time in this Monte Carlo 1D measurement ray expected entropy case.}
-\label{fig:ApproxJust}
+	\caption{Expected Entropy Computational Improvement of Reduced Ray Cells Considered}
+	\medskip
+	\small
+	The entropy error is decreased at the cost of increasing computation time in this Monte Carlo 1D measurement ray expected entropy case.
+	\label{fig:ApproxJust}
 \end{figure}
 
 
@@ -230,8 +233,11 @@ where weighting function $k_\text{dist}$ represents the sensitivity to avoiding 
 \put(6.5,2.5){\color{red}$z_{2,8}$}
 \put(6.1,2.9){$X_c^*$}
 \end{picture}
-\caption{This figure illustrates the expanding ring method. Initially, a robot (blue circle) views down and left (blue sector). Then, the robot considers $n_c=8$ poses (red circles) as possible candidates for where to move next. For each candidate, $n_d=8$ directions are considered (red lines, only displayed on candidate location $c=2$). Then, the expected entropy of each ray is calculated. The scan (red sector) covering those rays with the largest expected entropy decrease is chosen for each candidate, and the best candidate $X_c^*$ (black circle: location, black sector: scan) is chosen to maximize information gain. Finally, Dijkstra's algorithm provides the collision-free motion between $X_t$ and $X_c^*$, and the process is repeated.
+\caption{Optimal Pose Selection Illustration
 }
+	\medskip
+	\small
+	This figure illustrates the expanding ring method. Initially, a robot (blue circle) views down and left (blue sector). Then, the robot considers $n_c=8$ poses (red circles) as possible candidates for where to move next. For each candidate, $n_d=8$ directions are considered (red lines, only displayed on candidate location $c=2$). Then, the expected entropy of each ray is calculated. The scan (red sector) covering those rays with the largest expected entropy decrease is chosen for each candidate, and the best candidate $X_c^*$ (black circle: location, black sector: scan) is chosen to maximize information gain. Finally, Dijkstra's algorithm provides the collision-free motion between $X_t$ and $X_c^*$, and the process is repeated.
 \label{fig:OptProcess}
 \end{figure}
 
@@ -324,7 +330,10 @@ The results are illustrated in Figure \ref{fig:AutonomousExploration}.
 %        		\label{fig:}
     	\end{subfigure}
 }
-\caption{A robot (green circle, green marker of previous path) measures a room with a Kinect depth sensor to maximize map information gain.}
+	\caption{Autonomous Exploration of a 2D Space Using the Expanding Ring Approach}
+	\medskip
+	\small
+	A robot (green circle, green marker of previous path) measures a room with a Kinect depth sensor to maximize map information gain.
 \label{fig:AutonomousExploration}
 \end{figure}
 
@@ -352,9 +361,12 @@ Lighter red dots and darker blue dots in the explored area correlate to the leve
 
 
 \begin{figure}
-    \centering
-    \includegraphics[width=0.4\textwidth]{intel_clean.png}
-    \caption{Intel Research Lab floor plan benchmark~\cite{kummerle2009measuring}.}
+	\centering
+	\includegraphics[width=0.4\textwidth]{intel_clean.png}
+	\caption{Intel Research Lab Floor Plan Benchmark~\cite{kummerle2009measuring}.}
+	\medskip
+	\small
+	The 2D floor plan from the Intel Research Lab is simplified to eliminate small objects. The remaining black pixels are used to produce walls for 2D simulations.
 \label{fig:intel}
 \end{figure}
 
@@ -415,7 +427,10 @@ Lighter red dots and darker blue dots in the explored area correlate to the leve
         \caption{$t=40$ min}
         \label{fig:IRL40min}
     \end{subfigure}
-    \caption{A robot (green) measures a room in the ROS Stage simulator using the Intel Research Lab floor plan. The exact inverse sensor model is used for the autonomous exploration algorithm.}
+	\caption{Autonomous Exploration of the Intel Research Lab Using the Complete Cartesian Approach}
+	\medskip
+	\small
+	A robot (green) measures a room in the ROS Stage simulator using the Intel Research Lab floor plan. The exact inverse sensor model is used for the autonomous exploration algorithm.
     \label{fig:IRL}
 \end{figure}
 
