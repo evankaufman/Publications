@@ -3,6 +3,51 @@
 % this package is only used to generate some random text. 
 % it is not needed in a true document
 \usepackage{lipsum}
+
+% Used packages
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e} 
+\usepackage{amsmath,amssymb,url,times}
+
+
+\newtheorem{prop}{Proposition}
+\newcommand{\norm}[1]{\ensuremath{\left\| #1 \right\|}}
+\newcommand{\abs}[1]{\ensuremath{\left| #1 \right|}}
+\newcommand{\bracket}[1]{\ensuremath{\left[ #1 \right]}}
+\newcommand{\braces}[1]{\ensuremath{\left\{ #1 \right\}}}
+\newcommand{\parenth}[1]{\ensuremath{\left( #1 \right)}}
+\newcommand{\ip}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\refeqn}[1]{(\ref{eqn:#1})}
+\newcommand{\reffig}[1]{Figure \ref{fig:#1}}
+\newcommand{\tr}[1]{\mbox{tr}\ensuremath{\negthickspace\bracket{#1}}}
+\newcommand{\trs}[1]{\mbox{tr}\ensuremath{\!\bracket{#1}}}
+\newcommand{\deriv}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+\newcommand{\G}{\ensuremath{\mathsf{G}}}
+\newcommand{\SO}{\ensuremath{\mathsf{SO(3)}}}
+\newcommand{\T}{\ensuremath{\mathsf{T}}}
+\renewcommand{\L}{\ensuremath{\mathsf{L}}}
+%\newcommand{\so}{\ensuremath{\mathfrak{so}(3)}}
+\newcommand{\SE}{\ensuremath{\mathsf{SE(3)}}}
+\newcommand{\se}{\ensuremath{\mathfrak{se}(3)}}
+\renewcommand{\Re}{\ensuremath{\mathbb{R}}}
+\newcommand{\Sph}{\ensuremath{\mathsf{S}}}
+\newcommand{\aSE}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&1\end{bmatrix}}}
+\newcommand{\ase}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&0\end{bmatrix}}}
+\newcommand{\D}{\ensuremath{\mathbf{D}}}
+\renewcommand{\d}{\ensuremath{\mathbf{d}}}
+\newcommand{\pair}[1]{\ensuremath{\left\langle #1 \right\rangle}}
+\newcommand{\met}[1]{\ensuremath{\langle\!\langle #1 \rangle\!\rangle}}
+\newcommand{\Ad}{\ensuremath{\mathrm{Ad}}}
+\newcommand{\ad}{\ensuremath{\mathrm{ad}}}
+\newcommand{\g}{\ensuremath{\mathfrak{g}}}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\WriteBlue}[1]{{\color{blue}\protect #1}}
+
+% TODO list:
+% Include "This is the final and approved form of the dissertation." in first draft?
+% Consistent figure labeling
+% Names: gray, collision avoidance, collision-free, multi-vehicle, $ sec, commas in numbers >= 10,000, real-time
+
 \graphicspath{{../../Fig/}}
 
 \input{tex/frontmatter}
@@ -13,66 +58,23 @@
 %\include{tex/intro}
 
 
-\chapter{Introduction} \label{chap:intro}
-
-This dissertation explores three key aspects of mobile robotics: occupancy grid mapping, autonomous exploration, and cooperation among robot teams. Several novel contributions are presented on both related topics for complex and dynamic situations.
-
-
-\section{Motivation and Goals}
-
-The study of robotics has expanded tremendously in recent years as robots have taken on dangerous, difficult, and repetitive tasks instead of humans. Certain tasks, such as search-and-rescue, surveillance, and cleaning, require some level of autonomy, particularly with mobile robots exploring new and uncertain environments. While these tasks provide significant value to our society, they present nontrivial challenges for the robots, particularly in mapping, exploration, and cooperation.
-
-
-\subsection{Building Probabilistic Maps}
-
-The first topic this dissertation addresses is building accurate probabilistic maps, known as \emph{mapping}. Map generation is crucial for simultaneous localization and mapping (SLAM) because maps provide important information for the robot to determine its pose (localization), which includes its position and attitude. Mapping also provides knowledge for trajectory planning through an environment and collision avoidance with mapped obstacles. In short, mapping is of fundamental importance in mobile robotics.
-
-Therefore, mapping quality deserves much attention. Robotics is inherently \emph{probabilistic}; no sensor reading or action from an actuator is deterministic. All robotic processes have some degree of uncertainty, and the mapping must account for this. Onboard sensors serve to improve the understanding of surrounding spaces, but the stochastic properties of those sensors must be reflected in the stochastic properties of the map. Therefore, we propose to develop probabilistic map that accounts for the history of measurements and poses, and their associated stochastic properties. Here, each element of the map holds a probability based on measured data. In turn, this probability can be applied to tasks such as collision-avoidance and predicting future map outcomes.
-
-
-\subsection{Exploration in Uncertain Spaces}
-
-The second topic of this dissertation focusses on the motions robots must choose to maximize their knowledge about the map while avoiding collisions, known as \emph{autonomous exploration}.
-
-\subsection{Cooperation Among Autonomous Systems}
-
-The final topic of this dissertation is cooperation among members of a robot team.
-
-\section{Literature Review}
-
-In this section, we discuss the existing approaches to occupancy grid mapping, autonomous exploration, and multi-vehicle cooperation. Several shortcomings with existing approaches are highlighted, which are addressed in the dissertation contributions.
-
-\subsection{Occupancy Grid Mapping}
 
 
 
 
-\subsection{Autonomous Exploration}
-
-\subsection{Multi-Vehicle Cooperation}
-
-\section{Outline of Dissertation}
-
-ADD ONCE COMPLETE
-
-\section{Contributions}
-
-
-
-
-\subsection{Summary of Contributions}
-\subsection{List of Publications}
-
-
+\include{tex/intro}
 \include{tex/pogm}
 \include{tex/ae2D}
 \include{tex/ae3Dsimple}
-\include{tex/ae3Dcomplex}
 \include{tex/multivehicle}
+\include{tex/ae3Dcomplex}
+\include{tex/results}
+\include{tex/conclusions}
 
 \bibliographystyle{plain}
-\bibliography{thesis-bib}
+\bibliography{../../BibSources.bib}
 
 % appendices must appear after
-\include{tex/appendix}
+\include{tex/appendixA}
+\include{tex/appendixB}
 \end{document}
