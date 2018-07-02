@@ -97,10 +97,10 @@
 \contentsline {subsection}{\numberline {7.1.1}Hardware Configuration}{96}{subsection.7.1.1}
 \contentsline {subsection}{\numberline {7.1.2}Software Configuration}{97}{subsection.7.1.2}
 \contentsline {subsection}{\numberline {7.1.3}Exploring and Mapping a 2D Environment}{97}{subsection.7.1.3}
-\contentsline {section}{\numberline {7.2}Quadrotor Exploration of a Large Room}{99}{section.7.2}
+\contentsline {section}{\numberline {7.2}Quadrotor Exploration of a Large Room}{101}{section.7.2}
 \contentsline {subsection}{\numberline {7.2.1}Exploration Environment}{101}{subsection.7.2.1}
 \contentsline {subsection}{\numberline {7.2.2}Hardware Structure}{101}{subsection.7.2.2}
-\contentsline {subsection}{\numberline {7.2.3}Experimental Results}{102}{subsection.7.2.3}
+\contentsline {subsection}{\numberline {7.2.3}Experimental Results}{103}{subsection.7.2.3}
 \contentsline {section}{\numberline {7.3}Full 3D Exploration with a Quadrotor}{104}{section.7.3}
 \contentsline {subsection}{\numberline {7.3.1}3D Exploration Setup and Paramaters}{104}{subsection.7.3.1}
 \contentsline {subsection}{\numberline {7.3.2}3D Exploration Results}{104}{subsection.7.3.2}
