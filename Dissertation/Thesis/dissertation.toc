@@ -1,88 +1,12 @@
 \contentsline {chapter}{Acknowledgments}{iv}{section*.1}
 \contentsline {chapter}{Abstract}{v}{section*.2}
 \contentsline {chapter}{List of Figures}{x}{section*.4}
-<<<<<<< HEAD
-\contentsline {chapter}{List of Tables}{xi}{section*.5}
-\contentsline {chapter}{\nag@@warning@xx \relax \fontsize {12}{14.5}\selectfont \abovedisplayskip 12\p@ plus3\p@ minus7\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6.5\p@ plus3.5\p@ minus3\p@ \belowdisplayskip \abovedisplayskip \let \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ List of Abbreviations}{xii}{section*.6}
-\contentsline {chapter}{\nag@@warning@xx \relax \fontsize {12}{14.5}\selectfont \abovedisplayskip 12\p@ plus3\p@ minus7\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6.5\p@ plus3.5\p@ minus3\p@ \belowdisplayskip \abovedisplayskip \let \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ List of Symbols}{xiii}{section*.7}
-\contentsline {chapter}{\nag@@warning@xx \relax \fontsize {12}{14.5}\selectfont \abovedisplayskip 12\p@ plus3\p@ minus7\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6.5\p@ plus3.5\p@ minus3\p@ \belowdisplayskip \abovedisplayskip \let \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ Glossary of Terms}{xiv}{section*.8}
-=======
 \contentsline {chapter}{List of Tables}{xii}{section*.5}
->>>>>>> evan
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Motivation and Goals}{1}{section.1.1}
 \contentsline {subsection}{\numberline {1.1.1}Building Probabilistic Maps}{1}{subsection.1.1.1}
 \contentsline {subsection}{\numberline {1.1.2}Exploration in Uncertain Spaces}{2}{subsection.1.1.2}
 \contentsline {subsection}{\numberline {1.1.3}Cooperation Among Autonomous Systems}{2}{subsection.1.1.3}
-<<<<<<< HEAD
-\contentsline {section}{\numberline {1.2}Literature Review}{2}{section.1.2}
-\contentsline {subsection}{\numberline {1.2.1}Occupancy Grid Mapping}{2}{subsection.1.2.1}
-\contentsline {subsection}{\numberline {1.2.2}Autonomous Exploration}{2}{subsection.1.2.2}
-\contentsline {subsection}{\numberline {1.2.3}Multi-Vehicle Cooperation}{2}{subsection.1.2.3}
-\contentsline {section}{\numberline {1.3}Outline of Dissertation}{2}{section.1.3}
-\contentsline {section}{\numberline {1.4}Contributions}{3}{section.1.4}
-\contentsline {subsection}{\numberline {1.4.1}Summary of Contributions}{3}{subsection.1.4.1}
-\contentsline {subsection}{\numberline {1.4.2}List of Publications}{3}{subsection.1.4.2}
-\contentsline {chapter}{\numberline {2}Probabilistic Occupancy Grid Mapping}{4}{chapter.2}
-\contentsline {section}{\numberline {2.1}Inverse Sensor Model}{4}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Bayesian Probability}{4}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Computationally-Efficient Solution}{4}{subsection.2.1.2}
-\contentsline {section}{\numberline {2.2}Multi-Dimensional Maps}{4}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Ray Casting}{4}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Combining Measurements from a Single Scan}{4}{subsection.2.2.2}
-\contentsline {paragraph}{Ray-By-Ray Approach}{4}{paragraph*.9}
-\contentsline {paragraph}{Synergistic Update Approach}{4}{paragraph*.10}
-\contentsline {subsection}{\numberline {2.2.3}Multi-Sensor Fusion}{4}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Practical Implications}{4}{subsection.2.2.4}
-\contentsline {section}{\numberline {2.3}Numerical and Experimental Examples}{4}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Mapping a Room}{4}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Kinect Measurement Scan Analysis}{4}{subsection.2.3.2}
-\contentsline {section}{\numberline {2.4}Conclusions}{4}{section.2.4}
-\contentsline {chapter}{\numberline {3}Autonomous Exploration in 2D Space}{5}{chapter.3}
-\contentsline {section}{\numberline {3.1}Entropy-Based Exploration}{5}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Shannon's Entropy}{5}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Expected Information Gain}{5}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}Computational Limitations and Approximations}{5}{subsection.3.1.3}
-\contentsline {section}{\numberline {3.2}Future Pose Optimization}{5}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Optimal Attitude from Sample Rays}{5}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Travel Cost with Obstacles}{5}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Optimal Pose Selection}{5}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Collision-Free Motion Planning}{5}{subsection.3.2.4}
-\contentsline {section}{\numberline {3.3}Numerical Examples}{5}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Exploring a Simple Environment}{5}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Exploring a Complicated Benchmark Environment}{5}{subsection.3.3.2}
-\contentsline {section}{\numberline {3.4}Experimental Result}{5}{section.3.4}
-\contentsline {section}{\numberline {3.5}Conclusions}{5}{section.3.5}
-\contentsline {chapter}{\numberline {4}Autonomous Exploration in Vertically-Uniform 3D Space}{6}{chapter.4}
-\contentsline {section}{\numberline {4.1}Occupancy Grid Mapping in 3D}{6}{section.4.1}
-\contentsline {section}{\numberline {4.2}Exploration in Simple Environments }{6}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Map Projections}{6}{subsection.4.2.1}
-\contentsline {section}{\numberline {4.3}Exploring a Large Room}{6}{section.4.3}
-\contentsline {section}{\numberline {4.4}Conclusions}{6}{section.4.4}
-\contentsline {chapter}{\numberline {5}Autonomous Exploration in Complex 3D Space}{7}{chapter.5}
-\contentsline {section}{\numberline {5.1}Exploration with Full 3D Maps}{7}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Collision Mapping in 3D}{7}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Future Pose Optimization in 3D}{7}{subsection.5.1.2}
-\contentsline {section}{\numberline {5.2}Numerical Simulation}{7}{section.5.2}
-\contentsline {section}{\numberline {5.3}Experiment}{7}{section.5.3}
-\contentsline {section}{\numberline {5.4}Conclusions}{7}{section.5.4}
-\contentsline {chapter}{\numberline {6}Multi-Vehicle Autonomous Exploration and Patrol}{8}{chapter.6}
-\contentsline {section}{\numberline {6.1}Bidding-Based Autonomous Exploration}{8}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Objective Function for the First Auction}{8}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Objective Function for Subsequent Auctions}{8}{subsection.6.1.2}
-\contentsline {subsection}{\numberline {6.1.3}Receding Horizon Framework}{8}{subsection.6.1.3}
-\contentsline {subsection}{\numberline {6.1.4}Multi-Vehicle Exploration Numerical Simulation}{8}{subsection.6.1.4}
-\contentsline {section}{\numberline {6.2}Multi-Vehicle Cooperative Patrol}{8}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Continuous-Time Markov Process for Cell Degradation}{8}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Multi-Vehicle Patrol Numerical Simulation}{8}{subsection.6.2.2}
-\contentsline {section}{\numberline {6.3}Conclusions}{8}{section.6.3}
-\contentsline {chapter}{\numberline {A}Appendix}{9}{appendix.A}
-\contentsline {section}{\numberline {A.1}A section}{9}{section.A.1}
-\contentsline {section}{\numberline {A.2}False Position}{9}{section.A.2}
-\contentsline {section}{\numberline {A.3}Starting the Appendices}{9}{section.A.3}
-\contentsline {chapter}{\numberline {B}Another Appendix}{11}{appendix.B}
-\contentsline {chapter}{Bibliography}{9}{section*.11}
-=======
 \contentsline {section}{\numberline {1.2}Literature Review}{3}{section.1.2}
 \contentsline {subsection}{\numberline {1.2.1}Occupancy Grid Mapping}{3}{subsection.1.2.1}
 \contentsline {paragraph}{Inverse Sensor Model}{3}{paragraph*.6}
@@ -188,4 +112,3 @@
 \contentsline {paragraph}{Normalizer}{116}{paragraph*.79}
 \contentsline {chapter}{\numberline {B}Proof of Proposition \ref {prop:ExpectedH}}{118}{appendix.B}
 \contentsline {paragraph}{Single Ray Expected Value of Entropy}{118}{paragraph*.80}
->>>>>>> evan

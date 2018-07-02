@@ -1,10 +1,5 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-<<<<<<< HEAD
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-=======
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Occupancy Grid Maps with Identical Forward Sensor Models\relax }}{17}{figure.caption.14}
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Ray Casting Illustration\relax }}{18}{figure.caption.15}
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Comparison of Proposed Ray-By-Ray Approach with Approximate Solution\relax }}{28}{figure.caption.20}
@@ -51,7 +46,6 @@
 \contentsline {figure}{\numberline {7.6}{\ignorespaces 3D Occupancy Grid Map During Level Flight Experiment\relax }}{105}{figure.caption.72}
 \contentsline {figure}{\numberline {7.7}{\ignorespaces 2D Projected Occupancy Grid Map During Level Flight Experiment\relax }}{106}{figure.caption.73}
 \contentsline {figure}{\numberline {7.8}{\ignorespaces Entropy History During Level Flight Experiment\relax }}{107}{figure.caption.74}
->>>>>>> evan
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
