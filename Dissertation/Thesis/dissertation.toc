@@ -22,7 +22,7 @@
 \contentsline {section}{\numberline {1.3}Outline of Dissertation}{9}{section.1.3}
 \contentsline {section}{\numberline {1.4}Contributions}{9}{section.1.4}
 \contentsline {subsection}{\numberline {1.4.1}Summary of Contributions}{9}{subsection.1.4.1}
-\contentsline {subsection}{\numberline {1.4.2}List of Publications}{10}{subsection.1.4.2}
+\contentsline {subsection}{\numberline {1.4.2}List of Publications}{11}{subsection.1.4.2}
 \contentsline {chapter}{\numberline {2}Probabilistic Occupancy Grid Mapping}{13}{chapter.2}
 \contentsline {section}{\numberline {2.1}Mapping Problem Definition}{13}{section.2.1}
 \contentsline {section}{\numberline {2.2}Inverse Sensor Model}{14}{section.2.2}
@@ -102,7 +102,7 @@
 \contentsline {subsection}{\numberline {7.2.2}Hardware Structure}{101}{subsection.7.2.2}
 \contentsline {subsection}{\numberline {7.2.3}Experimental Results}{103}{subsection.7.2.3}
 \contentsline {section}{\numberline {7.3}Full 3D Exploration with a Quadrotor}{104}{section.7.3}
-\contentsline {subsection}{\numberline {7.3.1}3D Exploration Setup and Paramaters}{104}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.1}3D Exploration Setup and Parameters}{104}{subsection.7.3.1}
 \contentsline {subsection}{\numberline {7.3.2}3D Exploration Results}{104}{subsection.7.3.2}
 \contentsline {chapter}{\numberline {8}Conclusions}{108}{chapter.8}
 \contentsline {chapter}{Bibliography}{110}{section*.75}
