@@ -15,7 +15,7 @@ Additionally, mobile robots, particularly aerial vehicles, are frequently subjec
 \section{Exploration in Vertically-Uniform Environments}
 \label{sec:MapProjections}
 
-Next, we describe two approaches to projecting the 3D probabilistic map onto a 2D map at the exploration height. Assuming projections are sufficient is consistent with rooms and hallways with non-complex geometries.
+Next, we describe two approaches to projecting the 3D probabilistic map onto a 2D map at the exploration height~\cite{KauTakAiLee18}. Assuming projections are sufficient is consistent with rooms and hallways with non-complex geometries.
 
 \subsection{Collision and Entropy Maps}
 Occupancy grid map cell volume is frequently smaller than the size of the robot taking measurements, particularly with highly-detailed maps. This motivates a method to simply represent locations that risk collision, referred to as a \emph{collision map} $C$. Let $k_C\geq1$ be an integer representing the minimum number of 3D grid cells that form a cube that can completely encompass the robot, i.e., the collision map cell edge length is
