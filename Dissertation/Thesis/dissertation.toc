@@ -105,10 +105,10 @@
 \contentsline {subsection}{\numberline {7.3.1}3D Exploration Setup and Paramaters}{102}{subsection.7.3.1}
 \contentsline {subsection}{\numberline {7.3.2}3D Exploration Results}{102}{subsection.7.3.2}
 \contentsline {chapter}{\numberline {8}Conclusions}{106}{chapter.8}
-\contentsline {chapter}{Bibliography}{107}{section*.78}
-\contentsline {chapter}{\numberline {A}Proof of Proposition \ref {prop:ISM}}{110}{appendix.A}
-\contentsline {paragraph}{Unnormalized Reduced Map Inverse Sensor Model}{110}{paragraph*.80}
-\contentsline {paragraph}{Complement of the Unnormalized Reduced Map Inverse Sensor Model}{111}{paragraph*.81}
-\contentsline {paragraph}{Normalizer}{112}{paragraph*.82}
-\contentsline {chapter}{\numberline {B}Proof of Proposition \ref {prop:ExpectedH}}{114}{appendix.B}
-\contentsline {subsection}{\numberline {B.0.1}Single Ray Expected Value of Entropy}{114}{subsection.B.0.1}
+\contentsline {chapter}{Bibliography}{108}{section*.78}
+\contentsline {chapter}{\numberline {A}Proof of Proposition \ref {prop:ISM}}{111}{appendix.A}
+\contentsline {paragraph}{Unnormalized Reduced Map Inverse Sensor Model}{111}{paragraph*.80}
+\contentsline {paragraph}{Complement of the Unnormalized Reduced Map Inverse Sensor Model}{112}{paragraph*.81}
+\contentsline {paragraph}{Normalizer}{113}{paragraph*.82}
+\contentsline {chapter}{\numberline {B}Proof of Proposition \ref {prop:ExpectedH}}{115}{appendix.B}
+\contentsline {subsection}{\numberline {B.0.1}Single Ray Expected Value of Entropy}{115}{subsection.B.0.1}
