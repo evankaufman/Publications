@@ -2,7 +2,7 @@
 
 \chapter{Multi-Vehicle Autonomous Exploration and Patrol} \label{chap:multivehicle}
 
-This chapter covers a bidding-based formulation for multiple vehicles cooperating together in the context of autonomous exploration and patrol. We focus on a series of auctions to assign tasks, and consider dynamic obstacles, such as people, in large office-like environments using a receding-horizon framework.
+This chapter covers a bidding-based formulation for multiple vehicles cooperating together in the context of autonomous exploration and patrol. We focus on a series of auctions to assign tasks, and consider dynamic obstacles, such as people, in large office-like environments using a receding horizon framework.
 
 \section{Bidding-Based Autonomous Exploration}
 \label{sec:BiddingExploration}
@@ -55,7 +55,10 @@ which is illustrated in Fig. \ref{fig:nonzeroBumpFun}. % In short, the bump func
 		\centering{
 			\includegraphics[width=0.9\columnwidth]{NonZeroBump.pdf}
 		}
-		\caption{The bump function is designed to promote travel distances close to $d_\text{opt}$ by multiplying this function by the expected information gain objective. Travel distances less than $d_\text{opt}$ are below the robot capabilities. Travel distances beyond $d_\text{opt}$ are beyond what the robot can reach within the minimum exploration computation time.}
+		\caption{Bump Function for Multi-Vehicle Autonomous Exploration}
+		\medskip
+		\small
+		The bump function is designed to promote travel distances close to $d_\text{opt}$ by multiplying this function by the expected information gain objective. Travel distances less than $d_\text{opt}$ are below the robot capabilities. Travel distances beyond $d_\text{opt}$ are beyond what the robot can reach within the minimum exploration computation time.
 		\label{fig:nonzeroBumpFun}
 	\end{figure}
 	
@@ -195,7 +198,10 @@ In the simulation, three quadrotors explore the simulated environment of The Geo
           	\includegraphics[width=\textwidth]{gazeboSEH.png}
         		\caption{Gazebo Model}
     	\end{subfigure}
-	\caption{The SEH second floor plan (about $15,000$ sqft) is reconstructed with a Gazebo simulation environment.}
+	\caption{SEH Floor Plan}
+	\medskip
+	\small
+	The SEH second floor plan (about $15,000$ sqft) is reconstructed with a Gazebo simulation environment, excluding some small details and features of closed rooms.
 	\label{fig:SEHEnvironment}
 \end{figure}
 
@@ -251,7 +257,10 @@ In the simulation, three quadrotors explore the simulated environment of The Geo
         		\caption{$9$ min}
     	\end{subfigure}
 	}
-	\caption{3D Occupancy Grid Map of SEH Second Floor}
+	\caption{3D Occupancy Grid Map of SEH Second Floor During Multi-Vehicle Exploration}
+	\medskip
+	\small
+	The 3D occupancy grid map of SEH is generated from three robots coordinating their exploration strategy with auctions.
 	\label{fig:sim3DMap}
 \end{figure}
 
@@ -306,7 +315,10 @@ In the simulation, three quadrotors explore the simulated environment of The Geo
         		\caption{$9$ min}
     	\end{subfigure}
 	}
-	\caption{2D Projected Occupancy Grid Map of SEH Second Floor}
+	\caption{2D Projected Occupancy Grid Map of SEH Second Floor During Multi-Vehicle Exploration}
+	\medskip
+	\small
+	The 2D projected map serves for both entropy and collision information at the exploration height for all three vehicles as they coordinate their mapping efforts with bidding-based multi-vehicle autonomous exploration.
 	\label{fig:sim2Dmaps}
 \end{figure}
 
@@ -322,7 +334,10 @@ When robots competed for future poses in a centralized auction framework, the re
 		\centering{
 			\includegraphics[width=0.9\columnwidth]{multi_H.pdf}
 		}
-		\caption{Total 3D Map Cell Entropy}
+		\caption{Total 3D Map Cell Entropy for Multi-Vehicle Exploration}
+		\medskip
+		\small
+		The total map cell entropy is calculated using the difference in map entropy before and after each measurement scan from each of the three coordinating vehicles.
 		\label{fig:simH}
 	\end{figure}
 
@@ -410,10 +425,13 @@ P(\mathbf{m}_{t_f})=P(\mathbf{m}_{t_0})\exp\braces{-\lambda (t_f-t_0)}+P_\infty(
 Applying degradation is computationally-inexpensive due to the simplicity of \refeqn{CellDegradationScalar}. For an arbitrary positive fixed time step, $\exp\braces{-\lambda (t_f-t_0)}$ needs only be calculated once and is multiplied to every map cell. Similarly, the second term of \refeqn{CellDegradationScalar}, namely $P_\infty(1-\exp\braces{-\lambda (t_f-t_0)})$, is simply added to every cell. For grid cells with probabilities far from $P_\infty$, the times to converge to this final degraded value increase, shown in Fig. \ref{fig:DegradeExamples}. Slow convergence of cells with probabilities close to $0$ or $1$ allows the robots to stop viewing these cells, giving the robots opportunities to visit different regions before returning.
 
 \begin{figure}
-\centering
-\includegraphics[width=\textwidth]{DegradeExamples.pdf}
-\caption{The rate at which probabilities converge toward $P_\infty=0.4$ increases based on the difference magnitude of their initial values.}
-\label{fig:DegradeExamples}
+	\centering
+	\includegraphics[width=\textwidth]{DegradeExamples.pdf}
+	\caption{Grid Cell Degradation Illustration}
+	\medskip
+	\small
+	The rate at which probabilities converge toward $P_\infty=0.4$ increases based on the difference magnitude of their initial values.
+	\label{fig:DegradeExamples}
 \end{figure}
 
 In short, each grid cell is continuously degrading according to \refeqn{CellDegradationScalar} toward $P_\infty$. Only in the presence of measurements does the cell occupancy become well-known according to \refeqn{RayISMAnswer}--\refeqn{Unnormalized}. Cell degradation encourages the robot to revisit cells from the distant past using bidding-based multi-vehicle autonomous exploration to patrol the environment continuously. Adopting the receding horizon framework allows patrol to account for dynamic obstacles by quickly updating patrol strategies as map information changes.
@@ -487,7 +505,10 @@ In the simulation, three quadrotors explore and patrol the same simulated enviro
         		\caption{$15$ min}
     	\end{subfigure}
 	}
-	\caption{The 3D occupancy grid map representation of the SEH second floor is shown during patrol. The robots generate these maps while avoiding collisions with each other, the environment, and a non-cooperative human.}
+	\caption{3D Occupancy Grid Map of SEH Second Floor During Multi-Vehicle Patrol}
+	\medskip
+	\small
+	The 3D occupancy grid map representation of the SEH second floor is shown during patrol. The robots generate these maps while avoiding collisions with each other, the environment, and a non-cooperative human.
 	\label{fig:Sim3DMapPatrol}
 \end{figure}
 
@@ -541,7 +562,10 @@ In the simulation, three quadrotors explore and patrol the same simulated enviro
         		\caption{$15$ min}
     	\end{subfigure}
 	}
-	\caption{The 2D projected map from of the SEH second floor shows degradation while robots patrol the space. The robots evade the non-cooperative human walking in a rectangular pattern, occasionally capturing the temporarily-occupied space and identifying these cells as occupied on the grid.}
+	\caption{2D Projected Occupancy Grid Map of SEH Second Floor During Multi-Vehicle Patrol}
+	\medskip
+	\small
+	The 2D projected map from of the SEH second floor shows degradation while robots patrol the space. The robots evade the non-cooperative human walking in a rectangular pattern, occasionally capturing the temporarily-occupied space and identifying these cells as occupied on the grid.
 	\label{fig:Sim2DMapPatrol}
 \end{figure}
 
@@ -551,10 +575,13 @@ In the simulation, three quadrotors explore and patrol the same simulated enviro
 The robot generated a fairly-complete occupancy grid within $9$ minutes, and proceeded to patrol the space during the remaining time. After $9$ minutes, the total map entropy no longer increases or decreases significantly; the rate of cell degradation is roughly equal and opposite to improvements to the probabilistic map from the robot team. In contrast, if the robots simply hover instead of patrol after $9$ minutes, the map uncertainty quickly increases, shown in Fig. \ref{fig:DegradeExamples}. Furthermore, the receding horizon framework minimizes time between exploration updates, which allows the robots quickly react to dynamic obstacles like the non-cooperative human, shown in Fig. \ref{fig:EvadeHuman}.
 
 \begin{figure}
-\centering
-\includegraphics[width=\textwidth]{entropy_patrol_9minSwitch.pdf}
-\caption{Total map entropies are tracked for separate trials: patrol of the building for $15$ minutes (blue) and patrol of the building for $9$ minutes, then hover (red). Even though the map is fairly well-known after $9$ minutes in either case, the continuous effort of patrolling over the complete time period shows lower map uncertainty beyond this time as cells are constantly degrading.}
-\label{fig:DegradeExamples}
+	\centering
+	\includegraphics[width=\textwidth]{entropy_patrol_9minSwitch.pdf}
+	\caption{Total 3D Map Cell Entropy for Multi-Vehicle Patrol}
+	\medskip
+	\small
+	Total map entropies are tracked for separate trials: patrol of the building for $15$ minutes (blue) and patrol of the building for $9$ minutes, then hover (red). Even though the map is fairly well-known after $9$ minutes in either case, the continuous effort of patrolling over the complete time period shows lower map uncertainty beyond this time as cells are constantly degrading.
+	\label{fig:DegradeExamples}
 \end{figure}
 
 
@@ -577,7 +604,10 @@ The robot generated a fairly-complete occupancy grid within $9$ minutes, and pro
           	\includegraphics[trim={22cm 25cm 20cm 0cm}, clip, width=\textwidth]{evade_17sec.jpg}
         		\caption{$17$ sec}
     	\end{subfigure}
-	\caption{A cooperating robot must evade a non-cooperative human. The receding horizon framework allows a quickly-updating map to modify the exploration commands to avoid collisions with a dynamic obstacle.}
+	\caption{Human Collision-Avoidance Using a Receding Horizon}
+	\medskip
+	\small
+	A cooperating robot must evade a non-cooperative human. The receding horizon framework allows a quickly-updating map to modify the exploration commands to avoid collisions with a dynamic obstacle.
 	\label{fig:EvadeHuman}
 \end{figure}
 
