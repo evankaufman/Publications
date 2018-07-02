@@ -1,7 +1,7 @@
 \contentsline {chapter}{Acknowledgments}{iv}{section*.1}
 \contentsline {chapter}{Abstract}{v}{section*.2}
 \contentsline {chapter}{List of Figures}{x}{section*.4}
-\contentsline {chapter}{List of Tables}{xiii}{section*.5}
+\contentsline {chapter}{List of Tables}{xii}{section*.5}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Motivation and Goals}{1}{section.1.1}
 \contentsline {subsection}{\numberline {1.1.1}Building Probabilistic Maps}{1}{subsection.1.1.1}

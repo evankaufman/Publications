@@ -235,9 +235,11 @@ where weighting function $k_\text{dist}$ represents the sensitivity to avoiding 
 \end{picture}
 \caption{Optimal Pose Selection Illustration
 }
+\centering{
 	\medskip
 	\small
 	This figure illustrates the expanding ring method. Initially, a robot (blue circle) views down and left (blue sector). Then, the robot considers $n_c=8$ poses (red circles) as possible candidates for where to move next. For each candidate, $n_d=8$ directions are considered (red lines, only displayed on candidate location $c=2$). Then, the expected entropy of each ray is calculated. The scan (red sector) covering those rays with the largest expected entropy decrease is chosen for each candidate, and the best candidate $X_c^*$ (black circle: location, black sector: scan) is chosen to maximize information gain. Finally, Dijkstra's algorithm provides the collision-free motion between $X_t$ and $X_c^*$, and the process is repeated.
+}
 \label{fig:OptProcess}
 \end{figure}
 

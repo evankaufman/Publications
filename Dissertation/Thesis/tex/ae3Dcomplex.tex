@@ -73,12 +73,11 @@ In short, unit vectors are acquired via Euler angles within certain sensor limit
           	\includegraphics[trim = {23cm 4cm 17cm 6cm}, clip, height=1.0\textwidth]{mars_theta.png}
         		\caption{$\theta$ Rotation}
     	\end{subfigure}
-%\includegraphics[width=2.5in]{myfigure}
-% where an .eps filename suffix will be assumed under latex, 
-% and a .pdf suffix will be assumed for pdflatex; or what has been declared
-% via \DeclareGraphicsExtensions.
-\caption{The three frames are shown with three axes (red: first axis, green: second axis, blue: third axis). The Mars frame (short and thick) is fixed to the planet. The body-fixed frame (medium thickness and length) is fixed to the camera frame (long and narrow). The rotation of $\psi$ (b) represents the fixed camera yaw rotation and $\theta$ (c) represents the downward angle of the camera to capture the surface of Mars below the flying robot.}
-\label{fig:transforms}
+	\caption{Illustration of 3D Exploration Reference Frames}
+	\medskip
+	\small
+	The three frames are shown with three axes (red: first axis, green: second axis, blue: third axis). The world frame (short and thick) is fixed to the ground. The body-fixed frame (medium thickness and length) is fixed to the camera frame (long and narrow). The rotation of $\psi$ (b) represents the fixed camera yaw rotation and $\theta$ (c) represents the downward angle of the camera to capture the ground below the flying robot.
+	\label{fig:transforms}
 \end{figure}
 
 
@@ -136,15 +135,19 @@ x_c^*=\argmax_{x_c}\mathcal{I}_\text{scan}(x_c,R_c^*)\mathcal B(d(x_c)),
 \end{align}
 and therefore the optimal pose is $X_c^*=\braces{x_c^*,R_c^*}$.
 
-	\begin{figure}
+\begin{figure}[!t]
+	\centering
 	\vspace*{-0.3\columnwidth}
 		\centerline{
 			\includegraphics[width=0.6\columnwidth]{recedingHorizonBumpFunFlattened.pdf}
 		}
 	\vspace*{-0.25\columnwidth}
-		\caption{The bump function is multiplied to the objective function of \refeqn{CandidateLocationOptimization} to prioritize local trajectories to avoid traversals across the map, where travel costs are determined using Dijkstra's algorithm. However, there is no time wasted up to $d_\text{opt}$ because this distance may be achieved in the minimum exploration computation time.}
-		\label{fig:recedingHorizonBumpFun}
-	\end{figure}
+	\caption{Bump Function for Full 3D Exploration}
+	\medskip
+	\small
+	The bump function is multiplied to the objective function of \refeqn{CandidateLocationOptimization} to prioritize local trajectories to avoid traversals across the map, where travel costs are determined using Dijkstra's algorithm. However, there is no time wasted up to $d_\text{opt}$ because this distance may be achieved in the minimum exploration computation time.
+	\label{fig:recedingHorizonBumpFun}
+\end{figure}
 	
 In conclusion, every reachable candidate pose is considered for its optimal attitude, which is found using sample rays spanning 3D space. The travel costs, acquired from Dijkstra's search, serve as input for the bump function, which prioritizes local trajectories to avoid costly map traversals. Then, the optimal candidate location is selected to maximize a combination of expected information gain and travel cost.
 
@@ -179,11 +182,14 @@ A 3D environment of Mars is simulated in Gazebo. A height map~\cite{mapaplanet} 
           	\includegraphics[height=0.9\textwidth]{mars_gazebo_full_lighting.png}}
         		\caption{Gazebo Environment}
     	\end{subfigure}
-\caption{The height map (a) and color map (b) are combined in the Gazebo simulator (c) to model a Mars environment. The robot captures the simulated environment to generate an occupancy grid map.}
-\label{fig:MarsGazebo}
+	\caption{Simulated Mars Surface}
+	\medskip
+	\small
+	The height map (a) and color map (b) are combined in the Gazebo simulator (c) to model a Mars environment. The robot captures the simulated environment to generate an occupancy grid map.
+	\label{fig:MarsGazebo}
 \end{figure}
 
-The map parameters are also important to the success of the exploration. The full map has dimensions $20$ m $\times$ $20$ m $\times$ $5$ m in the Mars-fixed frame, with cell edge length $\alpha=0.075$ m. The reduced map for collision-avoidance and motion planning has cells $k=3$ times the size ($0.225$ m), so $k^3=27$ cells are considered in \refeqn{Proj3DMapComb}. The bump functions use $f_\text{max}=1.0$, $f_\text{far}=0.1$, and $\beta=0.1$ to account for travel costs with \refeqn{BumpFun}. The receding horizon optimal time $d_\text{opt}$ is based on a fixed robot velocity of $0.25$ m/sec and the computation time varies from $1.8$ sec to $2.5$ sec.
+The map parameters are also important to the success of the exploration. The full map has dimensions $20$ m $\times$ $20$ m $\times$ $5$ m in the Mars-fixed frame, with cell edge length $\alpha=0.075$ m. The reduced map for collision avoidance and motion planning has cells $k=3$ times the size ($0.225$ m), so $k^3=27$ cells are considered in \refeqn{Proj3DMapComb}. The bump functions use $f_\text{max}=1.0$, $f_\text{far}=0.1$, and $\beta=0.1$ to account for travel costs with \refeqn{BumpFun}. The receding horizon optimal time $d_\text{opt}$ is based on a fixed robot velocity of $0.25$ m/sec and the computation time varies from $1.8$ sec to $2.5$ sec.
 
 \subsection{Mars Results}
 
@@ -243,7 +249,10 @@ The simulation was run twice. Case 1 was as described in this paper. Case 2 was 
         		\caption{$15$ min}
 		\vspace*{0.025\textwidth}
     	\end{subfigure}
-\caption{In Case 1, the robot (red disk with arrow indicating laser direction) moves toward candidate poses (red arrows, more opaque for greater reward) based on expected entropy change of the 3D probabilistic occupancy grid map $m$ (cubes: greater opacity for greater occupancy probability) of the surface of Mars.}
+\caption{Mars 3D Occupancy Grid Map for Case 1}
+	\medskip
+	\small
+	In Case 1, the robot (red disk with arrow indicating laser direction) moves toward candidate poses (red arrows, more opaque for greater reward) based on expected entropy change of the 3D probabilistic occupancy grid map $m$ (cubes: greater opacity for greater occupancy probability) of the surface of Mars.
 \label{fig:mars3DogmCase1}
 \end{figure}
 
@@ -301,7 +310,10 @@ The simulation was run twice. Case 1 was as described in this paper. Case 2 was 
         		\caption{$15$ min}
 		\vspace*{0.025\textwidth}
     	\end{subfigure}
-\caption{In Case 2, the robot (red disk with arrow indicating laser direction) generates a 3D probabilistic occupancy grid map $m$ (cubes: greater opacity for greater occupancy probability), which is used to generate a reduced map $m_\text{reduced}$ based on \refeqn{Proj3DMapComb}. The robot moves toward candidate poses (red arrows, more opaque for greater reward) based on expected entropy change of $m_\text{reduced}$. Using $m_\text{reduced}$ instead of $m$ for entropy calculation leads to faster exploration of new terrain, but this leaves some grid cells missing.}
+\caption{Mars 3D Occupancy Grid Map for Case 2}
+	\medskip
+	\small
+	In Case 2, the robot (red disk with arrow indicating laser direction) generates a 3D probabilistic occupancy grid map $m$ (cubes: greater opacity for greater occupancy probability), which is used to generate a reduced map $m_\text{reduced}$ based on \refeqn{Proj3DMapComb}. The robot moves toward candidate poses (red arrows, more opaque for greater reward) based on expected entropy change of $m_\text{reduced}$. This approach leads to faster exploration of new terrain, but this leaves some grid cells missing.
 \label{fig:mars3DogmCase2}
 \end{figure}
 
@@ -320,18 +332,24 @@ The simulation was run twice. Case 1 was as described in this paper. Case 2 was 
         		\caption{Full Map and Reduced Map Cells}
 		\vspace*{0.025\textwidth}
     	\end{subfigure}
-\caption{The close-up images from the Case 2 trial show the candidate future poses (red arrows), where greater opacity represents a larger objective function of \refeqn{CandidateLocationOptimization}. In (a), we show the 3D scan with color corresponding to the surface of Mars. In (b), we overlay the full map $m$ (colored) with the reduced map $m_\text{reduced}$ (gray) from \refeqn{Proj3DMapComb}.}
-\label{fig:marsZoomedIn}
+	\caption{Zoomed-In Occupancy Grid Cells of Mars}
+	\medskip
+	\small
+	The close-up images from the Case 2 trial show the candidate future poses (red arrows), where greater opacity represents a larger objective function of \refeqn{CandidateLocationOptimization}. In (a), we show the 3D scan with color corresponding to the surface of Mars. In (b), we overlay the full map $m$ (colored) with the reduced map $m_\text{reduced}$ (gray) from \refeqn{Proj3DMapComb}.
+	\label{fig:marsZoomedIn}
 \end{figure}
 
 
-	\begin{figure}
-		\centerline{
-			\includegraphics[width=0.6\columnwidth]{scitech_entropy_comparison_flat.pdf}
-		}
-		\caption{The complete map entropy for Case 1 (red solid line) decreases at roughly the same rate as the reduced map entropy for Case 2 (dashed blue line) toward the beginning. However, the expected entropy in Case 2 promotes actions toward unexplored territory, while the policy of Case 1 yields a more complete map before moving on to unexplored spaces.}
-		\label{fig:mars3Dentropy}
-	\end{figure}
+\begin{figure}
+	\centerline{
+		\includegraphics[width=0.9\columnwidth]{scitech_entropy_comparison_flat.pdf}
+	}
+	\caption{Entropy Histories During Mars Exploration}
+	\medskip
+	\small
+	The complete map entropy for Case 1 (red solid line) decreases at roughly the same rate as the reduced map entropy for Case 2 (dashed blue line) toward the beginning. However, the expected entropy in Case 2 promotes actions toward unexplored territory, while the policy of Case 1 yields a more complete map before moving on to unexplored spaces.
+	\label{fig:mars3Dentropy}
+\end{figure}
 
 
 In both cases, the robot built the 3D probabilistic map of the $2000$ cubic meter space composed of $4.74\times10^6$ grid cells. The maps were mostly complete within $10$ minutes. The $\tilde{\theta}=30^{\circ}$ downward viewing angle captured the ground nicely, as candidate attitudes tended to direct the onboard sensor toward uncertain regions on the surface of Mars. The proposed approach provided collision-free mapping and autonomous exploration in real-time.
