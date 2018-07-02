@@ -40,12 +40,12 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {7.1}{\ignorespaces 2D Experimental Environment\relax }}{97}{figure.caption.67}
 \contentsline {figure}{\numberline {7.2}{\ignorespaces Experimental 2D Occupancy Grid Map Results\relax }}{98}{figure.caption.68}
-\contentsline {figure}{\numberline {7.3}{\ignorespaces The map entropy $H$ averaged over all $90601$ grid cells is reduced during experimentation. The quick changes $\Delta H$ per cell correspond to map updates when the robot captures new territory.\relax }}{100}{figure.caption.69}
-\contentsline {figure}{\numberline {7.4}{\ignorespaces The 3D experimental environment is designed to resemble a large room within an office building. The walls are build from from cardboard suspended from stanchions and gray sheeting with $80/20$ supports, and miscellaneous objects are placed around the room as well.\relax }}{102}{figure.caption.70}
-\contentsline {figure}{\numberline {7.5}{\ignorespaces A Jetson TX2 (quadrotor top) streams depth measurements via WIFI from an Asus Xtion and Hokuyo LIDAR (quadrotor bottom). The host computer builds a 3D probabilistic occupancy grid map from these measurements. For autonomous exploration, the host computer designs exploration trajectories, which an onboard flight controller can track in real-time.\relax }}{103}{figure.caption.71}
-\contentsline {figure}{\numberline {7.6}{\ignorespaces The 3D occupancy grid map is overlaid with point cloud measurements. The map probabilities directly rely on the Xtion and Hokuyo measurements and the sensor stochastic properties.\relax }}{105}{figure.caption.72}
-\contentsline {figure}{\numberline {7.7}{\ignorespaces The 2D projected map is easily produced in real-time. Candidate future poses, shown by arrows, have more blue color for larger objective functions, found with expected information gains and travel distances. Collision-free waypoints (blue line) serve as input to a constrained polynomial least-squares path (light green curve) for the robot controller to follow, where the desired pose (large axes) is tracked by the onboard controller from the current robot pose (small axes).\relax }}{106}{figure.caption.73}
-\contentsline {figure}{\numberline {7.8}{\ignorespaces Map entropy decreases as the robot explores and captures more of the experimental environment.\relax }}{107}{figure.caption.74}
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Entropy Change During 2D Experiment\relax }}{100}{figure.caption.69}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces 3D Experimental Environment for Level Flight\relax }}{102}{figure.caption.70}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Quadrotor Platform for 3D Mapping and Exploration\relax }}{103}{figure.caption.71}
+\contentsline {figure}{\numberline {7.6}{\ignorespaces 3D Occupancy Grid Map During Level Flight Experiment\relax }}{105}{figure.caption.72}
+\contentsline {figure}{\numberline {7.7}{\ignorespaces 2D Projected Occupancy Grid Map During Level Flight Experiment\relax }}{106}{figure.caption.73}
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Entropy History During Level Flight Experiment\relax }}{107}{figure.caption.74}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

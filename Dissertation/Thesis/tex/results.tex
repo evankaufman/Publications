@@ -104,7 +104,7 @@ The resulting occupancy grid maps and trajectories are depicted in Figure \ref{f
 \caption{Experimental 2D Occupancy Grid Map Results}
 	\medskip
 	\small
-	A robot autonomously explores the experimental environment and produces an occupancy grid map along the way. The robot (shaded green circle body with shaded blue circle sensor) is controlled toward the desired pose $1$ sec in the future (unshaded grey robot), which is following a constrained least-squares trajectory (cyan curve). This trajectory is based on waypoints (black circles) from Dijkstra's algorithm to arrive at the optimal pose (unshaded green circle body with unshaded blue circle sensor) as proposed in this paper.
+	A robot autonomously explores the experimental environment and produces an occupancy grid map along the way. The robot (shaded green circle body with shaded blue circle sensor) is controlled toward the desired pose $1$ sec in the future (unshaded gray robot), which is following a constrained least-squares trajectory (cyan curve). This trajectory is based on waypoints (black circles) from Dijkstra's algorithm to arrive at the optimal pose (unshaded green circle body with unshaded blue circle sensor) as proposed in this paper.
 \label{fig:ExperimentOGM}
 \end{figure}
 
@@ -112,14 +112,17 @@ The resulting map and exploration commands are generated in real time. The grid 
 
 The autonomous exploration is governed by a policy to maximize expected entropy decreases, so entropy and entropy change with time (Figure \ref{fig:ExperimentH}) are important metrics. In this example, the a priori occupancy probabilities of all cells are $0.1$, so the entropies could temporarily rise for likely occupied cells. The total map entropy begins at roughly $2613$ and decreases by roughly half to $1338$. Many grid cells within the map limits are occluded by walls, preventing the blocked cells from occupancy probability changes. In some cases, the robot is able to update the cell occupancy probabilities; in other cases, cells fall inside regions occluded from all reachable space, and the robot cannot update these cells. Among those grid cells visible from collision-free locations, the vast majority of cells were updated in less than $3$ min while following a very slow ($5$ cm/sec) trajectory.
 
-In conclusion, this example shows how occupancy grid mapping and autonomous exploration are applied to a ground vehicle in a 2D environment such as a floor of a house or building. Dijkstra's search is applied about the occupancy grid, and a smooth trajectory is easily tracked with a simple controller that tracks a polynomial least squares trajectory. These results show the efficacy of exact occupancy grid mapping and autonomous exploration. Next, we extend these experiments to 3D.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{JIRS_fig11.pdf}
-	\caption{The map entropy $H$ averaged over all $90601$ grid cells is reduced during experimentation. The quick changes $\Delta H$ per cell correspond to map updates when the robot captures new territory.}
-\label{fig:ExperimentH}
+	\caption{Entropy Change During 2D Experiment}
+	\medskip
+	\small
+	The map entropy $H$ averaged over all $90,601$ grid cells is reduced during experimentation. The quick changes $\Delta H$ per cell correspond to map updates when the robot captures new territory.
+	\label{fig:ExperimentH}
 \end{figure}
+
+In conclusion, this example shows how occupancy grid mapping and autonomous exploration are applied to a ground vehicle in a 2D environment such as a floor of a house or building. Dijkstra's search is applied about the occupancy grid, and a smooth trajectory is easily tracked with a simple controller that tracks a polynomial least squares trajectory. These results show the efficacy of exact occupancy grid mapping and autonomous exploration. Next, we extend these experiments to 3D.
 
 
 
@@ -147,7 +150,10 @@ The U.S. Naval Research Laboratory (NRL) has a large experimental space for test
           	\includegraphics[width=\textwidth]{experiment_south.jpg}
         		\caption{South Region}
     	\end{subfigure}
-	\caption{The 3D experimental environment is designed to resemble a large room within an office building. The walls are build from from cardboard suspended from stanchions and gray sheeting with $80/20$ supports, and miscellaneous objects are placed around the room as well.}
+	\caption{3D Experimental Environment for Level Flight}
+	\medskip
+	\small
+	The 3D experimental environment is designed to resemble a large room within an office building. The walls are build from from cardboard suspended from stanchions and gray sheeting with $80/20$ supports, and miscellaneous objects are placed around the room as well.
 	\label{fig:exp3DEnvironment}
 \end{figure}
 
@@ -169,7 +175,10 @@ Several components are used for localization, sensing, and actuation. A Vicon mo
           	\includegraphics[width=\textwidth]{quad_bottom.png}
         		\caption{Quadrotor Bottom}
     	\end{subfigure}
-	\caption{A Jetson TX2 (quadrotor top) streams depth measurements via WIFI from an Asus Xtion and Hokuyo LIDAR (quadrotor bottom). The host computer builds a 3D probabilistic occupancy grid map from these measurements. For autonomous exploration, the host computer designs exploration trajectories, which an onboard flight controller can track in real-time.}
+	\caption{Quadrotor Platform for 3D Mapping and Exploration}
+	\medskip
+	\small
+	A Jetson TX2 (quadrotor top) streams depth measurements via WIFI from an Asus Xtion and Hokuyo LIDAR (quadrotor bottom). The host computer builds a 3D probabilistic occupancy grid map from these measurements. For autonomous exploration, the host computer designs exploration trajectories, which an onboard flight controller can track in real-time. This platform is used for both level flight (Section \ref{sec:QuadrotorNRL}) and non-level flight (Section \ref{sec:QuadrotorSEH}).
 	\label{fig:QuadrotorHardware}
 \end{figure}
 
@@ -204,7 +213,10 @@ The quadrotor takes off, completes a rotation to understand its immediate surrou
           	\includegraphics[width=\textwidth]{experiment_ogm3D_2min47sec.jpg}
         		\caption{$2$ min $47$ sec (end)}
     	\end{subfigure}
-	\caption{The 3D occupancy grid map is overlaid with point cloud measurements. The map probabilities directly rely on the Xtion and Hokuyo measurements and the sensor stochastic properties.}
+	\caption{3D Occupancy Grid Map During Level Flight Experiment}
+	\medskip
+	\small
+	The 3D occupancy grid map is overlaid with point cloud measurements. The map probabilities directly rely on the Xtion and Hokuyo measurements and the sensor stochastic properties.
 	\label{fig:exp3DMap}
 \end{figure}
 
@@ -230,14 +242,20 @@ The quadrotor takes off, completes a rotation to understand its immediate surrou
           	\includegraphics[width=\textwidth]{experiment_2min47sec_2D_labeled.jpeg}
         		\caption{$2$ min $47$ sec (end)}
     	\end{subfigure}
-	\caption{The 2D projected map is easily produced in real-time. Candidate future poses, shown by arrows, have more blue color for larger objective functions, found with expected information gains and travel distances. Collision-free waypoints (blue line) serve as input to a constrained polynomial least-squares path (light green curve) for the robot controller to follow, where the desired pose (large axes) is tracked by the onboard controller from the current robot pose (small axes).}
+	\caption{2D Projected Occupancy Grid Map During Level Flight Experiment}
+	\medskip
+	\small
+	The 2D projected map is easily produced in real-time. Candidate future poses, shown by arrows, have more blue color for larger objective functions, found with expected information gains and travel distances. Collision-free waypoints (blue line) serve as input to a constrained polynomial least-squares path (light green curve) for the robot controller to follow, where the desired pose (large axes) is tracked by the onboard controller from the current robot pose (small axes).
 	\label{fig:exp2DMap}
 \end{figure}
 
 \begin{figure}[!t]
 	\centering
 	\includegraphics[width=0.85\textwidth]{entropy_experiment_aspect3by1.pdf}
-	\caption{Map entropy decreases as the robot explores and captures more of the experimental environment.}
+	\caption{Entropy History During Level Flight Experiment}
+	\medskip
+	\small
+	Map entropy decreases as the robot explores and captures more of the experimental environment.
 	\label{fig:expH}
 \end{figure}
 
