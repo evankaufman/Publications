@@ -4,20 +4,22 @@
 
 In this chapter, we present three experiments that demonstrate the efficacy of the proposed exact occupancy grid mapping and autonomous exploration from earlier chapters. The first example involves a ground vehicle mapping and exploring a 2D space. The second example is a quadrotor unmanned aerial vehicle (UAV) flying around a vertically-uniform space while generating a 3D map from level flight. The final example shows autonomous exploration completely in 3D, where a quadrotor must map and explore around complicated objects.
 
-\section{Pioneer Ground Vehicle Tests}
+\section{2D Exploration With an Unmanned Ground Vehicle}
 \label{sec:PioneerNRL}
 
 The experiment involves a ground vehicle producing a probabilistic occupancy grid map in real time. The robot motion is governed by the information gain-maximizing policy described in Chapter \ref{chap:ae2D}.
 
-
+% TL: add a figure of Pioneer
 \subsection{Hardware Configuration}
 The Pioneer 3 ground robot is chosen for this experiment because of its reliability and simple operation. The vehicle accepts two inputs, namely linear velocity (aligned with the robot wheels) and angular velocity (about a central axis passing vertically through the robot). The robot pose is estimated via Vicon Tracker, which provides the location and attitude of a rigid body. The depth readings are obtained by a Kinect depth sensor. Since the experiment is to map and explore a 2D environment, only a single central row of the 3D Kinect depth scan provide the necessary measurements. The robot captures an experimental environment with walls constructed from Styrofoam.
 
 \subsection{Software Configuration}
 
-The software structure is similar to ROS nodes Section \ref{sec:Ae2DNumExamples}, which simply involves a mapping node, an exploration node, and a visualization node using ``OpenGL'' libraries. The only differences are eliminating the simulator (Stage) and adding synchronization among the sensors, which is of high importance to the proposed occupancy grid mapping approach. Any time delay between the robot pose estimation and the sensor depth readings can cause conflicting information, which may be harmful to the probabilistic map. Thus, ROS approximate message filters are applied such that the pose from Vicon Tracker ($100$Hz) and the Microsoft Kinect ($30$Hz) are nearly synchronized, which provides validity of the assumption that the measurement ray positions and directions are known deterministically.
+% add citation for OpenGL
+The software structure is similar to ROS nodes Section \ref{sec:Ae2DNumExamples}, which simply involves a mapping node, an exploration node, and a visualization node using OpenGL libraries. The only differences are eliminating the simulator (Stage) and adding synchronization among the sensors, which is of high importance to the proposed occupancy grid mapping approach. Any time delay between the robot pose estimation and the sensor depth readings can cause conflicting information, which may be harmful to the probabilistic map. Thus, ROS approximate message filters are applied such that the pose from Vicon Tracker ($100$Hz) and the Microsoft Kinect ($30$Hz) are nearly synchronized, which provides validity of the assumption that the measurement ray positions and directions are known deterministically.
 
 \subsection{Exploring and Mapping a 2D Environment}
+% TL: I wish there are more photos from the experiments 
 The environment consists of Styrofoam walls on a flat floor. The perimeter is rectangular, with several obstacles and angled walls (see Figure \ref{fig:ExpSetupPhoto}). The robot autonomously explored the space using the complete Cartesian searching approach, and Dijkstra's algorithm provides collision-free waypoints to the optimal future poses. Based on these waypoints, a constrained least squares polynomial fitting generates a smooth trajectory to follow the waypoints with fixed velocity. Finally, a simple controller is implemented such that the Pioneer follows the trajectory by moving and orienting toward the desired robot location $1$ sec in the future.
 
 \begin{figure}
@@ -127,7 +129,7 @@ In conclusion, this example shows how occupancy grid mapping and autonomous expl
 
 
 
-\section{Quadrotor Exploration of a Large Room}
+\section{Aerial Exploration of a Large Space}
 \label{sec:QuadrotorNRL}
 
 
@@ -135,7 +137,7 @@ In this section, we present results from a quadrotor as it autonomously explores
 
 \subsection{Exploration Environment}
 
-The U.S. Naval Research Laboratory (NRL) has a large experimental space for testing known as the Laboratory for Autonomous Systems Research (LASR). Here, the experimental setup contains walls and objects to resemble a building floor plan. The perimeter walls are constructed with tan cardboard, which were suspended from $1$ m tall stanchions, and an internal wall is built with gray metal sheeting mounted to $80/20$ supports~\cite{url_8020}. Additionally, a hard flooring reflects some florescent lighting above. The objects inside the experimental environment include various trash cans, desks, and chairs in addition to a few miscellaneous objects. The map size is selected to slightly exceed the volume of the experiment such that the the x-direction (positive east) spans $0.5$ m to $10.3$ m, the y-direction (positive north) spans $-8.3$ m to $3.5$ m, and the z-direction (positive vertically up) spans $-0.15$ m to $1.5$ m. Two images of the experimental environment are displayed in Figure \ref{fig:exp3DEnvironment}.
+The U.S. Naval Research Laboratory (NRL) has a large experimental space for testing known as the Laboratory for Autonomous Systems Research (LASR). Here, the experimental setup contains walls and objects to resemble a building floor plan. The perimeter walls are constructed with tan cardboard, which were suspended from $1$ m tall stanchions, and an internal wall is built with gray metal sheeting mounted to $80/20$ supports~\cite{url_8020}. Additionally, a hard flooring reflects some florescent lighting above. The objects inside the experimental environment include various trash cans, desks, and chairs in addition to a few miscellaneous objects. The map size is selected to slightly exceed the volume of the experiment such that the x-direction (positive east) spans $0.5$ m to $10.3$ m, the y-direction (positive north) spans $-8.3$ m to $3.5$ m, and the z-direction (positive vertically up) spans $-0.15$ m to $1.5$ m. Two images of the experimental environment are displayed in Figure \ref{fig:exp3DEnvironment}.
 
 \begin{figure}[!t]
 \centering
@@ -188,6 +190,7 @@ The quadrotor takes off, completes a rotation to understand its immediate surrou
 
 % trim={<left> <lower> <right> <upper>}
 
+% TL: add figures for more time instances
 \begin{figure}[!t]
 \centering
     	\begin{subfigure}[t]{0.65\columnwidth}
@@ -220,6 +223,7 @@ The quadrotor takes off, completes a rotation to understand its immediate surrou
 	\label{fig:exp3DMap}
 \end{figure}
 
+% TL: add figures for more time instances
 \begin{figure}[!t]
 \centering
     	\begin{subfigure}[t]{0.44\columnwidth}

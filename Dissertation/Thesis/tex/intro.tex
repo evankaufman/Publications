@@ -20,7 +20,7 @@ Therefore, the map \emph{quality} deserves much attention. Robotics is inherentl
 
 \subsection{Exploration in Uncertain Spaces}
 
-The second topic of this dissertation focusses on the motions robots must choose to maximize their knowledge about the map while avoiding collisions, known as \emph{autonomous exploration}. Unlike conventional motion planning, where the map of the environment is assumed known, the robot must select motions with only the current knowledge of the environment. Therefore, real-time implementation of an active motion planning scheme is necessary while the probabilistic map is changing.
+The second topic of this dissertation focuses on the motions robots must choose to maximize their knowledge about the map while avoiding collisions, known as \emph{autonomous exploration}. Unlike conventional motion planning, where the map of the environment is assumed known, the robot must select motions with only the current knowledge of the environment. Therefore, real-time implementation of an active motion planning scheme is necessary while the probabilistic map is changing.
 
 There are several important aspects to consider in autonomous exploration. Most importantly, the robot motion must be constrained to collision-free paths. The probabilistic map provides collision-free regions for this objective, and it also serves as a graph to determine an ordered set of collision-free waypoints. Additionally, the uncertainty of the map must be considered in the policy governing robotic motion. The method of decreasing map uncertainty can be computationally-expensive, so careful consideration with respect to algorithm complexity is vital. Furthermore, the efficiency of robot motions should be considered to avoid unnecessary travel distances. These objectives must all be achieved for an effective autonomous exploration policy.
 
@@ -91,7 +91,7 @@ Other patrol approaches create new metrics about the environment. Cell periodici
 
 \section{Outline of Dissertation}
 
-This dissertation is organized as follows. Chapter \ref{chap:pogm} introduces a novel approach to solve for the exact Bayesian probability of grid cells in real-time. Then, Chapter \ref{chap:ae2D} extends these contributions to autonomous exploration in 2D space, where a novel approach to predict future map uncertainty is presented. Next, Chapter \ref{chap:ae2D} applies the proposed occupancy grid mapping approach to 3D environments, and presents a method to simplify autonomous exploration in 3D environments with map projections. Chapter \ref{chap:multivehicle} applies this 3D mapping and exploration to multi-vehicle exploration and patrol scenarios using a bidding-based framework. Then, Chapter \ref{chap:ae3Dcomplex} extends exploration to complex 3D environments without 2D map projections. In these chapters, several numerical examples demonstrate the efficacies of the approaches. Furthermore, Chapter \ref{chap:Experiments} presents three experiments, which show the key contributions in this dissertation. Finally, these are followed by conclusions in Chapter \ref{chap:Conclusions}.
+This dissertation is organized as follows. Chapter \ref{chap:pogm} introduces a novel approach to solve for the exact Bayesian probability of grid cells in real-time. Then, Chapter \ref{chap:ae2D} extends these contributions to autonomous exploration in 2D space, where a computational approach to predict future map uncertainty is presented. Next, Chapter \ref{chap:ae2D} applies the proposed occupancy grid mapping approach to 3D environments, and presents a method to simplify autonomous exploration in 3D environments with map projections. Chapter \ref{chap:multivehicle} applies this 3D mapping and exploration to multi-vehicle exploration and patrol scenarios using a bidding-based framework. Then, Chapter \ref{chap:ae3Dcomplex} extends exploration to complex 3D environments without 2D map projections. In these chapters, several numerical examples demonstrate the efficacies of the approaches. Furthermore, Chapter \ref{chap:Experiments} presents three experiments, which show the key contributions in this dissertation. Finally, these are followed by conclusions in Chapter \ref{chap:Conclusions}.
 
 \section{Contributions}
 
@@ -116,6 +116,7 @@ The final contribution coordinates the mapping and exploration efforts of multip
 The following is a list of publications. These include research included in this dissertation, as well as contributions in control, data association, and estimation.
 
 % TODO: update this list
+% TL: the paper in preparation can be added as well
 
 \begin{itemize}
 	\item E. Kaufman, K. Takami, Z. Ai, and T. Lee, ``Autonomous Quadrotor 3D Mapping and Exploration Using Exact Occupancy Probabilities,'' \textit{The Second IEEE International Conference on Robotic Computing}, Laguna Hills, January 2018, pp. 49--55.

@@ -2,7 +2,7 @@
 
 \chapter{Probabilistic Occupancy Grid Mapping} \label{chap:pogm}
 
-In this chapter, we present the exact solution to occupancy grid map probability. This Bayesian approach uses the stochastic properties of sensors, and exploits important patterns in conditional probabilities. This solution is simulated in several examples to show the efficacy of the approach.
+In this chapter, we present the exact solution to occupancy probability for a given depth measurement. This Bayesian approach uses the stochastic properties of sensors, and exploits important patterns in conditional probabilities. This solution is simulated in several examples to show the efficacy of the approach.
 
 \section{Mapping Problem Definition}
 
@@ -289,7 +289,7 @@ b_k&=\prod_{j=0}^{k-1}P(\bar{\mathbf{r}}_{l,j}|X_{1:t-1},Z_{1:t-1}),
 c_k&=\frac{
 \sum_{i=k+1}^{n_{r,l}+1}\bigg\{\prod_{j=0}^{i-1}P(\bar{\mathbf{r}}_{l,j}|X_{1:t-1},Z_{1:t-1})\bigg\}p(z_{t,l}|\mathbf{r}_{l,i+},X_t)P(\mathbf{r}_{l,i}|X_{1:t-1},Z_{1:t-1})}{P(\bar{\mathbf{r}}_{l,k}|X_{1:t-1},Z_{1:t-1})},
 \end{align*}
-as well as $d$ and $e$ for the two terms composing \refeqn{xi}. Once again, the history of poses and measurement scans are removed from the pseudocode for simplicity.
+as well as $d$ and $e$ for the two terms composing \refeqn{xi}. Once again, the history of poses and measurement scans are removed from the pseudo-code for simplicity.
 
 % TODO: check spacing of algorithms once complete
 \vspace*{0.05\columnwidth}
@@ -333,7 +333,7 @@ as well as $d$ and $e$ for the two terms composing \refeqn{xi}. Once again, the 
 
 
 
-In short, we propose two alternatives for combining inverse sensor models for multiple rays within a scan. The ray-by-ray approach updates the entire map one ray at a time with some dependancies among the rays, while the synergistic approach considers all rays together where rays are assumed mutually independent.
+In short, we propose two alternatives for combining inverse sensor models for multiple rays within a scan. The ray-by-ray approach updates the entire map one ray at a time with some dependencies among the rays, while the synergistic approach considers all rays together where rays are assumed mutually independent.
 
 
 % TODO: move to 3D mapping part
