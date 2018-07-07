@@ -498,6 +498,234 @@ In this final experiment, we introduce the quadrotor to a space with complex 3D 
 The software follows the same structure as in Section \ref{sec:MarsSimulation}, except the Gazebo simulated environment is replaces with experimental equipment. This equipment is identical to the prior experimental example (Section \ref{sec:QuadrotorNRL}), except the experiment took place at the Flight Dynamics and Control Lab (FDCL) inside the second floor of SEH. This environment is smaller with only $6$ cameras, where the x-direction (positive east) spans $-2.0$ m to $2.0$ m, the y-direction (positive north) spans $-2.0$ m to $2.0$ m, and the z-direction (positive vertically up) spans $-0.15$ m to $1.5$ m.
 
 
+\begin{figure}[!t]
+\centering
+    	\begin{subfigure}[t]{0.44\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_space_NW.JPG}
+        		\caption{Northwest View}
+    	\end{subfigure}
+	\hspace*{0.05\columnwidth}
+    	\begin{subfigure}[t]{0.44\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_space_NE.JPG}
+        		\caption{Northeast View}
+    	\end{subfigure}
+	\caption{3D Exploration Space}
+	\medskip
+	\small
+	The experimental space for full 3D exploration consists of normal lab objects such as tables and chairs, as well as a mannequin sitting at a desk and his parked bicycle.
+	\label{fig:Full3DExplorationEnvironment}
+\end{figure}
+
+
+
+\begin{figure}[!t]
+\centering{
+    	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_vid_0min.jpg}
+        		\caption{$0$ sec}
+    	\end{subfigure}
+	\hspace*{0.02\columnwidth}
+    	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_vid_0p25min.jpg}
+        		\caption{$15$ sec}
+    	\end{subfigure}
+	\hspace*{0.02\columnwidth}
+	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_vid_0p5min.jpg}
+        		\caption{$30$ sec}
+    	\end{subfigure}
+}
+\\
+\centering{
+    	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_vid_1min.jpg}
+        		\caption{$1$ min}
+    	\end{subfigure}
+	\hspace*{0.02\columnwidth}
+    	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_vid_1p5min.jpg}
+        		\caption{$1.5$ min}
+    	\end{subfigure}
+	\hspace*{0.02\columnwidth}
+	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_vid_2min.jpg}
+        		\caption{$2$ min}
+    	\end{subfigure}
+}
+\\
+\centering{
+    	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_vid_2p5min.jpg}
+        		\caption{$2.5$ min}
+    	\end{subfigure}
+	\hspace*{0.02\columnwidth}
+    	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_vid_3min.jpg}
+        		\caption{$3$ min}
+    	\end{subfigure}
+	\hspace*{0.02\columnwidth}
+	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_vid_3p5min.jpg}
+        		\caption{$3.5$ min}
+    	\end{subfigure}
+}
+\\
+\centering{
+    	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_vid_4min.jpg}
+        		\caption{$4$ min}
+    	\end{subfigure}
+	\hspace*{0.02\columnwidth}
+    	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_vid_4p5min.jpg}
+        		\caption{$4.5$ min}
+    	\end{subfigure}
+	\hspace*{0.02\columnwidth}
+	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_vid_4p75min.jpg}
+        		\caption{$4.75$ min (end)}
+    	\end{subfigure}
+}
+	\caption{Full 3D Autonomous Exploration Experiment}
+	\medskip
+	\small
+	The robot completes a full yaw rotation over $20$ seconds, then autonomously explores the space. At $4$ min (j), the robot flies over the mannequin to explore the southeast corner of the room.
+	\label{fig:exp3DVid}
+\end{figure}
+
+
+
+\begin{figure}[!t]
+\centering{
+    	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_0min.jpg}
+        		\caption{$0$ sec}
+    	\end{subfigure}
+	\hspace*{0.02\columnwidth}
+    	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_0p25min.jpg}
+        		\caption{$15$ sec}
+    	\end{subfigure}
+	\hspace*{0.02\columnwidth}
+	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_0p5min.jpg}
+        		\caption{$30$ sec}
+    	\end{subfigure}
+}
+\\
+\centering{
+    	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_1min.jpg}
+        		\caption{$1$ min}
+    	\end{subfigure}
+	\hspace*{0.02\columnwidth}
+    	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_1p5min.jpg}
+        		\caption{$1.5$ min}
+    	\end{subfigure}
+	\hspace*{0.02\columnwidth}
+	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_2min.jpg}
+        		\caption{$2$ min}
+    	\end{subfigure}
+}
+\\
+\centering{
+    	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_2p5min.jpg}
+        		\caption{$2.5$ min}
+    	\end{subfigure}
+	\hspace*{0.02\columnwidth}
+    	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_3min.jpg}
+        		\caption{$3$ min}
+    	\end{subfigure}
+	\hspace*{0.02\columnwidth}
+	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_3p5min.jpg}
+        		\caption{$3.5$ min}
+    	\end{subfigure}
+}
+\\
+\centering{
+    	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_4min.jpg}
+        		\caption{$4$ min}
+    	\end{subfigure}
+	\hspace*{0.02\columnwidth}
+    	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_4p5min.jpg}
+        		\caption{$4.5$ min}
+    	\end{subfigure}
+	\hspace*{0.02\columnwidth}
+	\begin{subfigure}[t]{0.3\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{explore3D_4p75min.jpg}
+        		\caption{$4.75$ min (end)}
+    	\end{subfigure}
+}
+	\caption{3D Occupancy Grid Map During Full 3D Autonomous Exploration}
+	\medskip
+	\small
+	The robot (large axes) is controlled to track the desired pose (small axes), which follows a collision-free trajectory using Dijkstra's search toward candidates (top $75\%$ shown with red arrows, with greater opacity for larger expected information gains).
+	\label{fig:exp3DOccMap}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{H_explore3D_test1.pdf}
+	\caption{Entropy Change During Full 3D Experiment}
+	\medskip
+	\small
+	The map entropy $H$ consistently decreases during the full 3D exploration experiment. Toward the end of the experiment, most cells that can be captured by the Asus Xtion have been updated, slowing down the rate of entropy decrease.
+	\label{fig:Explore3D_H}
+\end{figure}
+
+
+\begin{figure}[!t]
+\centering
+    	\begin{subfigure}[t]{0.8\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{connected_costmap.png}
+        		\caption{Connected Cost Map Cross-Section}
+    	\end{subfigure}
+    	\begin{subfigure}[t]{0.8\columnwidth}
+           	\centering
+          	\includegraphics[width=\textwidth]{disconnected_costmap.png}
+        		\caption{Disconnected Cost Map Cross-Section}
+    	\end{subfigure}
+	\caption{2D Cross-Sections of 3D Cost Maps}
+	\medskip
+	\small
+	Two examples of the 3D cost maps from Dijkstra's search show connected and disconnected regions at the exploration height, where more blue regions have small distance costs, red regions have larger distance costs, and pink regions are unreachable due to collision risk. In (a), the robot does not have to change altitude to reach any of the collision-free poses. However in (b), the robot can only reach collision-free poses in the disconnected section by changing altitude.
+	\label{fig:Full3DExplorationCostmaps}
+\end{figure}
+
 \subsection{3D Exploration Results}
 
 

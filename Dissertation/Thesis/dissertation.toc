@@ -104,13 +104,13 @@
 \contentsline {section}{\numberline {7.3}Full 3D Exploration with a Quadrotor}{106}{section.7.3}
 \contentsline {subsection}{\numberline {7.3.1}3D Exploration Setup and Parameters}{106}{subsection.7.3.1}
 \contentsline {subsection}{\numberline {7.3.2}3D Exploration Results}{107}{subsection.7.3.2}
-\contentsline {chapter}{\numberline {8}Conclusions}{110}{chapter.8}
-\contentsline {section}{\numberline {8.1}Summary of Contributions}{110}{section.8.1}
-\contentsline {section}{\numberline {8.2}Future Directions}{111}{section.8.2}
-\contentsline {chapter}{Bibliography}{112}{section*.77}
-\contentsline {chapter}{\numberline {A}Proof of Proposition \ref {prop:ISM}}{116}{appendix.A}
-\contentsline {paragraph}{Unnormalized Reduced Map Inverse Sensor Model}{116}{paragraph*.79}
-\contentsline {paragraph}{Complement of the Unnormalized Reduced Map Inverse Sensor Model}{117}{paragraph*.80}
-\contentsline {paragraph}{Normalizer}{118}{paragraph*.81}
-\contentsline {chapter}{\numberline {B}Proof of Proposition \ref {prop:ExpectedH}}{120}{appendix.B}
-\contentsline {paragraph}{Single Ray Expected Value of Entropy}{120}{paragraph*.82}
+\contentsline {chapter}{\numberline {8}Conclusions}{114}{chapter.8}
+\contentsline {section}{\numberline {8.1}Summary of Contributions}{114}{section.8.1}
+\contentsline {section}{\numberline {8.2}Future Directions}{115}{section.8.2}
+\contentsline {chapter}{Bibliography}{116}{section*.82}
+\contentsline {chapter}{\numberline {A}Proof of Proposition \ref {prop:ISM}}{120}{appendix.A}
+\contentsline {paragraph}{Unnormalized Reduced Map Inverse Sensor Model}{120}{paragraph*.84}
+\contentsline {paragraph}{Complement of the Unnormalized Reduced Map Inverse Sensor Model}{121}{paragraph*.85}
+\contentsline {paragraph}{Normalizer}{122}{paragraph*.86}
+\contentsline {chapter}{\numberline {B}Proof of Proposition \ref {prop:ExpectedH}}{124}{appendix.B}
+\contentsline {paragraph}{Single Ray Expected Value of Entropy}{124}{paragraph*.87}
