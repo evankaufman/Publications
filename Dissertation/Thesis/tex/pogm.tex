@@ -457,7 +457,7 @@ In short, the proposed exact occupancy grid mapping produced a cleaner map with 
 \paragraph{Mapping a Room with the Synergistic Approach}
 
 Next, we compare the same approximate inverse sensor model against the synergistic exact inverse sensor model.
-Here, the robot maps in a two-dimensional environment composed of ten wall edges, and the robot follows a figure-eight curve, then turns around and completes the same curve in the reverse direction. Like the prior example, the same set of measurements updated each second are used with both occupancy grid mapping algorithms to construct the map.
+Here, the robot maps in a two-dimensional environment composed of ten wall edges, and the robot follows a figure-eight curve, then turns around and completes the same curve in the reverse direction. A pseudo-random measurement scan is sampled at each time step via the inverse transform sampling~\cite{DevBK86}, and like the prior example, the same set of measurements are used with both occupancy grid mapping algorithms to construct the map.
 The resulting maps are illustrated in Figure \ref{fig:NumResOccProbs} for both algorithms, where it is shown that the proposed algorithm yields a substantially more accurate and clear map with less uncertainty. 
 
 \begin{figure}

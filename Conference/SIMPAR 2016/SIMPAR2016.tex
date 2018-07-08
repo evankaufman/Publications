@@ -83,7 +83,7 @@ Robotic mapping is the process of generating maps, which represent the environme
 Autonomous exploration solves this problem, by choosing robotic motion through uncertain space, while building a map that is used for subsequent navigation~\cite{Yam97}.
 In this paper, robotic motion is chosen to increase knowledge about the map; a robot chooses a trajectory designed to maximize the map information gain. % of the occupancy grid map.
 
-A common approach to solve the autonomous exploration problem is known as frontier-based exploration, such as ~\cite{Yam97,Yam98}. This is the process of executing actions that move the robot toward the closest boundary between visited and unvisited space, known as a frontier.
+A common approach to solve the autonomous exploration problem is known as frontier-based exploration, such as~\cite{Yam97,Yam98}. This is the process of executing actions that move the robot toward the closest boundary between visited and unvisited space, known as a frontier.
 Then the robot takes measurements at this location such that the mapped territory expands, and thus the new frontiers are pushed back. This process is repeated until the map is well-known.
 Frontier-based exploration assumes that repeatedly moving toward the closest frontier and taking measurements are the best actions to gain new information about the map, though these systematic actions are not based on any consideration of the future uncertainty of the probabilistic map or optimality.
 %there is no guarantee that these actions satisfy any optimality criteria.

@@ -158,6 +158,10 @@ In conclusion, every reachable candidate pose is considered for its optimal atti
 
 In this section, we demonstrate the efficacy of the proposed 3D mapping and autonomous exploration with a simulated Mars environment. First we cover the parameters, then compare results using two different maps for entropy prediction.
 
+\subsection{Mars Exploration Motivation}
+
+The topography of Mars has several benefits in future mission planning for landing spacecraft and  image distortion correction, among other research objectives. The Mars Orbiting Laser Altimeter (MOLA) mission greatly improved the topography map of the surface, but was limited to an uncertainty of roughly eight meters~\cite{MOLA99}. The only precise topography knowledge about the surface comes from four rovers, two of which are inactive, and have covered only a small portion of the surface area of Mars. Approaches for exploring environments similar to offices, such as \cite{MauDakPet14}, are incompatible with the complex terrain presented in this numerical example.
+
 \subsection{Mars Parameters}
 
 A 3D environment of Mars is simulated in Gazebo. A height map~\cite{mapaplanet} is used to generate a contoured surface, and the corresponding picture of Mars is draped over this contour, shown in Figure \ref{fig:MarsGazebo}. A 3D laser scanner is also simulated in Gazebo. In the horizontal direction, the sensor has limits $\Psi=120^{\circ}$ with a total of $1000$ measurement rays inside, the sensor is fixed at angle $\tilde{\psi}=45^{\circ}$, and $n_\psi=16$ sample measurements are used. In the vertical direction, the sensor also has limits $\Theta=120^{\circ}$ with a total of $1000$ measurement rays inside, but the sensor is fixed at angle $\tilde{\theta}=30^{\circ}$, and $n_\psi=7$ sample measurements are used. These ray samples are taken from each candidate location, which are separated $1$ m apart in each of the $3$ dimensions.

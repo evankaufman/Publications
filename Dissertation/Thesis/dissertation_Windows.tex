@@ -1,0 +1,80 @@
+\documentclass[thesis,draft]{thesis-gwu}
+
+% this package is only used to generate some random text. 
+% it is not needed in a true document
+\usepackage{lipsum}
+
+% Used packages
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e} 
+\usepackage{amsmath,amssymb,url,times}
+
+
+\newtheorem{prop}{Proposition}
+\newcommand{\norm}[1]{\ensuremath{\left\| #1 \right\|}}
+\newcommand{\abs}[1]{\ensuremath{\left| #1 \right|}}
+\newcommand{\bracket}[1]{\ensuremath{\left[ #1 \right]}}
+\newcommand{\braces}[1]{\ensuremath{\left\{ #1 \right\}}}
+\newcommand{\parenth}[1]{\ensuremath{\left( #1 \right)}}
+\newcommand{\ip}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\refeqn}[1]{(\ref{eqn:#1})}
+\newcommand{\reffig}[1]{Figure \ref{fig:#1}}
+\newcommand{\tr}[1]{\mbox{tr}\ensuremath{\negthickspace\bracket{#1}}}
+\newcommand{\trs}[1]{\mbox{tr}\ensuremath{\!\bracket{#1}}}
+\newcommand{\deriv}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+\newcommand{\G}{\ensuremath{\mathsf{G}}}
+\newcommand{\SO}{\ensuremath{\mathsf{SO(3)}}}
+\newcommand{\T}{\ensuremath{\mathsf{T}}}
+\renewcommand{\L}{\ensuremath{\mathsf{L}}}
+%\newcommand{\so}{\ensuremath{\mathfrak{so}(3)}}
+\newcommand{\SE}{\ensuremath{\mathsf{SE(3)}}}
+\newcommand{\se}{\ensuremath{\mathfrak{se}(3)}}
+\renewcommand{\Re}{\ensuremath{\mathbb{R}}}
+\newcommand{\Sph}{\ensuremath{\mathsf{S}}}
+\newcommand{\aSE}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&1\end{bmatrix}}}
+\newcommand{\ase}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&0\end{bmatrix}}}
+\newcommand{\D}{\ensuremath{\mathbf{D}}}
+\renewcommand{\d}{\ensuremath{\mathbf{d}}}
+\newcommand{\pair}[1]{\ensuremath{\left\langle #1 \right\rangle}}
+\newcommand{\met}[1]{\ensuremath{\langle\!\langle #1 \rangle\!\rangle}}
+\newcommand{\Ad}{\ensuremath{\mathrm{Ad}}}
+\newcommand{\ad}{\ensuremath{\mathrm{ad}}}
+\newcommand{\g}{\ensuremath{\mathfrak{g}}}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\WriteBlue}[1]{{\color{blue}\protect #1}}
+
+% TODO list:
+% Include "This is the final and approved form of the dissertation." in first draft?
+% Consistent figure labeling
+% Names: gray, collision avoidance, collision-free, multi-vehicle, $ sec, commas in numbers >= 10,000, real-time
+
+\graphicspath{{../../Fig/}}
+
+\input{tex/frontmatter}
+
+%% DOCUMENT AREA
+\begin{document}
+
+%\include{tex/intro}
+
+
+
+
+
+
+\include{tex/intro}
+\include{tex/pogm}
+\include{tex/ae2D}
+\include{tex/ae3Dsimple}
+\include{tex/multivehicle}
+\include{tex/ae3Dcomplex}
+\include{tex/results}
+\include{tex/conclusions}
+
+\bibliographystyle{plain}
+\bibliography{../../BibSources.bib}
+
+% appendices must appear after
+\include{tex/appendixA}
+\include{tex/appendixB}
+\end{document}

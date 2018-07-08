@@ -1,0 +1,67 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: dissertation.aux
+A level-1 auxiliary file: tex/intro.aux
+A level-1 auxiliary file: tex/pogm.aux
+A level-1 auxiliary file: tex/ae2D.aux
+A level-1 auxiliary file: tex/ae3Dsimple.aux
+A level-1 auxiliary file: tex/multivehicle.aux
+A level-1 auxiliary file: tex/ae3Dcomplex.aux
+A level-1 auxiliary file: tex/results.aux
+A level-1 auxiliary file: tex/conclusions.aux
+The style file: plain.bst
+A level-1 auxiliary file: tex/appendixA.aux
+A level-1 auxiliary file: tex/appendixB.aux
+Database file #1: ../../BibSources.bib.bib
+Warning--entry type for "coursera" isn't style-file defined
+--line 506 of file ../../BibSources.bib.bib
+Too many commas in name 1 of "Chen H, Ding S, Chen X, et al" for entry ChiDinChe14
+while executing---line 1049 of file plain.bst
+Warning--to sort, need author or key in ROS
+Warning--to sort, need author or key in mapaplanet
+Warning--to sort, need author or key in openGL
+Warning--to sort, need author or key in url_8020
+Too many commas in name 1 of "Chen H, Ding S, Chen X, et al" for entry ChiDinChe14
+while executing---line 1090 of file plain.bst
+You've used 61 entries,
+            2118 wiz_defined-function locations,
+            900 strings with 16023 characters,
+and the built_in function-call counts, 23462 in all, are:
+= -- 2336
+> -- 1052
+< -- 27
++ -- 422
+- -- 353
+* -- 1543
+:= -- 3622
+add.period$ -- 193
+call.type$ -- 61
+change.case$ -- 353
+chr.to.int$ -- 0
+cite$ -- 65
+duplicate$ -- 985
+empty$ -- 1917
+format.name$ -- 353
+if$ -- 5139
+int.to.chr$ -- 0
+int.to.str$ -- 61
+missing$ -- 59
+newline$ -- 303
+num.names$ -- 122
+pop$ -- 469
+preamble$ -- 1
+purify$ -- 296
+quote$ -- 0
+skip$ -- 750
+stack$ -- 0
+substring$ -- 1441
+swap$ -- 321
+text.length$ -- 27
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 236
+warning$ -- 4
+while$ -- 219
+width$ -- 63
+write$ -- 669
+(There were 2 error messages)
