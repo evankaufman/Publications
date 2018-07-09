@@ -153,6 +153,31 @@ The autonomous exploration is governed by a policy to maximize expected entropy 
 In conclusion, this example shows how occupancy grid mapping and autonomous exploration are applied to a ground vehicle in a 2D environment such as a floor of a house or building. Dijkstra's search is applied about the occupancy grid, and a smooth trajectory is easily tracked with a simple controller that tracks a polynomial least squares trajectory. These results show the efficacy of exact occupancy grid mapping and autonomous exploration. Next, we extend these experiments to 3D.
 
 
+\section{Geometric Control}
+\label{sec:GeometricControl}
+
+The next two experiments involve a quadrotor unmanned aerial vehicle (UAV) mapping and exploring 3D environments. A flight controller that accounts for the nonlinear quadrotor attitude dynamics is required to track the trajectories provided by autonomous exploration. We choose geometric control because of its stability properties and simple form.
+
+Geometric control is designed for rigid-body attitude dynamics, and is developed directly on $\SO$ without local parameterizations such as Euler angles or quaternions. Therefore, this approach avoids singularities, ambiguities, and linearization errors. It has been developed for fully-actuated vehicles~\cite{KauCalLeeLee14} and for under-actuated quadrotors~\cite{LeeLeoMcc10,LeeLeo_4457,LeeLeo,GooDaeLee13}. This approach is further extended to aerial load transportation~\cite{GooLee14,GooLee16} and attitude estimation~\cite{WuKauLee15}.
+
+In the context of quadrotor control, the main idea is that a translational position-integral-derivative (PID) control produces a desired force in 3D, and the robot selects a desired attitude $R_d$ and angular velocity $\Omega_d$ to align its propellers with this force and to correct its first body-fixed axis to a desired direction. The attitude and angular velocity errors from the current robot attitude $R$ and angular velocity $\Omega$ are 
+\begin{align}
+e_R&=(R_d^\T R-R^\T R_d)^{\mathsf{V}},
+\\
+e_\Omega&=\Omega-R^\T R_d\Omega_d,
+\end{align}
+respectively, where the \emph{vee} map is defined in~\cite{LeeLeo}. The quadrotor is capable of producing a force $f\in\Re$ and moment $M\in\Re^3$,
+\begin{align}
+\label{eqn:geometricf}
+f&=(k_xe_x+k_ve_v+mge_3-m\ddot{x}_d)\cdot Re_3,
+\\
+\label{eqn:geometricM}
+M&=-k_Re_R-k_\Omega e_\Omega+\Omega\times J\Omega-J(\hat{\Omega}R^\T R_d\Omega_d-R^\T R_d\dot\Omega_d),
+\end{align}
+where $e_x$ and $e_v$ are position and velocity errors, respectively, $k_x$, $k_v$, $k_R$, $k_\Omega$ are positive gain constants, $\ddot{x}_d$ is the desired translational acceleration, $\dot{\Omega}_d$ is the desired rotational acceleration, $m$ is the quadrotor mass, $J$ is the quadrotor moment of inertia, $e_3=[0, 0, 1]^\T$, and the \emph{hat} map is defined in~\cite{LeeLeo}. Since \refeqn{geometricf} and \refeqn{geometricM} require only trivial calculations, they are easily computed with onboard modules.
+
+
+
 
 
 \section{Aerial Exploration of a Large Space}
@@ -188,7 +213,7 @@ The U.S. Naval Research Laboratory (NRL) has a large experimental space for test
 
 \subsection{Hardware Structure}
 
-Several components are used for localization, sensing, and actuation. A Vicon motion capture system provides the transformation between a reference frame fixed to the world and the moving vehicle. This transformation, along with fixed transformations between the robot body and the sensors, provides sufficient information for the transformation from the world to each sensor frame. The sensor readings from the Xtion and Hokuyo are transmitted from an NVidia Jetson TX2 onboard the vehicle (Figure \ref{fig:QuadrotorHardware}). The sensor readings are received via WIFI on a host computer with an Intel Core i7-6800K CPU (12$\times$3.40GHz), which runs the mapping and exploration nodes. The host computer returns the exploration trajectories to the Jetson TX2 over WIFI. Then, the Jetson executes a nonlinear geometric flight controller~\cite{GooDaeLee13} onboard. With this configuration, large processing tasks are avoided onboard the robot.
+Several components are used for localization, sensing, and actuation. A Vicon motion capture system provides the transformation between a reference frame fixed to the world and the moving vehicle. This transformation, along with fixed transformations between the robot body and the sensors, provides sufficient information for the transformation from the world to each sensor frame. The sensor readings from the Xtion and Hokuyo are transmitted from an NVidia Jetson TX2 onboard the vehicle (Figure \ref{fig:QuadrotorHardware}). The sensor readings are received via WIFI on a host computer with an Intel Core i7-6800K CPU (12$\times$3.40GHz), which runs the mapping and exploration nodes. The host computer returns the exploration trajectories to the Jetson TX2 over WIFI. Then, the Jetson executes the geometric flight controller onboard. With this configuration, large processing tasks are avoided onboard the robot.
 		
 \begin{figure}[!t]
 \centering
@@ -487,16 +512,19 @@ The robot is able to produce a 3D occupancy grid in under $3$ minutes without a 
 
 The projected map used for both collision and exploration has several benefits. The robot measures walls and objects with the 3D map, and nicely represents these as occupied spaces with the 2D projected map. Additionally, the exploration computation is low, allowing only for brief hover periods (less than $1$ second) between trajectories. However, the robot exploration does not consider those cells far below the robot, particularly those near the ground. As a result, some floor regions are not captured by the 3D occupancy grid even though cells above the floor are well-known. These neglected cells on the floor motivate the full 3D exploration, shown in the next experiment.
 
+%\newpage
 
+%\let\oldsection\section
+%\renewcommand\section{\clearpage\oldsection}
 
+\sectionbreak{\clearpage}
 \section{Full 3D Exploration with a Quadrotor}
 \label{sec:QuadrotorSEH}
 
-In this final experiment, we introduce the quadrotor to a space with complex 3D objects. The robot generates a 3D map of this space, and performs autonomous exploration while considering the expected information gains of sample measurement rays with nonzero vertical components. The robot unlike prior examples, the robot also moves vertically during exploration and tracks the ground below the vehicle.
+In this final experiment, we introduce the quadrotor to a space with complex 3D objects. The robot generates a 3D map of this space, and performs autonomous exploration while considering the expected information gains of sample measurement rays with nonzero vertical components. Unlike prior examples, the robot also moves vertically during exploration and tracks the ground below the vehicle.
 
 \subsection{3D Exploration Setup and Parameters}
-The software follows the same structure as in Section \ref{sec:MarsSimulation}, except the Gazebo simulated environment is replaces with experimental equipment. This equipment is identical to the prior experimental example (Section \ref{sec:QuadrotorNRL}), except the experiment took place at the Flight Dynamics and Control Lab (FDCL) inside the second floor of SEH. This environment is smaller with only $6$ cameras, where the x-direction (positive east) spans $-2.0$ m to $2.0$ m, the y-direction (positive north) spans $-2.0$ m to $2.0$ m, and the z-direction (positive vertically up) spans $-0.15$ m to $1.5$ m.
-
+The software follows the same structure as in Section \ref{sec:MarsSimulation}, except the Gazebo simulated environment is replaced with experimental equipment. This equipment is identical to the prior experimental example (Section \ref{sec:QuadrotorNRL}), except the experiment takes place at the Flight Dynamics and Control Lab (FDCL) inside the second floor of SEH, and the Hokuyo is no longer in use. This environment is smaller with only $6$ cameras, where the x-direction (positive east) spans $-4.5$ m to $4.5$ m, the y-direction (positive north) spans $-4.0$ m to $4.5$ m, and the z-direction (positive vertically up) spans $-0.25$ m to $2.0$ m, shown in Figure \ref{fig:Full3DExplorationEnvironment}.
 
 \begin{figure}[!t]
 \centering
@@ -518,7 +546,9 @@ The software follows the same structure as in Section \ref{sec:MarsSimulation}, 
 	\label{fig:Full3DExplorationEnvironment}
 \end{figure}
 
+\subsection{3D Exploration Results}
 
+The experimental results show that the robot successfully explores a 3D space, capturing occupied space above and below the robot. The quadrotor does an initial rotation over $20$ sec, then explores the space with planned motions in all three dimensions, shown in Figure \ref{fig:exp3DVid}. The robot generates a 3D probabilistic map (Figure \ref{fig:exp3DOccMap}) and uses this for entropy prediction and collision-free motion planning with a 3D cost map (Figure \ref{fig:Full3DExplorationCostmaps}).
 
 \begin{figure}[!t]
 \centering{
@@ -696,16 +726,6 @@ The software follows the same structure as in Section \ref{sec:MarsSimulation}, 
 	\label{fig:exp3DOccMap}
 \end{figure}
 
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{H_explore3D_test1.pdf}
-	\caption{Entropy Change During Full 3D Experiment}
-	\medskip
-	\small
-	The map entropy $H$ consistently decreases during the full 3D exploration experiment. Toward the end of the experiment, most cells that can be captured by the Asus Xtion have been updated, slowing down the rate of entropy decrease.
-	\label{fig:Explore3D_H}
-\end{figure}
-
 
 \begin{figure}[!t]
 \centering
@@ -722,12 +742,26 @@ The software follows the same structure as in Section \ref{sec:MarsSimulation}, 
 	\caption{2D Cross-Sections of 3D Cost Maps}
 	\medskip
 	\small
-	Two examples of the 3D cost maps from Dijkstra's search show connected and disconnected regions at the exploration height, where more blue regions have small distance costs, red regions have larger distance costs, and pink regions are unreachable due to collision risk. In (a), the robot does not have to change altitude to reach any of the collision-free poses. However in (b), the robot can only reach collision-free poses in the disconnected section by changing altitude.
+	Two examples of the 3D cost maps from Dijkstra's search show connected and disconnected regions at the exploration height, where more blue regions have smaller distance costs, red regions have larger distance costs, and pink regions are unreachable due to collision risk. In (a), the robot does not have to change altitude to reach any of the collision-free poses at its current altitude. However in (b), the robot can only reach collision-free poses in the disconnected section by changing altitude and following the 3D cost map.
 	\label{fig:Full3DExplorationCostmaps}
 \end{figure}
 
-\subsection{3D Exploration Results}
 
+The proposed 3D occupancy grid mapping and autonomous exploration approaches complement each other well. The floor and objects are well-captured, as this detail-oriented entropy-based exploration scheme tends to generate completely mapped regions before moving to new terrain, shown with Case 1 of the Mars exploration numerical example (Section \ref{sec:MarsSimulation}). As a result, the entropy decreases fairly steadily over the experiment, shown in Figure \ref{fig:Explore3D_H}.
+
+A key improvement to prior experiments is the ability to consider the occupancy properties in full 3D. This allows the robot to understand that the mannequin occupies some space that the robot must avoid. However, the robot also recognizes that the space above the mannequin is free, and it chooses a trajectory above the mannequin to reach new terrain. At other times, the robot observes spaces from lower vantage points, which can be advantageous with a short sensor range and the forward direction of the Asus Xtion. These added capabilities are attributed to the full 3D mapping and exploration approach.
+
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{H_explore3D_test1.pdf}
+	\caption{Entropy Change During Full 3D Experiment}
+	\medskip
+	\small
+	The map entropy $H$ consistently decreases during the full 3D exploration experiment. Toward the end of the experiment, most cells that can be captured by the Asus Xtion have been updated, slowing down the rate of entropy decrease.
+	\label{fig:Explore3D_H}
+\end{figure}
 
 
 

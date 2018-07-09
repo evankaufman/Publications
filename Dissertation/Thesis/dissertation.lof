@@ -1,0 +1,58 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Occupancy Grid Maps with Identical Forward Sensor Models\relax }}{18}{figure.caption.13}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Ray Casting Illustration\relax }}{19}{figure.caption.14}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Comparison of Proposed Ray-By-Ray Approach with Approximate Solution\relax }}{29}{figure.caption.19}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Map Uncertainty Comparison Between Proposed Ray-By-Ray Approach and Approximate Solution\relax }}{30}{figure.caption.20}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Entropy Histories of the Proposed Ray-By-Ray Approach and Approximate Solution\relax }}{31}{figure.caption.21}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Comparison of Proposed Synergistic Approach with Approximate Solution\relax }}{32}{figure.caption.23}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Map Uncertainty Comparison Between Proposed Synergistic Approach and Approximate Solution\relax }}{33}{figure.caption.24}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Expected Entropy Computational Improvement of Reduced Ray Cells Considered\relax }}{40}{figure.caption.27}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Optimal Pose Selection Illustration \relax }}{44}{figure.caption.31}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Autonomous Exploration of a 2D Space Using the Expanding Ring Approach\relax }}{46}{figure.caption.34}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Intel Research Lab Floor Plan Benchmark\nobreakspace {}\cite {kummerle2009measuring}.\relax }}{48}{figure.caption.35}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Autonomous Exploration of the Intel Research Lab Using the Complete Cartesian Approach\relax }}{49}{figure.caption.36}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Simulated 3D Occupancy Grid Map\relax }}{58}{figure.caption.41}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Simulated Environment and 2D Projected Maps at $4$ min\relax }}{59}{figure.caption.42}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Simulated Environment Map Entropy\relax }}{60}{figure.caption.43}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Bump Function for Multi-Vehicle Autonomous Exploration\relax }}{64}{figure.caption.44}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces SEH Floor Plan\relax }}{72}{figure.caption.47}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces 3D Occupancy Grid Map of SEH Second Floor During Multi-Vehicle Exploration\relax }}{73}{figure.caption.48}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces 2D Projected Occupancy Grid Map During Multi-Vehicle Exploration\relax }}{74}{figure.caption.49}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Total 3D Map Cell Entropy for Multi-Vehicle Exploration\relax }}{75}{figure.caption.50}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces The continuous-time Markov process for a single binary cell occupancy is illustrated. As time progresses, this process degrades the cell slowly toward $P_\infty .$\relax }}{77}{figure.caption.51}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Grid Cell Degradation Illustration\relax }}{78}{figure.caption.52}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces 3D Occupancy Grid Map of SEH Second Floor During Multi-Vehicle Patrol\relax }}{80}{figure.caption.55}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces 2D Projected Occupancy Grid Map During Multi-Vehicle Patrol\relax }}{81}{figure.caption.56}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Total 3D Map Cell Entropy for Multi-Vehicle Patrol\relax }}{82}{figure.caption.57}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Human Collision-Avoidance Using a Receding Horizon\relax }}{83}{figure.caption.58}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Illustration of 3D Exploration Reference Frames\relax }}{86}{figure.caption.59}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Bump Function for Full 3D Exploration\relax }}{89}{figure.caption.60}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Simulated Mars Surface\relax }}{91}{figure.caption.61}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Mars 3D Occupancy Grid Map for Case 1\relax }}{93}{figure.caption.62}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Mars 3D Occupancy Grid Map for Case 2\relax }}{94}{figure.caption.63}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Zoomed-In Occupancy Grid Cells of Mars\relax }}{95}{figure.caption.64}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Entropy Histories During Mars Exploration\relax }}{96}{figure.caption.65}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Pioneer Robot\relax }}{98}{figure.caption.66}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces 2D Experimental Environment\relax }}{99}{figure.caption.67}
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Experimental 2D Occupancy Grid Map Results\relax }}{100}{figure.caption.68}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Entropy Change During 2D Experiment\relax }}{101}{figure.caption.69}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces 3D Experimental Environment for Level Flight\relax }}{104}{figure.caption.70}
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Quadrotor Platform for 3D Mapping and Exploration\relax }}{105}{figure.caption.71}
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Level Flight Experiment\relax }}{106}{figure.caption.72}
+\contentsline {figure}{\numberline {7.8}{\ignorespaces 3D Occupancy Grid Map During Level Flight Experiment\relax }}{107}{figure.caption.73}
+\contentsline {figure}{\numberline {7.9}{\ignorespaces 2D Projected Occupancy Grid Map During Level Flight Experiment\relax }}{109}{figure.caption.74}
+\contentsline {figure}{\numberline {7.10}{\ignorespaces Entropy History During Level Flight Experiment\relax }}{110}{figure.caption.75}
+\contentsline {figure}{\numberline {7.11}{\ignorespaces 3D Exploration Space\relax }}{111}{figure.caption.76}
+\contentsline {figure}{\numberline {7.12}{\ignorespaces Full 3D Autonomous Exploration Experiment\relax }}{112}{figure.caption.77}
+\contentsline {figure}{\numberline {7.13}{\ignorespaces 3D Occupancy Grid Map During Full 3D Autonomous Exploration\relax }}{113}{figure.caption.78}
+\contentsline {figure}{\numberline {7.14}{\ignorespaces 2D Cross-Sections of 3D Cost Maps\relax }}{114}{figure.caption.79}
+\contentsline {figure}{\numberline {7.15}{\ignorespaces Entropy Change During Full 3D Experiment\relax }}{116}{figure.caption.80}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
