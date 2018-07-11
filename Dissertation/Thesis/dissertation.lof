@@ -53,6 +53,12 @@
 \contentsline {figure}{\numberline {7.13}{\ignorespaces 3D Occupancy Grid Map During Full 3D Autonomous Exploration\relax }}{113}{figure.caption.78}
 \contentsline {figure}{\numberline {7.14}{\ignorespaces 2D Cross-Sections of 3D Cost Maps\relax }}{114}{figure.caption.79}
 \contentsline {figure}{\numberline {7.15}{\ignorespaces Entropy Change During Full 3D Experiment\relax }}{116}{figure.caption.80}
+\contentsline {figure}{\numberline {7.16}{\ignorespaces Robot Position over Full 3D Experiment\relax }}{117}{figure.caption.81}
+\contentsline {figure}{\numberline {7.17}{\ignorespaces Geometric Control Position Tracking over Full 3D Experiment\relax }}{117}{figure.caption.82}
+\contentsline {figure}{\numberline {7.18}{\ignorespaces Geometric Control Velocity Tracking over Full 3D Experiment\relax }}{118}{figure.caption.83}
+\contentsline {figure}{\numberline {7.19}{\ignorespaces Geometric Control Attitude Tracking over Full 3D Experiment\relax }}{118}{figure.caption.84}
+\contentsline {figure}{\numberline {7.20}{\ignorespaces Geometric Control Angular Velocity Tracking over Full 3D Experiment\relax }}{119}{figure.caption.85}
+\contentsline {figure}{\numberline {7.21}{\ignorespaces Geometric Control Force and Moments over Full 3D Experiment\relax }}{119}{figure.caption.86}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
