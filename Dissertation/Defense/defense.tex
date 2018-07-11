@@ -5,7 +5,8 @@
 %\usepackage{amsmath,amssymb}
 \usepackage{graphicx,multirow}
 
-\usepackage{movie15}
+%\usepackage{movie15}
+\usepackage{media9}
 
 \usepackage{caption}
 \usepackage{subcaption}
@@ -534,7 +535,258 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 \end{frame}
 
 \section*{}
+\subsection*{Entropy-Based Autonomous Exploration}
 
+\begin{frame}
+\frametitle{Autonomous Exploration}
+
+\begin{itemize}
+	\item Goal: determine robotic actions that maximize map information
+	\item Solution: predict future map uncertainty and travel distance to select an optimal pose
+\end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Existing Exploration Approaches}
+
+\begin{itemize}
+	\item Frontier-Based Exploration
+	\begin{itemize}
+		\item A robot identifies boundaries of free and uncertain cells
+		\item The robot moves toward these frontiers, thereby pushing back the boundaries
+		\item Heuristic, suboptimal
+	\end{itemize}
+	\vspace*{0.0cm}\pause
+	\item Entropy-Based Approaches
+	\begin{itemize}
+		\item Probabilities from the occupancy grid map are approximate
+		\item Usage of ``hallucination measurements'': assume that $\text{E}[H(P(\mathbf{m}_i|z))]\approx H(P(\mathbf{m}_i|\text{E}[z]))$
+	\end{itemize}
+	\vspace*{0.0cm}\pause
+	\item Proposed Approach
+	\begin{itemize}
+		\item Use occupancy grid map probabilities
+		\item Solve $\text{E}[H(P)]$ and select future poses to maximize map information
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Entropy Definition}
+\begin{itemize}
+        	\item Uncertainty-Based Exploration
+	\begin{itemize}
+		\item Main idea: choose robot motions that minimize the uncertainty of the occupancy grid map
+		\item Equivalently maximize map information gain
+	\end{itemize}
+\end{itemize}
+\begin{minipage}[t]{7.0cm}
+\begin{itemize}
+	\item Entropy
+	\begin{itemize}		
+		\item \emph{Shannon's entropy} serves as an uncertainty measure
+		\begin{align*}
+			H(P)=-P\log P-\bar{P}\log \bar{P}%-(1-P)\log(1-P)
+		\end{align*}
+		with cell occupancy probability $P$ and complement $\bar{P}=1-P$
+		\item Entropy $H$ is maximized when $P=0.5$ and minimized as $P\rightarrow0$ or $P\rightarrow1$
+	\end{itemize}
+\end{itemize}
+\end{minipage}
+\begin{minipage}[t]{3.0cm}
+\vspace*{0.5cm}
+\begin{figure}[!htbp]
+	\centerline{
+		\hspace*{1.25cm}
+   		\includegraphics[width=5.0cm]{H_Plotted_square.pdf}%\hspace*{0.1cm}
+	}
+\end{figure}
+\end{minipage}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Expected Information Gain}
+
+\begin{itemize}
+	\item Main Idea: determine the benefit of future poses based on how their measurements are expected to improve the map
+	\vspace*{0.0cm}\pause
+	\item Goal: decrease total map entropy:
+	\begin{align*}
+		H(P(m))&=\sum_{i=1}^{n_m}H(P(\mathbf{m}_i))
+	\end{align*}
+	\vspace*{0.0cm}\pause
+	\item Measurement Ray Expected Information Gain:
+	\begin{align*}
+		\text{E}[H(P(m|x_c,z_{c}))]&=\sum_{k=1}^{n_{r}+1}\bigg\{H(P(m|x_c,z_{c,k}))P(z_{c,k}|x_c)\bigg\}
+		\\
+		P(z_{c,k}|x_c)&=\frac{p(z_{c,k}|x_c)}{\sum_{i=1}^{n_{r}+1}p(z_{c,i}|x_c)}=\frac{\eta_{c,k}^{-1}}{\sum_{i=1}^{n_{r}+1}\eta_{c,i}^{-1}}
+		\\
+		\mathcal I(x_c,z_{c})&=H(P(m))-\text{E}[H(P(m|x_c,z_{c}))]
+	\end{align*}
+\end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Expected Information Gain Computation}
+
+\begin{itemize}
+	\item \emph{Squared Complexity}: $\mathcal O(n_r^2)$ for $n_r$ cells along the ray
+	\vspace*{0.0cm}\pause
+	\item Two Approaches:
+	\begin{itemize}
+		\vspace*{0.0cm}\pause
+		\item Decrease the cells considered by selecting $n_p$ most probable cells: $\mathcal O(n_r^2)$ reduces to $\mathcal O(n_p^2)$
+		\vspace*{0.0cm}\pause
+		\item Use 3D cells in a 2D \emph{projection}
+\begin{figure}
+  \centering
+  \begin{subfigure}[t]{.3\linewidth}
+    \centering\includegraphics[height=.75\linewidth]{experiment_ogm3D_2min47sec.jpg}
+    \caption*{\ \ \ \ \ \ \ \ \ \ \ \ \ \ 3D Map}
+  \end{subfigure}
+  \hspace*{0.25\linewidth}
+  \begin{subfigure}[t]{.3\linewidth}
+    \centering\includegraphics[height=.75\linewidth]{experiment_2min47sec.jpg}
+    \caption*{2D Projection}
+  \end{subfigure}
+\end{figure}
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Pose Selection}
+
+\begin{itemize}
+	\item Main Idea: select the future pose that maximizes map information gain while accounting for travel distance
+	\vspace*{0.0cm}\pause
+	\item Attitude Selection: choose the attitude that covers the candidate measurement rays with largest objective function summation
+\begin{figure}
+\centerline{
+	\includegraphics[height=0.35\linewidth]{ExampleOptimalPose.png}
+%\begin{picture}(0,0)(0,0)
+%\setlength{\unitlength}{0.1\linewidth}\scriptsize
+%\put(4.4,2.1){\color{blue}$X_t$}
+%\put(5.9,1.9){\color{red}$x_1$}
+%\put(2.9,2.0){\color{red}$x_5$}
+%\put(4.4,3.6){\color{red}$x_3$}
+%\put(4.4,0.6){\color{red}$x_7$}
+%\put(5.4,3.0){\color{red}$x_2$}
+%\put(3.3,3.1){\color{red}$x_4$}
+%\put(3.3,1.0){\color{red}$x_6$}
+%\put(5.4,1.0){\color{red}$x_8$}
+%\put(6.8,3.1){\color{red}$z_{2,1}$}
+%\put(4.5,3.1){\color{red}$z_{2,5}$}
+%\put(5.6,4.1){\color{red}$z_{2,3}$}
+%\put(5.6,2.2){\color{red}$z_{2,7}$}
+%\put(6.5,3.7){\color{red}$z_{2,2}$}
+%\put(4.9,3.8){\color{red}$z_{2,4}$}
+%\put(5.0,2.5){\color{red}$z_{2,6}$}
+%\put(6.5,2.5){\color{red}$z_{2,8}$}
+%\put(6.1,2.9){$X_c^*$}
+%\end{picture}
+}
+\vspace*{-0.05\linewidth}
+\end{figure}
+	\item The attitude $R_c$ is selected for all candidates: the expected information gain becomes $\mathcal I(X_c)$ where $X_c=\braces{x_c,R_c}$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Pose Selection}
+
+\begin{itemize}
+	\item Travel Distance: generate a cost map from the occupancy grid to obtain distances to each candidate pose $d(x_c)$
+	\vspace*{0.0cm}\pause
+	\item Bump Function: use a bump function \begin{align*}f(d)=\exp\braces{-\frac{d^2}{2\sigma^2}}+\gamma, \quad \sigma>0, \quad \gamma>0\end{align*} to incentivize the robot to explore more locally until nearby spaces are well-known
+	\begin{figure}
+	\vspace*{-0.015\linewidth}
+\centering
+	\includegraphics[width=0.8\linewidth]{GaussianBumpFunFlat.png}
+		\vspace*{-0.015\linewidth}
+\end{figure}
+	% C++: exp(-0.5*distAway*distAway/sigSqrd)+minFunVal GaussianBumpFunFlat.png
+	\vspace*{0.0cm}\pause
+	\item Select the pose that maximizes the product \begin{align*}X^*=\argmax_{X_c}{\mathcal I(X_c)f(d(x_c))}\end{align*}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Collision-Free Path}
+
+\begin{itemize}
+	\item Using the cost map from before, \emph{Dijkstra's algorithm} is completed by finding the waypoints from the desired candidate back to the current location
+	\vspace*{0.0cm}\pause
+	\item These waypoints serve as input to a \emph{constrained polynomial least squares trajectory}
+	\begin{itemize}
+		\item Each trajectory is solved independently as a function of time, i.e. $x(t)$, $y(t)$
+		\item Starting and terminal locations are fixed
+		\item Segments patched together have the same position and velocity at the connection
+	\end{itemize}
+	\vspace*{0.0cm}\pause
+	\item A \emph{geometric controller} tracks the trajectory without \emph{singularities} or \emph{ambiguities}
+	\vspace*{0.0cm}\pause
+	\item The mapping, exploration, and control run in \emph{real-time}
+\end{itemize}
+
+\end{frame}
+
+% TODO: uncomment!
+%\begin{frame}
+%	\frametitle{Numerical Results}
+%	\centering{
+%		\includemedia[
+%  		width=0.720\textwidth,
+%  		height=0.576\textwidth,
+%  		activate=pageopen,
+%  		addresource=IRL.mp4,
+%  		flashvars={source=IRL.mp4}
+%		]{}{VPlayer.swf}
+%		}
+%\end{frame}
+
+
+%\frametitle{Experimental Results}
+%	\centering{
+%	\includemovie[poster,autoplay]{0.720\textwidth}{0.576\textwidth}{JIRS16_experiment_SideBySide_speedup8x.mov}}
+%\end{frame}
+
+
+\begin{frame}
+\frametitle{Autonomous Exploration Conclusions}
+
+\begin{itemize}
+	\item Other approaches use heuristic frontiers or entropy of expected measurements
+	\item The proposed approach solves for the expected value of future map entropy directly
+	\item Several sample future measurement rays and Dijkstra's cost map combine in an objective function for optimality
+	\item Numerical simulations show a large 2D environment, and this approach can be extended to 3D environments
+\end{itemize}
+
+\end{frame}
+
+\section*{}
+\subsection*{Multi-Vehicle Coordination}
+
+
+
+
+\section*{}
+\subsection*{Experiments}
 
 
 %
@@ -917,6 +1169,8 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 %	\item Proposing multiple vehicles can explore an uncertain environment using a \emph{bidding}-based approach
 %\end{itemize}
 %\end{frame}
+
+% TODO: update with dissertation version!
 
 \begin{frame}
 \frametitle{Publications}
