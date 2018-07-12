@@ -492,34 +492,37 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 \begin{frame}
 \frametitle{Numerical Example}
 
-\begin{minipage}[t]{5.0cm}
-\vspace*{0.5cm}
 \begin{itemize}
 	\item A standard \emph{approximate} inverse sensor model technique is compared with the proposed \emph{exact} method
+	\item The exact algorithm yields a more \emph{certain} map from the same measurement set
 \end{itemize}
-\end{minipage}
-\begin{minipage}[t]{5.0cm}
+
 %\vspace*{0.5cm}
 \begin{figure}[!htbp]
     \centering
-    \begin{subfigure}{0.5\textwidth}
+    \begin{subfigure}{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{AISM_Image_19.pdf}
+        \caption*{Approx. Map}
+    \end{subfigure}
+%    \hspace*{-0.1\textwidth}
+    \begin{subfigure}{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{EISM_Image_19.pdf}
+        \caption*{Exact Map}
+    \end{subfigure}
+    \begin{subfigure}{0.2\textwidth}
         \centering
         \includegraphics[width=\textwidth]{AISM_Image_inf_19.pdf}
-        \caption*{Approximate}
+        \caption*{Approx. $H$}
     \end{subfigure}
-    \hspace*{-0.1\textwidth}
-    \begin{subfigure}{0.5\textwidth}
+%    \hspace*{-0.1\textwidth}
+    \begin{subfigure}{0.2\textwidth}
         \centering
         \includegraphics[width=\textwidth]{EISM_Image_inf_19.pdf}
-        \caption*{Exact}
+        \caption*{Exact $H$}
     \end{subfigure}
 \end{figure}
-\end{minipage}
-
-
-\begin{itemize}
-\item The exact algorithm yields a more \emph{certain} map from the same measurement set
-\end{itemize}
 
 \end{frame}
 
@@ -748,7 +751,7 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 
 % TODO: uncomment!
 %\begin{frame}
-%	\frametitle{Numerical Results}
+%	\frametitle{2D Autonomous Exploration: Intel Research Lab}
 %	\centering{
 %		\includemedia[
 %  		width=0.720\textwidth,
@@ -760,11 +763,33 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 %		}
 %\end{frame}
 
-
-%\frametitle{Experimental Results}
+% TODO: uncomment!
+%\begin{frame}
+%	\frametitle{3D Autonomous Exploration: Mars}
 %	\centering{
-%	\includemovie[poster,autoplay]{0.720\textwidth}{0.576\textwidth}{JIRS16_experiment_SideBySide_speedup8x.mov}}
+%		\includemedia[
+%  		width=0.720\textwidth,
+%  		height=0.576\textwidth,
+%  		activate=pageopen,
+%  		addresource=mars.mp4,% TODO: add this to directory!
+%  		flashvars={source=mars.mp4}
+%		]{}{VPlayer.swf}
+%		}
 %\end{frame}
+
+\begin{frame}
+\frametitle{Cell Degradation and Patrol}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.65\textwidth]{entropy_patrol_9minSwitch.pdf}
+\end{figure}
+
+\begin{itemize}
+	\item Entropy of the map increases if patrol stops at $9$ minutes if cell degradation continues
+\end{itemize}
+
+\end{frame}
 
 
 \begin{frame}
