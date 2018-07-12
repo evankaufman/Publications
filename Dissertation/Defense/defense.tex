@@ -304,7 +304,7 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 &=\eta_{t,l}\sum_{m\in\mathcal{M}_i}p(z_{t,l}|m,X_{t})P(m|X_{1:t-1},Z_{1:t-1}).
 \end{align*}
 	\begin{itemize}
-	\item Given $n$ grid cells: $\mathcal O(2^n)$ is \emph{computationally intractable}, motivating a different solution
+	\item Given $n$ grid cells: $\mathcal O(2^n)$ is \emph{computationally-intractable}, motivating a different solution
 	\end{itemize}
 \end{itemize}
 
@@ -788,7 +788,7 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 \begin{itemize}
 	\item Multiple agents can accomplish tasks faster and more reliably than a single agent
 	\item Large groups are capable of coverage in large environments
-	\item Problem: multi-vehicle map information gain optimality can be computationally intractable
+	\item Problem: multi-vehicle map information gain optimality can be computationally-intractable
 	\item Solution: bidding-based solution simplifies a complicated optimization into a series of simplified optimizations
 \end{itemize}
 
@@ -821,6 +821,7 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 	\item Repeat these steps with the remaining robots
 \end{enumerate}
 \item The efforts are coordinated by updating bids between auctions
+\item The algorithm follows a receding-horizon framework: future pose optimization repeats as quickly as possible
 \end{itemize}
 \end{frame}
 
@@ -843,8 +844,88 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 %\end{frame}
 
 
+\begin{frame}
+\frametitle{Cooperative Autonomous Patrol}
+
+\begin{itemize}
+	\item Existing Approaches
+	\begin{itemize}
+		\item Rely on a known map and use Voronoi diagrams to disperse
+		\item Another approach introduces cell periodicity: observe long-term dynamics of objects at the same location on the occupancy grid
+		\item Bio-inspired approach uses digital pheromones 
+		\item Minimizing robot idleness
+	\end{itemize}
+	\item Proposed Approach
+	\begin{itemize}
+		\item Degrade occupancy grid cells toward their initial values with exponential decay
+		\item Only affects existing probability values without new variables to track
+		\item Promotes exploration first, then patrol
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Continuous-Time Markov Process}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{markov_diagram_continuous.pdf}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{DegradeExamples.pdf}
+\end{figure}
+
+\end{frame}
+
+
+% TODO: uncomment!
+%\begin{frame}
+%\frametitle{Numerical Example: SEH Second Floor}
+%
+%
+%	\centering{
+%		\includemedia[
+%  		width=0.720\textwidth,
+%  		height=0.576\textwidth,
+%  		activate=pageopen,
+%  		addresource=Multi-Vehicle Cooperative Patrol.mp4,
+%  		flashvars={source=Multi-Vehicle Cooperative Patrol.mp4}
+%		]{}{VPlayer.swf}
+%		}
+%
+%
+%\end{frame}
+
+
+\begin{frame}
+\frametitle{Multi-Vehicle Autonomous Exploration and Patrol Conclusions}
+
+\begin{itemize}
+	\item Robotic tasks are assigned following a bidding-based framework to avoid a computationally-intractable solution
+	\item Only one robot wins an auction, and bids are updated for the remaining robots in subsequent auctions
+	\item A receding-horizon framework optimizes the time to update the optimal future poses
+	\item Cell degradation provides a simple means for autonomous patrol via a continuous-time Markov process
+	\item Numerical examples of a large experimental space demonstrate both algorithms
+\end{itemize}
+\end{frame}
+
+
+
 \section*{}
 \subsection*{Experiments}
+
+\begin{frame}
+\frametitle{Experimental Overview}
+
+\begin{enumerate}
+	\item Ground vehicle experiment for 2D occupancy grid mapping and autonomous exploration
+	\item Flying vehicle experiment in large 3D space resembling an office
+	\item Flying vehicle experiment in a complex 3D space
+\end{enumerate}
+\end{frame}
 
 
 %
