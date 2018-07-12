@@ -55,12 +55,22 @@
 \headcommand {\beamer@framepages {46}{49}}
 \headcommand {\slideentry {3}{1}{9}{50/50}{Entropy-Based Autonomous Exploration}{0}}
 \headcommand {\beamer@framepages {50}{50}}
-\headcommand {\slideentry {3}{1}{10}{51/51}{Entropy-Based Autonomous Exploration}{0}}
+\headcommand {\beamer@subsectionentry {0}{4}{1}{51}{Multi-Vehicle Coordination}}\headcommand {\beamer@subsectionpages {51}{50}}
+\headcommand {\slideentry {4}{1}{1}{51/51}{Multi-Vehicle Coordination}{0}}
 \headcommand {\beamer@framepages {51}{51}}
-\headcommand {\slideentry {3}{1}{11}{52/52}{Entropy-Based Autonomous Exploration}{0}}
+\headcommand {\slideentry {4}{1}{2}{52/52}{Multi-Vehicle Coordination}{0}}
 \headcommand {\beamer@framepages {52}{52}}
-\headcommand {\beamer@partpages {1}{52}}
-\headcommand {\beamer@subsectionpages {29}{52}}
-\headcommand {\beamer@sectionpages {29}{52}}
-\headcommand {\beamer@documentpages {52}}
-\headcommand {\def \inserttotalframenumber {28}}
+\headcommand {\slideentry {4}{1}{3}{53/53}{Multi-Vehicle Coordination}{0}}
+\headcommand {\beamer@framepages {53}{53}}
+\headcommand {\slideentry {4}{1}{4}{54/54}{Multi-Vehicle Coordination}{0}}
+\headcommand {\beamer@framepages {54}{54}}
+\headcommand {\beamer@subsectionentry {0}{5}{1}{55}{Experiments}}\headcommand {\beamer@subsectionpages {55}{54}}
+\headcommand {\slideentry {5}{1}{1}{55/55}{Experiments}{0}}
+\headcommand {\beamer@framepages {55}{55}}
+\headcommand {\slideentry {5}{1}{2}{56/56}{Experiments}{0}}
+\headcommand {\beamer@framepages {56}{56}}
+\headcommand {\beamer@partpages {1}{56}}
+\headcommand {\beamer@subsectionpages {55}{56}}
+\headcommand {\beamer@sectionpages {55}{56}}
+\headcommand {\beamer@documentpages {56}}
+\headcommand {\def \inserttotalframenumber {32}}

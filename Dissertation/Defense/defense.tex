@@ -782,7 +782,65 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 \section*{}
 \subsection*{Multi-Vehicle Coordination}
 
+\begin{frame}
+\frametitle{Motivation and Goal}
 
+\begin{itemize}
+	\item Multiple agents can accomplish tasks faster and more reliably than a single agent
+	\item Large groups are capable of coverage in large environments
+	\item Problem: multi-vehicle map information gain optimality can be computationally intractable
+	\item Solution: bidding-based solution simplifies a complicated optimization into a series of simplified optimizations
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Related Work}
+
+\begin{itemize}
+	\item Most existing bidding-based techniques deal with auctioning tasks among a few agents locally in decentralized frameworks
+	\item The other approach is for a central executive to run a series of auctions
+	\item Bids are discounted between auctions to coordinate the efforts based on coverage overlap
+	\item Heuristic, ad hoc
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Proposed Approach}
+
+\begin{itemize}
+\item Central executive completes $n$ auctions for $n$ robots
+\begin{enumerate}
+	\item Each robot determines its optimal future pose, and bids the objective function
+	\item The winner is awarded this future pose, and the remaining robots update their bids according to
+	\begin{itemize}
+		\item New expected map changes from the winner
+		\item Collision-avoidance with the winner
+	\end{itemize}
+	\item Repeat these steps with the remaining robots
+\end{enumerate}
+\item The efforts are coordinated by updating bids between auctions
+\end{itemize}
+\end{frame}
+
+% TODO: uncomment!
+%\begin{frame}
+%\frametitle{Numerical Example: SEH Second Floor}
+%
+%
+%	\centering{
+%		\includemedia[
+%  		width=0.720\textwidth,
+%  		height=0.576\textwidth,
+%  		activate=pageopen,
+%  		addresource=Multi-Vehicle Mapping and Exploration.mp4,
+%  		flashvars={source=Multi-Vehicle Mapping and Exploration.mp4}
+%		]{}{VPlayer.swf}
+%		}
+%
+%
+%\end{frame}
 
 
 \section*{}
@@ -1173,20 +1231,31 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 % TODO: update with dissertation version!
 
 \begin{frame}
-\frametitle{Publications}
+\frametitle{Publications on Dissertation Topics}
 {\tiny 
 \begin{itemize}
-	\item E. Kaufman, K. Takami, T. Lee, and Z. Ai, ``Autonomous Exploration with Exact Inverse Sensor Models,'' \textit{Journal of Intelligent }\&\textit{ Robotic Systems}, 2016, submitted.
-	\item E. Kaufman, T. Lee, and Z. Ai, ``Autonomous Exploration by Expected Information Gain from Probabilistic Occupancy Grid Mapping,'' \textit{IEEE International Conference on Simulation, Modeling, and Programming for Autonomous Robots}, San Francisco, December 2016, accepted.
-	\item E. Kaufman, T. Lee, Z. Ai, and I. S. Moskowitz, ``Bayesian Occupancy Grid Mapping via an Exact Inverse Sensor Model,'' \textit{Proceedings of the American Control Conference}, Boston, July 2016, pp. 5709-5715.
+	\item E. Kaufman, K. Takami, T. Lee, and Z. Ai, ``Multi-Vehicle Cooperative Exploration and Patrol of Uncertain 3D Environments'', in preparation.
+	\item E. Kaufman, K. Takami, T. Lee, and Z. Ai, ``Bidding-Based Autonomous Exploration of Cooperative Robots Building a 3D Probabilistic Occupancy Grid Map'', in preparation.
+	\item E. Kaufman and T. Lee, ``Autonomous Aerial Exploration for Topological Mapping of Mars Environments'', \textit{2019 AIAA Guidance, Navigation, and Control Conference}, San Diego, CA, January 2019, submitted.
+	\item E. Kaufman, K. Takami, Z. Ai, and T. Lee, ``Autonomous Quadrotor 3D Mapping and Exploration Using Exact Occupancy Probabilities,'' \textit{The Second IEEE International Conference on Robotic Computing}, pp. 49--55, Laguna Hills, CA, January 2018.
+	\item E. Kaufman, K. Takami, T. Lee, and Z. Ai, ``Autonomous Exploration with Exact Inverse Sensor Models,'' \textit{Journal of Intelligent }\&\textit{ Robotic Systems}, 2017, doi: 10.1007/s10846-017-0710-7.
+	\item E. Kaufman, T. Lee, and Z. Ai, ``Autonomous Exploration by Expected Information Gain from Probabilistic Occupancy Grid Mapping,'' \textit{IEEE International Conference on Simulation, Modeling, and Programming for Autonomous Robots}, pp. 246--251, San Francisco, CA, December 2016.
+	\item E. Kaufman, T. Lee, Z. Ai, and I. S. Moskowitz, ``Bayesian Occupancy Grid Mapping via an Exact Inverse Sensor Model,'' \textit{Proceedings of the American Control Conference}, pp. 5709-5715, Boston, MA, July 2016.
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}
+\frametitle{Publications on Data Association, Estimation, and Control}
+{\tiny 
+\begin{itemize}
 	\item E. Kaufman, T. A. Lovell, and T. Lee, ``Nonlinear Observability Measure for Relative Orbit Determination with Angles-Only Measurements,'' \textit{The Journal of the Astronautical Sciences}, 63(1): pp. 60-80, 2016, doi: 10.1007/s40295-015-0082-9.
 	\item E. Kaufman, T. A. Lovell, and T. Lee, ``Minimum Uncertainty JPDA Filters and Coalescence Avoidance for Multiple Object Tracking,'' \textit{The Journal of the Astronautical Sciences}, 63(4): pp. 308-334, 2016, doi: 10.1007/s40295-016-0092-2.
 	\item T. Wu, E. Kaufman, and T. Lee, ``Globally Asymptotically Stable Attitude Observer on SO(3),'' \textit{Proceedings of the 54th IEEE Conference on Decision and Control}, pp. 2164-2168, Osaka, Japan, December 2015.
-	\item E. Kaufman, T. A. Lovell, and T. Lee, ``Nonlinear Observability Measure for Relative Orbit Determination with Angles-Only Measurements,'' \textit{Proceedings of the 25th AAS/AIAA Space Flight Mechanics Meeting}, Williamsburg, VA, Jan. 2015, AAS 15-451.
-	\item E. Kaufman, T. A. Lovell, and T. Lee, ``Minimum Uncertainty JPDA Filter and Coalescence Avoidance Performance Evaluations,'' \textit{Proceedings of the 25th AAS/AIAA Space Flight Mechanics Meeting, Williamsburg}, VA, Jan. 2015, AAS 15-432.
-	\item E. Kaufman, K. Caldwell, D. Lee, and T. Lee, ``Design and Development of a Free-Floating Hexrotor UAV for 6-DOF Maneuvers,'' \textit{Proceedings of the IEEE Aerospace Conference}, Mar. 2014, ASC 14-2527.
-	\item E. Kaufman, T. A. Lovell, and T. Lee, ``Optimal Joint Probabilistic Data Association Filter Avoiding Coalescence in Close Proximity,'' \textit{Proceedings of the European Control Conference}, pp. 2709-2714, June 2014.
-	\vspace*{0.5cm}
+	\item E. Kaufman, T. A. Lovell, and T. Lee, ``Nonlinear Observability Measure for Relative Orbit Determination with Angles-Only Measurements,'' \textit{Proceedings of the 25th AAS/AIAA Space Flight Mechanics Meeting}, AAS 15-451, Williamsburg, VA, January 2015.
+	\item E. Kaufman, T. A. Lovell, and T. Lee, ``Minimum Uncertainty JPDA Filter and Coalescence Avoidance Performance Evaluations,'' \textit{Proceedings of the 25th AAS/AIAA Space Flight Mechanics Meeting, Williamsburg}, AAS 15-432, VA, January 2015.
+	\item E. Kaufman, K. Caldwell, D. Lee, and T. Lee, ``Design and Development of a Free-Floating Hexrotor UAV for 6-DOF Maneuvers,'' \textit{Proceedings of the IEEE Aerospace Conference}, ASC 14-2527, March 2014, Big Sky, MT.
+	\item E. Kaufman, T. A. Lovell, and T. Lee, ``Optimal Joint Probabilistic Data Association Filter Avoiding Coalescence in Close Proximity,'' \textit{Proceedings of the European Control Conference}, pp. 2709-2714, Strasbourg, June 2014.
 \end{itemize}
 }
 \end{frame}
