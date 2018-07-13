@@ -92,15 +92,9 @@
 \author{\vspace*{-0.1cm}}
 
 \institute{\footnotesize
-{\normalsize Evan Kaufman\\
-\vspace*{0.2cm}
-Dissertation Director: Taeyoung Lee}\\
+{\normalsize Evan Kaufman}\\
 \vspace*{0.3cm}
-{\normalsize Committee Members:\\
- \vspace*{0.2cm}
-Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
-\vspace*{0.4cm}\\
-  Mechanical and Aerospace Engineering\\George Washington University
+Mechanical and Aerospace Engineering\\George Washington University
 }
 
 %\institute{\footnotesize
@@ -137,31 +131,51 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 \begin{frame}
 \frametitle{Motivation}
 \begin{itemize}
-	\item Environments can be dangerous and uncertain
-	\item Robots can replace humans for tasks such as surveillance, search-and-rescue, and cleaning
-	\item Robot must understand their environment by generating a map, referred to as \emph{mapping}
-	\item Selecting and performing robotic actions to maximize map information, referred to as \emph{autonomous exploration}, is necessary to optimally explore initially-uncertain environments
-	\item Cooperative robots can share information to achieve a collective goal, referred to as \emph{multi-vehicle coordination}
-	\item These task must be performed in 2D and 3D environments, where computational efficiency is paramount to real-time implementation
+	\item Mobile Robotics
+	\begin{itemize}
+		\item Environments can be dangerous and uncertain
+		\item Robots can replace humans for tasks such as surveillance, search-and-rescue, and cleaning
+	\end{itemize}
+	\pause
+	\item Robotic Capabilities
+	\begin{itemize}
+		\item Robot must understand their environment by generating a map, referred to as \emph{mapping}
+		\item Selecting and performing robotic actions to maximize map information, referred to as \emph{autonomous exploration}, is necessary to optimally explore initially-uncertain environments
+		\item Cooperative robots can share information to achieve a collective goal with \emph{multi-vehicle exploration and patrol}
+		\item These tasks must be performed in 2D and 3D environments, where computational efficiency is paramount to real-time implementation
+	\end{itemize}
 \end{itemize}
 \end{frame}
 
 \subsection*{Research Contributions}
 
 \begin{frame}
-\frametitle{High-Level Contributions}
+\frametitle{Research Contributions}
 \begin{itemize}
-	\item Occupancy Grid Mapping: solving the Bayesian solution to occupancy probability, known as the \emph{inverse sensor model}
-	\pause
-	\item Autonomous Exploration: novel approach to predicting future map uncertainty, known as \emph{Shannon's entropy}
-	\pause
-	\item Multi-Vehicle Coordination: \emph{bidding}-based framework for assigning tasks while exploring uncertain environments
+	\item Occupancy Grid Mapping
+		\begin{itemize}
+		\item Computation of the exact occupancy probability
+		\item Incorporation of prior knowledge and new measurements
+		\item Bayesian information fusion
 	\end{itemize}
+	\pause
+	\item Autonomous Exploration
+	\begin{itemize}
+		\item Novel approach to predicting future map uncertainty
+		\item Optimal planning to maximize information gain
+	\end{itemize}
+	\pause
+	\item Multi-Vehicle Exploration and Patrol
+	\begin{itemize}
+		\item Bidding-based framework for assigning tasks while exploring uncertain environments
+		\item Map degradation to encourage revisiting regions from the past 
+	\end{itemize}
+\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Outline}
-\begin{itemize}
+\begin{enumerate}[I]
 	\item Occupancy Grid Mapping
 	\begin{itemize}
 		\item Background and problem definition
@@ -177,15 +191,16 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 		\item Proposed approach: entropy expectation
 		\item Collision-free trajectories
 		\item Optimal pose selection
-		\item Numerical Examples
+		\item Numerical examples
 	\end{itemize}
-\end{itemize}
+\end{enumerate}
 \end{frame}
 
 \begin{frame}
 \frametitle{Outline}
-\begin{itemize}
-	\item Multi-Vehicle Coordination
+\begin{enumerate}[I]
+\addtocounter{enumi}{2}
+	\item Multi-Vehicle Exploration and Patrol
 	\begin{itemize}
 		\item Cooperative approaches
 		\item Bidding-based framework
@@ -198,16 +213,23 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 	\item Experiments
 	\begin{itemize}
 		\item Ground vehicle 2D mapping and autonomous exploration
-		\item Flying quadrotor in large vertically-uniform space
-		\item Flying quadrotor in complex 3D environment
+		\item Aerial quadrotor in large vertically-uniform space
+		\item Aerial quadrotor in complex 3D environment
 	\end{itemize}
-\end{itemize}
+\end{enumerate}
 \end{frame}
 
 
 \section*{}
 \subsection*{Probabilistic Occupancy Grid Mapping}
 
+\begin{frame}
+\frametitle{Probabilistic Occupancy Grid Mapping}
+\begin{enumerate}[I]
+	\item Probabilistic Occupancy Grid Mapping
+\end{enumerate}
+\end{frame}
+	
 \begin{frame}
 \frametitle{Mapping Representation}
     \begin{itemize}
@@ -311,7 +333,7 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 \end{frame}
 
 \begin{frame}
-\frametitle{Inexact Solutions}
+\frametitle{Approximate Solutions}
 
 \begin{minipage}[t]{7.0cm}
 \begin{itemize}
@@ -354,7 +376,7 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 
 
 \begin{frame}
-\frametitle{New Approach: Grouping}
+\frametitle{Proposed Approach: Utilize Invariance}
 
 \begin{itemize}
     \item Main idea: make use of occupancy grid mapping \emph{assumptions} and extract \emph{patterns} from probabilistic properties to find a \emph{computationally-efficient} solution
@@ -405,7 +427,7 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 \bigg[\sum_{i=1}^{n_{r}+1}\bigg\{\prod_{j=0}^{i-1}\bar{\mathbf{P}}_j^-\bigg\} p(z|\mathbf{r}_{i+},X_t)\mathbf{P}_k^-\bigg]^{-1}
 \end{align*}
 	\item Solution: $P(\mathbf{r}_{k}|z,X_{1:t},Z_{1:t-1})=\eta\tilde P(\mathbf{r}_{k}|z,X_{1:t},Z_{1:t-1})$
-	\item \emph{Linear Complexity} ($\mathcal{O}(n)$ for \emph{all} $n$ cells in FOV)
+	\item \emph{Linear Complexity}: $\mathcal{O}(n)$ for \emph{all} $n$ cells in FOV compared with $\mathcal O(n\times2^n)$ without using invariance
 \end{itemize}
 \end{frame}
 
@@ -437,56 +459,27 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 \end{frame}
 
 \begin{frame}
-\frametitle{Full Measurement Scan}
+\frametitle{Scan Combination Approaches}
 
 \begin{itemize}
-	\item Two Methods
+	\item \emph{Ray-By-Ray Update}: given a scan of measurement rays, update the map based on each measurement ray \emph{individually} and \emph{sequentially}
 	\begin{itemize}
-		\item \emph{Ray-By-Ray Inverse Sensor Model}: each measurement ray is evaluated individually for updating the map
-		\item \emph{Synergistic Scan Inverse Sensor Model}: all measurement rays are evaluated simultaneously
+		\item Benefit: the measurement rays maintain some dependency as they capture the same map
+		\item Drawback: the best order for evaluating rays is not necessarily chosen
+	\end{itemize}
+%	\item Conditional probability:
+%	\begin{align*}
+%		P(\mathbf{m}_i|X_{1:t}&,Z_{1:t})\nonumber\\&
+%		=P((\dots(((\mathbf{m}_i|X_{1:t},Z_{1:t-1})|z_{t,1})|z_{t,2})|\ldots)|z_{t,n_z})
+%	\end{align*}
+	\item \emph{Synergistic Update}: consider every measurement ray inside a scan \emph{simultaneously} to update all grid cells inside the FOV
+	\begin{itemize}
+		\item Benefit: synergistic update provides a method where all rays are considered simultaneously
+		\item Drawback: required assumption that the measurement rays are independent, though they capture the same map
 	\end{itemize}
 \end{itemize}
 
 \end{frame}
-
-
-\begin{frame}
-\frametitle{Ray-By-Ray Inverse Sensor Model}
-
-\begin{itemize}
-	\item Main idea: given a scan of measurement rays, update the map based on each measurement ray \emph{individually} and \emph{sequentially}
-	\item Conditional probability:
-	\begin{align*}
-		P(\mathbf{m}_i|X_{1:t}&,Z_{1:t})\nonumber\\&
-		=P((\dots(((\mathbf{m}_i|X_{1:t},Z_{1:t-1})|z_{t,1})|z_{t,2})|\ldots)|z_{t,n_z})
-	\end{align*}
-	\item Benefit: the measurement rays maintain some dependency as they capture the same map
-	\item Drawback: the best order for evaluating rays is not necessarily chosen
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}
-\frametitle{Synergistic Scan Inverse Sensor Model}
-
-\begin{itemize}
-	\item Main idea: consider every measurement ray inside a scan \emph{simultaneously} to update all grid cells inside the FOV
-	\item Probability derived from a Bayesian approach:
-	\begin{align*}
-		P(\mathbf{m}_i|X_{1:t},Z_{1:t})
-		&=\xi_i P(\mathbf{m}_i|{X_{1:t-1}},Z_{1:t-1})\nonumber\\&\quad\times
-		\prod_{l\in\mathcal L_i}
-		\hat P(\mathbf{r}_{l,k}|z_{t,l},X_{1:t},Z_{1:t-1}),
-		\\
-		\hat P(\mathbf{r}_{l,k}|z_{t,l},X_{1:t},Z_{1:t-1})&
-		\triangleq \frac{\tilde P(\mathbf{r}_{l,k}|z_{t,l},X_{1:t},Z_{1:t-1})}{P(\mathbf{m}_i|X_{1:t-1},Z_{1:t-1})}
-	\end{align*}
-	\item Benefit: synergistic update provides a method where all rays are considered simultaneously
-	\item Drawback: required assumption that the measurement rays are independent, though they capture the same map
-\end{itemize}
-
-\end{frame}
-
 
 
 \begin{frame}
@@ -527,7 +520,7 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 \end{frame}
 
 \begin{frame}
-\frametitle{Probabilistic Occupancy Grid Mapping Conclusions}
+\frametitle{Probabilistic Occupancy Grid Mapping Summary}
 
 \begin{itemize}
 	\item The proposed novel Bayesian solution to the inverse sensor model provides the exact solution without approximate functions or learned solutions
@@ -541,11 +534,19 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 \subsection*{Entropy-Based Autonomous Exploration}
 
 \begin{frame}
+\frametitle{Entropy-Based Autonomous Exploration}
+\begin{enumerate}[I]
+\addtocounter{enumi}{1}
+	\item Entropy-Based Autonomous Exploration
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
 \frametitle{Autonomous Exploration}
 
 \begin{itemize}
 	\item Goal: determine robotic actions that maximize map information
-	\item Solution: predict future map uncertainty and travel distance to select an optimal pose
+	\item Approach: predict future map uncertainty and travel distance to select an optimal pose
 \end{itemize}
 
 \end{frame}
@@ -780,7 +781,7 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 
 
 \begin{frame}
-\frametitle{Autonomous Exploration Conclusions}
+\frametitle{Autonomous Exploration Summary}
 
 \begin{itemize}
 	\item Other approaches use heuristic frontiers or entropy of expected measurements
@@ -792,22 +793,40 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 \end{frame}
 
 \section*{}
-\subsection*{Multi-Vehicle Coordination}
+\subsection*{Multi-Vehicle Exploration and Patrol}
+
+\begin{frame}
+\frametitle{Multi-Vehicle Exploration and Patrol}
+\begin{enumerate}[I]
+\addtocounter{enumi}{2}
+	\item Multi-Vehicle Exploration and Patrol
+\end{enumerate}
+\end{frame}
 
 \begin{frame}
 \frametitle{Motivation and Goal}
 
 \begin{itemize}
-	\item Multiple agents can accomplish tasks faster and more reliably than a single agent
-	\item Large groups are capable of coverage in large environments
-	\item Problem: multi-vehicle map information gain optimality can be computationally-intractable
-	\item Solution: bidding-based solution simplifies a complicated optimization into a series of simplified optimizations
+	\item Multi-Vehicle Autonomous Exploration
+	\begin{itemize}
+		\item Multiple agents can accomplish tasks faster and more reliably than a single agent
+		\item Large groups are capable of coverage in large environments
+		\item Problem: multi-vehicle map information gain optimality can be computationally-intractable
+		\item Approach: bidding-based solution simplifies a complicated optimization into a series of simplified optimizations
+	\end{itemize}
+	\pause
+	\item Multi-Vehicle Autonomous Patrol
+	\begin{itemize}
+		\item Patrolling large environments with humans is expensive and sometimes dangerous
+		\item Several robotic approaches introduce new variables for patrol
+		\item Approach: degrade probabilistic occupancy grid over time to encourage revisiting past regions
+	\end{itemize}
 \end{itemize}
 
 \end{frame}
 
 \begin{frame}
-\frametitle{Related Work}
+\frametitle{Related Work in Multi-Vehicle Exploration}
 
 \begin{itemize}
 	\item Most existing bidding-based techniques deal with auctioning tasks among a few agents locally in decentralized frameworks
@@ -819,7 +838,7 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 \end{frame}
 
 \begin{frame}
-\frametitle{Proposed Approach}
+\frametitle{Proposed Approach in Multi-Vehicle Exploration}
 
 \begin{itemize}
 \item Central executive completes $n$ auctions for $n$ robots
@@ -838,7 +857,7 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 \end{frame}
 
 \begin{frame}
-\frametitle{Numerical Example: SEH Second Floor Multi-Vehicle Autonomous Exploration}
+\frametitle{Numerical Example: SEH Multi-Vehicle Exploration}
 
 
 	\centering{
@@ -866,6 +885,7 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 		\item Bio-inspired approach uses digital pheromones 
 		\item Minimizing robot idleness
 	\end{itemize}
+	\pause
 	\item Proposed Approach
 	\begin{itemize}
 		\item Degrade occupancy grid cells toward their initial values with exponential decay
@@ -893,7 +913,7 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 
 
 \begin{frame}
-\frametitle{Numerical Example: SEH Second Floor Multi-Vehicle Autonomous Patrol}
+\frametitle{Numerical Example: SEH Multi-Vehicle Patrol}
 
 
 	\centering{
@@ -924,7 +944,7 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 \end{frame} 
 
 \begin{frame}
-\frametitle{Multi-Vehicle Autonomous Exploration and Patrol Conclusions}
+\frametitle{Multi-Vehicle Exploration and Patrol Summary}
 
 \begin{itemize}
 	\item Robotic tasks are assigned following a bidding-based framework to avoid a computationally-intractable solution
@@ -940,13 +960,22 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 \section*{}
 \subsection*{Experiments}
 
+
+\begin{frame}
+\frametitle{Experiments}
+\begin{enumerate}[I]
+\addtocounter{enumi}{3}
+	\item Experiments
+\end{enumerate}
+\end{frame}
+
 \begin{frame}
 \frametitle{Experimental Overview}
 
 \begin{enumerate}
 	\item Ground vehicle experiment for 2D occupancy grid mapping and autonomous exploration
-	\item Flying vehicle experiment in large 3D space resembling an office
-	\item Flying vehicle experiment in a complex 3D space
+	\item Aerial vehicle experiment in large 3D space resembling an office
+	\item Aerial vehicle experiment in a complex 3D space
 \end{enumerate}
 \end{frame}
 
@@ -1062,7 +1091,7 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 
 
 \begin{frame}
-\frametitle{Flying Vehicle in a Large Office-Like Environment}
+\frametitle{Aerial Vehicle in a Large Office-Like Environment}
 \begin{itemize}
         	\item Hardware
 	\begin{itemize}
@@ -1092,6 +1121,25 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 \end{frame}
 
 \begin{frame}
+\frametitle{Aerial Vehicle in a Large Office-Like Environment}
+\begin{itemize}
+        	\item Environment Size: $10.8$ m $\times$ $11.8$ m $\times$ $1.65$ m
+\end{itemize}
+\begin{figure}
+  \centering
+  \begin{subfigure}[t]{.4\linewidth}
+    \centering\includegraphics[width=\linewidth]{experiment_north.jpg}
+    \caption*{North Region}
+  \end{subfigure}
+  \begin{subfigure}[t]{.4\linewidth}
+    \centering\includegraphics[width=\linewidth]{experiment_south.jpg}
+    \caption*{South Region}
+  \end{subfigure}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}
 \frametitle{Large Flight Test Experiment Video}
 
 
@@ -1111,10 +1159,11 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 
 
 \begin{frame}
-\frametitle{Flying Vehicle in a Complex 3D Environment}
+\frametitle{Aerial Vehicle in a Complex 3D Environment}
 \begin{itemize}
         	\item Full 3D mapping and exploration
 	\item Objects are not vertically-uniform
+	\item Environment Size: $9.0$ m $\times$ $8.5$ m $\times$ $2.25$ m
 \end{itemize}
 
 
@@ -1133,7 +1182,7 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 
 
 \begin{frame}
-\frametitle{Full 3D Flying Experiment Video}
+\frametitle{Full 3D Aerial Experiment Video}
 
 
 	\centering{
@@ -1151,7 +1200,7 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 
 
 \begin{frame}
-\frametitle{Experiment Conclusions}
+\frametitle{Experiment Summary}
 \begin{itemize}
         	\item Experimental environments in 2D and 3D are modeled with occupancy grids
 	\item Future entropy prediction and collision-free regions use these occupancy probabilities
@@ -1161,7 +1210,7 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 \end{frame}
 
 \section*{}
-\subsection*{Conclusions and Publications}
+\subsection*{Conclusions}
 
 \begin{frame}
 \frametitle{Conclusions}
@@ -1214,6 +1263,13 @@ Taeyoung Lee, James Hahn, Robert Pless,\\Chung-Hyuk Park, and Zhuming Ai}
 }
 \end{frame}
 
+\begin{frame}
+\frametitle{Thanks}
+\begin{itemize}
+        	\item Special thanks to the US Naval Research Lab for support under project ``Intelligent Microflyer''
+	\item Questions
+\end{itemize}
+\end{frame}
 
 
 
