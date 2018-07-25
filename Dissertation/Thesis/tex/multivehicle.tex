@@ -16,7 +16,7 @@ During this chapter, we assume a 3D vertically-uniform environment at a fixed ex
 \label{eqn:expectedInfoGainMap2D}
 \mathcal I(X_c,m_\text{2D})&=H(P(m_\text{2D}))-\text{E}\left[H(P(m|X_c,Z_c))\right],
 \end{align}
-where the expected scan $Z$ is given from \refeqn{expectedInfoGainRay} and \refeqn{FindRc}.
+where the expected scan $Z_c$ is given from \refeqn{expectedInfoGainRay} and \refeqn{FindRc}.
 
 
 \subsection{Objective Function for the First Auction}
@@ -446,10 +446,10 @@ In short, each grid cell is continuously degrading according to \refeqn{CellDegr
 
 
 
-In this section, we present a multi-vehicle exploration simulation that is identical to the scenario in Section \ref{sec:MultivehicleExplorationSEH}, except for two key differences. The first is that patrol is included in the exploration scheme to incentivize the robots to revisit areas after time passes. The second is that the robots must handle a human is walking around the space, unknown to the cooperating robots, requiring the receding horizon framework to avoid collisions with this dynamic obstacle.
+In this section, we present a multi-vehicle exploration simulation that is identical to the scenario in Section \ref{sec:MultivehicleExplorationSEH}, except for two key differences. The first is that patrol is included in the exploration scheme to incentivize the robots to revisit areas after time passes. The second is that the robots must handle a human walking around the space, unknown to the cooperating robots, requiring the receding horizon framework to avoid collisions with this dynamic obstacle.
 
 \paragraph{Degradation Thread}
-An additional thread within the mapping node handles cell degradation with $\lambda=1\times10^{-3}$, which corresponds to a cell half life of roughly $11.5$ minutes; if this time passes since a measurement captures a cell, the occupancy probability will be halfway between its value $11.5$ minutes ago and $P_\infty=P_\text{init}=0.1$. While degrading cells with \refeqn{CellDegradationScalar} is inexpensive, degradation must cycle through all cells, which can be costly with a map containing over $45$ million cells. Since all cells are affected by degradation, simply sending the map \emph{changes} from measurement scan updates alone is insufficient for the exploration node to track these changing probabilities. Thus, the complete map is sent from this mapping thread, and an additional thread in the exploration node subscribes to this message to update the projected map $m_\text{2D}$ slowly. The sluggish speed of this thread is acceptable, as cell degradation is a slow process, so fast updates are uncritical. Both the mapping and exploration nodes require an additional thread for degradation.
+An additional thread within the mapping node handles cell degradation with $\lambda=1\times10^{-3}$, which corresponds to a cell half life of roughly $11.5$ minutes; if this time passes since a measurement captures a cell, the occupancy probability will be halfway between its value $11.5$ minutes ago and $P_\infty=P_\text{init}=0.1$. While degrading cells with \refeqn{CellDegradationScalar} is inexpensive, degradation must cycle through all cells, which can be costly with a map containing over $45$ million cells. Since all cells are affected by degradation, simply sending the map \emph{changes} from measurement scan updates alone is insufficient for the exploration node to track all changing probabilities. Thus, the complete map is sent from this mapping thread, and an additional thread in the exploration node subscribes to this message to update the projected map $m_\text{2D}$ slowly. The sluggish speed of this thread is acceptable, as cell degradation is a slow process, so fast updates are uncritical. Both the mapping and exploration nodes require an additional thread for degradation.
 
 
 \paragraph{Simulated Results}
@@ -575,7 +575,7 @@ In the simulation, three quadrotors explore and patrol the same simulated enviro
 
 
 
-The robot generated a fairly-complete occupancy grid within $9$ minutes, and proceeded to patrol the space during the remaining time. After $9$ minutes, the total map entropy no longer increases or decreases significantly; the rate of cell degradation is roughly equal and opposite to improvements to the probabilistic map from the robot team. In contrast, if the robots simply hover instead of patrol after $9$ minutes, the map uncertainty quickly increases, shown in Fig. \ref{fig:DegradeExamples}. Furthermore, the receding horizon framework minimizes time between exploration updates, which allows the robots quickly react to dynamic obstacles like the non-cooperative human, shown in Fig. \ref{fig:EvadeHuman}.
+The robot generates a fairly-complete occupancy grid within $9$ minutes, and proceeds to patrol the space during the remaining time. After $9$ minutes, the total map entropy no longer increases or decreases significantly; the rate of cell degradation is roughly equal and opposite to improvements to the probabilistic map from the robot team. In contrast, if the robots simply hover instead of patrol after $9$ minutes, the map uncertainty quickly increases, shown in Fig. \ref{fig:DegradeExamples}. Furthermore, the receding horizon framework minimizes time between exploration updates, which allows the robots quickly react to dynamic obstacles like the non-cooperative human, shown in Fig. \ref{fig:EvadeHuman}.
 
 \begin{figure}
 	\centering
@@ -620,7 +620,7 @@ The results also demonstrate an interesting tradeoff between exploring new terra
 
 \section{Conclusions}
 
-This chapter introduced a bidding-based framework for cooperative autonomous exploration and patrol. These contributions exploit the values of the objective functions used in autonomous exploration optimizations for a bids over a series of auctions. Between auctions, a copy of the map and collision criteria are updated, thereby coordinating the exploration efforts. Finally, a patrol scheme is developed based on simple cell degradation, promoting periodic visitations to the same regions over time.
+This chapter introduced a bidding-based framework for cooperative autonomous exploration and patrol. These contributions exploit the values of the objective functions used in autonomous exploration optimizations for bids over a series of auctions. Between auctions, a copy of the map and collision criteria are updated, thereby coordinating the exploration efforts. Finally, a patrol scheme is developed based on simple cell degradation, promoting periodic visitations to the same regions over time.
 
 
 
