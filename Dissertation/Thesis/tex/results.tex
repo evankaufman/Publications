@@ -11,7 +11,7 @@ The experiment involves a Pioneer ground vehicle producing a probabilistic occup
 
 
 \subsection{Hardware Configuration}
-The Pioneer 3 ground robot (Figure \ref{fig:Pioneer}) is chosen for this experiment because of its reliability and simple operation. The vehicle accepts two inputs, namely linear velocity (aligned with the robot wheels) and angular velocity (about a central axis passing vertically through the robot). The robot pose is estimated via Vicon Tracker, which provides the location and attitude of a rigid body. The depth readings are obtained by a Kinect depth sensor. Since the experiment is to map and explore a 2D environment, only a single central row of the 3D Kinect depth scan provide the necessary measurements. The robot captures an experimental environment with walls constructed from Styrofoam.
+The Pioneer 3 ground robot (Figure \ref{fig:Pioneer}) is chosen for this experiment because of its reliability and simple operation. The vehicle accepts two inputs, namely linear velocity (aligned with the robot wheels) and angular velocity (about a central axis passing vertically through the robot). The robot pose is estimated via Vicon Tracker, which provides the location and attitude of a rigid body. The depth readings are obtained by a Kinect depth sensor. Since the experiment is to map and explore a 2D environment, only a single central row of the 3D Kinect depth scan provides the necessary measurements. The robot captures an experimental environment with walls constructed from Styrofoam.
 
 \begin{figure}
 	\centering{
@@ -43,7 +43,7 @@ The Pioneer 3 ground robot (Figure \ref{fig:Pioneer}) is chosen for this experim
 
 \subsection{Software Configuration}
 
-The software structure is similar to ROS nodes Section \ref{sec:Ae2DNumExamples}, which simply involves a mapping node, an exploration node, and a visualization node using OpenGL libraries~\cite{openGL}. The only differences are eliminating the simulator (Stage) and adding synchronization among the sensors, which is of high importance to the proposed occupancy grid mapping approach. Any time delay between the robot pose estimation and the sensor depth readings can cause conflicting information, which may be harmful to the probabilistic map. Thus, ROS approximate message filters are applied such that the pose from Vicon Tracker ($100$Hz) and the Microsoft Kinect ($30$Hz) are nearly synchronized, which provides validity of the assumption that the measurement ray positions and directions are known deterministically.
+The software structure is similar to ROS nodes Section \ref{sec:Ae2DNumExamples}, which simply involves a mapping node, an exploration node, and a visualization node using OpenGL libraries~\cite{openGL}. The only differences are eliminating the simulator (Stage) and adding synchronization among the sensors, which is of high importance to the proposed occupancy grid mapping approach. Any time delay between the robot pose estimation and the sensor depth readings can cause conflicting information, which may be harmful to the probabilistic map. Thus, ROS Message Filters are applied such that the pose from Vicon Tracker ($100$ Hz) and the Microsoft Kinect ($30$ Hz) are nearly synchronized, which provides validity of the assumption that the measurement ray positions and directions are known deterministically.
 
 \subsection{Exploring and Mapping a 2D Environment}
 The environment consists of Styrofoam walls on a flat floor. The perimeter is rectangular, with several obstacles and angled walls (see Figure \ref{fig:ExpSetupPhoto}). The robot autonomously explored the space using the complete Cartesian searching approach, and Dijkstra's algorithm provides collision-free waypoints to the optimal future poses. Based on these waypoints, a constrained least squares polynomial fitting generates a smooth trajectory to follow the waypoints with fixed velocity. Finally, a simple controller is implemented such that the Pioneer follows the trajectory by moving and orienting toward the desired robot location $1$ sec in the future.
@@ -52,13 +52,13 @@ The environment consists of Styrofoam walls on a flat floor. The perimeter is re
 	\centering
     	\begin{subfigure}[b]{0.45\textwidth}
         		\includegraphics[width=\textwidth]{test_setup_bottom_left_cropped.jpg}
-        		\caption{Bottom-left view}
+        		\caption{Bottom-Left View}
         		\label{fig:Experiment_blv}
     	\end{subfigure}
 	\hspace*{0.05\columnwidth}
 	\begin{subfigure}[b]{0.45\textwidth}
         		\includegraphics[width=\textwidth]{test_setup_bottom_right_cropped.jpg}
-        		\caption{Bottom-right view}
+        		\caption{Bottom-Right View}
         		\label{fig:Experiment_brv}
     	\end{subfigure}
 \caption{2D Experimental Environment}
@@ -70,7 +70,6 @@ The environment consists of Styrofoam walls on a flat floor. The perimeter is re
 
 
 The resulting occupancy grid maps and trajectories are depicted in Figure \ref{fig:ExperimentOGM} and a video is available at \href{https://www.youtube.com/watch?v=CRQfhhICSj0&feature=youtu.be}{\WriteBlue{www.youtube.com/watch?v=CRQfhhICSj0\&feature=youtu.be}}. Most importantly, the robot builds a clear occupancy grid map despite sensor noise and imperfect sensor synchronization. The autonomous exploration successfully guides the robot such that it builds a map of the reachable space without colliding with any obstacles.
-
 
 \begin{figure}
 	\centering{
@@ -138,7 +137,7 @@ The resulting occupancy grid maps and trajectories are depicted in Figure \ref{f
 
 The resulting map and exploration commands are generated in real time. The grid cells are stored as double-float variables in a vector, where the vector index is mapped to a location on the occupancy grid. Thus, the memory requirements are proportional to the number of grid cells, which is roughly the mapping area divided by the area of a grid cell. Since cell locations need not be saved because the mapping between cell index and location is known, memory requirements are reduced. On a Lenovo T540p laptop with an Intel Core i7-4900MQ processor (quad-core, 2.8GHz per core) and 16GB of RAM, the mean time for updating the occupancy grid is $0.0115$ seconds, and the mean time to determine an exploration strategy is $0.6820$ seconds. Time requirements for mapping and exploration are easily modified by changing grid cell resolution or the number of exploration pose candidates, respectively. In short, there is a tradeoff between computational speed and accuracy of mapping or exploration.
 
-The autonomous exploration is governed by a policy to maximize expected entropy decreases, so entropy and entropy change with time (Figure \ref{fig:ExperimentH}) are important metrics. In this example, the a priori occupancy probabilities of all cells are $0.1$, so the entropies could temporarily rise for likely occupied cells. The total map entropy begins at roughly $2613$ and decreases by roughly half to $1338$. Many grid cells within the map limits are occluded by walls, preventing the blocked cells from occupancy probability changes. In some cases, the robot is able to update the cell occupancy probabilities; in other cases, cells fall inside regions occluded from all reachable space, and the robot cannot update these cells. Among those grid cells visible from collision-free locations, the vast majority of cells were updated in less than $3$ min while following a very slow ($5$ cm/sec) trajectory.
+The autonomous exploration is governed by a policy to maximize expected entropy decreases, so entropy and entropy change with time (Figure \ref{fig:ExperimentH}) are important metrics. In this example, the a priori occupancy probabilities of all cells are $0.1$, so the entropies could temporarily rise for likely occupied cells. The total map entropy begins at roughly $2613$ and decreases by roughly half to $1338$. Many grid cells within the map limits are occluded by walls, preventing the blocked cells from occupancy probability changes. In some cases, the robot is able to update the cell occupancy probabilities; in other cases, cells fall inside regions occluded from all reachable space, and the robot cannot update these cells. Among those grid cells visible from collision-free locations, the vast majority of cells are updated in less than $3$ min while following a very slow ($5$ cm/sec) trajectory.
 
 \begin{figure}
 	\centering
@@ -206,7 +205,7 @@ The U.S. Naval Research Laboratory (NRL) has a large experimental space for test
 	\caption{3D Experimental Environment for Level Flight}
 	\medskip
 	\small
-	The 3D experimental environment is designed to resemble a large room within an office building. The walls are build from from cardboard suspended from stanchions and gray sheeting with $80/20$ supports, and miscellaneous objects are placed around the room as well.
+	The 3D experimental environment is designed to resemble a large room within an office building. The walls are built from from cardboard suspended from stanchions and gray sheeting with $80/20$ supports, and miscellaneous objects are placed around the room as well.
 	\label{fig:exp3DEnvironment}
 \end{figure}
 
@@ -548,7 +547,7 @@ The software follows the same structure as in Section \ref{sec:MarsSimulation}, 
 
 \subsection{3D Exploration Results}
 
-The experimental results show that the robot successfully explores a 3D space, capturing occupied space above and below the robot. The quadrotor does an initial rotation over $20$ sec, then explores the space with planned motions in all three dimensions, shown in Figure \ref{fig:exp3DVid}. The robot generates a 3D probabilistic map (Figure \ref{fig:exp3DOccMap}) and uses this for entropy prediction and collision-free motion planning with a 3D cost map (Figure \ref{fig:Full3DExplorationCostmaps}).
+The experimental results show that the robot successfully explores a 3D space, capturing occupied space above and below the robot. The quadrotor does an initial rotation over $20$ sec, then explores the space with planned motions in all three dimensions, shown in Figure \ref{fig:exp3DVid}. The robot generates a 3D probabilistic map (Figure \ref{fig:exp3DOccMap}) and uses this for entropy prediction and collision-free motion planning with a 3D cost map (Figure \ref{fig:Full3DExplorationCostmaps}). A video of this experiment is available at \href{https://www.youtube.com/watch?v=2Q2_-d8kNu0}{\WriteBlue{https://www.youtube.com/watch?v=2Q2\_-d8kNu0}}.
 
 \begin{figure}[!t]
 \centering{
