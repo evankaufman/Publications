@@ -29,7 +29,7 @@ Suppose the probability of the map conditioned on the past poses and measurement
 
 \subsection{Bayesian Framework}
 
-The occupancy probability $P(m|z_{t,l},X_{1:t},Z_{1:t-1})$ is based on the forward sensor model $p(z_{t,l}|m,X_{1:t},Z_{1:t-1})$ that describe the distribution of the measurements for the given robot pose and the map. This specifies the stochastic characteristics of the sensor are a known distribution, specific to a particular depth sensor. One could certainly obtain a stochastic model by fitting a probability density to a controlled set of measurements. Bayes' rule yields
+The occupancy probability $P(m|z_{t,l},X_{1:t},Z_{1:t-1})$ is based on the forward sensor model $p(z_{t,l}|m,X_{1:t},Z_{1:t-1})$ that describes the distribution of the measurements for the given robot pose and the map. This specifies the stochastic characteristics of the sensor are a known distribution, specific to a particular depth sensor. One could certainly obtain a stochastic model by fitting a probability density to a controlled set of measurements. Bayes' rule yields
 \begin{align}
 \label{eqn:BayesRuleRayISM}
 P(&m|z_{t,l},X_{1:t},Z_{1:t-1})%\nonumber\\&
@@ -72,7 +72,7 @@ Next, let $\mathbf{r}_{l,k+}$ correspond to the event that the $k$-th cell of th
   \caption{Occupancy Grid Maps with Identical Forward Sensor Models}
   \medskip
   \small
-  A robot located to the left of a 1D occupancy grid map $r_l$ composed of $n_{r,l}=6$ grid cells in four cases. In each case, cells the first three cells are free, the fourth cell is occupied, and the fifth and sixth cells may or may not be occupied. All above outcomes correspond to the event $\mathbf{r}_{l,4+}$.
+  A robot located to the left of a 1D occupancy grid map $r_l$ composed of $n_{r,l}=6$ grid cells in four cases. In each case, cells the first three cells are free, the fourth cell is occupied, and the fifth and sixth cells may or may not be occupied. All above outcomes correspond to the event $\mathbf{r}_{l,4+}$, and therefore share the same forward sensor model.
   \label{fig:show_rkplus}
 \end{figure}
 
@@ -96,7 +96,7 @@ p(z_{t,l}|\mathbf{r}_{l,i+},X_t)P(\mathbf{r}_{l,i}|X_{1:t-1},Z_{1:t-1})\bigg]\no
 %&\quad\times 
 p(z_{t,l}|\mathbf{r}_{l,k+},X_t)P(\mathbf{r}_{l,k}|X_{1:t-1},Z_{1:t-1}),
 \end{align}
-where $P(\bar{\mathbf{r}}_{l,0}|X_{1:t-1},Z_{1:t-1})=P(\mathbf{r}_{l,n_r+1}|X_{1:t-1},Z_{1:t-1})=1$ is chosen for convenience and $p(z_{t,l}|\mathbf{r}_{l,(n_r+1)+},X_t)$ represents the probability density of the measurement when all of cells in the field of view of the $l$-th ray is not occupied. The normalizer $\eta_{t,l}$ is given by
+where $P(\bar{\mathbf{r}}_{l,0}|X_{1:t-1},Z_{1:t-1})=P(\mathbf{r}_{l,n_r+1}|X_{1:t-1},Z_{1:t-1})=1$ is chosen for convenience and $p(z_{t,l}|\mathbf{r}_{l,(n_r+1)+},X_t)$ represents the probability density of the measurement when all of cells in the field of view of the $l$-th ray are not occupied. The normalizer $\eta_{t,l}$ is given by
 \begin{align}
 \label{eqn:allEta}
 \eta_{t,l}
@@ -165,7 +165,7 @@ At the $t$-th time step, consider the measurement scan $Z_t=\{z_{t,1},z_{t,2},..
 P(\mathbf{m}_i|X_{1:t},Z_{1:t})&%=P(\mathbf{m}_i|X_{1:t},Z_{1:t-1}|z_{t,1},z_{t,2},...,z_{t,n_z})\nonumber\\&
 =P(\mathbf{m}_i|X_{1:t},Z_{1:t-1}|z_{t,1}|z_{t,2}|...|z_{t,n_z}).
 \end{align}
-In this approach, each ray is considered individually such that the inverse sensor model updates the probabilities of grid cells from one ray before subsequent rays of $Z_t$ are considered. Therefore, we assume the first measurement ray $z_{t,1}$ is independent of the remaining rays $z_{t,2:n_z}$. For the second ray, namely $z_{t,2}$, this may depend on $z_{t,1}$, but not subsequent rays $z_{t,3:n_z}$. By the time $z_{t,n_z}$ is considered, it may depend on all prior rays $z_{t,1:n_z-1}$. Therefore, the ray-by-ray approach considers rays within a single scan as partially dependent on each other.
+In this approach, each ray is considered individually such that the inverse sensor model updates the probabilities of grid cells from one ray before subsequent rays of $Z_t$ are considered. Therefore, we assume the first measurement ray $z_{t,1}$ is independent of the remaining rays $z_{t,2:n_z}$. For the second ray, namely $z_{t,2}$, this may depend on $z_{t,1}$, but not subsequent rays $z_{t,3:n_z}$. By the time $z_{t,n_z}$ is considered, it may depend on any combination of prior rays $z_{t,1:n_z-1}$. Therefore, the ray-by-ray approach considers rays within a single scan as partially dependent on each other.
 
 In short, the proposed scan inverse sensor model is computed by \refeqn{RayISMAnswer}-\refeqn{RayByRayScanISM}. These are summarized in Algorithm \ref{alg:RayByRayISM} as a computationally efficient, recursive algorithm that avoids several repeated calculations of the same quantity. This algorithm utilizes temporary variables, where the required computational resources are minimized by computing the updated occupancy probabilities of all grid cells along a measurement ray together. Note that this function is only considering $l$-th ray at the $t$-th time step, where probabilities are subject to conditions on the history of poses $X_{1:t-1}$ and measurement scans $Z_{1:t-1}$, so these are removed from the algorithm for simplicity.
 
@@ -370,16 +370,16 @@ Then, these probabilities are combined in a weighted fashion such that all measu
 \paragraph{Mapping a Hallway with the Ray-By-Ray Approach}
 
 First, we compare the proposed exact solution to the ray-by-ray inverse sensor model summarized in Algorithm \ref{alg:RayByRayISM} with an approximations of \refeqn{ISM_Approx_1}--\refeqn{ISM_Approx_2}.
-Table~\ref{tab:penn} shows the mapping parameters and data specifications for the actual odometry and lidar measurements from University of Pennsylvania through Coursera open course~\cite{coursera}. Among these parameters, cell resolution and the number of rays have the greatest impact on computation. In general, the finer the grid, the greater the memory and computational requirements are because the computational order of \refeqn{RayISMAnswer} grows linearly with the number of grid cells inside the sensor range limits. Since the inverse sensor models are combined sequentially as shown in \refeqn{RayByRayScanISM}, the number of rays considered are proportional to the computation order as well.
+Table~\ref{tab:penn} shows the mapping parameters and data specifications for the actual odometry and lidar measurements from University of Pennsylvania through the Coursera open course~\cite{coursera}. Among these parameters, cell resolution and the number of rays have the greatest impact on computation. In general, the finer the grid, the greater the memory and computational requirements are because the computational order of \refeqn{RayISMAnswer} grows linearly with the number of grid cells inside the sensor range limits. Since the inverse sensor models are combined sequentially as shown in \refeqn{RayByRayScanISM}, the number of rays considered are proportional to the computation order as well.
 Figure~\ref{fig:penn_map} shows the direct comparison of the resulting map based on the approximate and proposed inverse sensor model.
-As shown in the figure, both approaches capture the structure of the environment. However, the significant differences can be seen, particularly with an enlarged mapping section in Figure~\ref{fig:penn_map_zoom}.
+As shown in the figure, both approaches capture the structure of the environment. However, significant differences can be seen, particularly with an enlarged mapping section in Figure~\ref{fig:penn_map_zoom}.
 
 To quantify the degree of map uncertainty, we define the entropy of the map as 
 \begin{align*}
 H(P(m|X_{1:t},Z_{1:t}))&=-\sum_{i=1}^n\big\{P(\mathbf{m}_i|X_{1:t},Z_{1:t})\log P(\mathbf{m}_i|X_{1:t},Z_{1:t})\nonumber\\
 &\qquad+(1-P(\mathbf{m}_i|X_{1:t},Z_{1:t}))\log(1-P(\mathbf{m}_i|X_{1:t},Z_{1:t}))\big\},
 \end{align*}
-which is maximized when the probability of occupancy is $0.5$ for all cells (more uncertain), and it is minimized when they are either $0$ or $1$ (less uncertain). 
+which is maximized when the probability of occupancy is $0.5$ for all cells (more uncertain), and is minimized as probabilities approach either $0$ or $1$ (less uncertain). 
 The entropy differences among the algorithms can be clearly depicted in Figure~\ref{fig:entropy_comp} at frame 2280.
 The red part of the map shows the maximum  entropy whereas blue shows lowest entropy for the cell.
 Finally, overall improvement was demonstrated in Figure~\ref{fig:entropy} resulting in an improved entropy value per grid cell throughout the mapping process.
@@ -403,13 +403,13 @@ In short, the proposed exact occupancy grid mapping produced a cleaner map with 
     \begin{subfigure}[t]{0.8\columnwidth}
         \centering
         \includegraphics[trim={1.5cm 3.5cm 1.5cm 1.5cm},clip,width=\textwidth]{map_comparison.png}
-        \caption{Comparison of the total mapped environment based on the approximate (left) and proposed (right) inverse sensor model.}
+        \caption{Approximate (left) and proposed (right) inverse sensor model of the map}
         \label{fig:penn_map_total}
     \end{subfigure}
     \begin{subfigure}[t]{0.8\columnwidth}
         \centering
-        \includegraphics[trim={1.5cm 3.5cm 1.5cm 1.5cm},clip,width=\textwidth]{map_zoom.png}
-        \caption{Evidence of significant improvement at certain area of the map.}
+        \includegraphics[trim={1.5cm 3.35cm 1.5cm 1.5cm},clip,width=\textwidth]{map_zoom.png}
+        \caption{Approximate (left) and proposed (right) inverse sensor model of an area}
         \label{fig:penn_map_zoom}
     \end{subfigure}
     \caption{Comparison of Proposed Ray-By-Ray Approach with Approximate Solution}
@@ -425,7 +425,7 @@ In short, the proposed exact occupancy grid mapping produced a cleaner map with 
     \begin{subfigure}[t]{0.35\columnwidth}
         \centering
         \includegraphics[width=\textwidth]{AISM_Image_inf_19.pdf}
-        \caption{Approximate inverse sensor model}
+        \caption{Approx. inverse sensor model}
         \label{fig:AISM}
     \end{subfigure}
     \begin{subfigure}[t]{0.35\columnwidth}
@@ -576,7 +576,7 @@ The change of the map entropy over time, and the entropy of the completed maps, 
 
 \section{Conclusions}
 
-In this chapter, we presented the exact solution to the inverse sensor model for a single measurement ray, then extended this result to 2D occupancy grids. Measurement scans were analyzed with two techniques, namely ray-by-ray and synergistic combinations. Then, numerical results show how both proposed solutions outperform existing approximate solutions. Upon further study, the ray-by-ray approach has proven more robust against localization errors and changing environments because the rays are not assumed completely independent. Therefore, the ray-by-ray approach is applied to the subsequent proposals, numerical simulations, and experimental results.
+In this chapter, we present the exact solution to the inverse sensor model for a single measurement ray, then extend this result to 2D occupancy grids. Measurement scans are analyzed with two techniques, namely ray-by-ray and synergistic combinations. Then, numerical results show how both proposed solutions outperform existing approximate solutions. Upon further study, the ray-by-ray approach has proven more robust against localization errors and changing environments because the rays are not assumed completely independent. Therefore, the ray-by-ray approach is applied to the subsequent proposals, numerical simulations, and experimental results.
 
 
 
