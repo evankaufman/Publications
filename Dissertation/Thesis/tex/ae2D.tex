@@ -10,7 +10,7 @@ In this section, we define Shannon's entropy as a measure of map uncertainty, an
 
 \subsection{Shannon's Entropy}
 
-Here we present how the probabilistic properties of an occupancy grid map provide key information about the uncertainty of the space for motion planning. Shannon's entropy commonly serves as an uncertainty measure~\cite{StaGriBur05}. Provided grid cell probabilities of map $m$, Shannon's entropy is defined as
+Here we present how the probabilistic properties of an occupancy grid map provide key information about the uncertainty of the space for motion planning. Shannon's entropy commonly serves as an uncertainty measure~\cite{StaGriBur05}. Provided grid cell probabilities of map $ m$, Shannon's entropy is defined as
 \begin{align}
 \label{eqn:ShannonsEntropyCell}
 H(P(\mathbf{m}_i))&=-P(\mathbf{m}_i)\log{P(\mathbf{m}_i})-P(\bar{\mathbf{m}}_i)\log{P(\bar{\mathbf{m}}_i}),
@@ -46,8 +46,8 @@ The expected negative entropy change for candidate pose $X_c$ is equivalently th
 \mathcal I(X_c,z_c)&=H(P(m))-\text{E}\left[H(P(m|X_c,z_c))\right].
 \end{align}
 \end{prop}
-\begin{proof}% TODO: add ref?
-See Appendix B.
+\begin{proof}
+See Appendix \ref{app:ExpectedRayEntropy}.
 \end{proof}
 
 The proposed approach discretizes the measurement according to assumptions of occupancy grid mapping, and exploits the probabilistic properties uncovered by the proposed inverse sensor model. These are used to directly calculate the expected value of map entropy for a single measurement ray. 
@@ -177,14 +177,14 @@ This method provides the attitude that maximizes the information gain at an arbi
 The expanding ring technique is advantageous for searching local solutions quickly, only considering distant future poses when necessary. The key idea is that future candidate locations lie on a circular ``ring'' centered around the robot, evenly spaced around the ring (see red circles in Figure \ref{fig:OptProcess}), and the ring is expanded if certain criteria are not met. More explicitly, consider $n_c$ candidate locations denoted by $x_c\in\braces{x_1,x_2,\ldots,x_{n_c}}$ located with the distance $\delta$ away from the robot. All candidates must satisfy the inequality constraint,
 \begin{align}
 \label{eqn:CollisionInequalityConstraint}
-P_\text{collision}(X)=1-\prod_{i\in\mathcal C_X}(P(\bar{\mathbf{m}}_i)\leq\beta,
+P_\text{collision}(X)=1-\prod_{i\in\mathcal C_X}P(\bar{\mathbf{m}}_i)\leq\beta,
 \end{align}
 where $\mathcal C_X$ is the set of grid cells falling inside a volume of preselected size around $X$ that may cause collision and $\beta>0$ is a small acceptable probability of collision. Any location that violates an inequality constraint \refeqn{CollisionInequalityConstraint} is excluded to avoid collisions. The set of optimal attitudes at each candidate location is $\braces{R^*_{1},R^*_{2},\ldots,R^*_{n_c}}$, obtained from \refeqn{FindRc}. The information gain objective function for a scan $Z_c$ captured from pose $X_c$ is
 \begin{align}
 \label{eqn:ObjFun}
 \mathcal I(X_c)=H(P(m))-\text{E}\left[H(P(m|X_c,Z_c))\right],
 \end{align}
-is computed by a summation about the $n_d$ rays as %\refeqn{Objective},
+and this is computed by a summation about the $n_d$ rays as %\refeqn{Objective},
 \begin{align}
 \label{eqn:ObjFunApprox}
 \mathcal I(x_c,R_c^*)&\approx \sum_{z_{c,i}\in R_{c}^*\text{ FOV}}\bigg(H(P(m))-\text{E}\left[H(P(m|x_c,z_{c,i}))\right]\bigg),
@@ -269,8 +269,8 @@ Here we present two numerical examples. The first uses the expanding-ring techni
 \subsection{Exploring a Simple Environment}
 % SIMPAR numerical example (2 rooms, 1 hallway)
 
-Here, a robot autonomously maps and explores a 2D environment composed of two rooms and one hallway. The robot models its surroundings with an occupancy grid of $15,000$ cells where grid cell edges have length $\alpha=0.2$m, composing a map with dimensions $30\text{m}\times20\text{m}$. The initial probability $P(\mathbf{m}_i)=1\times10^{-10}\approx0$ (minimum value for free space) for grid cells covered by the circular robot of radius $0.1$m and $P(\mathbf{m}_i)=0.5$ for all other cells.
-At each time step, the robot receives a measurement scan, where the probabilistic properties of the sensor are taken from~\cite{PirRutBisSch11,KhoElb12}. Then, the $n_c=8$ evenly-spaced candidate locations about a circle of radius $\delta=0.5$m around the current pose location are considered, where $n_d=32$ measurement rays are evenly-spaced about the candidate location.  When no current candidates yield expected information gains above $\mathcal I_\text{min}=2$, $\lambda=1.25$ is multiplied to $n_c$ and $\delta$. The motion of the robot is restricted to movement along cells satisfying \refeqn{CollisionInequalityConstraint} with $\beta=0.01$. Dijkstra's algorithm provides collision-free motion planning.
+Here, a robot autonomously maps and explores a 2D environment composed of two rooms and one hallway. The robot models its surroundings with an occupancy grid of $15,000$ cells where grid cell edges have length $\alpha=0.2$ m, composing a map with dimensions $30\text{ m}\times20\text{ m}$. The initial probability $P(\mathbf{m}_i)=1\times10^{-10}\approx0$ (minimum value for free space) for grid cells covered by the circular robot of radius $0.1$ m and $P(\mathbf{m}_i)=0.5$ for all other cells.
+At each time step, the robot receives a measurement scan, where the probabilistic properties of the sensor are taken from~\cite{PirRutBisSch11,KhoElb12}. Then, the $n_c=8$ evenly-spaced candidate locations about a circle of radius $\delta=0.5$ m around the current pose location are considered, where $n_d=32$ measurement rays are evenly-spaced about the candidate location.  When no current candidates yield expected information gains above $\mathcal I_\text{min}=2$, $\lambda=1.25$ is multiplied to $n_c$ and $\delta$. The motion of the robot is restricted to movement along cells satisfying \refeqn{CollisionInequalityConstraint} with $\beta=0.01$. Dijkstra's algorithm provides collision-free motion planning.
 The results are illustrated in Figure \ref{fig:AutonomousExploration}.
 
 
@@ -352,13 +352,13 @@ Throughout the numerical example, the robot chooses numerous actions, based dire
 \subsection{Exploring a Complicated Benchmark Environment}
 
 Next, the proposed autonomous exploration approach is applied to the floor plan of the Intel Research Lab, illustrated in Figure~\ref{fig:intel}.
-The robot explores its surroundings with an occupancy grid with $90,000$ cells where grid cell edges are $\alpha=0.1$m, composing a map with dimensions $30\text{m}\times30\text{m}$.
-Similar to the prior example, the initial probability $P(\mathbf{m}_i)=1\times10^{-10}\approx0$ (minimum value for free space) is chosen for grid cells covered by the circular robot of radius of $0.3$m and $P(\mathbf{m}_i)=0.5$ for all other cells.
-For added safety, cells falling within $0.6$m of the robot are considered inside the possible collision zone $\mathcal{C}_X$, from \refeqn{CollisionInequalityConstraint}, where $\beta=0.1$ is selected. 
+The robot explores its surroundings with an occupancy grid with $90,000$ cells where grid cell edges are $\alpha=0.1$ m, composing a map with dimensions $30\text{ m}\times30\text{ m}$.
+Similar to the prior example, the initial probability $P(\mathbf{m}_i)=1\times10^{-10}\approx0$ (minimum value for free space) is chosen for grid cells covered by the circular robot of radius of $0.3$ m and $P(\mathbf{m}_i)=0.5$ for all other cells.
+For added safety, cells falling within $0.6$ m of the robot are considered inside the possible collision zone $\mathcal{C}_X$, from \refeqn{CollisionInequalityConstraint}, where $\beta=0.1$ is selected. 
 
 The robot follows the complete Cartesian candidate search method to determine future poses, with $k_\text{dist}=5$ to avoid large motions with little added expected information gains. Due to the large size of the map, candidates below the expected information gain of $1.25$ are neglected from future consideration.
 
-The time sequence of the exploration for every 5~minutes are simulated in the ROS Stage 2D environment. The corresponding simulation results are illustrated in Figure \ref{fig:IRL} and a video is available at \href{https://www.youtube.com/watch?v=5VdzKHreB_s}{\WriteBlue{https://www.youtube.com/watch?v=5VdzKHreB\_s}}.
+The large 2D exploration is simulated in the ROS Stage 2D environment. The corresponding simulation results are illustrated in Figure \ref{fig:IRL} and a video is available at \href{https://www.youtube.com/watch?v=5VdzKHreB_s}{\WriteBlue{https://www.youtube.com/watch?v=5VdzKHreB\_s}}.
 Lighter red dots and darker blue dots in the explored area correlate to the level of information gain at those positions with low and high value, respectively. It is shown that the proposed autonomous exploration algorithm successfully mapped the complicated environment composed of a number of rooms, narrow hallways, and open spaces that are irregularly shaped.
 
 
