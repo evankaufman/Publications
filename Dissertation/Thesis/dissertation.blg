@@ -25,32 +25,32 @@ Too many commas in name 1 of "Chen H, Ding S, Chen X, et al" for entry ChiDinChe
 while executing---line 1090 of file plain.bst
 You've used 68 entries,
             2118 wiz_defined-function locations,
-            940 strings with 17222 characters,
-and the built_in function-call counts, 26131 in all, are:
-= -- 2604
-> -- 1173
+            940 strings with 17254 characters,
+and the built_in function-call counts, 26198 in all, are:
+= -- 2609
+> -- 1184
 < -- 30
-+ -- 469
-- -- 393
-* -- 1706
-:= -- 4027
++ -- 473
+- -- 397
+* -- 1715
+:= -- 4039
 add.period$ -- 214
 call.type$ -- 68
-change.case$ -- 394
+change.case$ -- 396
 chr.to.int$ -- 0
 cite$ -- 72
 duplicate$ -- 1098
 empty$ -- 2133
-format.name$ -- 393
-if$ -- 5733
+format.name$ -- 397
+if$ -- 5745
 int.to.chr$ -- 0
 int.to.str$ -- 68
 missing$ -- 64
 newline$ -- 338
 num.names$ -- 136
-pop$ -- 529
+pop$ -- 531
 preamble$ -- 1
-purify$ -- 330
+purify$ -- 332
 quote$ -- 0
 skip$ -- 846
 stack$ -- 0

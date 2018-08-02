@@ -29,4 +29,4 @@
 # Keep PDFs inside the Fig & Referenced Papers directory
 !Fig/*.pdf
 !Referenced\ Papers/*.pdf
-
+!Final\ Papers/*.pdf
