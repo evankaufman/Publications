@@ -161,10 +161,10 @@ This paper addresses three key aspects to multi-vehicle mapping and patrol of un
 Mapping is an important and well-studied topic in robotics for understanding an environment, avoiding collisions, and efficiently planning robotic motions.
 A popular approach to mapping is defining a grid-based map representation, e.g.,~\cite{WolSuk05,MeyBeiBur12,TanThoWolBus14}, because these representations are computationally tractable and simple to understand.
 
-However, these conventional grid-based mapping representations commonly approximate occupancy probabilities of the grid cells. The \emph{inverse sensor model}, which determines the map occupancy probabilities based on depth sensor measurements, is approximated with a simplified function, providing an inexact solution. As such, the prior belief of the environment and the stochastic properties of the sensor are not properly accounted. Another popular approach is based on simulated learning trials~\cite{Thr01,ThrBurFox05,SouMaiGon12} to determine an inverse sensor model. This approach is sensitive to simulation errors, and is not suitable for the higher dimensional configurations composed of maps, poses, and measurements due to the large number of required samples. In short, none of the existing approaches use the sensor properties to directly obtain a Bayesian solution to occupancy probability.
+However, these conventional grid-based mapping representations commonly approximate occupancy probabilities of the grid cells. The \emph{inverse sensor model}, which determines the map occupancy probabilities based on depth sensor measurements, is approximated with a simplified function, providing an inexact solution. As such, the prior belief of the environment and the stochastic properties of the sensor are not properly accounted. Another popular approach is based on simulated learning trials~\cite{Thr01,ThrBurFox05,SouMaiGon12} to determine an inverse sensor model. This approach is complicated and inexact due to sensitivity of simulation errors. In short, none of the existing approaches use the sensor properties to directly obtain a Bayesian solution to occupancy probability.
 
 %        1.      sensor fusion in mapping
-The approximate nature of the occupancy probability, either by a simplified function or a learned solution, motivates an exact Bayesian solution to the inverse sensor model. In this paper, we propose a computationally-efficient algorithm to obtain the exact solution to the inverse sensor model. This serves to generate probabilities in a 3D environment following the framework of~\cite{KauLeeAiMos16,KauTakAiLee17}. The proposed approach integrates stochastic properties of all sensors and the prior map estimate, following a Bayesian framework, to obtain the exact 3D occupancy probabilities~\cite{KauTakAiLee18}. As such, it provides a unified framework for sensor fusion between multiple sensors with various properties, such as sensor accuracy and fields of view. 
+The approximate nature of the occupancy probability, either by a simplified function or a learned solution, motivates an exact Bayesian solution to the inverse sensor model. In this paper, we propose a computationally-efficient algorithm to obtain this solution, which serves to generate probabilities in a 3D environment following the framework of~\cite{KauLeeAiMos16,KauTakAiLee17}. This approach approach integrates stochastic properties of all sensors and the prior map estimate, following a Bayesian framework, to obtain the exact 3D occupancy probabilities~\cite{KauTakAiLee18}. As such, it provides a unified framework for sensor fusion between multiple sensors with various properties, such as sensor accuracy and fields of view. 
 
 
 %        2.      proposing a method to combine 3D mapping and 2D exploration: Also, we need to motivate why we are not doing full 3D exploration. Stress that we are proposing a computationally friendly approach to perform 3D mapping with projection using the fact there is less variation in the floor plan along the vertical direction.
@@ -207,10 +207,12 @@ This sections summarizes the key equations providing the exact solutions to occu
 
 \subsection{Probabilistic Occupancy Grid Mapping}
 \label{subsec:POGM}
-Let map $m$ be an occupancy grid map decomposed into $n_m$ evenly-spaced cubic grid cells with fixed edge length $\alpha$. The $i$-th grid cell is assigned to a static binary random variable $\mathbf{m}_i$ for $i\in\braces{1,2,\ldots,n_m}$, that is defined as $\mathbf{m}_i=1$ when occupied, and $\mathbf{m}_i=0$ when free. Let another random variable be defined as $\bar{\mathbf{m}}_i=1-\mathbf{m}_i$ for convenience, which is the event that the $i$-th cell is free, i.e., $P(\bar{\mathbf{m}}_i)=1-P(\mathbf{m}_i)$. The location and size of each grid cell is known, and the random variables composing $m$ are assumed mutually independent, i.e., $P(m)=P(\mathbf{m}_1,\mathbf{m}_2,\ldots,\mathbf{m}_{n_m})=\prod_{i=1}^{n_m}P(\mathbf{m}_i)$, so $2^{n_m}$ maps are possible.
+An occupancy grid map $m$ is composed of $n_m$ grid cells, where each grid cell is a cube with fixed edge length $\alpha$. Occupancy grid cells are considered static binary random variables, i.e., the $i$-th grid cell $\mathbf{m}_i=1$ if occupied or $\mathbf{m}_i=0$ if free (unoccupied). For convenience, we define its complement as $\bar{\mathbf{m}}_i=1-\mathbf{m}_i$ such that $P(\bar{\mathbf{m}}_i)=1-P(\mathbf{m}_i)$. Since we assume grid cell occupancies are mutually independent, $2^{n_m}$ map combinations are possible.
 
+The occupancy grid map cell probabilities are repeatedly updated by a range sensor. Through the $t$-th time step, we assume the history of poses $X_{1:t}$ and measurement scans $Z_{1:t}$ are given. The $t$-th pose $X_t=\braces{x_t,R_t}$ consists of position $x_t\in\Re^3$ and attitude $R_t\in\SO=\braces{R\in\Re^{3\times3}|R^\T R=I,\det{R}=1}$. However, measurements are subject to random noise; let individual measurement ray $z\in Z_t$ be characterized by the \emph{forward sensor model}, which is a probability density $p(z|X_t,m)$, known either from the sensor manufacturer or obtained empirically. The goal of probabilistic occupancy grid mapping is using the stochastic properties of the forward sensor model to obtain the \emph{inverse sensor model}, $P(m|z,X_{1:t},Z_{1:t-1})$.
 
-Consider a range sensor that repeatedly scans the environment surrounding the robot and returns the distances to the closest occupied spaces. Let the measurement scan at the $t$-th time step be $Z_t$, where $z\in Z_t$ is a single measurement ray. Let the $t$-th pose be denoted by $X_t=\braces{x_t,R_t}$ with location $x_t\in\Re^3$ and attitude $R_t\in\SO=\braces{R\in\Re^{3\times3}|R^\T R=I,\det{R}=1}$, such that $X_t$ is assumed to be known. Given the sensor probabilistic properties $p(z|X_t,m)$, commonly referred to as the \emph{forward sensor model}, the goal is finding the \emph{inverse sensor model}, $P(m|z,X_{1:t},Z_{1:t-1})$. The authors of~\cite{KauLeeAiMos16,KauTakAiLee17} proposed a reduced map $r\subset m$ composed of $n_r$ cells along $z$, where cells are indexed by increasing distance from $x_t$. Defining $\mathbf{r}_{k+}$ as the event that the $k$-th cell of map $r$ is the closest occupied space, the inverse sensor model for the $k$-th cell is
+\sloppy
+The inverse sensor model problem was solved in~\cite{KauLeeAiMos16,KauTakAiLee17} to provide a real-time solution that uses the forward sensor model directly with map invariance. The process is fairly straightforward: define a reduced map $r\subset m$ of $n_r$ grid cells along $z$, indexed by increasing distance. Let $\mathbf{r}_{k+}$ correspond to the $k$-th cell being the closest occupied space. Then, the inverse sensor model is
 \begin{align}
 \label{eqn:RayISMAnswer}
 P(\mathbf{r}_{k}|z,X_{1:t},Z_{1:t-1})&=\eta\tilde P(\mathbf{r}_{k}|z,X_{1:t},Z_{1:t-1}),
@@ -222,19 +224,18 @@ where $\eta$ is the normalizer,
 &=
 \bigg[\sum_{i=1}^{n_{r}+1}\bigg\{\prod_{j=0}^{i-1}\bar{\mathbf{P}}_j^-\bigg\} p(z|\mathbf{r}_{i+},X_t)\mathbf{P}_i^-\bigg]^{-1},
 \end{align}
-such that the probability summation of the entire space is $1$, and the unnormalized probability of the inverse sensor model is defined as
+such that the summation of any cell probability and its complement is $1$. The unnormalized probability of the inverse sensor model is defined as
 \begin{align}
 \label{eqn:Unnormalized}
-\tilde P(\mathbf{r}_{k}|z,X_{1:t},&Z_{1:t-1})\nonumber\\
+\tilde P(\mathbf{r}&_{k}|z,X_{1:t},Z_{1:t-1})\nonumber\\
 &=\mathbf{P}_k^-
-\bigg[\sum_{i=1}^{k-1}\bigg\{\prod_{j=0}^{i-1}\bar{\mathbf{P}}_j^-\bigg\}p(z|\mathbf{r}_{i+},X_t)\mathbf{P}_k^-\bigg]\nonumber\\
-&\quad + \bigg\{\prod_{j=0}^{k-1}\bar{\mathbf{P}}_j^-\bigg\}p(z|\mathbf{r}_{k+},X_t)\mathbf{P}_k^-,
+\bigg[\sum_{i=1}^{k-1}\bigg\{\prod_{j=0}^{i-1}\bar{\mathbf{P}}_j^-\bigg\}p(z|\mathbf{r}_{i+},X_t)\mathbf{P}_k^-\bigg]+ \bigg\{\prod_{j=0}^{k-1}\bar{\mathbf{P}}_j^-\bigg\}p(z|\mathbf{r}_{k+},X_t)\mathbf{P}_k^-,
 \end{align}
-where a priori probability is $\mathbf{P}_k^-=P(\mathbf{r}_{k}|X_{1:t-1},Z_{1:t-1})$, its complement is $\bar{\mathbf{P}}_k^-=1-\mathbf{P}_k^-$, $P(\bar{\mathbf{r}}_{0}|X_{1:t-1},Z_{1:t-1})=P(\mathbf{r}_{n_r+1}|X_{1:t-1},Z_{1:t-1})=1$ for convenience, and $p(z|\mathbf{r}_{(n_r+1)+},X_t)$ represents the forward sensor model of a maximum sensor reading. The proofs of \refeqn{RayISMAnswer}--\refeqn{Unnormalized} are given in~\cite{KauLeeAiMos16}. Since $\tilde P(\mathbf{r}_{k}|z,X_{1:t},Z_{1:t-1})$ from \refeqn{Unnormalized} uses several repeated terms from the prior $\tilde P(\mathbf{r}_{k-1}|z,X_{1:t},Z_{1:t-1})$, and $\eta$ is easily obtained from these as well, the computational cost of \refeqn{RayISMAnswer} is linear with respect to the number of cells along a measurement ray, amortized to $\mathcal{O}(1)$ for each cell, so the exact inverse sensor model can be applied in real-time. The process of updating each cell along a measurement ray is repeated for all rays composing scan $Z_t$.
+where probability $\mathbf{P}_k^-=P(\mathbf{r}_{k}|X_{1:t-1},Z_{1:t-1})$ and its complement $\bar{\mathbf{P}}_k^-=1-\mathbf{P}_k^-$ are known a priori, we select $P(\bar{\mathbf{r}}_{0}|X_{1:t-1},Z_{1:t-1})=P(\mathbf{r}_{n_r+1}|X_{1:t-1},Z_{1:t-1})=1$ for convenience, and the forward sensor model maximum reading case is $p(z|\mathbf{r}_{(n_r+1)+},X_t)$. The proofs are given in~\cite{KauLeeAiMos16} for \refeqn{RayISMAnswer}--\refeqn{Unnormalized}. Since these equations use several repeated terms, \refeqn{RayISMAnswer} exhibits linear complexity with respect to the number of cells along a measurement ray, amortized to $\mathcal{O}(1)$ for each cell, so the exact inverse sensor model can be applied in real-time.
 
 \subsection{Predictive Entropy-Based Autonomous Exploration}
 
-Here we present how the probabilistic properties of an occupancy grid map provide key information about the uncertainty of the space for motion planning. Shannon's entropy commonly serves as an uncertainty measure~\cite{StaGriBur05}. Provided grid cell probabilities of map $m$, Shannon's entropy is defined as
+Here we introduce Shannon's entropy as a measure of probabilistic map uncertainty~\cite{StaGriBur05}, which provides key information for optimal motion planning. Shannon's entropy is defined as
 \begin{align}
 \label{eqn:ShannonsEntropyCell}
 H(P(\mathbf{m}_i))&=-P(\mathbf{m}_i)\log{P(\mathbf{m}_i})-P(\bar{\mathbf{m}}_i)\log{P(\bar{\mathbf{m}}_i}),
@@ -242,15 +243,17 @@ H(P(\mathbf{m}_i))&=-P(\mathbf{m}_i)\log{P(\mathbf{m}_i})-P(\bar{\mathbf{m}}_i)\
 \label{eqn:ShannonsEntropyMap}
 H(P(m))&=\sum_{i=1}^{n_m}H(P(\mathbf{m}_i)),
 \end{align}
-for an individual cell and the entire map, respectively.
-Thus, entropy is maximized when $P(\mathbf{m}_i)=0.5$, which corresponds to the largest uncertainty; similarly, entropy is minimized as $P(\mathbf{m}_i)$ approaches $0$ or $1$, which corresponds to the smallest uncertainty. %; thus Shannon's entropy is a measure of uncertainty.
+for a single grid cell and the entire map, respectively.
+Thus, $P(\mathbf{m}_i)=0.5$ maximizes \refeqn{ShannonsEntropyCell}, corresponding to the largest uncertainty; similarly, \refeqn{ShannonsEntropyCell} is minimized as $P(\mathbf{m}_i)$ approaches $0$ or $1$, corresponding to the smallest uncertainty. 
 
-Suppose a future pose candidate and its associated future measurement scan is $X_c=\braces{x_c,R_c}$ and $Z_c$, respectively, where $c\in\mathcal C$ such that $\mathcal C=\braces{1,2,...,n_c}$ accounts for all $n_c$ candidates under consideration for the next robot pose. The current pose of the robot is \emph{not} $X_c$ in general, so any change to the probabilistic map from $X_c$ must be predicted. Much like the probabilistic mapping, this is achieved ray-by-ray~\cite{KauAiLee16,KauTakAiLee17}. Considering that all grid cell probabilities are conditioned on the history of poses $X_{1:t}$ and measurement scans $Z_{1:t}$, these terms are removed from the remaining equations for simplicity. For candidate ray $z_c$, the expected entropy is
+Suppose a future pose candidate and its associated future measurement scan is $X_c=\braces{x_c,R_c}$ and $Z_c$, respectively, where $c\in\mathcal C$ such that $\mathcal C=\braces{1,2,...,n_c}$ accounts for all $n_c$ candidates under consideration for the next robot pose. The current pose of the robot is \emph{not} $X_c$ in general, so changes to the probabilistic map from $X_c$ can only be predicted. 
+This is achieved by considering the expected entropy change of individual measurement rays~\cite{KauAiLee16,KauTakAiLee17}. Removing $X_{1:t}$ and $Z_{1:t}$ for simplicity, the expected entropy for candidate ray $z_c$ is
 \begin{align}
 \label{eqn:DiscExpEntropyRay}
 &\text{E}[H(P(m|x_c,z_{c}))]=\sum_{k=1}^{n_{r}+1}\bigg\{H(P(m|x_c,z_{c,k}))P(z_{c,k}|x_c)\bigg\},
 \end{align}
-where $z_{c,k}$ refers to the distance from $x_c$ to the $k$-th grid cell along the measurement ray. The first term of the summation of \refeqn{DiscExpEntropyRay}, namely $H(P(m|x_c,z_{c,k}))$, is obtained with entropy definitions \refeqn{ShannonsEntropyCell}, \refeqn{ShannonsEntropyMap} and the inverse sensor model \refeqn{RayISMAnswer}--\refeqn{Unnormalized}. The second term is derived from \refeqn{allEta} with
+where $z_{c,k}$is distance along measurement ray $z_{c}$ from position $x_c$ to the $k$-th grid cell. The first term in \refeqn{DiscExpEntropyRay}, namely $H(P(m|x_c,z_{c,k}))$, is found with the inverse sensor model \refeqn{RayISMAnswer}--\refeqn{Unnormalized} and grid cell entropy \refeqn{ShannonsEntropyCell}--\refeqn{ShannonsEntropyMap}.
+The second term is derived from \refeqn{allEta} with
 \begin{align}
 \label{eqn:ProbMeas}
 P(z_{c,k}|x_c)&=\frac{p(z_{c,k}|x_c)}{\sum_{i=1}^{n_{r}+1}p(z_{c,i}|x_c)}=\frac{\eta_{c,k}^{-1}}{\sum_{i=1}^{n_{r}+1}\eta_{c,i}^{-1}},
@@ -264,7 +267,7 @@ The expected negative entropy change for candidate pose $X_c$ is equivalently th
 \label{eqn:expectedInfoGainRay}
 \mathcal I(X_c)&=H(P(m|X_{1:t},Z_{1:t}))-\text{E}\left[H(P(m|X_c,Z_c))\right].
 \end{align}
-Then, \refeqn{DiscExpEntropyRay} is applied repeatedly over several sample measurement rays that compose scan $Z_c$ as shown in~\cite{KauAiLee16}.
+Then, we repeat \refeqn{DiscExpEntropyRay} for several sample measurement rays composing scan $Z_c$~\cite{KauAiLee16}.
 
 
 
@@ -929,7 +932,7 @@ The results also demonstrate an interesting tradeoff between exploring new terra
 \section{Conclusions}
 \label{sec:Conclusions}
 
-This paper introduces a near-optimal bidding-based solution to multi-vehicle exploration and patrol to map a 3D space. The proposed approach integrates recent developments in obtaining occupancy grid probabilities and entropies into several auctions to assign tasks to robots. The bidding process relies on expected map information gains and travel distances, and modifies bids between auctions to promote robotic cooperation. Information gains are modified by updating a temporary expected map, and an additional term prevents collisions among robots. Grid cells are continuously degraded using a continuous-time Markov process, which incentivizes the autonomous exploration-based patrol scheme to revisit regions after time passes. Furthermore, a receding horizon constantly updates the bidding process and improves collision avoidance within a dynamic environment. The efficacy of the approach is shown with a numerical simulation patrolling a large floor plan with a walking human, with several computational enhancements for scalability of the algorithms.
+This paper introduces a near-optimal bidding-based solution to multi-vehicle exploration and patrol to map a 3D space. This approach integrates recent developments in obtaining occupancy grid probabilities and entropies into several auctions to assign tasks to robots. The bidding process relies on expected map information gains and travel distances, and modifies bids between auctions to promote robotic cooperation. Information gains are modified by updating a temporary expected map, and an additional term prevents collisions among robots. Grid cells are continuously degraded using a continuous-time Markov process, which incentivizes the autonomous exploration-based patrol scheme to revisit regions after time passes. Furthermore, a receding horizon constantly updates the bidding process and improves collision avoidance within a dynamic environment. The efficacy of the approach is shown with a numerical simulation patrolling a large floor plan with a walking human, with several computational enhancements for scalability of the algorithms.
 
 
 %\section*{Appendix}\label{append}
