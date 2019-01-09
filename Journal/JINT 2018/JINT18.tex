@@ -82,12 +82,7 @@
 %\titlerunning{Short form of title}        % if too long for running head
 
 \author{Evan Kaufman \and Kuya Takami \and \\ Zhuming Ai \and Taeyoung Lee}%
-%\thanks{Evan Kaufman, Taeyoung Lee, Mechanical and Aerospace Engineering, George Washington University, Washington DC 20052 {\tt \{evankaufman,tylee\}@gwu.edu}}
-%\thanks{Zhuming Ai, Ira S. Moskowitz, Information Management \& Decision Architectures, U.S. Naval Research Laboratory,  Washington, DC 20375}
-%}
 
-
-%\authorrunning{Short form of author list} % if too long for running head
 
 % Expanded:
 \institute{E. Kaufman \at
@@ -136,7 +131,6 @@
 
 
 \date{Received: date / Accepted: date}
-% The correct dates will be entered by the editor
 
 
 \maketitle
@@ -155,24 +149,18 @@ This paper addresses three key aspects to multi-vehicle mapping and patrol of un
 
 \subsection{Probabilistic Occupancy Grid Mapping and Autonomous Exploration in 3D}
 
-%Mapping is of fundamental importance for robots to understand their environment, avoid collisions, and efficiently maneuver through their surroundings.
-%Several grid-based map representations have been studied, e.g.,~\cite{WolSuk05,MeyBeiBur12,TanThoWolBus14}, because they provide abundant occupancy knowledge about the environment for collision-free maneuvers and are computationally tractable.
-
 Mapping is an important and well-studied topic in robotics for understanding an environment, avoiding collisions, and efficiently planning robotic motions.
 A popular approach to mapping is defining a grid-based map representation, e.g.,~\cite{WolSuk05,MeyBeiBur12,TanThoWolBus14}, because these representations are computationally tractable and simple to understand.
 
 However, these conventional grid-based mapping representations commonly approximate occupancy probabilities of the grid cells. The \emph{inverse sensor model}, which determines the map occupancy probabilities based on depth sensor measurements, is approximated with a simplified function, providing an inexact solution. As such, the prior belief of the environment and the stochastic properties of the sensor are not properly accounted. Another popular approach is based on simulated learning trials~\cite{Thr01,ThrBurFox05,SouMaiGon12} to determine an inverse sensor model. This approach is complicated and inexact due to sensitivity of simulation errors. In short, none of the existing approaches use the sensor properties to directly obtain a Bayesian solution to occupancy probability.
 
-%        1.      sensor fusion in mapping
 The approximate nature of the occupancy probability, either by a simplified function or a learned solution, motivates an exact Bayesian solution to the inverse sensor model. In this paper, we propose a computationally-efficient algorithm to obtain this solution, which serves to generate probabilities in a 3D environment following the framework of~\cite{KauLeeAiMos16,KauTakAiLee17}. This approach approach integrates stochastic properties of all sensors and the prior map estimate, following a Bayesian framework, to obtain the exact 3D occupancy probabilities~\cite{KauTakAiLee18}. As such, it provides a unified framework for sensor fusion between multiple sensors with various properties, such as sensor accuracy and fields of view. 
 
 
-%        2.      proposing a method to combine 3D mapping and 2D exploration: Also, we need to motivate why we are not doing full 3D exploration. Stress that we are proposing a computationally friendly approach to perform 3D mapping with projection using the fact there is less variation in the floor plan along the vertical direction.
 The 3D occupancy grid map provides key information to produce the policies that govern robotic motion, referred to as autonomous exploration. Among several approaches to determine these map-based motions in real-time, the most popular approach is known as frontier-based exploration. Using frontiers for autonomous exploration was proposed for 2D environments in~\cite{Yam97,Yam98} and extended to 3D with a visibility metric in~\cite{SawKriSri09} and~\cite{ZhuDinLinWu15,SenWan16,KleDor13} using the Octomap representation. The main idea of this approach is that robots move toward the boarder between certain and uncertain spaces to push back the boundary of known space. However, these systematic actions are not based on any consideration of the future probabilistic map uncertainty.
 
 An alternative approach that addresses the probabilistic map properties is based on Shannon's entropy~\cite{StaGriBur05}. This metric provides a measure of uncertainty, which is used to acquire expected map information gain in~\cite{KauAiLee16,KauTakAiLee17}. Furthermore, entropy-based autonomous exploration approaches can be extended to 3D in a numerically efficient manner~\cite{KauTakAiLee18}. Due to several challenges with obtaining expected information gain of 3D measurement scans, particularly with the extended computational load, we propose a numerically efficient scheme that projects stochastic properties of the 3D probabilistic occupancy grid to 2D spaces for optimal information gain and collision avoidance. This approach is appropriate for floor plans with typically low variation along the vertical direction by exploiting just the important characteristics of 3D maps within a 2D plane. This process is designed for real-time implementation by combining 3D mapping and 2D exploration in a computationally-efficient manner.
 
-%        3.      hardware/software for aerial exploration experiment.
 In this paper, we present a flight experiment for the proposed single-vehicle exploration scheme. Multiple tasks, such as flight control, sensor data acquisition, mapping, exploration, and communications are executed simultaneously in a ROS environment using Python/C++. These tasks are verified with a quadrotor unmanned aerial vehicle holding an ASUS Xtion infrared depth sensor and Hokuyo laser scanner operated by the NVidia Jetson computing module. 
 
 
@@ -194,10 +182,6 @@ In this paper, the proposed approach to coordinated patrol is based on cooperati
 We present a numerical simulation of three quadrotors mapping and patrolling a floor plan of a building, which is initially uncertain. The robots must safely patrol this space while a human walks independently around the environment.
 
 In short, the contributions of this paper are as follows. First, we propose a computation technique to extend 2D mapping and autonomous exploration to a 3D environment in real-time. Then, we propose a bidding-based cooperative exploration with multiple vehicles. The exploration is developed in a receding horizon framework for dynamic environments. Finally, we develop a stochastic framework for patrol. These are demonstrated with an experiment and a simulation.
-
-%In short, there are two contributions of this paper. First, single-vehicle 2D mapping and autonomous exploration approaches are extended to realistic 3D environments. Second, multi-vehicle cooperative patrol is proposed using bidding-based autonomous exploration and map grid cell degradation. These two concepts are demonstrated with an experiment and a simulation.
-
-
 
 
 \section{Problem Formulation}
@@ -261,9 +245,6 @@ P(z_{c,k}|x_c)&=\frac{p(z_{c,k}|x_c)}{\sum_{i=1}^{n_{r}+1}p(z_{c,i}|x_c)}=\frac{
 where $\eta_{c,k}$ refers to the normalizer based on the measurement $z_{c,k}$.
 The expected negative entropy change for candidate pose $X_c$ is equivalently the expected information gain,
 \begin{align}
-%\label{eqn:objectiveFunOptimized}
-%X_c^*&=\argmax_{X_c}{\ \mathcal I(X_c)},
-%\\
 \label{eqn:expectedInfoGainRay}
 \mathcal I(X_c)&=H(P(m|X_{1:t},Z_{1:t}))-\text{E}\left[H(P(m|X_c,Z_c))\right].
 \end{align}
@@ -281,7 +262,6 @@ Grid cells along a measurement ray are updated using the inverse sensor model. S
 
 A robot might be equipped with multiple sensors for several reasons, e.g., different depth accuracy or fields-of-view. For example, consider a robot carying a 2D LIDAR providing highly accurate measurements over a horizontal plane. This sensor might rapidly update the grid cells at the robot height, but neglect spaces above or below the robot. The robot can compensate for these limitations with an IR depth sensor providing measurements with nonzero components in the vertical direction, even if the IR depth sensor accuracy is lower than the LIDAR accuracy. Measurements from both sensors may update the same probabilistic map because each sensor model is explicitly considered in the cell probability calculations. In short, the proposed 3D mapping approach can fuse the impact of measurements on the probabilistic map from different sources because the stochastic properties of measurements are considered according to a Bayesian framework explicitly.
 
-% EditEK 1: example of 2 sensor measurements fused, starting with "For example, a robot may be equipped..." until the end of the paragraph.
 
 However, several careful considerations are required for 3D implementation. First, increasing the map dimensions from 2D to 3D requires memory reserves to multiply by a factor of the number of cells in the added dimension. Second, rays spanning 3D space tend to intersect more grid cells than rays spanning 2D space, which increases the number of grid cells updated per ray. Computation time for the inverse sensor model is linear with respect to the number of cells considered, so careful considerations on sensor limits and number of rays updated per scan are important.
 It is common that computers onboard flying robots lack the processing capabilities to update massive 3D maps quickly due to these limitations. Therefore, a simple solution is to stream the sensor data from an onboard computer to a more powerful computer that runs the mapping.
@@ -317,24 +297,12 @@ When exploring uncertain environments, robots can generate large maps much faste
 
 In this section, we formulate a cooperative and autonomous exploration scheme based on sequential auctions for maximizing map information gain. The first auction is based on the expected information gain presented in the prior section, scaled by travel distance. Once the winner of the first auction is determined, the map for bidding is updated based on the expected measurements of the first robot. The second auction for the remaining robots is determined by the information gain from the revised map that is further scaled by the travel distance and a penalty for collision-avoidance. This process is repeated until all robots are assigned tasks. 
 
-%While auctions proceed, the occupancy grid cell probabilities are degrading according to a continuous-time Markov process. Cell degradation increases the expected information gain, thereby incentivizing robots to revisit regions after some time passes.
-
-%Here, we formulate a cooperative patrol scheme based on a coordinated autonomous exploration with multiple robots using sequential auctions. The first auction is based on the expected information gain presented in the prior section, scaled by travel distance. Once the winner of the first auction is determined, the map for bidding is updated based on the expected measurements of the first robot. The second auction for the remaining robots is determined by the information gain from the revised map that is further scaled by the travel distance and a penalty for collision-avoidance. This process is repeated until all robots are assigned tasks. While auctions proceed, the occupancy grid cell probabilities are degrading according to a continuous-time Markov process. Cell degradation increases the expected information gain, thereby incentivizing robots to revisit regions after some time passes.
 
 \subsection{Objective Function for the First Auction}
 
 Here, we describe how robots participate in the first auction for maximizing map information gain while accounting for travel time. The information gain \refeqn{expectedInfoGainRay} is computed for each candidate pose. Expected information gains may vary among the robots only if they have different sensor configurations. All expected information gains must be computed prior to the first auction.
 
 Next, we describe how travel time is integrated into exploration. Considering that distances from current robot poses to candidate poses may differ greatly, accounting for these varying travel times properly is essential for exploration time efficiency. Travel distances are computed using Dijkstra's search to provide collision-free waypoints for each robot. There are two steps: first, generate a cost map from the robot location to each location on the 2D projected map. This provides the collision-free distances to all reachable locations on the map. Second, the waypoints from a candidate pose to the current robot pose are easily obtained along the cost map using steepest descent. 
-
-%    if x(k) < d
-%        f(k) = 0.5*fMax*(1-cos(pi*x(k)/d));
-%    else
-%        f(k) = fDiff*exp(-1e-2*(x(k)-d)^2)+fFar;
-%    end
-
-
-%Dijkstra's search demonstrates that the distances from each robot to $X_c$ are different in general, so travel times to $X_c$ vary. This motivates a unified approach to account for travel time, which promotes local travel and discourages robots from traversing across the map when possible.
 
 Here, we define a bump function to account for varying travel distances from Dijkstra's search. Let the distance along the collision-free path from the $k$-th robot pose, namely $X_k$, to the $c$-th candidate pose, namely $X_c$, be denoted $d(X_k,X_c,m_\text{2D})\geq0$, which is taken from the cost map belonging to $X_k$. A continuous bump function is defined to account for traveling costs, and is composed of two parts.  
 
@@ -947,11 +915,12 @@ This paper introduces a near-optimal bidding-based solution to multi-vehicle exp
 
 \vspace*{0.1\textwidth}
 
-\noindent{\bf Evan Kaufman} received his B.S. degree in Mechanical Engineering from Bucknell University in 2012, and is currently a Ph.D. candidate at The George Washington University in the Mechanical and Aerospace department. His research focusses are in robotic mapping and exploration with range-based sensors, estimation, data association, and flight controls. He has worked on several research projects through the U.S. Air Force Research Laboratory and Naval Research Laboratory.
+\noindent{\bf Evan Kaufman} is a robotics engineer at Robotic Research LLC. He received his B.S. degree in Mechanical Engineering from Bucknell University in 2012, and his Ph.D. in Aerospace Engineering at The George Washington University in 2018. His research focusses are in robotic mapping and exploration with range-based sensors, estimation, data association, and flight controls. He has worked on several research projects through the U.S. Air Force Research Laboratory and Naval Research Laboratory.
 
 \vspace*{0.1\textwidth}
 
-\noindent{\bf Kuya Takami} is a postdoctoral research fellow at the Department of Mechanical and Aerospace Engineering at the George Washington University. He received his doctoral degree in Mechanical Engineering at Virginia Polytechnic Institute and State University in 2015 specializing in robot perception. His main interests include mobile robot perception and autonomous systems.
+\noindent{\bf Kuya Takami} is a scientific software developer at Enthought and was a postdoctoral research fellow at the Department of Mechanical and Aerospace Engineering at the George Washington University. He received his doctoral degree in Mechanical Engineering at Virginia Polytechnic Institute and State University in 2015 specializing in robot perception. His main interests include mobile robot perception and autonomous systems.
+
 
 \vspace*{0.1\textwidth}
 

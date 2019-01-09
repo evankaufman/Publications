@@ -1,0 +1,12 @@
+
+Evan Kaufman is a robotics engineer at Robotic Research LLC. He received his B.S. degree in Mechanical Engineering from Bucknell University in 2012, and his Ph.D. in Aerospace Engineering at The George Washington University in 2018. His research focusses are in robotic mapping and exploration with range-based sensors, estimation, data association, and flight controls. He has worked on several research projects through the U.S. Air Force Research Laboratory and Naval Research Laboratory.
+
+Kuya Takami is a scientific software developer at Enthought and was a postdoctoral research fellow at the Department of Mechanical and Aerospace Engineering at the George Washington University. He received his doctoral degree in Mechanical Engineering at Virginia Polytechnic Institute and State University in 2015 specializing in robot perception. His main interests include mobile robot perception and autonomous systems.
+
+Zhuming Ai is a Computer Engineer in the Information Technology Division at the U.S. Naval Research Laboratory (NRL). Before he joined NRL, he served as the Director of the Virtual Reality in Medicine Lab at the University of Illinois at Chicago. He is interested in virtual reality, augmented reality, computer graphics, image processing, and robotics.
+
+Taeyoung Lee is an associate professor of the Department of Mechanical and Aerospace Engineering at The George Washington University. He received his doctoral degree in Aerospace Engineering and his master?s degree in Mathematics at the University of Michigan in 2008. His research interests include geometric mechanics and control with applications to complex aerospace systems.
+
+Please note: these are also included in the tex source file.
+
+
