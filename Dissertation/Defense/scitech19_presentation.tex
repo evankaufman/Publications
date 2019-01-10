@@ -166,7 +166,7 @@ January 10, 2019
 	\item Autonomous Exploration
 	\begin{itemize}
 		\item Novel approach to predicting future map uncertainty
-		\item Optimal planning to maximize information gain
+		\item Optimal planning to maximize information gain for a \emph{flying} Mars robot
 		\item Complicated 3D Mars environment explicitly considered in pose selection and path planning
 	\end{itemize}
 \end{itemize}
@@ -567,7 +567,7 @@ January 10, 2019
     	\end{subfigure}
 	\begin{subfigure}[t]{0.45\columnwidth}
            	\centering
-          	\includegraphics[height=0.5\textwidth]{disconnected_costmap.png}
+          	\includegraphics[height=0.5\textwidth]{connected_costmap.png}
         		\caption{3D Dijkstra's Search}
     	\end{subfigure}
 \label{fig:marsZoomedIn}
@@ -577,7 +577,7 @@ January 10, 2019
 \begin{frame}
 	\frametitle{3D Mars Exploration Conclusions}
 	\begin{itemize}
-		\item Expected information gain of several poses in 3D space capturing complex obstacles
+		\item Expected information gain of several poses in 3D space capturing complex obstacles while flying
 		\item Distance cost accounts for collision-avoidance
 		\item Mapping and exploration are computationally-efficient for real-time implementation
 	\end{itemize}
