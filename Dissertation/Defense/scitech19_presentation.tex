@@ -146,7 +146,7 @@ January 10, 2019
 	\begin{itemize}
 		\item Four successful driving missions, Curiosity still functional and communicating
 		\item Driving robots are incapable of traversing steep or dangerous terrain
-		\item Humans cannot control rovers directly due to a time delay from Earth
+		\item Humans cannot control rovers directly in real-time due to a time delay from Earth
 	\end{itemize}
 \end{itemize}
 \end{frame}
@@ -255,14 +255,7 @@ January 10, 2019
 \frametitle{Problem Definition}
 
 \begin{itemize}
-	\item Bayesian Framework
-	\begin{itemize}
-	\item Markov Assumption: latest a priori cell occupancy probabilities capture the information from all prior observations
-	\item Log-Odds Ratio: popular representation due to simple additive update structure and probability truncation avoidance, but requires the \emph{assumption}
-	\begin{align*}
-		P(Z_t|\mathbf{m}_i,X_{1:t},Z_{1:t-1})\approx P(Z_t|\mathbf{m}_i,X_t)
-	\end{align*}
-	\end{itemize}
+	\item Bayesian Framework with a Markov Assumption: latest a priori cell occupancy probabilities capture the information from all prior observations
 \vspace*{0.0cm}\pause
 	\item Inverse Sensor Model
 	\begin{align*}
@@ -270,9 +263,7 @@ January 10, 2019
 \\
 &=\eta_{t,l}\sum_{m\in\mathcal{M}_i}p(z_{t,l}|m,X_{t})P(m|X_{1:t-1},Z_{1:t-1}).
 \end{align*}
-	\begin{itemize}
 	\item Given $n$ grid cells: $\mathcal O(2^n)$ is \emph{computationally-intractable}, motivating a different solution
-	\end{itemize}
 \end{itemize}
 
 \end{frame}
@@ -539,7 +530,7 @@ January 10, 2019
 	\vspace*{0.0cm}\pause
 	\item These waypoints serve as input to a \emph{constrained polynomial least squares trajectory}
 	\begin{itemize}
-		\item Each trajectory is solved independently as a function of time, i.e. $x(t)$, $y(t)$
+		\item Each trajectory is solved independently as a function of time, i.e. $x(t)$, $y(t)$, and $z(t)$
 		\item Starting and terminal locations are fixed
 		\item Segments patched together have the same position and velocity at the connection
 	\end{itemize}
@@ -562,13 +553,13 @@ January 10, 2019
 	\centering
 	\begin{subfigure}[t]{0.45\columnwidth}
            	\centering
-          	\includegraphics[height=0.5\textwidth]{mars_closeup.png}
-        		\caption{Mars Simulation Poses}
+          	\includegraphics[height=0.5\textwidth]{connected_costmap.png}
+        		\caption{3D Dijkstra's Search}
     	\end{subfigure}
 	\begin{subfigure}[t]{0.45\columnwidth}
            	\centering
-          	\includegraphics[height=0.5\textwidth]{connected_costmap.png}
-        		\caption{3D Dijkstra's Search}
+          	\includegraphics[height=0.5\textwidth]{mars_closeup.png}
+        		\caption{Mars Simulation Poses}
     	\end{subfigure}
 \label{fig:marsZoomedIn}
 \end{figure}
@@ -677,7 +668,7 @@ January 10, 2019
 \end{frame}
 
 \begin{frame}
-\frametitle{Experiment Summary}
+\frametitle{Simulation and Experiment Summary}
 \begin{itemize}
         	\item Environments in complex 3D are modeled with occupancy grids in simulation and experimentation
 	\item Predicted entropy of certain and uncertain spaces provide a policy for 3D autonomous exploration
@@ -693,10 +684,8 @@ January 10, 2019
 \frametitle{Conclusions}
 \begin{itemize}
         	\item Proposed an occupancy grid mapping technique that uses the \emph{exact probabilistic solution}
-	\item Computational cost is reduced \emph{substantially} for \emph{real-time implementation} using probabilisitic properties and exploiting mathematical patterns
-	\item Exact mapping concepts are extended to map uncertainty to accomplish \emph{autonomous exploration}
-	\item Multiple vehicles can explore and patrol an uncertain environment using a \emph{bidding}-based approach
-	\item These are demonstrated with numerous simulations and experiments
+	\item Exact mapping concepts are extended to map uncertainty to accomplish \emph{autonomous exploration} for a flying vehicle above the surface of Mars
+	\item These are demonstrated with a Mars simulation and a flight experiment
 \end{itemize}
 \end{frame}
 
