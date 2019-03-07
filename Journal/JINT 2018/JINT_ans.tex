@@ -1,0 +1,124 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,text={6.5in,8.6in},centering]{geometry}
+\usepackage{amssymb,amsmath,times,url}
+\usepackage{xr,color}
+\usepackage{hyperref}
+
+
+\externaldocument[]{JINT18}
+
+\newcommand{\norm}[1]{\ensuremath{\left\| #1 \right\|}}
+\newcommand{\bracket}[1]{\ensuremath{\left[ #1 \right]}}
+\newcommand{\braces}[1]{\ensuremath{\left\{ #1 \right\}}}
+\newcommand{\parenth}[1]{\ensuremath{\left( #1 \right)}}
+\newcommand{\pair}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\met}[1]{\ensuremath{\langle\langle #1 \rangle\rangle}}
+\newcommand{\refeqn}[1]{(\ref{eqn:#1})}
+\newcommand{\reffig}[1]{Fig. \ref{fig:#1}}
+\newcommand{\tr}[1]{\mathrm{tr}\ensuremath{\negthickspace\bracket{#1}}}
+\newcommand{\trs}[1]{\mathrm{tr}\ensuremath{[#1]}}
+\newcommand{\deriv}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+\newcommand{\SO}{\ensuremath{\mathsf{SO(3)}}}
+\newcommand{\T}{\ensuremath{\mathsf{T}}}
+\renewcommand{\L}{\ensuremath{\mathsf{L}}}
+\newcommand{\so}{\ensuremath{\mathfrak{so}(3)}}
+\newcommand{\SE}{\ensuremath{\mathsf{SE(3)}}}
+\newcommand{\se}{\ensuremath{\mathfrak{se}(3)}}
+\renewcommand{\Re}{\ensuremath{\mathbb{R}}}
+\newcommand{\aSE}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&1\end{bmatrix}}}
+\newcommand{\ase}[2]{\ensuremath{\begin{bmatrix}#1&#2\\0&0\end{bmatrix}}}
+\newcommand{\D}{\ensuremath{\mathbf{D}}}
+\newcommand{\Sph}{\ensuremath{\mathsf{S}}}
+\renewcommand{\S}{\Sph}
+\newcommand{\J}{\ensuremath{\mathbf{J}}}
+\newcommand{\Ad}{\ensuremath{\mathrm{Ad}}}
+\newcommand{\intp}{\ensuremath{\mathbf{i}}}
+\newcommand{\extd}{\ensuremath{\mathbf{d}}}
+\newcommand{\hor}{\ensuremath{\mathrm{hor}}}
+\newcommand{\ver}{\ensuremath{\mathrm{ver}}}
+\newcommand{\dyn}{\ensuremath{\mathrm{dyn}}}
+\newcommand{\geo}{\ensuremath{\mathrm{geo}}}
+\newcommand{\Q}{\ensuremath{\mathsf{Q}}}
+\newcommand{\G}{\ensuremath{\mathsf{G}}}
+\newcommand{\g}{\ensuremath{\mathfrak{g}}}
+\newcommand{\Hess}{\ensuremath{\mathrm{Hess}}}
+\newcommand{\refprop}[1]{Proposition \ref{prop:#1}}
+
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+\newcommand{\RI}{\text{\RNum{1}}}
+\newcommand{\RII}{\text{\RNum{2}}}
+\newcommand{\RIII}{\text{\RNum{3}}}
+
+\newenvironment{correction}{\begin{list}{}{\setlength{\leftmargin}{1cm}\setlength{\rightmargin}{1cm}}\vspace{\parsep}\item[]``}{''\end{list}}
+
+
+\newcommand{\EditTL}[1]{{\color{red}\protect #1}}
+
+
+\begin{document}
+
+%\pagestyle{empty}
+
+\section*{Response to the Reviewers' Comments for JINT-D-18-00265R2}
+
+The authors would like to thank the reviewers for their thoughtful comments, which are aimed toward improving the quality of the paper and the clarity of the results. In accordance with the comments and suggestions, the paper has been revised as follows. 
+
+
+\subsection*{Reviewer 1}
+\begin{itemize}
+\item {\itshape Reviewer \#1: The paper is well written. I suggest making the title more accurate rather than generic. The presented methods are specifically applicable for small flying vehicles(computational limitation) in structured indoor environment (as assumed in converting 3D to 2D occupancy grid) and the specific contribution is Bayesian grid mapping and receding horizons based patrol. There have been other papers in the literature addressing other grid mapping methods and other horizons for similar application. Consider a title such as ``Bayesian grid mapping based exploration and receding horizons based patrol of structured indoor environments using multi aerial vehicles''.} 
+\end{itemize}
+
+This paper RETURN HERE!
+
+\subsection*{Reviewer 2}
+
+\setlength{\leftmargini}{0pt}
+
+\begin{itemize}\setlength{\itemsep}{2\parsep}
+
+
+\item {\itshape Reviewer \#2: The paper introduces a stochastic framework for autonomous exploration and patrol with multiple cooperating robots. Frankly, the contributions of the authors sound interesting.  The paper is mostly well-written and easy to understand. However, the following comments have to be addressed:}
+
+\begin{enumerate}\setlength{\itemsep}{2\parsep}
+
+\item {\itshape Reviewer \#2: A well-written abstract should briefly introduce a problem and suggest a solution for it. The authors should briefly introduce the problem that they are attempting to solve before suggesting a solution. However,  the abstract should be rewritten to introduce the importance of the authors' contributions without too much details.}
+
+%The focus of this paper is probabilistic mapping and autonomous exploration, not control system design for stabilization or tracking. In fact, the exploration algorithm serves to determine an optimal trajectory for the robot as it gathers knowledge about its environment, and as such, it deals with a guidance problem. Designing a specific control system to follow this trajectory may be achieved by a wide range of controllers, and it is out of scope of this paper. 
+%
+%To clarify this, the end of Section 5 is modified as follows. 
+%
+%\begin{correction}The starting and ending positions and attitudes may be constrained, and polynomials patched together for long trajectories share a common position and velocity with respect to time. Then, the robot tracks this trajectory until the robot falls within acceptable thresholds of the final optimal pose. For generality of the proposed exploration algorithm, any position controller yielding robotic motion that follows this desired trajectory may be selected. Once the robot completes this motion, the entire process is repeated.\end{correction}
+
+
+\item {\itshape Reviewer \#2: A reference should be added to support the following sentence in Section 3.2: " In particular, the computational complexity for expected entropy of a single measurement ray intersecting $n_r$ cells is $\mathcal{O}(n_r^2)$''. The authors can alternatively show how the computational complexity was calculated.}
+
+\item {\itshape Reviewer \#2: The following claim mentioned in the conclusion should be justified: "This paper introduces a near-optimal bidding-based solution to multi-vehicle exploration and patrol to map a 3D space". How did the authors conclude that their proposed solution is a near-optimal one?}
+
+\item {\itshape Reviewer \#2: The authors should discuss the limitations and\/or disadvantages of the proposed framework in the conclusion section.}
+
+\item {\itshape Reviewer \#2: The reference list should be reviewed and all the missing details should be added (e.g., references 9 and 11).}
+
+\item {\itshape Reviewer \#2: The authors may suggest some directions for future work based on the proposed framework.
+}
+
+\end{enumerate}
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
