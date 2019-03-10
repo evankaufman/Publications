@@ -66,10 +66,16 @@ The authors would like to thank the reviewers for their thoughtful comments, whi
 
 \subsection*{Reviewer 1}
 \begin{itemize}
-\item {\itshape Reviewer \#1: The paper is well written. I suggest making the title more accurate rather than generic. The presented methods are specifically applicable for small flying vehicles(computational limitation) in structured indoor environment (as assumed in converting 3D to 2D occupancy grid) and the specific contribution is Bayesian grid mapping and receding horizons based patrol. There have been other papers in the literature addressing other grid mapping methods and other horizons for similar application. Consider a title such as ``Bayesian grid mapping based exploration and receding horizons based patrol of structured indoor environments using multi aerial vehicles''.} 
+\item {\itshape Reviewer \#1: The paper is well written.}
+
+The authors appreciate the comment.
+
+\item {\itshape Reviewer \#1:  I suggest making the title more accurate rather than generic. The presented methods are specifically applicable for small flying vehicles (computational limitation) in structured indoor environment (as assumed in converting 3D to 2D occupancy grid) and the specific contribution is Bayesian grid mapping and receding horizons based patrol. There have been other papers in the literature addressing other grid mapping methods and other horizons for similar application. Consider a title such as ``Bayesian grid mapping based exploration and receding horizons based patrol of structured indoor environments using multi aerial vehicles''.} 
 \end{itemize}
 
-This paper RETURN HERE!
+This paper is most relevant to structured indoor environments, which should be reflected in the title. The authors have selected the following title.
+
+\begin{correction}Bayesian Mapping-Based Autonomous Exploration and Patrol of 3D Structured Indoor Environments with Multiple Flying Robots\end{correction}
 
 \subsection*{Reviewer 2}
 
@@ -84,9 +90,9 @@ This paper RETURN HERE!
 
 \item {\itshape Reviewer \#2: A well-written abstract should briefly introduce a problem and suggest a solution for it. The authors should briefly introduce the problem that they are attempting to solve before suggesting a solution. However,  the abstract should be rewritten to introduce the importance of the authors' contributions without too much details.}
 
-The abstract is revised to place more focus on the authors' contributions as follows.
+The abstract is revised to place more focus on the motivation the authors' contributions as follows.
 
-\begin{correction}This paper presents a stochastic framework for autonomous exploration and patrol with multiple cooperating robots. The first contribution extends the authors' prior work in single-robot exact occupancy grid mapping and autonomous exploration in a 2D environment to mapping and exploring in a 3D environment. The proposed 3D occupancy grid map is computed efficiently using an inverse sensor model that accounts for the sensor uncertainty, where we propose several measurement sources may be fused together by considering depth readings individually. This approach is scalable to larger and more complex scenarios for real-time mapping. Furthermore, this paper shows how important aspects of a 3D map representing a structured environment are projected onto a 2D occupancy grid map, where an autonomous exploration algorithm is designed to select robotic motions that maximize map information gain. The mapping and exploration algorithms are demonstrated with an experiment where a quadrotor autonomously maps and explores an initially-uncertain environment. The second contribution is a novel approach to multi-vehicle cooperative patrol of environments based on map uncertainty. We propose a cooperative autonomous exploration algorithm, which applies a bidding-based framework to coordinate robotic efforts for improving occupancy grid map information gain. Since these exploration approaches are based on probabilistic knowledge about the map, the 3D occupancy grid map is systematically degraded over time to encourage the robots to revisit regions as time passes, thereby patrolling the environment. Furthermore, using a Bayesian framework and receding horizons, the algorithm is robust to dynamic obstacles within the mapping space. The efficacy of the proposed multi-vehicle cooperative patrol is illustrated with a simulation involving three robots patrolling a large floor plan with a non-cooperative person walking around the space.\end{correction}
+\sloppy\begin{correction}Mobile robots are frequently faced with mapping and exploring uncertain environments in surveillance, military, and convenience tasks. Often times, human teleoperation is either inconvenient or infeasible for these kinds missions. Furthermore, these tasks can be improved by cooperative multi-agent systems, where coordinating robotic efforts can be complicated and computationally-expensive. This paper presents a stochastic framework for autonomous exploration and patrol with multiple cooperating robots. The first contribution extends the authors' prior work in single-robot exact occupancy grid mapping and autonomous exploration in a 2D environment to mapping and exploring in a 3D environment. The proposed 3D occupancy grid map is computed efficiently using an inverse sensor model that accounts for the sensor uncertainty, where we propose how several measurement sources may be fused together by considering depth readings individually. This approach is scalable to larger and more complex scenarios for real-time mapping. Furthermore, this paper shows how important aspects of a 3D map representing a structured environment are projected onto a 2D occupancy grid map, where an autonomous exploration algorithm is designed to select robotic motions that maximize map information gain. The mapping and exploration algorithms are demonstrated with an experiment where a quadrotor autonomously maps and explores an initially-uncertain environment. The second contribution is a novel approach to multi-vehicle cooperative patrol of environments based on map uncertainty. We propose a cooperative autonomous exploration algorithm, which applies a bidding-based framework to coordinate robotic efforts for improving occupancy grid map information gain. Since these exploration approaches are based on probabilistic knowledge about the map, the 3D occupancy grid map is systematically degraded over time to encourage the robots to revisit regions as time passes, thereby patrolling the environment. Furthermore, using a Bayesian framework and receding horizons, the algorithm is robust to dynamic obstacles within the mapping space. The efficacy of the proposed multi-vehicle cooperative patrol is illustrated with a simulation involving three robots patrolling a large floor plan with a non-cooperative person walking around the space.\end{correction}
 
 
 \item {\itshape Reviewer \#2: A reference should be added to support the following sentence in Section 3.2: ``In particular, the computational complexity for expected entropy of a single measurement ray intersecting $n_r$ cells is $\mathcal{O}(n_r^2)$''. The authors can alternatively show how the computational complexity was calculated.}
@@ -97,16 +103,16 @@ This calculation is shown in reference [9], which now follows the statement in t
 
 The following is added to the end of Section 4.2 to justify this claim.
 
-\begin{correction}For the vehicle that wins the first bid, it moves toward the candidate pose that maximizes its contribution to map information gain with travel cost. The subsequent auctions produce an optimal solution except for the actions of prior auction-winning robots, but these actions are explicitly considered. In this sense, we achieve a near-optimal coordinated solution without major computational bottlenecks.\end{correction}
+\begin{correction}For the vehicle that wins the first bid, it moves toward the candidate pose that maximizes its contribution to map information gain with travel cost. The subsequent auctions produce an optimal solution except for the actions of prior auction-winning robots, but these prior actions are explicitly considered. In this sense, we achieve a near-optimal coordinated solution without major computational bottlenecks.\end{correction}
 
 \item {\itshape Reviewer \#2: The authors should discuss the limitations and/or disadvantages of the proposed framework in the conclusion section.
 \\
 The authors may suggest some directions for future work based on the proposed framework.
 }
 
-Some of the disadvantages, which motivate future work, relate to implementation challenges. The following is added to the conclusions.
+Some of the disadvantages, which motivate future work, relate to fixed map limits and localization. The following is added to the conclusions.
 
-\begin{correction}ADD\end{correction}
+\begin{correction}The research presented in this paper may be enhanced in several ways. First, this research assumes fixed map limits. In practice, a robot may not be given knowledge of the environment size. A mapping and exploration algorithm that is capable of expanding as it explores could increase the number of applications for such robots. Additionally, localization can be challenging in uncertain environments. Therefore, localization can be included in the exploration policy. The uncertainty of the robot pose estimate could further improve the accuracy of the probabilistic map, expected entropy calculations, and collision-avoidance.\end{correction}
 
 \item {\itshape Reviewer \#2: The reference list should be reviewed and all the missing details should be added (e.g., references 9 and 11).}
 
